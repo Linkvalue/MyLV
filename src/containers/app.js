@@ -1,3 +1,4 @@
 import React from 'react'
+import GenerateDoc from '../components/document/generate-doc'
 
-export const App = (props) => <h1>Hello, world!</h1>
+export const App = (props) => <GenerateDoc />

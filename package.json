@@ -21,6 +21,9 @@
     "sagui": "^6.0.1"
   },
   "dependencies": {
+    "browser-filesaver": "^1.1.1",
+    "docxtemplater": "^2.1.1",
+    "jszip-utils": "0.0.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
