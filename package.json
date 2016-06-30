@@ -21,10 +21,20 @@
     "sagui": "^6.0.1"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "moment": "^2.13.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LinkValue/CraCra.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LinkValue/CraCra/issues"
+  },
+  "homepage": "https://github.com/LinkValue/CraCra#readme"
 }
