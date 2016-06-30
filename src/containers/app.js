@@ -1,3 +1,4 @@
 import React from 'react'
+import Form from '../components/form/user-form'
 
-export const App = (props) => <h1>Hello, world!</h1>
+export const App = (props) => <Form />
