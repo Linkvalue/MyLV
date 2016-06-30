@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "sagui build",
-    "develop": "sagui develop --port 3000",
+    "develop": "sagui develop --port 7000",
     "dist": "NODE_ENV=production sagui build --optimize",
     "start": "npm run develop",
     "test": "npm run test:lint && npm run test:unit",
@@ -19,5 +19,12 @@
   "license": "ISC",
   "devDependencies": {
     "sagui": "^6.0.1"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
   }
 }

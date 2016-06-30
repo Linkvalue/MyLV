@@ -1,7 +1,12 @@
-import style from './index.css'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const div = document.createElement('div')
-div.innerHTML = '<h1>Hello World</h1>'
-div.className = style.component
+import { configureStore } from './store/configure-store'
+import { Root } from './containers/root'
 
-document.getElementById('cracra').appendChild(div)
+const store = configureStore()
+
+ReactDOM.render(
+  <Root store={store}/>,
+  document.getElementById('cracra')
+)
