@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { userEntry } from '../../actions/user-actions'
 
@@ -22,17 +21,15 @@ class Form extends Component {
     }
   }
 
-  handleInputChange () {
-    const lastName = ReactDOM.findDOMNode(this.refs.lastName).value
-    const firstName = ReactDOM.findDOMNode(this.refs.firstName).value
-
+  handleInputChange (e) {
     this.setState({
-      lastName: lastName,
-      firstName: firstName
+      [e.target.name]: e.target.value
     })
+
+    this.handleInputSubmit()
   }
 
-  handleSubmit () {
+  handleInputSubmit () {
     const { firstName, lastName } = this.state
 
     if (firstName !== '' && lastName !== '') {
@@ -55,21 +52,18 @@ class Form extends Component {
           <label for='lastName'>Nom</label>
           <input type='text'
             name='lastName'
-            ref='lastName'
             autoFocus
             required
-            onChange={() => this.handleInputChange()} />
+            onChange={(e) => this.handleInputChange(e)} />
         </p>
         <p>
           <label for='firstName'>Prénom</label>
           <input type='text'
             name='firstName'
-            ref='firstName'
             required
-            onChange={() => this.handleInputChange()} />
+            onChange={(e) => this.handleInputChange(e)} />
         </p>
         <p>{this.state.error}</p>
-        <button>Submit</button>
       </form>
     )
   }
