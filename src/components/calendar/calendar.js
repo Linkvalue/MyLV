@@ -11,11 +11,11 @@ export default ({ month, day, setDay }) => {
 
   for (let i = 1; i <= m.daysInMonth(); i++) {
     let d = m.date(i)
-    if (!w || d.day() === 0) {
+    if (!w || d.day() === 1) {
       w = (new Array(7)).fill(undefined)
       weeks.push(w)
     }
-    w[d.day()] = d.date()
+    w[(d.day() + 6) % 7] = d.date()
   }
 
   return (
@@ -34,8 +34,8 @@ export default ({ month, day, setDay }) => {
                 key={`${d}-${i}`}
                 onClick={() => setDay(d)}
                 className={classNames({
-                  'cal-selected': d === day,
-                  'cal-we': i >= 5
+                  [styles.selected]: d === day,
+                  [styles.we]: i >= 5
                 })}>
                 {d}
               </td>
