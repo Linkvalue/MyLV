@@ -1,7 +1,24 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+
 /**
  * Sagui configuration object
  * see: http://sagui.js.org/
  */
 module.exports = {
-  pages: ['index']
+  pages: ['index'],
+  webpack: {
+    plugins: [
+      new CopyWebpackPlugin([{
+        from: path.resolve(__dirname, 'src/manifest.json'),
+        to: path.resolve(__dirname, 'dist')
+      }, {
+        from: path.resolve(__dirname, 'src/images/icons'),
+        to: path.resolve(__dirname, 'dist/images')
+      }, {
+        from: path.resolve(__dirname, 'src/service-worker/offline-mode.js'),
+        to: path.resolve(__dirname, 'dist')
+      }])
+    ]
+  }
 }
