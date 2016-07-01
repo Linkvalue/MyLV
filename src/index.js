@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './index.scss'
 import { configureStore } from './store/configure-store'
 import { Root } from './containers/root'
 import { registerWorker } from './service-worker/register-worker'
