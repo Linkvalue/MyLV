@@ -4,6 +4,19 @@ import Docxtemplater from 'docxtemplater'
 import FileSaver from 'browser-filesaver'
 import JSZipUtils from 'jszip-utils'
 
+const styles = {
+  generate: {
+    marginTop: 15,
+    padding: 10
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.user
+  }
+}
+
 class GenerateDoc extends Component {
   constructor (props) {
     super(props)
@@ -12,6 +25,7 @@ class GenerateDoc extends Component {
   }
 
   generateDoc () {
+    const { user } = this.props
     const loadFiles = (url, callback) => {
       JSZipUtils.getBinaryContent(url, callback)
     }
@@ -23,8 +37,8 @@ class GenerateDoc extends Component {
       const doc = new Docxtemplater(content)
 
       doc.setData({
-        firstName: 'Gabriel',
-        lastName: 'Hofman'
+        firstName: user.firstName,
+        lastName: user.lastName
       })
       doc.render()
       const out = doc.getZip().generate({ type: 'blob' })
@@ -35,10 +49,10 @@ class GenerateDoc extends Component {
   render () {
     return (
       <div>
-        <button onClick={this.generateDoc}>Generate doc</button>
+        <button style={styles.generate} onClick={this.generateDoc}>Generate doc</button>
       </div>
     )
   }
 }
 
-export default connect()(GenerateDoc)
+export default connect(mapStateToProps)(GenerateDoc)
