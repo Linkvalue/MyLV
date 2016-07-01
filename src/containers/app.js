@@ -1,9 +1,10 @@
 import React from 'react'
-import Calendar from './calendar'
+import AppBar from '../components/app-bar/app-bar'
+import Calendar from '../components/calendar/calendar'
 
 export const App = (props) => (
   <div>
-    <h1>Hello, world!</h1>
+    <AppBar/>
     <Calendar month='2016-06' day={29}/>
   </div>
 )
