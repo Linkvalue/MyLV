@@ -3,24 +3,6 @@ import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { userEntry } from '../../actions/user-actions'
 
-const styles = {
-  label: {
-    marginRight: 20
-  },
-  inputContainer: {
-    marginBottom: 10
-  },
-  input: {
-    padding: 5
-  },
-  error: {
-    color: 'red'
-  },
-  submit: {
-    padding: 10
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     userEntry: (firstName, lastName) => {
@@ -38,9 +20,6 @@ class Form extends Component {
       lastName: '',
       error: ''
     }
-
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInputChange () {
@@ -70,31 +49,28 @@ class Form extends Component {
 
   render () {
     return (
-      <div>
+      <form onSubmit={() => this.handleSubmit()}>
         <h2>Partner information</h2>
-        <p style={styles.inputContainer}>
-          <label style={styles.label} for='lastName'>Nom</label>
+        <p>
+          <label for='lastName'>Nom</label>
           <input type='text'
-            style={styles.input}
             name='lastName'
             ref='lastName'
             autoFocus
             required
-            onChange={this.handleInputChange} />
+            onChange={() => this.handleInputChange()} />
         </p>
-        <p style={styles.inputContainer}>
-          <label style={styles.label} for='firstName'>Prénom</label>
+        <p>
+          <label for='firstName'>Prénom</label>
           <input type='text'
-            style={styles.input}
             name='firstName'
             ref='firstName'
-            autoFocus={false}
             required
-            onChange={this.handleInputChange} />
+            onChange={() => this.handleInputChange()} />
         </p>
-        <p style={styles.error}>{this.state.error}</p>
-        <button onClick={this.handleSubmit} style={styles.submit}>Submit</button>
-      </div>
+        <p>{this.state.error}</p>
+        <button>Submit</button>
+      </form>
     )
   }
 }

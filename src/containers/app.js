@@ -1,14 +1,16 @@
 import React from 'react'
 import AppBar from '../components/app-bar/app-bar'
 import Calendar from '../components/calendar/calendar'
-import Form from '../components/form/user-form'
-import GenerateDoc from '../components/document/generate-doc'
+import EntriesForm from '../components/entries-form/entries-form'
+import UserForm from '../components/user-form/user-form'
+import GenerateDoc from '../components/generate-doc/generate-doc'
 
 export const App = (props) => (
   <div>
     <AppBar/>
-    <Calendar month='2016-06' day={29}/>
-    <Form />
+    <UserForm />
+    <Calendar/>
+    <EntriesForm/>
     <GenerateDoc />
   </div>
 )
