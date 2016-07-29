@@ -4,6 +4,8 @@ import Docxtemplater from 'docxtemplater'
 import FileSaver from 'browser-filesaver'
 import JSZipUtils from 'jszip-utils'
 
+import styles from './generate-doc.scss'
+
 const mapStateToProps = (state) => {
   return {
     user: state.user.user
@@ -28,7 +30,9 @@ function generateDoc (user) {
 }
 
 export default connect(mapStateToProps)(({user}) => (
-  <div>
-    <button onClick={() => generateDoc(user)}>Generate doc</button>
-  </div>
+  <button
+    className={styles.generateDocButton}
+    onClick={() => generateDoc(user)}>
+    Generate doc
+  </button>
 ))

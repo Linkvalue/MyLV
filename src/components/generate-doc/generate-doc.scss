@@ -1,0 +1,5 @@
+@import '../../../node_modules/material-design-lite/src/button/button';
+
+.generateDocButton {
+  @extend .mdl-button, .mdl-button--raised, .mdl-button--colored
+}

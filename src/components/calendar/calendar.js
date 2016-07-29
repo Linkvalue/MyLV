@@ -1,8 +1,11 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import classNames from 'classnames'
 
+import CalendarDay from '../calendar-day/calendar-day'
+import * as calendarActions from '../../actions/calendar-actions'
 import styles from './calendar.scss'
 
 const mapStateToProps = (state) => ({
@@ -10,11 +13,9 @@ const mapStateToProps = (state) => ({
   entries: state.worklog.entries
 })
 
-const colors = {
-  production: '#FFEEEE'
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators(calendarActions, dispatch)
 
-const Calendar = ({ entries, year, month, day, setDay }) => {
+const Calendar = ({ entries, year, month, day, setDate }) => {
   const m = moment(`${year}-${month}`).startOf('month')
   let w
   let weeks = []
@@ -25,45 +26,43 @@ const Calendar = ({ entries, year, month, day, setDay }) => {
       w = (new Array(7)).fill(undefined)
       weeks.push(w)
     }
-    w[(d.day() + 6) % 7] = d.date()
+    w[(d.day() + 6) % 7] = `0${i}`.slice(-2)
   }
 
   return (
-    <table className={styles.calendar}>
-      <thead>
-        <tr>
-          {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((l, i) => <th key={`${l}-${i}`}>{l}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-      {weeks.map((w) => (
-        <tr key={w}>
-          {w.map((d, i) => (
-            <td
-              key={`${d}-${i}`}
-              onClick={() => setDay && setDay(d)}
-              className={classNames({
-                [styles.cell]: true,
-                [styles.selected]: `${d}` === day,
-                [styles.weekend]: i >= 5
-              })}>
-              <span className={styles.day}>{d}</span>
-              <div className={styles.labels}>
-                <svg
-                  className={styles.morning}
-                  viewBox='0 0 50 50'
-                  preserveAspectRatio='none'>
-                  <path style={{fill: colors[entries[`${year}-${month}-${d}-am`]] || 'white'}} d='M0,0L0,50L50,0z'/>
-                  <path style={{fill: colors[entries[`${year}-${month}-${d}-pm`]] || 'white'}} d='M0,50L50,50L50,0z'/>
-                </svg>
-              </div>
-            </td>
-          ))}
-        </tr>
-      ))}
-      </tbody>
-    </table>
+    <div className={styles.calendar}>
+      <table className={styles.calendarBody}>
+        <thead>
+          <tr>
+            {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((l, i) => <th key={`${l}-${i}`}>{l}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+        {weeks.map((w) => (
+          <tr key={w}>
+            {w.map((d, i) => (
+              <td
+                key={`${d}-${i}`}
+                onClick={() => i < 5 ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
+                className={classNames({
+                  [styles.cell]: true,
+                  [styles.empty]: !d,
+                  [styles.weekend]: i >= 5
+                })}>
+                <span className={styles.day}>{d && parseInt(d, 10)}</span>
+                {d && <CalendarDay
+                  labelMorning={entries[`${year}-${month}-${d}-am`]}
+                  labelAfternoon={entries[`${year}-${month}-${d}-pm`]}
+                  selected={d === day}
+                />}
+              </td>
+            ))}
+          </tr>
+        ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 
-export default connect(mapStateToProps)(Calendar)
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

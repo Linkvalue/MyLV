@@ -19,9 +19,9 @@ export const fillDay = (day, label) => ({
   payload: {day, label}
 })
 
-export const fillWeek = (year, week, label) => ({
+export const fillWeek = (day, label) => ({
   type: WORKLOG_FILL_WEEK,
-  payload: {year, week, label}
+  payload: {day, label}
 })
 
 export const fillMonth = (month, label) => ({

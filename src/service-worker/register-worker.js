@@ -4,6 +4,6 @@ export function registerWorker () {
   }
 
   navigator.serviceWorker
-    .register('/offline-mode.js', {scope: '/'})
+    .register('/offline-mode.js')
     .catch((err) => console.error(err))
 }

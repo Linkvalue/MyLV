@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+import styles from './user-form.scss'
 import { userEntry } from '../../actions/user-actions'
 
 const mapDispatchToProps = (dispatch) => {
@@ -46,23 +48,40 @@ class Form extends Component {
 
   render () {
     return (
-      <form onSubmit={() => this.handleSubmit()}>
-        <h2>Partner information</h2>
-        <p>
-          <label for='lastName'>Nom</label>
-          <input type='text'
-            name='lastName'
-            autoFocus
-            required
-            onChange={(e) => this.handleInputChange(e)} />
-        </p>
-        <p>
-          <label for='firstName'>Prénom</label>
-          <input type='text'
-            name='firstName'
-            required
-            onChange={(e) => this.handleInputChange(e)} />
-        </p>
+      <form className={styles.userForm} onSubmit={() => this.handleSubmit()}>
+        <div className={styles['mdl-card__title']}>
+          <h2 className={styles['mdl-card__title-text']}>Partner information</h2>
+        </div>
+        <div className={styles['mdl-card__supporting-text']}>
+          <div className={styles['mdl-textfield']}>
+            <input
+              className={styles['mdl-textfield__input']}
+              type='text'
+              name='lastName'
+              autoFocus
+              required
+              onChange={(e) => this.handleInputChange(e)}/>
+            <label
+              className={styles['mdl-textfield__label']}
+              for='lastName'>
+              Nom
+            </label>
+          </div>
+          <div className={styles['mdl-textfield']}>
+            <input
+              className={styles['mdl-textfield__input']}
+              type='text'
+              name='firstName'
+              autoFocus
+              required
+              onChange={(e) => this.handleInputChange(e)}/>
+            <label
+              className={styles['mdl-textfield__label']}
+              htmlFor='firstName'>
+              Prénom
+            </label>
+          </div>
+        </div>
         <p>{this.state.error}</p>
       </form>
     )
