@@ -1,0 +1,28 @@
+@import '../../../node_modules/material-design-lite/src/card/card';
+@import '../../../node_modules/material-design-lite/src/grid/grid';
+@import '../../../node_modules/material-design-lite/src/shadow/shadow';
+@import '../../../node_modules/material-design-lite/src/textfield/textfield';
+@import '../../../node_modules/material-design-lite/src/button/button';
+
+.labelsForm {
+  @extend .mdl-card, .mdl-shadow--2dp;
+  @extend .mdl-cell, .mdl-cell--4-col, .mdl-cell--12-col-tablet;
+
+  min-height: 0;
+}
+
+.labelsFormText {
+  @extend .mdl-card__supporting-text;
+}
+
+.labelsFormTextfield {
+  @extend .mdl-textfield;
+}
+
+.labelsFormActions {
+  @extend .mdl-card__actions, .mdl-card--border;
+}
+
+.labelsFormSubmit {
+  @extend .mdl-button, .mdl-button--colored;
+}

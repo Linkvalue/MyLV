@@ -17,3 +17,7 @@
 .entryButton {
   @extend .mdl-button;
 }
+
+.entryButtonSelected {
+  @extend .mdl-button, .mdl-button--colored;
+}

@@ -5,7 +5,7 @@ const cacheName = 'cracra'
 self.addEventListener('install', (e) => e.waitUntil(caches.open(cacheName)))
 
 self.addEventListener('fetch', (e) => {
-  if (!/\.(css)|(js)|(png)$/.test(e.request.url)) {
+  if (!/\.(css)|(js)|(png)|(svg)$/.test(e.request.url)) {
     return e.respondWith(fetch(e.request.clone()))
   }
 
