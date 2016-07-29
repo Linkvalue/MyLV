@@ -1,4 +1,7 @@
 .mainGrid {
   display: flex;
   flex-wrap: wrap;
+  @media print {
+    display: none;
+  }
 }
