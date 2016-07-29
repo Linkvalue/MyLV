@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import classnames from 'classnames'
 
 import * as worklogActions from '../../actions/worklog-actions'
 import styles from './entries-form.scss'
@@ -32,12 +33,10 @@ class EntriesForm extends React.Component {
 
     return (
       <div className={styles.entriesForm}>
+        <div className={styles['mdl-card__title']}>
+          <h2 className={styles['mdl-card__title-text']}>Editer</h2>
+        </div>
         <div className={styles.buttonList}>
-          <select
-            name='entryLabel'
-            onChange={(e) => this.setState({label: e.target.value})}>
-            {Object.keys(labels).map((label) => <option key={label} value={label}>{label}</option>)}
-          </select>
           <button
             className={styles.entryButton}
             onClick={() => fillMorning(`${year}-${month}-${day}-am`, this.state.label)}>
@@ -63,6 +62,19 @@ class EntriesForm extends React.Component {
             onClick={() => fillMonth(`${year}-${month}`, this.state.label)}>
             Mois
           </button>
+        </div>
+        <div className={styles.buttonList}>
+          {Object.keys(labels).map((label) => (
+            <button
+              key={label}
+              className={classnames({
+                [styles.entryButton]: label !== (this.state && this.state.label),
+                [styles.entryButtonSelected]: label === (this.state && this.state.label)
+              })}
+              onClick={() => this.setState({label})}>
+              {label}
+            </button>
+          ))}
         </div>
       </div>
     )

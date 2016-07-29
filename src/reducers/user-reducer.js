@@ -4,8 +4,8 @@ import {
 
 const initialState = {
   user: {
-    firstName: 'Gabriel',
-    lastName: 'Hofman'
+    firstName: '',
+    lastName: ''
   }
 }
 

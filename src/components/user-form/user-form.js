@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import styles from './user-form.scss'
 import { userEntry } from '../../actions/user-actions'
 
+const mapStateToProps = (state) => ({
+  ...state.user
+})
+
 const mapDispatchToProps = (dispatch) => {
   return {
     userEntry: (firstName, lastName) => {
@@ -17,8 +21,7 @@ class Form extends Component {
     super(props)
 
     this.state = {
-      firstName: '',
-      lastName: '',
+      ...props.user,
       error: ''
     }
   }
@@ -27,8 +30,6 @@ class Form extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-
-    this.handleInputSubmit()
   }
 
   handleInputSubmit () {
@@ -48,7 +49,7 @@ class Form extends Component {
 
   render () {
     return (
-      <form className={styles.userForm} onSubmit={() => this.handleSubmit()}>
+      <form className={styles.userForm} onSubmit={() => this.handleInputSubmit()}>
         <div className={styles['mdl-card__title']}>
           <h2 className={styles['mdl-card__title-text']}>Partner information</h2>
         </div>
@@ -60,7 +61,9 @@ class Form extends Component {
               name='lastName'
               autoFocus
               required
-              onChange={(e) => this.handleInputChange(e)}/>
+              value={this.state.lastName}
+              onChange={(e) => this.handleInputChange(e)}
+              onBlur={() => this.handleInputSubmit()}/>
             <label
               className={styles['mdl-textfield__label']}
               for='lastName'>
@@ -74,7 +77,9 @@ class Form extends Component {
               name='firstName'
               autoFocus
               required
-              onChange={(e) => this.handleInputChange(e)}/>
+              value={this.state.firstName}
+              onChange={(e) => this.handleInputChange(e)}
+              onBlur={() => this.handleInputSubmit()}/>
             <label
               className={styles['mdl-textfield__label']}
               htmlFor='firstName'>
@@ -88,4 +93,4 @@ class Form extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(Form)
