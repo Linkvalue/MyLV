@@ -24,6 +24,7 @@ const Printer = ({ user, calendar, entries }) => {
   return (
     <div className={styles.printer}>
       <h1>Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}</h1>
+      <h2>Partner: {user.firstName} {user.lastName}</h2>
       <table>
         <thead>
           <td>Activité</td>
@@ -37,10 +38,12 @@ const Printer = ({ user, calendar, entries }) => {
                 (entries[`${calendar.year}-${calendar.month}-${i}-am`] === activity ? 0.5 : 0) +
                 (entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 0.5 : 0)
               }</td>)}
+              <td>Total: {Object.keys(entries).filter((i) => entries[i] === activity).length / 2}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      Nombre de jour attendus : {Object.keys(entries).length / 2}
     </div>
   )
 }
