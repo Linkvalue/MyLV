@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/variables';
+@import '../../../node_modules/material-design-lite/src/button/button';
 
 .appBar {
   display: flex;
@@ -11,6 +12,10 @@
   color: $lv-black;
   box-sizing: border-box;
   box-shadow: $simple-shadow;
+
+  @media print {
+    display: none;
+  }
 }
 
 .brandName {
@@ -19,4 +24,8 @@
   font-size: 1.3rem;
   font-weight: 100;
   flex: 1;
+}
+
+.printButton {
+  @extend .mdl-button, .mdl-button--raised, .mdl-button--colored;
 }
