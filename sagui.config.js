@@ -16,6 +16,9 @@ module.exports = {
         from: path.resolve(__dirname, 'src/images/icons'),
         to: path.resolve(__dirname, 'dist/images')
       }, {
+        from: path.resolve(__dirname, 'node_modules/material-design-icons/sprites/svg-sprite'),
+        to: path.resolve(__dirname, 'dist/icons')
+      }, {
         from: path.resolve(__dirname, 'src/service-worker/offline-mode.js'),
         to: path.resolve(__dirname, 'dist')
       }])

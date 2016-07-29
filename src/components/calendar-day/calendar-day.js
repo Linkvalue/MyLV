@@ -7,10 +7,10 @@ import styles from './calendar-day.scss'
 const mapStateToProps = (state) => ({ labels: state.worklog.labels })
 
 const CalendarDay = ({labels, labelMorning, labelAfternoon, selected}) => (
-  <div className={styles.labels}>
+  <div className={styles.calendarDay}>
     <svg
       className={classNames({
-        [styles.morning]: true,
+        [styles.calendarDayFill]: true,
         [styles.selected]: selected
       })}
       viewBox='0 0 50 50'

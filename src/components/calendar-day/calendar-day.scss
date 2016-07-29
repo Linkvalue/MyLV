@@ -1,18 +1,21 @@
+@import '../../../node_modules/material-design-lite/src/shadow/shadow';
+
 @import '../../styles/variables';
 
 .selected {
+  @extend .mdl-shadow--8dp;
+
   position: relative;
-  box-shadow: $simple-shadow;
   z-index: 1;
 }
 
-.labels {
+.calendarDay {
   height: 100%;
 }
 
-.morning,
-.afternoon {
+.calendarDayFill {
   display: block;
   width: 100%;
   height: 100%;
+  opacity: 0.5;
 }

@@ -11,12 +11,12 @@ import {
 const initialState = {
   entries: {},
   labels: {
-    production: '#FFEEEE',
-    contribution: '#EEFFEE',
-    paidLeave: '#EEEEFF',
-    leaveWithoutPay: '#FFEEFF',
-    ill: '#FFFFEE',
-    other: '#EEFFFF'
+    production: '#FF0000',
+    contribution: '#00FF00',
+    paidLeave: '#0000FF',
+    leaveWithoutPay: '#FF00FF',
+    ill: '#FFFF00',
+    other: '#00FFFF'
   }
 }
 
@@ -40,7 +40,7 @@ export default function (state = initialState, { type, payload }) {
     case WORKLOG_FILL_DAY:
       return setDay(state, payload.day, payload.label)
     case WORKLOG_FILL_WEEK:
-      const startDate = moment(payload.day).startOf('week')
+      const startDate = moment(payload.day).startOf('week').subtract(1, 'day')
       return new Array(5)
         .fill(0)
         .reduce((s, v) => setDay(s, startDate.add(1, 'day').format('YYYY-MM-DD'), payload.label), state)
