@@ -12,6 +12,10 @@
   padding: 0.2rem;
 }
 
+.printerSpacer {
+  height: 2rem;
+}
+
 @media print {
   .printer {
     display: block;

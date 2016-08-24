@@ -1,14 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import styles from './app-bar.scss'
 
-export default () => (
+const mapStateToProps = (state) => ({
+  canPrint: state.user.firstName && state.user.lastName
+})
+
+const AppBar = ({ canPrint }) => (
   <div className={styles.appBar}>
     <h1 className={styles.brandName}>CraCra</h1>
     <button
       className={styles.printButton}
-      onClick={() => window.print()}>
+      onClick={() => canPrint ? window.print() : null}>
       Imprimer CRA
     </button>
   </div>
 )
+
+export default connect(mapStateToProps)(AppBar)
