@@ -6,25 +6,23 @@ import moment from 'moment'
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.user,
+    user: state.user,
     calendar: state.calendar,
     entries: state.worklog.entries
   }
 }
 
 const Printer = ({ user, calendar, entries }) => {
-  const days = moment(calendar).daysInMonth()
-  const listDays = Array.from(new Array(days), (_, i) => i >= 9 ? String(i + 1) : '0' + (i + 1))
+  const days = moment(`${calendar.year}-${calendar.month}`).startOf('month').daysInMonth()
+  const listDays = Array.from({length: days}, (_, i) => i >= 9 ? String(i + 1) : '0' + (i + 1))
 
-  const labels = {}
-  for (let i in entries) {
-    labels[entries[i]] = true
-  }
+  const dateRegExp = new RegExp(`^${calendar.year}-${calendar.month}`)
+  const labels = Object.keys(entries).reduce((l, date) => dateRegExp.test(date) ? { ...l, [entries[date]]: true } : l, {})
 
   return (
     <div className={styles.printer}>
       <h1>Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}</h1>
-      <h2>Partner: {user.firstName} {user.lastName}</h2>
+      <h5>A renvoyé signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable commercial en cc.</h5>
       <table className={styles.printerTable}>
         <thead>
           <tr>
@@ -42,19 +40,35 @@ const Printer = ({ user, calendar, entries }) => {
                 (entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 0.5 : 0)
               }</td>))}
               <td className={styles.printerCell}>
-                {Object.keys(entries).filter((i) => entries[i] === activity).length / 2}
+                {Object.keys(entries).filter((i) => entries[i] === activity && dateRegExp.test(i)).length / 2}
               </td>
             </tr>
           ))}
           <tr>
-            <td colSpan={listDays.length - 4}/>
-            <td className={styles.printerCell} colSpan='5'>Nombre de jour attendus :</td>
-            <td className={styles.printerCell}>{Object.keys(entries).length / 2}</td>
+            <td colSpan={listDays.length - 9}/>
+            <td className={styles.printerCell} colSpan='10'>Nombre de jour attendus :</td>
+            <td className={styles.printerCell}>{Object.keys(entries).filter((i) => dateRegExp.test(i)).length / 2}</td>
+          </tr>
+          <tr>
+            <td className={styles.printerSpacer}/>
+          </tr>
+          <tr>
+            <td/>
+            <td colSpan='15'>Nom : <b>{user.lastName}</b></td>
+            <td colSpan='10'>Adresse client :</td>
+          </tr>
+          <tr>
+            <td/>
+            <td colSpan='15'>Prénom : <b>{user.firstName}</b></td>
+            <td colSpan='10'>Responsable client :</td>
+          </tr>
+          <tr>
+            <td className={styles.printerSpacer}/>
           </tr>
           <tr>
             <td/>
             <td colSpan='15'>Signature partner :</td>
-            <td colSpan='5'>Signature client :</td>
+            <td colSpan='10'>Visa pour information :</td>
           </tr>
         </tbody>
       </table>

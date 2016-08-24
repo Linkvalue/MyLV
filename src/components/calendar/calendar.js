@@ -17,14 +17,14 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(calendarActions, dis
 
 const Calendar = ({ labels, entries, year, month, day, setDate }) => {
   let w
-  const m = moment(`${year}-${month}`).startOf('month')
+  const m = moment(`${year}-${month}`, 'YYYY-MM')
   const weeks = []
   const labelsInLegend = {}
 
   for (let i = 1; i <= m.daysInMonth(); i++) {
-    let d = m.date(i)
+    let d = m.clone().date(i)
     if (!w || d.day() === 1) {
-      w = (new Array(7)).fill(undefined)
+      w = Array.from({ length: 7 }, () => undefined)
       weeks.push(w)
     }
     w[(d.day() + 6) % 7] = `0${i}`.slice(-2)
