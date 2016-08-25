@@ -12,6 +12,8 @@ export function configureStore () {
   ]
 
   const store = compose(...storeEnhancers)(createStore)(rootReducer)
-  persistStore(store)
+  persistStore(store, {
+    blacklist: ['calendar']
+  })
   return store
 }

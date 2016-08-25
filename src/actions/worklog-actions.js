@@ -3,6 +3,7 @@ export const WORKLOG_FILL_AFTERNOON = 'WORKLOG_FILL_AFTERNOON'
 export const WORKLOG_FILL_DAY = 'WORKLOG_FILL_DAY'
 export const WORKLOG_FILL_WEEK = 'WORKLOG_FILL_WEEK'
 export const WORKLOG_FILL_MONTH = 'WORKLOG_FILL_MONTH'
+export const WORKLOG_EMPTY_DAY = 'WORKLOG_EMPTY_DAY'
 export const WORKLOG_ADD_LABEL = 'WORKLOG_ADD_LABEL'
 
 export const fillMorning = (date, label) => ({
@@ -28,6 +29,11 @@ export const fillWeek = (day, label) => ({
 export const fillMonth = (month, label) => ({
   type: WORKLOG_FILL_MONTH,
   payload: {month, label}
+})
+
+export const emptyDay = (day) => ({
+  type: WORKLOG_EMPTY_DAY,
+  payload: {day}
 })
 
 export const addLabel = (label, color) => ({

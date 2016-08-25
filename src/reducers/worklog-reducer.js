@@ -6,6 +6,7 @@ import {
   WORKLOG_FILL_DAY,
   WORKLOG_FILL_WEEK,
   WORKLOG_FILL_MONTH,
+  WORKLOG_EMPTY_DAY,
   WORKLOG_ADD_LABEL
 } from '../actions/worklog-actions'
 
@@ -51,6 +52,8 @@ export default function (state = initialState, { type, payload }) {
         .map((v, i) => i + 1)
         .filter((v) => [0, 6].indexOf(moment(`${payload.month}-${`0${v}`.slice(-2)}`).day()) === -1)
         .reduce((s, v) => setDay(s, `${payload.month}-${`0${v}`.slice(-2)}`, payload.label), state)
+    case WORKLOG_EMPTY_DAY:
+      return setDay(state, payload.day)
     case WORKLOG_ADD_LABEL:
       return {
         ...state,

@@ -6,9 +6,12 @@ import TextField from '../textfield/textfield'
 import styles from './user-form.scss'
 import { userEntry } from '../../actions/user-actions'
 
-const mapStateToProps = (state) => ({
-  initialValues: state.user
-})
+const mapStateToProps = (state) => {
+  console.log(state.user)
+  return ({
+    initialValues: state.user
+  })
+}
 
 const validate = ({ firstName, lastName }) => ({
   firstName: !firstName ? 'Obligatoire' : null,
@@ -18,7 +21,7 @@ const validate = ({ firstName, lastName }) => ({
 const UserForm = ({ handleSubmit, pristine, invalid }) => (
   <form className={styles.userForm} onSubmit={handleSubmit}>
     <div className={styles['mdl-card__title']}>
-      <h2 className={styles['mdl-card__title-text']}>Partner information</h2>
+      <h2 className={styles['mdl-card__title-text']}>Informations partner</h2>
     </div>
     <div className={styles.userFormText}>
       <Field

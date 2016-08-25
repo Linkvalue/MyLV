@@ -11,7 +11,6 @@ export default (field) => (
   })}>
     <input
       className={styles['mdl-textfield__input']}
-      autoFocus
       required
       {...field.input}/>
     <label
