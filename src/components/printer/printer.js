@@ -17,7 +17,9 @@ const Printer = ({ user, calendar, entries }) => {
   const listDays = Array.from({length: days}, (_, i) => i >= 9 ? String(i + 1) : '0' + (i + 1))
 
   const dateRegExp = new RegExp(`^${calendar.year}-${calendar.month}`)
-  const labels = Object.keys(entries).reduce((l, date) => dateRegExp.test(date) ? { ...l, [entries[date]]: true } : l, {})
+  const labels = Object
+    .keys(entries)
+    .reduce((l, date) => entries[date] && dateRegExp.test(date) ? { ...l, [entries[date]]: true } : l, {})
 
   return (
     <div className={styles.printer}>

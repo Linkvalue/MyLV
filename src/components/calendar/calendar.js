@@ -6,6 +6,7 @@ import classNames from 'classnames'
 
 import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../actions/calendar-actions'
+import * as worklogActions from '../../actions/worklog-actions'
 import styles from './calendar.scss'
 
 const mapStateToProps = (state) => ({
@@ -13,9 +14,9 @@ const mapStateToProps = (state) => ({
   ...state.worklog
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(calendarActions, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
 
-const Calendar = ({ labels, entries, year, month, day, setDate }) => {
+const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
   let w
   const m = moment(`${year}-${month}`, 'YYYY-MM')
   const weeks = []
@@ -36,6 +37,11 @@ const Calendar = ({ labels, entries, year, month, day, setDate }) => {
     if (afternoon) {
       labelsInLegend[afternoon] = true
     }
+  }
+
+  const removeDayEntry = (e, d) => {
+    e.preventDefault()
+    emptyDay(`${year}-${month}-${`0${d}`.slice(-2)}`)
   }
 
   return (
@@ -69,7 +75,8 @@ const Calendar = ({ labels, entries, year, month, day, setDate }) => {
             {w.map((d, i) => (
               <td
                 key={`${d}-${i}`}
-                onClick={() => i < 5 ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
+                onContextMenu={(e) => removeDayEntry(e, d)}
+                onClick={() => d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
                 className={classNames({
                   [styles.cell]: true,
                   [styles.empty]: !d,
@@ -90,7 +97,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate }) => {
       <div className={styles.legend}>
         {Object.keys(labelsInLegend).map((label) => (
           <span key={label}>
-            <i className={styles.legendColor} style={{backgroundColor: labels[label]}}/>
+            <i className={styles.legendColor} style={{ backgroundColor: labels[label] }}/>
             {label}
           </span>
         ))}

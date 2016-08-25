@@ -12,6 +12,7 @@ const AppBar = ({ canPrint }) => (
     <h1 className={styles.brandName}>CraCra</h1>
     <button
       className={styles.printButton}
+      disabled={!canPrint}
       onClick={() => canPrint ? window.print() : null}>
       Imprimer CRA
     </button>

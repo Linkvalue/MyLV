@@ -9,6 +9,7 @@
   @extend .mdl-cell, .mdl-cell--4-col, .mdl-cell--12-col-tablet;
 
   min-height: 0;
+  order: 3;
 }
 
 .labelsFormText {

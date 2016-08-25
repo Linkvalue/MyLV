@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classnames from 'classnames'
+import classNames from 'classnames'
 
 import * as worklogActions from '../../actions/worklog-actions'
 import styles from './entries-form.scss'
@@ -67,7 +67,7 @@ class EntriesForm extends React.Component {
           {Object.keys(labels).map((label) => (
             <button
               key={label}
-              className={classnames({
+              className={classNames({
                 [styles.entryButton]: label !== (this.state && this.state.label),
                 [styles.entryButtonSelected]: label === (this.state && this.state.label)
               })}
