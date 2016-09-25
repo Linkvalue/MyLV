@@ -1,5 +1,6 @@
 import moment from 'moment'
 
+import { publicHolidays } from '../helpers'
 import {
   WORKLOG_FILL_MORNING,
   WORKLOG_FILL_AFTERNOON,
@@ -45,12 +46,22 @@ export default function (state = initialState, { type, payload }) {
       const startDate = moment(payload.day).startOf('week').subtract(1, 'day')
       return new Array(5)
         .fill(0)
-        .reduce((s, v) => setDay(s, startDate.add(1, 'day').format('YYYY-MM-DD'), payload.label), state)
+        .reduce((s) => {
+          startDate.add(1, 'day')
+          if (publicHolidays.has(startDate.format('MM-DD'))) {
+            return s
+          }
+          return setDay(s, startDate.format('YYYY-MM-DD'), payload.label)
+        }, state)
     case WORKLOG_FILL_MONTH:
       return new Array(moment(`${payload.month}-01`).daysInMonth())
         .fill(0)
         .map((v, i) => i + 1)
-        .filter((v) => [0, 6].indexOf(moment(`${payload.month}-${`0${v}`.slice(-2)}`).day()) === -1)
+        .filter((v) => {
+          const stringDate = `${payload.month}-${`0${v}`.slice(-2)}`
+          console.log(stringDate.slice(5))
+          return [0, 6].indexOf(moment(stringDate).day()) === -1 && !publicHolidays.has(stringDate.slice(5))
+        })
         .reduce((s, v) => setDay(s, `${payload.month}-${`0${v}`.slice(-2)}`, payload.label), state)
     case WORKLOG_EMPTY_DAY:
       return setDay(state, payload.day)

@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../actions/calendar-actions'
 import * as worklogActions from '../../actions/worklog-actions'
+import { publicHolidays } from '../../helpers'
 import styles from './calendar.scss'
 
 const mapStateToProps = (state) => ({
@@ -80,7 +81,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
                 className={classNames({
                   [styles.cell]: true,
                   [styles.empty]: !d,
-                  [styles.weekend]: i >= 5
+                  [styles.weekend]: i >= 5 || publicHolidays.has(`${month}-${d}`)
                 })}>
                 <span className={styles.day}>{d && parseInt(d, 10)}</span>
                 {d && <CalendarDay
