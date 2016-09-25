@@ -7,7 +7,7 @@ export default (field) => (
   <div className={classNames(styles['mdl-textfield'], styles['mdl-textfield--floating-label'], {
     [styles['is-dirty']]: field.input.value,
     [styles['is-focused']]: field.meta.active,
-    [styles['is-invalid']]: field.meta.touched && field.meta.error
+    [styles['is-invalid']]: field.meta.error
   })}>
     <input
       className={styles['mdl-textfield__input']}
@@ -18,6 +18,6 @@ export default (field) => (
       htmlFor={field.name}>
       {field.label}
     </label>
-    {field.meta.touched && <span className={styles['mdl-textfield__error']}>{field.meta.error}</span>}
+    <span className={styles['mdl-textfield__error']}>{field.meta.error}</span>
   </div>
 )

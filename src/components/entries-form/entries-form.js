@@ -33,48 +33,55 @@ class EntriesForm extends React.Component {
 
     return (
       <div className={styles.entriesForm}>
-        <div className={styles['mdl-card__title']}>
-          <h2 className={styles['mdl-card__title-text']}>Editer</h2>
+        <div className={styles.entriesCard}>
+          <div className={styles['mdl-card__title']}>
+            <h2 className={styles['mdl-card__title-text']}>Label</h2>
+          </div>
+          <div className={styles.buttonList}>
+            {Object.keys(labels).map((label) => (
+              <button
+                key={label}
+                className={classNames({
+                  [styles.entryButton]: label !== (this.state && this.state.label),
+                  [styles.entryButtonSelected]: label === (this.state && this.state.label)
+                })}
+                onClick={() => this.setState({label})}>
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className={styles.buttonList}>
-          <button
-            className={styles.entryButton}
-            onClick={() => fillMorning(`${year}-${month}-${day}-am`, this.state.label)}>
-            Matinée
-          </button>
-          <button
-            className={styles.entryButton}
-            onClick={() => fillAfternoon(`${year}-${month}-${day}-pm`, this.state.label)}>
-            Après-midi
-          </button>
-          <button
-            className={styles.entryButton}
-            onClick={() => fillDay(`${year}-${month}-${day}`, this.state.label)}>
-            Journée
-          </button>
-          <button
-            className={styles.entryButton}
-            onClick={() => fillWeek(`${year}-${month}-${day}`, this.state.label)}>
-            Semaine
-          </button>
-          <button
-            className={styles.entryButton}
-            onClick={() => fillMonth(`${year}-${month}`, this.state.label)}>
-            Mois
-          </button>
-        </div>
-        <div className={styles.buttonList}>
-          {Object.keys(labels).map((label) => (
+        <div className={styles.entriesCard}>
+          <div className={styles['mdl-card__title']}>
+            <h2 className={styles['mdl-card__title-text']}>Période</h2>
+          </div>
+          <div className={styles.buttonList}>
             <button
-              key={label}
-              className={classNames({
-                [styles.entryButton]: label !== (this.state && this.state.label),
-                [styles.entryButtonSelected]: label === (this.state && this.state.label)
-              })}
-              onClick={() => this.setState({label})}>
-              {label}
+              className={styles.entryButton}
+              onClick={() => fillMorning(`${year}-${month}-${day}-am`, this.state.label)}>
+              Matinée
             </button>
-          ))}
+            <button
+              className={styles.entryButton}
+              onClick={() => fillAfternoon(`${year}-${month}-${day}-pm`, this.state.label)}>
+              Après-midi
+            </button>
+            <button
+              className={styles.entryButton}
+              onClick={() => fillDay(`${year}-${month}-${day}`, this.state.label)}>
+              Journée
+            </button>
+            <button
+              className={styles.entryButton}
+              onClick={() => fillWeek(`${year}-${month}-${day}`, this.state.label)}>
+              Semaine
+            </button>
+            <button
+              className={styles.entryButton}
+              onClick={() => fillMonth(`${year}-${month}`, this.state.label)}>
+              Mois
+            </button>
+          </div>
         </div>
       </div>
     )

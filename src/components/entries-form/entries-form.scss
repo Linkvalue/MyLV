@@ -4,11 +4,19 @@
 @import '../../../node_modules/material-design-lite/src/grid/grid';
 
 .entriesForm {
-  @extend .mdl-card, .mdl-shadow--2dp;
-  @extend .mdl-cell, .mdl-cell--8-col;
+  @extend .mdl-cell, .mdl-cell--4-col;
 
   min-height: 0;
   order: 2;
+}
+
+.entriesCard {
+  @extend .mdl-card, .mdl-shadow--2dp;
+  width: 100%;
+}
+
+.entriesCard:not(:first-child) {
+  margin-top: 1rem;
 }
 
 .buttonList {
