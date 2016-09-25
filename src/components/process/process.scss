@@ -1,0 +1,11 @@
+@import '../../../node_modules/material-design-lite/src/card/card';
+@import '../../../node_modules/material-design-lite/src/shadow/shadow';
+@import '../../../node_modules/material-design-lite/src/button/button';
+@import '../../../node_modules/material-design-lite/src/grid/grid';
+
+.processCard {
+  @extend .mdl-card, .mdl-shadow--2dp;
+  @extend .mdl-cell, .mdl-cell--8-col;
+
+  order: 1;
+}
