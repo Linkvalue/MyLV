@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../actions/calendar-actions'
 import * as worklogActions from '../../actions/worklog-actions'
+import * as calendarSelectors from '../../selectors/calendar-selectors'
 import { publicHolidays } from '../../helpers'
 import styles from './calendar.scss'
 
@@ -18,27 +19,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
 
 const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
-  let w
   const m = moment(`${year}-${month}`, 'YYYY-MM')
-  const weeks = []
-  const labelsInLegend = {}
-
-  for (let i = 1; i <= m.daysInMonth(); i++) {
-    let d = m.clone().date(i)
-    if (!w || d.day() === 1) {
-      w = Array.from({ length: 7 }, () => undefined)
-      weeks.push(w)
-    }
-    w[(d.day() + 6) % 7] = `0${i}`.slice(-2)
-    const morning = entries[`${year}-${month}-${`0${i}`.slice(-2)}-am`]
-    if (morning) {
-      labelsInLegend[morning] = true
-    }
-    const afternoon = entries[`${year}-${month}-${`0${i}`.slice(-2)}-pm`]
-    if (afternoon) {
-      labelsInLegend[afternoon] = true
-    }
-  }
+  const weeks = calendarSelectors.calendarDaysSelector(year, month)
+  const labelsInLegend = calendarSelectors.calendarLabelsSelector(entries, year, month)
 
   const removeDayEntry = (e, d) => {
     e.preventDefault()

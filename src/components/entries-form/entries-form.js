@@ -38,17 +38,19 @@ class EntriesForm extends React.Component {
             <h2 className={styles['mdl-card__title-text']}>Label</h2>
           </div>
           <div className={styles.buttonList}>
-            {Object.keys(labels).map((label) => (
-              <button
-                key={label}
-                className={classNames({
-                  [styles.entryButton]: label !== (this.state && this.state.label),
-                  [styles.entryButtonSelected]: label === (this.state && this.state.label)
-                })}
-                onClick={() => this.setState({label})}>
-                {label}
-              </button>
-            ))}
+            <select onChange={(e) => this.setState({label: e.target.value})}>
+              {Object.keys(labels).map((label) => (
+                <option
+                  key={label}
+                  value={label}
+                  className={classNames({
+                    [styles.entryButton]: label !== (this.state && this.state.label),
+                    [styles.entryButtonSelected]: label === (this.state && this.state.label)
+                  })}>
+                  {label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className={styles.entriesCard}>
