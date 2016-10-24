@@ -10,9 +10,9 @@ export default (field) => (
     [styles['is-invalid']]: field.meta.error
   })}>
     <input
+      {...field.input}
       className={styles['mdl-textfield__input']}
-      required
-      {...field.input}/>
+      required/>
     <label
       className={styles['mdl-textfield__label']}
       htmlFor={field.name}>

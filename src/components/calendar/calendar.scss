@@ -9,8 +9,6 @@
 .calendar {
   @extend .mdl-card, .mdl-shadow--2dp;
   @extend .mdl-cell, .mdl-cell--8-col;
-
-  order: 1;
 }
 
 .calendarTitle {
@@ -97,10 +95,4 @@
   width: 1rem;
   height: 0.8rem;
   margin: 0 0.3rem 0 0.5rem;
-}
-
-@media (min-width: $grid-desktop-breakpoint) {
-  .calendar {
-    order: 2;
-  }
 }
