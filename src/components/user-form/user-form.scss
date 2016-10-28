@@ -7,8 +7,6 @@
 .userForm {
   @extend .mdl-card, .mdl-shadow--2dp;
   @extend .mdl-cell, .mdl-cell--4-col, .mdl-cell--8-col-tablet;
-
-  order: 0;
 }
 
 .userFormText {

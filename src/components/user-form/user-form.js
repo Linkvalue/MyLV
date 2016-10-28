@@ -7,10 +7,7 @@ import styles from './user-form.scss'
 import { userEntry } from '../../actions/user-actions'
 
 const mapStateToProps = (state) => {
-  console.log(state.user)
-  return ({
-    initialValues: state.user
-  })
+  return
 }
 
 const validate = ({ firstName, lastName }) => ({

@@ -6,12 +6,15 @@
 .entriesForm {
   @extend .mdl-cell, .mdl-cell--4-col;
 
+  position: relative;
   min-height: 0;
-  order: 2;
+  z-index: 9999;
 }
 
 .entriesCard {
   @extend .mdl-card, .mdl-shadow--2dp;
+
+  overflow: visible;
   width: 100%;
 }
 
@@ -19,8 +22,14 @@
   margin-top: 1rem;
 }
 
-.buttonList {
+.labelSelectorBox {
   @extend .mdl-card__supporting-text;
+
+  overflow: visible;
+}
+
+.buttonList {
+  @extend .mdl-card__actions, .mdl-card--border;
 }
 
 .entryButton {
