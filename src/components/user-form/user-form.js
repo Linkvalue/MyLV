@@ -48,6 +48,11 @@ const UserForm = ({ handleSubmit, pristine, invalid }) => (
             type='text'
             label='Adresse du client'
             component={TextField} />
+          <Field
+            name='managerName'
+            type='text'
+            label='Nom du responsable'
+            component={TextField} />
         </div>
       </div>
     </div>
