@@ -4,7 +4,9 @@ import {
 
 const initialState = {
   firstName: '',
-  lastName: ''
+  lastName: '',
+  clientName: '',
+  clientAddress: ''
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -12,7 +14,9 @@ export default function (state = initialState, { type, payload }) {
     case SAVE_USER:
       return {
         firstName: payload.firstName,
-        lastName: payload.lastName
+        lastName: payload.lastName,
+        clientName: payload.clientName,
+        clientAddress: payload.clientAddress
       }
     default:
       return state

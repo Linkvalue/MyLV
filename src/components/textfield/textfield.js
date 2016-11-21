@@ -12,7 +12,7 @@ export default (field) => (
     <input
       {...field.input}
       className={styles['mdl-textfield__input']}
-      required/>
+      required />
     <label
       className={styles['mdl-textfield__label']}
       htmlFor={field.name}>

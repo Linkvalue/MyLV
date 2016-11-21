@@ -35,7 +35,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
           className={styles.calendarNavButton}
           onClick={() => setDate(m.clone().subtract(1, 'month').format('YYYY-MM-DD'))}>
           <svg viewBox='0 0 24 24' className={styles.calendarNavButtonIcon}>
-            <use xlinkHref='icons/svg-sprite-navigation-symbol.svg#ic_chevron_left_24px'/>
+            <use xlinkHref='icons/svg-sprite-navigation-symbol.svg#ic_chevron_left_24px' />
           </svg>
         </button>
         <h2 className={styles.calendarCurrentMonth}>{m.format('MMMM YYYY')}</h2>
@@ -43,7 +43,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
           className={styles.calendarNavButton}
           onClick={() => setDate(m.clone().add(1, 'month').format('YYYY-MM-DD'))}>
           <svg viewBox='0 0 24 24' className={styles.calendarNavButtonIcon}>
-            <use xlinkHref='icons/svg-sprite-navigation-symbol.svg#ic_chevron_right_24px'/>
+            <use xlinkHref='icons/svg-sprite-navigation-symbol.svg#ic_chevron_right_24px' />
           </svg>
         </button>
       </div>
@@ -54,34 +54,34 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
           </tr>
         </thead>
         <tbody>
-        {weeks.map((w) => (
-          <tr key={w}>
-            {w.map((d, i) => (
-              <td
-                key={`${d}-${i}`}
-                onContextMenu={(e) => removeDayEntry(e, d)}
-                onClick={() => d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
-                className={classNames({
-                  [styles.cell]: true,
-                  [styles.empty]: !d,
-                  [styles.weekend]: i >= 5 || publicHolidays.has(`${month}-${d}`)
-                })}>
-                <span className={styles.day}>{d && parseInt(d, 10)}</span>
-                {d && <CalendarDay
-                  labelMorning={entries[`${year}-${month}-${d}-am`]}
-                  labelAfternoon={entries[`${year}-${month}-${d}-pm`]}
-                  selected={d === day}
-                />}
-              </td>
-            ))}
-          </tr>
-        ))}
+          {weeks.map((w) => (
+            <tr key={w}>
+              {w.map((d, i) => (
+                <td
+                  key={`${d}-${i}`}
+                  onContextMenu={(e) => removeDayEntry(e, d)}
+                  onClick={() => d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
+                  className={classNames({
+                    [styles.cell]: true,
+                    [styles.empty]: !d,
+                    [styles.weekend]: i >= 5 || publicHolidays.has(`${month}-${d}`)
+                  })}>
+                  <span className={styles.day}>{d && parseInt(d, 10)}</span>
+                  {d && <CalendarDay
+                    labelMorning={entries[`${year}-${month}-${d}-am`]}
+                    labelAfternoon={entries[`${year}-${month}-${d}-pm`]}
+                    selected={d === day}
+                  />}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
       <div className={styles.legend}>
         {Object.keys(labelsInLegend).map((label) => (
           <span key={label}>
-            <i className={styles.legendColor} style={{ backgroundColor: labels[label] }}/>
+            <i className={styles.legendColor} style={{ backgroundColor: labels[label] }} />
             {label}
           </span>
         ))}
