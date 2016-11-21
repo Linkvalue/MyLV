@@ -23,7 +23,7 @@ const Printer = ({ user, calendar, entries }) => {
 
   return (
     <div className={styles.printer}>
-      <h1>Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}</h1>
+      <h2>Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}</h2>
       <h5>A renvoyer signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable commercial en cc.</h5>
       <table className={styles.printerTable}>
         <thead>
@@ -34,18 +34,25 @@ const Printer = ({ user, calendar, entries }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(labels).map((activity, i) => (
-            <tr key={`${activity}-${i}`}>
-              <td className={styles.printerCell}>{activity}</td>
+          {Object.keys(labels).reduce((acc, activity, i) => [
+            ...acc,
+            <tr className={styles.printerSeparator} />,
+            <tr key={`${activity}-${i}-am`}>
+              <td className={styles.printerCell} rowSpan='2'>{activity}</td>
               {listDays.map((i) => (<td key={i} className={styles.printerCell}>{
-                (entries[`${calendar.year}-${calendar.month}-${i}-am`] === activity ? 0.5 : 0) +
-                (entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 0.5 : 0)
+                entries[`${calendar.year}-${calendar.month}-${i}-am`] === activity ? 1 : 0
               }</td>))}
-              <td className={styles.printerCell}>
+              <td className={styles.printerCell} rowSpan='2'>
                 {Object.keys(entries).filter((i) => entries[i] === activity && dateRegExp.test(i)).length / 2}
               </td>
+            </tr>,
+            <tr key={`${activity}-${i}-pm`}>
+              {listDays.map((i) => (<td key={i} className={styles.printerCell}>{
+                entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 1 : 0
+              }</td>))}
             </tr>
-          ))}
+          ], [])}
+          <tr className={styles.printerSeparator} />
           <tr>
             <td colSpan={listDays.length - 9} />
             <td className={styles.printerCell} colSpan='10'>Nombre de jour attendus :</td>
