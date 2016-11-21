@@ -44,7 +44,7 @@ const EntriesForm = ({
           name='label'
           type='text'
           label='Choisissez un label'
-          component={MaterialSelect}/>
+          component={MaterialSelect} />
       </div>
       <div className={styles.buttonList}>
         <button

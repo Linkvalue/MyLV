@@ -24,7 +24,7 @@ const Printer = ({ user, calendar, entries }) => {
   return (
     <div className={styles.printer}>
       <h1>Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}</h1>
-      <h5>A renvoyé signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable commercial en cc.</h5>
+      <h5>A renvoyer signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable commercial en cc.</h5>
       <table className={styles.printerTable}>
         <thead>
           <tr>
@@ -47,28 +47,28 @@ const Printer = ({ user, calendar, entries }) => {
             </tr>
           ))}
           <tr>
-            <td colSpan={listDays.length - 9}/>
+            <td colSpan={listDays.length - 9} />
             <td className={styles.printerCell} colSpan='10'>Nombre de jour attendus :</td>
             <td className={styles.printerCell}>{Object.keys(entries).filter((i) => dateRegExp.test(i)).length / 2}</td>
           </tr>
           <tr>
-            <td className={styles.printerSpacer}/>
+            <td className={styles.printerSpacer} />
           </tr>
           <tr>
-            <td/>
+            <td />
             <td colSpan='15'>Nom : <b>{user.lastName}</b></td>
-            <td colSpan='10'>Adresse client :</td>
+            <td colSpan='15'>Nom du client :<b>{user.clientName}</b></td>
           </tr>
           <tr>
-            <td/>
+            <td />
             <td colSpan='15'>Prénom : <b>{user.firstName}</b></td>
-            <td colSpan='10'>Responsable client :</td>
+            <td colSpan='15'>Adresse client :<b>{user.clientAddress}</b></td>
           </tr>
           <tr>
-            <td className={styles.printerSpacer}/>
+            <td className={styles.printerSpacer} />
           </tr>
           <tr>
-            <td/>
+            <td />
             <td colSpan='15'>Signature partner :</td>
             <td colSpan='10'>Visa pour information :</td>
           </tr>

@@ -1,22 +1,14 @@
 import React from 'react'
+import classNames from 'classnames'
 
 import AppBar from '../components/app-bar/app-bar'
-import Calendar from '../components/calendar/calendar'
-import EntriesForm from '../components/entries-form/entries-form'
-import UserForm from '../components/user-form/user-form'
-import Printer from '../components/printer/printer'
-import Process from '../components/process/process'
+import AppDrawer from '../components/app-drawer/app-drawer'
 import styles from './app.scss'
 
 export const App = (props) => (
-  <div>
-    <AppBar/>
-    <div className={styles.mainGrid}>
-      <UserForm />
-      <Process/>
-      <EntriesForm/>
-      <Calendar/>
-    </div>
-    <Printer/>
+  <div className={classNames('mdl-layout', 'mdl-js-layout', 'mdl-layout--fixed-header')}>
+    <AppBar className={styles.printHide} />
+    <AppDrawer className={styles.printHide} />
+    {props.children}
   </div>
 )

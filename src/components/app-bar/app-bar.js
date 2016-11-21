@@ -1,21 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import styles from './app-bar.scss'
-
-const mapStateToProps = (state) => ({
-  canPrint: state.user.firstName && state.user.lastName
+const mapStateToProps = ({ user }) => ({
+  canPrint: user.firstName && user.lastName && user.clientName && user.clientAddress
 })
 
 const AppBar = ({ canPrint }) => (
-  <header className={styles.appBar}>
-    <div className={styles.appBarRow}>
-      <span className={styles.brandName}>CraCra</span>
-      <div className={styles.appBarSpacer}></div>
-      <div className={styles.appBarNavigation}>
+  <header className='mdl-layout__header'>
+    <div className='mdl-layout__header-row'>
+      <span className='mdl-layout-title'>CraCra</span>
+      <div className='mdl-layout-spacer' />
+      <div className='mdl-navigation mdl-layout--large-screen-only'>
         <a
           href='#'
-          className={styles.printButton}
+          className='mdl-navigation__link'
           disabled={!canPrint}
           onClick={() => canPrint ? window.print() : null}>
           Imprimer CRA

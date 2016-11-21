@@ -1,4 +1,5 @@
 import { reducer as form } from 'redux-form'
+import { routeReducer as routing } from 'redux-simple-router'
 
 import calendar from './calendar-reducer'
 import worklog from './worklog-reducer'
@@ -8,5 +9,6 @@ export default {
   calendar,
   worklog,
   user,
-  form
+  form,
+  routing
 }

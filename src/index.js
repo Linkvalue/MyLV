@@ -15,6 +15,6 @@ moment.locale('fr')
 memoize.Cache = WeakMap
 
 ReactDOM.render(
-  <Root store={store}/>,
+  <Root store={store} />,
   document.getElementById('cracra')
 )
