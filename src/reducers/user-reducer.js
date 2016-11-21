@@ -6,7 +6,8 @@ const initialState = {
   firstName: '',
   lastName: '',
   clientName: '',
-  clientAddress: ''
+  clientAddress: '',
+  managerName: ''
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -16,7 +17,8 @@ export default function (state = initialState, { type, payload }) {
         firstName: payload.firstName,
         lastName: payload.lastName,
         clientName: payload.clientName,
-        clientAddress: payload.clientAddress
+        clientAddress: payload.clientAddress,
+        managerName: payload.managerName
       }
     default:
       return state

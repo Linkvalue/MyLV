@@ -72,6 +72,11 @@ const Printer = ({ user, calendar, entries }) => {
             <td colSpan='15'>Adresse client :<b>{user.clientAddress}</b></td>
           </tr>
           <tr>
+            <td />
+            <td colSpan='15' />
+            <td colSpan='15'>Nom du responsable :<b>{user.managerName}</b></td>
+          </tr>
+          <tr>
             <td className={styles.printerSpacer} />
           </tr>
           <tr>
