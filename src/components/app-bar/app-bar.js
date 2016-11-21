@@ -8,15 +8,21 @@ const mapStateToProps = (state) => ({
 })
 
 const AppBar = ({ canPrint }) => (
-  <div className={styles.appBar}>
-    <h1 className={styles.brandName}>CraCra</h1>
-    <button
-      className={styles.printButton}
-      disabled={!canPrint}
-      onClick={() => canPrint ? window.print() : null}>
-      Imprimer CRA
-    </button>
-  </div>
+  <header className={styles.appBar}>
+    <div className={styles.appBarRow}>
+      <span className={styles.brandName}>CraCra</span>
+      <div className={styles.appBarSpacer}></div>
+      <div className={styles.appBarNavigation}>
+        <a
+          href='#'
+          className={styles.printButton}
+          disabled={!canPrint}
+          onClick={() => canPrint ? window.print() : null}>
+          Imprimer CRA
+        </a>
+      </div>
+    </div>
+  </header>
 )
 
 export default connect(mapStateToProps)(AppBar)

@@ -10,16 +10,17 @@ import {
   WORKLOG_EMPTY_DAY,
   WORKLOG_ADD_LABEL
 } from '../actions/worklog-actions'
+import { REHYDRATE } from 'redux-persist/constants'
 
 const initialState = {
   entries: {},
   labels: {
-    'Production': '#FF0000',
-    'Contribution': '#00FF00',
-    'Conges payes': '#0000FF',
-    'Conges sans solde': '#FF00FF',
-    'Maladie': '#FFFF00',
-    'Autre': '#00FFFF'
+    'Production': '#ff9999',
+    'Contribution': '#99ff99',
+    'Conges payes': '#9999ff',
+    'Conges sans solde': '#ff99ff',
+    'Maladie': '#ffff99',
+    'Autre': '#99ffff'
   }
 }
 
@@ -73,6 +74,15 @@ export default function (state = initialState, { type, payload }) {
           [payload.label]: payload.color
         }
       }
+    case REHYDRATE:
+      const incoming = payload.worklog
+      if (incoming) {
+        return {
+          ...state,
+          entries: incoming.entries
+        }
+      }
+      return state
     default:
       return state
   }

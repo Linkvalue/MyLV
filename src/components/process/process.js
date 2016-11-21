@@ -18,7 +18,9 @@ export default () => (
         <li>Sélectioner un jour dans le calendrier.</li>
         <li>Choisir un label.</li>
         <li>Cliquer sur le bouton correspondant à la période à laquelle vous souhaitez appliquer le label.</li>
+        <li>Imprimez ensuite votre CRA.</li>
       </ul>
+      Si vous êtes sur mobile, imprimez en PDF pour télécharger votre CRA.
     </div>
   </div>
 )

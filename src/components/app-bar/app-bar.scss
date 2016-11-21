@@ -1,31 +1,27 @@
 @import '../../styles/colors';
 @import '../../styles/variables';
-@import '../../../node_modules/material-design-lite/src/button/button';
+@import '../../../node_modules/material-design-lite/src/layout/layout';
 
 .appBar {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.3rem;
-  background: $lv-blue;
-  padding: 0.5rem;
-  height: 3rem;
-  color: $lv-black;
-  box-sizing: border-box;
-  box-shadow: $simple-shadow;
+  @extend .mdl-layout__header;
+}
 
-  @media print {
-    display: none;
-  }
+.appBarRow {
+  @extend .mdl-layout__header-row;
 }
 
 .brandName {
-  margin: 0;
-  padding: 0;
-  font-size: 1.3rem;
-  font-weight: 100;
-  flex: 1;
+  @extend .mdl-layout-title;
+}
+
+.appBarNavigation {
+  @extend .mdl-navigation;
+}
+
+.appBarSpacer {
+  @extend .mdl-layout-spacer;
 }
 
 .printButton {
-  @extend .mdl-button;
+  @extend .mdl-navigation__link;
 }
