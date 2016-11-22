@@ -1,4 +1,6 @@
-#CraCra
+#CraCra 
+
+[![Travis](https://img.shields.io/travis/LinkValue/CraCra.svg?style=flat-square)](https://travis-ci.org/LinkValue/CraCra)
 
 CRA editor for LinkValue built with React, Redux and [SaguiJS](https://github.com/saguijs/sagui) (Webpack, Babel, Eslint, SCSS).
 The objective of this project is to be able to fill out your CRA within 10 seconds without effort.

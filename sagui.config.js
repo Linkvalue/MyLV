@@ -13,7 +13,7 @@ module.exports = {
         from: path.resolve(__dirname, 'src/manifest.json'),
         to: path.resolve(__dirname, 'dist')
       }, {
-        from: path.resolve(__dirname, 'src/images/icons'),
+        from: path.resolve(__dirname, 'src/images/logo'),
         to: path.resolve(__dirname, 'dist/images')
       }, {
         from: path.resolve(__dirname, 'node_modules/material-design-icons/sprites/svg-sprite'),
