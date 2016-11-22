@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router'
+import classNames from 'classnames'
 import { routeActions } from 'redux-simple-router'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
@@ -58,11 +60,14 @@ const UserForm = ({ handleSubmit, pristine, invalid }) => (
     </div>
     <div className={styles.userFormActions}>
       <button
-        className={styles.userFormSubmit}
+        className={classNames('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect')}
         type='submit'
         disabled={pristine || invalid}>
         Enregistrer
       </button>
+      <Link className={classNames('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect')} to='/'>
+        Retour à l'édition
+      </Link>
     </div>
   </form>
 )
