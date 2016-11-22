@@ -47,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/LinkValue/CraCra/issues"
   },
-  "homepage": "https://github.com/LinkValue/CraCra#readme"
+  "homepage": "https://github.com/LinkValue/CraCra#readme",
+  "engines": {
+    "node": ">6.9.x"
+  }
 }
