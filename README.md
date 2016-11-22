@@ -1,6 +1,32 @@
 #CraCra
 
-CRA editor for LinkValue
+CRA editor for LinkValue built with React, Redux and [SaguiJS](https://github.com/saguijs/sagui) (Webpack, Babel, Eslint, SCSS).
+The objective of this project is to be able to fill out your CRA within 10 seconds without effort.
+
+## Contributing
+
+Before anything, be sure to have Node 6.9.x at least installed.
+To contribute to this project, clone the project then run in the root folder of the project:
+
+```
+npm install
+```
+
+Then run for development:
+
+```
+npm start
+```
+
+Or for dist build:
+
+```
+npm run dist
+```
+
+This project uses ESLint to check code style and uses the default configuration from SaguiJS which is semicolon free.
+We recommend the usage of a plugin for your IDE to enable lint inside it. At this moment the project is lacking unit
+testing and feature testing which opens a window for regressions so be careful.
 
 ## Licence
 
