@@ -1,12 +1,20 @@
 import React from 'react'
-import styles from './process.scss'
+import classNames from 'classnames'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default () => (
-  <div className={styles.processCard}>
-    <div className={styles['mdl-card__title']}>
-      <h2 className={styles['mdl-card__title-text']}>Informations</h2>
+import { stopProcessReminder } from '../../actions/settings-actions'
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  stopProcessReminder
+}, dispatch)
+
+const Process = ({ stopProcessReminder }) => (
+  <div className={classNames('mdl-cell', 'mdl-cell--12-col', 'mdl-card', 'mdl-shadow--2dp')}>
+    <div className='mdl-card__title'>
+      <h2 className='mdl-card__title-text'>Informations</h2>
     </div>
-    <div className={styles['mdl-card__supporting-text']}>
+    <div className='mdl-card__supporting-text'>
       Le CRA (Compte Rendu d'Activité) est un document administratif à envoyer à <a href='mailto:admin@link-value.fr'>admin@link-value.fr</a>,
       copie Partner Business, avant le <b>25 de chaque mois</b>. Il sert à :
       <ul>
@@ -21,5 +29,15 @@ export default () => (
       </ul>
       Si vous êtes sur mobile, imprimez en PDF pour télécharger votre CRA.
     </div>
+    <div className={classNames('mdl-card__actions', 'mdl-card--border')}>
+      <a
+        className={classNames('mdl-button', 'mdl-button--colored', 'mdl-js-button', 'mdl-js-ripple-effect')}
+        onClick={stopProcessReminder}
+      >
+        Ne plus afficher
+      </a>
+    </div>
   </div>
 )
+
+export default connect(undefined, mapDispatchToProps)(Process)

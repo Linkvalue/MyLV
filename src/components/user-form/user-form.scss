@@ -27,7 +27,3 @@
 .userFormActions {
   @extend .mdl-card__actions, .mdl-card--border;
 }
-
-.userFormSubmit {
-  @extend .mdl-button, .mdl-button--colored;
-}

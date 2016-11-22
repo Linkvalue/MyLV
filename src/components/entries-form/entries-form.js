@@ -1,4 +1,6 @@
 import React from 'react'
+import classNames from 'classnames'
+import { Link } from 'react-router'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -35,8 +37,8 @@ const EntriesForm = ({
 }) => (
   <form className={styles.entriesForm}>
     <div className={styles.entriesCard}>
-      <div className={styles['mdl-card__title']}>
-        <h2 className={styles['mdl-card__title-text']}>Imputation</h2>
+      <div className='mdl-card__title'>
+        <h2 className='mdl-card__title-text'>Imputation</h2>
       </div>
       <div className={styles.labelSelectorBox}>
         <Field
@@ -72,6 +74,23 @@ const EntriesForm = ({
           onClick={handleSubmit(({label}) => fillMonth(`${year}-${month}`, label))}>
           Mois
         </button>
+      </div>
+    </div>
+    <div className={styles.entriesCard}>
+      <div className='mdl-card__title'>
+        <h2 className='mdl-card__title-text'>Changement de client ?</h2>
+      </div>
+      <div className='mdl-card__supporting-text'>
+        Les informations client sur votre CRA ne corespondent plus ?
+        Pas de panique vous pouvez encore les editer depuis l'écran "Partner / Client" dans le menu de gauche,
+        ou avec le lien ci-dessous.
+      </div>
+      <div className={classNames('mdl-card__actions', 'mdl-card--border')}>
+        <Link
+          className={classNames('mdl-button', 'mdl-button--colored', 'mdl-js-button', 'mdl-js-ripple-effect')}
+          to='/user'>
+          Editer
+        </Link>
       </div>
     </div>
   </form>

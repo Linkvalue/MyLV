@@ -10,13 +10,14 @@ import { canPrintSelector } from '../selectors/user-selectors'
 import styles from './worklog-page.scss'
 
 const mapStateToProps = state => ({
-  canPrint: canPrintSelector(state)
+  canPrint: canPrintSelector(state),
+  shouldRemindProcess: state.settings.shouldRemindProcess
 })
 
-const WorklogPage = () => (
+const WorklogPage = ({shouldRemindProcess}) => (
   <div>
     <div className={classNames('mdl-grid', styles.mainGrid)}>
-      <Process />
+      {shouldRemindProcess ? <Process /> : null}
       <EntriesForm />
       <Calendar />
     </div>
