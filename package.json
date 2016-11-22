@@ -19,7 +19,7 @@
   "author": "LinkValue",
   "license": "ISC",
   "devDependencies": {
-    "copy-webpack-plugin": "^3.0.1",
+    "copy-webpack-plugin": "^4.0.1",
     "sagui": "^7.4.0"
   },
   "dependencies": {
