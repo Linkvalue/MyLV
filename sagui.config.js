@@ -14,7 +14,7 @@ module.exports = {
         to: path.resolve(__dirname, 'dist')
       }, {
         from: path.resolve(__dirname, 'src/images/logo'),
-        to: path.resolve(__dirname, 'dist/images')
+        to: path.resolve(__dirname, 'dist/images/logo')
       }, {
         from: path.resolve(__dirname, 'node_modules/material-design-icons/sprites/svg-sprite'),
         to: path.resolve(__dirname, 'dist/icons')

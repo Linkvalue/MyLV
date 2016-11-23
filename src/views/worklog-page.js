@@ -6,20 +6,21 @@ import Calendar from '../components/calendar/calendar'
 import EntriesForm from '../components/entries-form/entries-form'
 import Process from '../components/process/process'
 import Printer from '../components/printer/printer'
-import { canPrintSelector } from '../selectors/user-selectors'
 import styles from './worklog-page.scss'
 
 const mapStateToProps = state => ({
-  canPrint: canPrintSelector(state),
   shouldRemindProcess: state.settings.shouldRemindProcess
 })
 
-const WorklogPage = ({shouldRemindProcess}) => (
+const WorklogPage = ({ shouldRemindProcess }) => (
   <div>
     <div className={classNames('mdl-grid', styles.mainGrid)}>
       {shouldRemindProcess ? <Process /> : null}
       <EntriesForm />
       <Calendar />
+      <button className={`mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect ${styles.printButton}`}>
+        <i className='material-icons'>print</i>
+      </button>
     </div>
     <Printer />
   </div>
