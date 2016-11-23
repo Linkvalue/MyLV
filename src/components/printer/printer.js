@@ -64,17 +64,17 @@ const Printer = ({ user, calendar, entries }) => {
           <tr>
             <td />
             <td colSpan='15'>Nom : <b>{user.lastName}</b></td>
-            <td colSpan='15'>Nom du client :<b>{user.clientName}</b></td>
+            <td colSpan='15'>Nom du client : <b>{user.clientName}</b></td>
           </tr>
           <tr>
             <td />
             <td colSpan='15'>Prénom : <b>{user.firstName}</b></td>
-            <td colSpan='15'>Adresse client :<b>{user.clientAddress}</b></td>
+            <td colSpan='15'>Adresse client : <b>{user.clientAddress}</b></td>
           </tr>
           <tr>
             <td />
             <td colSpan='15' />
-            <td colSpan='15'>Nom du responsable :<b>{user.managerName}</b></td>
+            <td colSpan='15'>Nom du responsable : <b>{user.managerName}</b></td>
           </tr>
           <tr>
             <td className={styles.printerSpacer} />
