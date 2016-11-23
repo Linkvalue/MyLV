@@ -7,21 +7,23 @@ import classNames from 'classnames'
 import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../actions/calendar-actions'
 import * as worklogActions from '../../actions/worklog-actions'
-import * as calendarSelectors from '../../selectors/calendar-selectors'
+import { calendarDaysSelector, calendarLabelsSelector } from '../../selectors/calendar-selectors'
 import { publicHolidays } from '../../helpers'
 import styles from './calendar.scss'
 
+const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+
 const mapStateToProps = (state) => ({
   ...state.calendar,
-  ...state.worklog
+  ...state.worklog,
+  labelsInLegend: calendarLabelsSelector(state),
+  weeks: calendarDaysSelector(state)
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
 
-const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
+const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay, labelsInLegend, weeks }) => {
   const m = moment(`${year}-${month}`, 'YYYY-MM')
-  const weeks = calendarSelectors.calendarDaysSelector(year, month)
-  const labelsInLegend = calendarSelectors.calendarLabelsSelector(entries, year, month)
 
   const removeDayEntry = (e, d) => {
     e.preventDefault()
@@ -50,7 +52,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
       <table className={styles.calendarBody}>
         <thead>
           <tr>
-            {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((l, i) => <th key={`${l}-${i}`}>{l}</th>)}
+            {weekDays.map((l, i) => <th key={`${l}-${i}`}>{l}</th>)}
           </tr>
         </thead>
         <tbody>
@@ -79,7 +81,7 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay }) => {
         </tbody>
       </table>
       <div className={styles.legend}>
-        {Object.keys(labelsInLegend).map((label) => (
+        {labelsInLegend.map((label) => (
           <span key={label}>
             <i className={styles.legendColor} style={{ backgroundColor: labels[label] }} />
             {label}
