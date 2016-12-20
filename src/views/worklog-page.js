@@ -12,13 +12,17 @@ const mapStateToProps = state => ({
   shouldRemindProcess: state.settings.shouldRemindProcess
 })
 
+const printCra = () => window.print()
+
 const WorklogPage = ({ shouldRemindProcess }) => (
   <div>
     <div className={classNames('mdl-grid', styles.mainGrid)}>
       {shouldRemindProcess ? <Process /> : null}
       <EntriesForm />
       <Calendar />
-      <button className={`mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect ${styles.printButton}`}>
+      <button
+        onClick={printCra}
+        className={`mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect ${styles.printButton}`}>
         <i className='material-icons'>print</i>
       </button>
     </div>

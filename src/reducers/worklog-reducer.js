@@ -60,7 +60,6 @@ export default function (state = initialState, { type, payload }) {
         .map((v, i) => i + 1)
         .filter((v) => {
           const stringDate = `${payload.month}-${`0${v}`.slice(-2)}`
-          console.log(stringDate.slice(5))
           return [0, 6].indexOf(moment(stringDate).day()) === -1 && !publicHolidays.has(stringDate.slice(5))
         })
         .reduce((s, v) => setDay(s, `${payload.month}-${`0${v}`.slice(-2)}`, payload.label), state)

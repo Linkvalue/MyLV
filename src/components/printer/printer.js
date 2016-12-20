@@ -33,8 +33,8 @@ const Printer = ({ user, calendar, entries, labels, totalExpectedDays }) => {
         <tbody>
           {labels.reduce((acc, activity, i) => [
             ...acc,
-            <tr className={styles.printerSeparator} />,
-            <tr key={`${activity}-${i}-am`}>
+            <tr key={`separator-${activity}`} className={styles.printerSeparator} />,
+            <tr key={`${activity}-am`}>
               <td className={styles.printerCell} rowSpan='2'>{activity}</td>
               {listDays.map((i) => (<td key={i} className={styles.printerCell}>{
                 entries[`${calendar.year}-${calendar.month}-${i}-am`] === activity ? 1 : 0
@@ -43,7 +43,7 @@ const Printer = ({ user, calendar, entries, labels, totalExpectedDays }) => {
                 {Object.keys(entries).filter((i) => entries[i] === activity && dateRegExp.test(i)).length / 2}
               </td>
             </tr>,
-            <tr key={`${activity}-${i}-pm`}>
+            <tr key={`${activity}-pm`}>
               {listDays.map((i) => (<td key={i} className={styles.printerCell}>{
                 entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 1 : 0
               }</td>))}
