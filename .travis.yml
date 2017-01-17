@@ -4,6 +4,9 @@ node_js:
 script:
 - npm run test
 - npm run dist
+cache:
+  directories:
+    - node_modules
 deploy:
   provider: heroku
   api_key:
