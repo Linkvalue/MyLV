@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "6.9"
-
+- '6.9'
 script:
-  - npm run test
-  - npm run dist
+- npm run test
+- npm run dist
+deploy:
+  provider: heroku
+  api_key:
+    secure: WKgpvHnkh8mZpxPyBAy5A5DJ5tNF032Yt6WUf5bVFdpemwlIFwWWtq07xE37EF9iX/zMfATxtAMGRCmC/+0gJeyjTA/lj5yqHMcdzsaCE2/4XjVtvX20zWYDCtsGoJ95jGMF98O7F4z21IdrwfriXtFDUHVVaHyT3iZdEm2UfZBJARK/nlvyQ0XJ/+LtUC20MpQvsS6rYFkmRB3d6lK5J46WGsEBG0iULEHh2bHd6/f3XgQ8p6I2vPSCx0xBUbh1yyxnw1ZxYy2MnNUtLdjeYKqd9k3SSWJBgfrhjzfDTTwUSDUmHvmxCyAvhCwm3okpfIEYmEBpS/U1muZNhGOTCFS7oVfWUOArRv66IlNfC4efe8dcy45jWAD3DtP6ezIb8DqRUh2LL1J7e4i0Uh6QBBnXezR4a8/3QI+X9VfjCQ9ngqCuFWmA0WygJlD4s5hiYykxqhlucwOQDor73qMFIOdjBSYyXU8+YOLrhxCSe6bxe+BwY3QCDex1EsR8q9n5stFHmFJ+2495BqhRFS7UC70aW/5ynDxnJOixQwCj19G+ZDgK/R7Xcq8zShaKNDvKAojDFnn7AKcbnLxr0RVgyIWnJfQ+tQRhgfxAHZ+EZb5pE7fkagZOed9coDg+dOCO0xEfzJd6IOpmBfPPBTFMO9qhhsUJLihVkuAor9fllZw=
