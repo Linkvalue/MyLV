@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import classNames from 'classnames'
-import { routeActions } from 'redux-simple-router'
+import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 
@@ -77,7 +77,7 @@ const HookedUserForm = reduxForm({
   validate,
   onSubmit: (formData, dispatch) => {
     dispatch(userEntry(formData))
-    dispatch(routeActions.push('/'))
+    dispatch(push('/'))
   }
 })(UserForm)
 

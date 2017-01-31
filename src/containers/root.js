@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import { App } from './app'
@@ -8,9 +9,11 @@ import WorklogPage from '../views/worklog-page'
 
 export class Root extends React.Component {
   render () {
+    const history = syncHistoryWithStore(browserHistory, this.props.store)
+
     return (
       <Provider store={this.props.store}>
-        <Router history={browserHistory}>
+        <Router history={history}>
           <Route path='/' component={App}>
             <Route path='user' component={UserPage} />
             <IndexRoute component={WorklogPage} />

@@ -1,12 +1,15 @@
 language: node_js
 node_js:
-- '6.9'
+  - '6.9'
+
 script:
-- npm run test
-- npm run dist
+  - yarn test
+  - yarn dist
+
 cache:
   directories:
-  - node_modules
+    - node_modules
+
 deploy:
   provider: heroku
   app: cracra

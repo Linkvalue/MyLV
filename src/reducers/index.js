@@ -1,5 +1,5 @@
 import { reducer as form } from 'redux-form'
-import { routeReducer as routing } from 'redux-simple-router'
+import { routerReducer as routing } from 'react-router-redux'
 
 import calendar from './calendar-reducer'
 import worklog from './worklog-reducer'
