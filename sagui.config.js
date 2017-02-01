@@ -10,7 +10,7 @@ module.exports = {
   webpack: {
     plugins: [
       new CopyWebpackPlugin([{
-        from: path.resolve(__dirname, 'src/manifest.json'),
+        from: path.resolve(__dirname, 'src/{manifest.json,favicon.ico}'),
         to: path.resolve(__dirname, 'dist')
       }, {
         from: path.resolve(__dirname, 'src/images/logo'),
