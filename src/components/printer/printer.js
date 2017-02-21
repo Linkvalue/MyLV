@@ -25,6 +25,11 @@ const Printer = ({ user, calendar, entries, labels, totalExpectedDays }) => {
       <table className={styles.printerTable}>
         <thead>
           <tr>
+            <th className={styles.printerCell} />
+            {listDays.map((x) => <th key={x} className={styles.printerCell}>{moment(`${calendar.year}-${calendar.month}-${x}`).format('dd')}</th>)}
+            <th className={styles.printerCell} />
+          </tr>
+          <tr>
             <th className={styles.printerCell}>Activité</th>
             {listDays.map((x) => <th key={x} className={styles.printerCell}>{x}</th>)}
             <th className={styles.printerCell}>Total</th>

@@ -9,6 +9,8 @@
 .calendar {
   @extend .mdl-card, .mdl-shadow--2dp;
   @extend .mdl-cell, .mdl-cell--8-col;
+
+  overflow: visible;
 }
 
 .calendarTitle {
@@ -40,14 +42,13 @@
   width: 100%;
   border-collapse: collapse;
   user-select: none;
+  margin: -1px;
 }
 
 .cell {
   position: relative;
   border: solid 1px $lv-light-grey;
   padding: 0;
-  width: 4rem;
-  height: 4rem;
   vertical-align: middle;
   text-align: center;
   cursor: pointer;
