@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { initialize } from 'redux-form'
-import { push } from 'react-router-redux'
+import { routerMiddleware, push } from 'react-router-redux'
+import { browserHistory } from 'react-router'
 import { persistStore, autoRehydrate } from 'redux-persist'
 
 import { rootReducer } from './root-reducer'
@@ -10,7 +11,7 @@ import { canPrintSelector } from '../selectors/user-selectors'
 export function configureStore () {
   const storeEnhancers = [
     autoRehydrate(),
-    applyMiddleware(thunk),
+    applyMiddleware(thunk, routerMiddleware(browserHistory)),
     window.devToolsExtension && process.env.NODE_ENV !== 'production' ? window.devToolsExtension() : (f) => f
   ]
 

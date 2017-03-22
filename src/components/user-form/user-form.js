@@ -65,9 +65,9 @@ const UserForm = ({ handleSubmit, pristine, invalid }) => (
         disabled={pristine || invalid}>
         Enregistrer
       </button>
-      <Link className={classNames('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect')} to='/'>
+      {invalid ? null : <Link className={classNames('mdl-button', 'mdl-js-button', 'mdl-js-ripple-effect')} to='/'>
         Retour à l'édition
-      </Link>
+      </Link>}
     </div>
   </form>
 )
