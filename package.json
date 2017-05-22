@@ -42,12 +42,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LinkValue/CraCra.git"
+    "url": "git+https://gitlab.com/LinkValue/Lab/CraCra.git"
   },
   "bugs": {
-    "url": "https://github.com/LinkValue/CraCra/issues"
+    "url": "https://gitlab.com/LinkValue/Lab/CraCra/issues"
   },
-  "homepage": "https://github.com/LinkValue/CraCra#readme",
+  "homepage": "https://gitlab.com/LinkValue/Lab/CraCra#readme",
   "engines": {
     "node": ">6.9.x"
   }

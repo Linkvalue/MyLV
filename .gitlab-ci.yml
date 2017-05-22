@@ -1,0 +1,44 @@
+image: node:boron
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+build_webapp:
+  stage: build
+  script:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn
+    - yarn dist
+  tags:
+    - node
+
+unit_tests:
+  stage: test
+  script:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn
+    - yarn test:lint
+    - yarn test:unit
+  tags:
+    - node
+
+deploy_staging:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby
+    - gem install dpl
+    - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY
+  only:
+    - master
+  environment:
+    name: staging
+    url: https://cracra.herokuapp.com
+  tags:
+    - node
