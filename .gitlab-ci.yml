@@ -15,6 +15,9 @@ build_webapp:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn
     - yarn dist
+  artifacts:
+    paths:
+      - dist/
   tags:
     - node
 
