@@ -37,6 +37,7 @@ deploy_staging:
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl
+    - ls -l
     - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY
   only:
     - master
