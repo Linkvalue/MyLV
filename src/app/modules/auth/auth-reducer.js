@@ -36,13 +36,13 @@ export default (state = initialState, { type, payload }) => {
         awaitingLogin: false
       }
     case REHYDRATE:
-      return {
+      return payload.auth ? {
         ...state,
         user: null,
         accessToken: payload.auth.accessToken,
         refreshToken: payload.auth.refreshToken,
         expiresAt: payload.auth.expiresAt
-      }
+      } : initialState
     case LOGOUT:
       return initialState
     default:
