@@ -15,7 +15,7 @@ build_webapp:
     NODE_ENV: production
   script:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn
+    - yarn --production=false
     - yarn dist
   artifacts:
     paths:
