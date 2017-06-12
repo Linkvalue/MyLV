@@ -1,6 +1,7 @@
 const Joi = require('joi')
 const Boom = require('boom')
 const fetch = require('node-fetch')
+const path = require('path')
 const { lvconnect: { appId, appSecret, endpoint } } = require('config')
 
 module.exports = [{
@@ -47,10 +48,12 @@ module.exports = [{
   }
 }, {
   method: 'GET',
-  path: '/{param*}',
-  handler: {
-    directory: {
-      path: 'dist'
+  path: '/{path*}',
+  handler (req, res) {
+    if (!path.extname(req.params.path)) {
+      return res.file('dist/index.html')
     }
+
+    return res.file(path.join('dist', req.params.path))
   }
 }]
