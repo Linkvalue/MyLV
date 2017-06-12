@@ -1,0 +1,18 @@
+@import 'material-design-lite/src/button/button';
+
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.loginButton {
+  @extend .mdl-button, .mdl-button--raised, .mdl-button--colored;
+}
+
+.loginButtonLogo {
+  margin-right: 10px;
+  height: 20px;
+}

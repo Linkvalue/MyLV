@@ -1,0 +1,45 @@
+@import 'material-design-lite/src/card/card';
+@import 'material-design-lite/src/shadow/shadow';
+@import 'material-design-lite/src/button/button';
+@import 'material-design-lite/src/grid/grid';
+
+.entriesForm {
+  @extend .mdl-cell, .mdl-cell--4-col, .mdl-cell--8-col-tablet;
+
+  position: relative;
+  min-height: 0;
+  z-index: 3;
+}
+
+.entriesCard {
+  @extend .mdl-card, .mdl-shadow--2dp;
+
+  overflow: visible;
+  width: 100%;
+}
+
+.entriesCard:first-child {
+  z-index: 2;
+}
+
+.entriesCard:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.labelSelectorBox {
+  @extend .mdl-card__supporting-text;
+
+  overflow: visible;
+}
+
+.buttonList {
+  @extend .mdl-card__actions, .mdl-card--border;
+}
+
+.entryButton {
+  @extend .mdl-button;
+}
+
+.entryButtonSelected {
+  @extend .mdl-button, .mdl-button--colored;
+}

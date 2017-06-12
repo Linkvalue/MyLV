@@ -1,14 +1,45 @@
-const express = require('express')
-const path = require('path')
+const Glue = require('glue')
+const config = require('config')
+const routes = require('./src/server/routes')
 
-const app = express()
+const manifest = {
+  registrations: [{
+    plugin: {
+      register: 'good',
+      options: config.logs
+    }
+  }, {
+    plugin: 'inert'
+  }],
+  connections: [{
+    host: config.host.hostname,
+    port: config.host.port
+  }]
+}
 
-app.set('port', (process.env.PORT || 5050))
+function createServer () {
+  return Glue.compose(manifest, {
+    relativeTo: __dirname
+  })
+}
 
-app.use(express.static(path.join(__dirname, '/dist')))
+module.exports = createServer
 
-app.all('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/index.html')))
+if (require.main === module) {
+  createServer()
+    .then(server => server.start().then(() => server))
+    .then((server) => {
+      server.log('info', `Server started on port ${server.connections[0].info.uri}`)
 
-app.listen(app.get('port'), () => {
-  console.log('Node app is running on port', app.get('port'))
-})
+      server.route(routes)
+
+      // Handle uncaught promise rejections
+      process.on('unhandledRejection', (reason) => {
+        server.log('error', `Unhandled rejection: ${reason.stack}`)
+      })
+    })
+    .catch((err) => {
+      console.error(err.stack) // eslint-disable-line no-console
+      process.exit(1)
+    })
+}

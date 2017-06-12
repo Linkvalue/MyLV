@@ -1,0 +1,18 @@
+@media print {
+  .worklogPage {
+    margin-left: 0 !important;
+  }
+}
+
+.mainGrid {
+  @media print {
+    display: none;
+  }
+}
+
+.printButton {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  z-index: 10;
+}
