@@ -3,12 +3,11 @@ import classnames from 'classnames'
 
 import styles from './login-page.scss'
 
-const appId = 'b27c3d4c-889d-4601-b1b5-939ad9bbcb63'
 const redirectUri = `${window.location.protocol}//${window.location.host}/auth`
-const loginUrl = `https://lvconnect.link-value.fr/oauth/authorize?app_id=${appId}&redirect_uri=${redirectUri}`
+const loginUrl = `${process.env.lvConnectEndpoint}&redirect_uri=${redirectUri}`
 
 const handleLoginButtonClick = () => {
-  window.open(loginUrl)
+  window.open(loginUrl, 'LVConnect', 'width=500,height=500')
 }
 
 const LoginPage = () => (

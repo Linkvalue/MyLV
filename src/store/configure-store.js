@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { initialize } from 'redux-form'
-import { routerMiddleware, push } from 'react-router-redux'
-import { browserHistory } from 'react-router'
+import { routerMiddleware } from 'react-router-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
+import { browserHistory } from 'react-router'
 
 import { rootReducer } from './root-reducer'
-import { canPrintSelector } from '../selectors/user-selectors'
+import { fetchUserData } from '../modules/auth/auth-actions'
 
 export function configureStore () {
   const storeEnhancers = [
@@ -20,11 +20,14 @@ export function configureStore () {
     blacklist: ['calendar', 'routing', 'form']
   }, () => {
     const state = store.getState()
-    store.dispatch(initialize('userForm', state.user))
+    store.dispatch(initialize('clientForm', state.client))
 
-    if (!canPrintSelector(state)) {
-      store.dispatch(push('/user'))
+    if (/\/auth/.test(window.location.pathname)) {
+      return
     }
+
+    store.dispatch(fetchUserData())
+      .catch((err) => console.error(err))
   })
 
   return store

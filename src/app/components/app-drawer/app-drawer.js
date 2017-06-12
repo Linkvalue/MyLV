@@ -16,7 +16,7 @@ const AppDrawer = ({ canPrint, isConnected }) => (
     <span className='mdl-layout-title'>CraCra</span>
     <nav className='mdl-navigation'>
       {isConnected ? <Link className='mdl-navigation__link' to='/client'>Client</Link> : null}
-      {canPrint ? <IndexLink className='mdl-navigation__link' to='/'>Remplir son CRA</IndexLink> : null}
+      {isConnected && canPrint ? <IndexLink className='mdl-navigation__link' to='/'>Remplir son CRA</IndexLink> : null}
     </nav>
   </div>
 )

@@ -1,7 +1,7 @@
 module.exports = {
   server: {},
   host: {
-    port: 8000
+    port: 8001
   },
   logs: {
     reporters: {
@@ -10,5 +10,6 @@ module.exports = {
         args: [{ log: '*', response: '*', worker: '*' }]
       }, 'stdout']
     }
-  }
+  },
+  lvconnect: {}
 }

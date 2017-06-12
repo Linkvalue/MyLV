@@ -14,7 +14,7 @@ function reportingFactory (path, options) {
 
 module.exports = {
   host: {
-    port: process.env.PORT || 8000
+    port: process.env.PORT || 8001
   },
   logs: {
     reporters: {
@@ -22,5 +22,10 @@ module.exports = {
       errorReporting: reportingFactory('./logs/hapi/hapi-error.log', { error: '*' }),
       workerReporting: reportingFactory('./logs/hapi/hapi-worker.log', { worker: '*' })
     }
+  },
+  lvconnect: {
+    appId: process.env.LVCONNECT_APP_ID,
+    appSecret: process.env.LVCONNECT_APP_SECRET,
+    endpoint: 'https://lvconnect.herokuapp.com'
   }
 }

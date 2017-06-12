@@ -1,4 +1,6 @@
+const { DefinePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { lvconnect: { appId, endpoint } } = require('config')
 const path = require('path')
 
 /**
@@ -9,7 +11,7 @@ module.exports = {
   pages: ['index'],
   develop: {
     proxy: {
-      '/api/*': 'http://localhost:8000'
+      '/api/*': 'http://localhost:8001'
     }
   },
   webpack: {
@@ -23,7 +25,10 @@ module.exports = {
       }, {
         from: path.resolve(__dirname, 'node_modules/material-design-icons/sprites/svg-sprite'),
         to: path.resolve(__dirname, 'dist/icons')
-      }])
+      }]),
+      new DefinePlugin({
+        'process.env.lvConnectEndpoint': `"${endpoint}/oauth/authorize?app_id=${appId}"`
+      })
     ]
   }
 }

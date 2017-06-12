@@ -125,3 +125,8 @@ export const fetchUserData = () => (dispatch) =>
       dispatch(receiveUserDataFailed())
       return Promise.reject(e)
     })
+
+export const LOGOUT = 'LOGOUT'
+export const logout = () => ({
+  type: LOGOUT
+})

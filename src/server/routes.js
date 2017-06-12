@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const Boom = require('boom')
 const fetch = require('node-fetch')
-const { lvconnect: { appId, appSecret } } = require('config')
+const { lvconnect: { appId, appSecret, endpoint } } = require('config')
 
 module.exports = [{
   method: 'POST',
@@ -20,7 +20,7 @@ module.exports = [{
     }
   },
   handler (req, res) {
-    fetch('https://lvconnect.link-value.fr/oauth/token', {
+    fetch(`${endpoint}/oauth/token`, {
       method: 'POST',
       headers: {
         Authorization: `Basic ${new Buffer(`${appId}:${appSecret}`).toString('base64')}`
@@ -35,7 +35,7 @@ module.exports = [{
   method: 'GET',
   path: '/api/me',
   handler (req, res) {
-    fetch('https://lvconnect.link-value.fr/users/me', {
+    fetch(`${endpoint}/users/me`, {
       method: 'GET',
       headers: {
         Authorization: req.headers.authorization
