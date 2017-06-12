@@ -1,0 +1,20 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: #eee;
+}
+
+.errorIcon {
+  width: 200px;
+  height: 200px;
+  fill: #ccc;
+}
+
+.errorText {
+  margin-top: 3rem;
+  font-size: 1.7rem;
+  color: #aaa;
+}

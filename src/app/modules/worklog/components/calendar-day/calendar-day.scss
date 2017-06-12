@@ -1,6 +1,6 @@
 @import 'material-design-lite/src/shadow/shadow';
 
-@import '../../styles/variables';
+@import '../../../../styles/variables';
 
 .selected {
   @extend .mdl-shadow--6dp;
@@ -8,16 +8,16 @@
   position: relative;
   z-index: 1;
   border: solid 2px unquote("rgb(#{$color-primary})");
-  margin: -2px;
 }
 
 .calendarDay {
   height: 100%;
+  max-height: 5rem;
 }
 
 .calendarDayFill {
   display: block;
   width: 100%;
-  max-height: 5rem;
   height: 100%;
+  box-sizing: border-box;
 }

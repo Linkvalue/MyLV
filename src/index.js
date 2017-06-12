@@ -1,14 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import moment from 'moment'
+import { push } from 'react-router-redux'
 
 import './index.scss'
-import { configureStore } from './store/configure-store'
-import { Root } from './containers/root'
-import { registerWorker } from './service-worker/register-worker'
+import { configureStore } from './app/store/configure-store'
+import { Root } from './app/containers/root'
+import { receiveAuthTokens, fetchUserData } from './app/modules/auth/auth-actions'
+// import { registerWorker } from './service-worker/register-worker'
 
-registerWorker()
+// registerWorker()
 const store = configureStore()
+
+window.loginDone = (authData) => {
+  store.dispatch(receiveAuthTokens(authData))
+  store.dispatch(fetchUserData())
+    .then(() => store.dispatch(push('/')))
+}
 
 moment.locale('fr')
 
