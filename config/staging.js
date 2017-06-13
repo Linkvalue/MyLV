@@ -25,7 +25,6 @@ module.exports = {
   },
   lvconnect: {
     appId: process.env.LVCONNECT_APP_ID,
-    appSecret: process.env.LVCONNECT_APP_SECRET,
-    endpoint: 'https://lvconnect.herokuapp.com'
+    appSecret: process.env.LVCONNECT_APP_SECRET
   }
 }

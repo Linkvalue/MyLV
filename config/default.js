@@ -11,5 +11,7 @@ module.exports = {
       }, 'stdout']
     }
   },
-  lvconnect: {}
+  lvconnect: {
+    endpoint: 'https://lvconnect.link-value.fr'
+  }
 }

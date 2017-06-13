@@ -7,28 +7,46 @@ The objective of this project is to be able to fill out your CRA within 10 secon
 
 ## Contributing
 
-Before anything, be sure to have Node 6.9.x at least installed.
+Before anything, be sure to have Node 7.9.x at least installed.
 To contribute to this project, clone the project then run in the root folder of the project:
 
 ```
-npm install
+yarn
 ```
 
-Then run for development:
+Then run for development, you'll have to use for the frontend:
 
 ```
-npm start
+yarn start
+```
+
+And for the backend:
+
+```
+yarn start:server
 ```
 
 Or for dist build:
 
 ```
-npm run dist
+yarn dist
 ```
 
 This project uses ESLint to check code style and uses the default configuration from SaguiJS which is semicolon free.
 We recommend the usage of a plugin for your IDE to enable lint inside it. At this moment the project is lacking unit
-testing and feature testing which opens a window for regressions so be careful.
+testing and feature testing which opens a window for regressions so be careful. Also you'll have to create a local
+configuration file under `config/local.{js,json}` containing the following fields:
+
+```json
+{
+  "lvconnect": {
+    "appId": "LvConnect app id used for login",
+    "appSecret": "LvConnect app secret used for login"
+  }
+}
+```
+
+This file can override any fields contained in other configuration files.
 
 ## Licence
 

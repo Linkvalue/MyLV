@@ -11,11 +11,9 @@ cache:
 
 build_webapp:
   stage: build
-  variables:
-    NODE_ENV: production
   script:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn --production=false
+    - yarn
     - yarn dist
   artifacts:
     paths:
