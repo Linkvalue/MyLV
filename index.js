@@ -33,6 +33,17 @@ if (require.main === module) {
 
       server.route(routes)
 
+      server.ext({
+        type: 'onRequest',
+        method (req, res) {
+          if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV !== 'dev') {
+            return res.redirect(`https://${req.info.host}${req.path}`)
+          } else {
+            return res.continue()
+          }
+        }
+      })
+
       // Handle uncaught promise rejections
       process.on('unhandledRejection', (reason) => {
         server.log('error', `Unhandled rejection: ${reason.stack}`)

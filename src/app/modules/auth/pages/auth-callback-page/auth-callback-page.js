@@ -29,7 +29,6 @@ class AuthCallbackPage extends React.Component {
 
     this.props.authenticateFromCode(this.props.location.query.code)
       .then((res) => {
-        console.log(res)
         if (window.opener && window.opener.loginDone) {
           window.opener.loginDone(res)
           window.close()
