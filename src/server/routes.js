@@ -1,8 +1,14 @@
 const Joi = require('joi')
 const Boom = require('boom')
-const fetch = require('node-fetch')
 const path = require('path')
-const { lvconnect: { appId, appSecret, endpoint } } = require('config')
+const LVConnectSDK = require('sdk-lvconnect')
+const { lvconnect: { appId, appSecret } } = require('config')
+
+const lvConnect = new LVConnectSDK({
+  mode: 'private',
+  appId,
+  appSecret
+})
 
 module.exports = [{
   method: 'POST',
@@ -21,30 +27,26 @@ module.exports = [{
     }
   },
   handler (req, res) {
-    fetch(`${endpoint}/oauth/token`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Basic ${new Buffer(`${appId}:${appSecret}`).toString('base64')}`
-      },
-      body: JSON.stringify(req.payload)
-    })
-      .then(response => response.json())
-      .then((response) => res(response).code(response.statusCode || 200))
-      .catch((err) => res(Boom.wrap(err)))
+    lvConnect.proxy(req.payload)
+      .then((response) => res(response))
+      .catch((err) => err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err)))
   }
 }, {
   method: 'GET',
   path: '/api/me',
   handler (req, res) {
-    fetch(`${endpoint}/users/me`, {
-      method: 'GET',
-      headers: {
-        Authorization: req.headers.authorization
-      }
-    })
-      .then(response => response.json())
+    lvConnect.getUserProfile()
       .then((response) => res(response).code(response.statusCode || 200))
-      .catch((err) => res(Boom.wrap(err)))
+      .catch((err) => res(err).code(err.statusCode))
+  }
+}, {
+  method: 'GET',
+  path: '/mdl/{path*}',
+  handler: {
+    directory: {
+      path: 'node_modules/material-design-lite/dist',
+      index: true
+    }
   }
 }, {
   method: 'GET',

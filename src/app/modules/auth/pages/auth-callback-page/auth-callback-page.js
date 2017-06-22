@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import styles from './auth-callback-page.scss'
-import { authenticateFromCode, fetchUserData } from '../../auth-actions'
+import { loginDone, fetchUserData } from '../../auth-actions'
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  authenticateFromCode,
+  loginDone,
   fetchUserData
 }, dispatch)
 
@@ -24,21 +24,9 @@ class AuthCallbackPage extends React.Component {
       this.setState({
         error: true
       })
-      return
     }
 
-    this.props.authenticateFromCode(this.props.location.query.code)
-      .then((res) => {
-        if (window.opener && window.opener.loginDone) {
-          window.opener.loginDone(res)
-          window.close()
-        }
-      })
-      .catch(() => {
-        this.setState({
-          error: true
-        })
-      })
+    this.props.loginDone(this.props.location.query.code)
   }
 
   render () {

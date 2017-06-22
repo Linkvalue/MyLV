@@ -23,7 +23,7 @@ export function configureStore () {
     store.dispatch(initialize('clientForm', state.client))
 
     store.dispatch(fetchUserData())
-      .catch((err) => console.error(err))
+      .catch(() => {})
   })
 
   return store

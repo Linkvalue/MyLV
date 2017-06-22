@@ -14,8 +14,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 
 const LoginRequired = (WrappedComponent) => {
   class AuthWrapper extends React.Component {
-    componentDidMount () {
-      if (!this.props.isConnected && !this.props.awaitingLogin) {
+    componentWillReceiveProps (props) {
+      if (!props.isConnected && !props.awaitingLogin) {
         this.props.push('/login')
       }
     }

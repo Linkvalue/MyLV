@@ -4087,6 +4087,13 @@ node-fetch@^1.0.1, node-fetch@^1.6.3:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
+node-fetch@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.1.tgz#899cb3d0a3c92f952c47f1b876f4c8aeabd400d5"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
+
 node-gyp@^3.3.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-3.6.1.tgz#19561067ff185464aded478212681f47fd578cbc"
@@ -5501,6 +5508,12 @@ scss-tokenizer@^0.2.3:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+sdk-lvconnect@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/sdk-lvconnect/-/sdk-lvconnect-0.1.2.tgz#546158d6648c7aeea2fa367c3198aad209307970"
+  dependencies:
+    node-fetch "^1.7.1"
 
 semver-diff@^2.0.0:
   version "2.1.0"

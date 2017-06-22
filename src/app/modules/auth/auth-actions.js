@@ -1,108 +1,19 @@
 import { push } from 'react-router-redux'
 import 'whatwg-fetch'
+import LVConnectSDK from 'sdk-lvconnect'
 
-export const RECEIVE_AUTH_TOKENS = 'RECEIVE_AUTH_TOKENS'
-export const receiveAuthTokens = (authData) => ({
-  type: RECEIVE_AUTH_TOKENS,
-  payload: {
-    accessToken: authData.access_token,
-    refreshToken: authData.refresh_token,
-    expiresAt: Date.now() + authData.expires_in
-  }
-})
+import { cracraEndpoint, lvConnect } from './lvconnect'
 
-export const authenticateFromCode = (code) => (dispatch) => {
-  return window
-    .fetch('/api/auth', {
-      method: 'POST',
-      body: JSON.stringify({
-        grant_type: 'authorization_code',
-        code
-      })
-    })
-    .then(res => res.json())
-    .then(res => {
-      if (res.error) {
-        return Promise.reject(res)
-      }
+export const login = () => (dispatch) =>
+  lvConnect.login()
+    .then(() => dispatch(fetchUserData()))
+    .then(() => dispatch(push('/')))
 
-      dispatch(receiveAuthTokens(res))
-      return res
-    })
-}
+export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 
-let authFromRefreshPromise
-export const authenticateFromRefreshToken = (refreshToken) => (dispatch) => {
-  if (authFromRefreshPromise) {
-    return authFromRefreshPromise
-  }
-
-  authFromRefreshPromise = window
-    .fetch('/api/auth', {
-      method: 'POST',
-      body: JSON.stringify({
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken
-      })
-    })
-    .then(res => res.json())
-    .then(res => {
-      authFromRefreshPromise = null
-
-      if (res.error) {
-        dispatch(push('/login'))
-        return Promise.reject(res)
-      }
-
-      dispatch(receiveAuthTokens(res.access_token, res.refresh_token, res.expires_in))
-      return res
-    })
-    .catch(e => {
-      authFromRefreshPromise = null
-      return Promise.reject(e)
-    })
-
-  return authFromRefreshPromise
-}
-
-export const fetchWithAuth = (url, options = {}) => (dispatch, getState) => {
-  const { auth: { expiresAt, accessToken, refreshToken } } = getState()
-
-  if (!accessToken && !refreshToken) {
-    dispatch(push('/login'))
-    return Promise.reject()
-  }
-
-  const fetchWithAuthHeaders = ({ access_token: token }) => window
-    .fetch(url, {
-      ...options,
-      headers: {
-        ...options.headers,
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then(res => res.json())
-
-  let promise = Promise.resolve({ access_token: accessToken })
-  if (refreshToken && expiresAt < Date.now()) {
-    promise = dispatch(authenticateFromRefreshToken(refreshToken))
-  }
-
-  return promise.then(fetchWithAuthHeaders)
-    .then(res => {
-      if (res.statusCode === 403) {
-        if (!refreshToken) {
-          dispatch(push('/login'))
-          return Promise.reject(res)
-        }
-
-        return dispatch(authenticateFromRefreshToken(refreshToken))
-          .then(fetchWithAuthHeaders)
-      }
-
-      return res
-    })
-}
+export const fetchWithAuth = (url, options = {}) => (dispatch, getState) =>
+  lvConnect.api(cracraEndpoint + url, options)
+    .then((res) => res.status >= 400 ? Promise.reject(res) : res.json())
 
 export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA'
 export const receiveUserData = (userData) => ({
@@ -127,6 +38,10 @@ export const fetchUserData = () => (dispatch) =>
     })
 
 export const LOGOUT = 'LOGOUT'
-export const logout = () => ({
-  type: LOGOUT
-})
+export const logout = () => {
+  lvConnect.logout()
+
+  return {
+    type: LOGOUT
+  }
+}
