@@ -52,7 +52,7 @@
     "inert": "^4.2.0",
     "joi": "^10.5.0",
     "node-fetch": "^1.6.3",
-    "sdk-lvconnect": "^0.1.1"
+    "sdk-lvconnect": "^0.1.3"
   },
   "repository": {
     "type": "git",

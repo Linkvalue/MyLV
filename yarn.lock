@@ -5509,9 +5509,9 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-sdk-lvconnect@^0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/sdk-lvconnect/-/sdk-lvconnect-0.1.2.tgz#546158d6648c7aeea2fa367c3198aad209307970"
+sdk-lvconnect@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/sdk-lvconnect/-/sdk-lvconnect-0.1.3.tgz#18d915f7b6db3daef835a95d60b555623a94283c"
   dependencies:
     node-fetch "^1.7.1"
 
