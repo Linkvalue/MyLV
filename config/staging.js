@@ -24,7 +24,7 @@ module.exports = {
     }
   },
   lvconnect: {
-    appId: process.env.LVCONNECT_APP_ID,
-    appSecret: process.env.LVCONNECT_APP_SECRET
+    appId: process.env.LVCONNECT_STAGING_APP_ID,
+    appSecret: process.env.LVCONNECT_STAGING_APP_SECRET
   }
 }
