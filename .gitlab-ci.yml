@@ -1,39 +1,31 @@
 image: node:boron
 
 stages:
-  - build
-  - test
+#  - test
   - deploy
 
 cache:
   paths:
     - node_modules/
 
-build_webapp:
-  stage: build
+#unit_tests:
+#  stage: test
+#  script:
+#    - curl -o- -L https://yarnpkg.com/install.sh | bash
+#    - yarn
+#    - yarn test:lint
+#    - yarn test:unit
+#  tags:
+#    - node
+
+deploy_staging:
+  stage: deploy
+  variables:
+    NODE_ENV: staging
   script:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn
     - yarn dist
-  artifacts:
-    paths:
-      - dist/
-  tags:
-    - node
-
-unit_tests:
-  stage: test
-  script:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
-    - yarn
-    - yarn test:lint
-    - yarn test:unit
-  tags:
-    - node
-
-deploy_staging:
-  stage: deploy
-  script:
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl
@@ -41,6 +33,8 @@ deploy_staging:
     - ls -l
   only:
     - master
+  except:
+    - tags
   environment:
     name: staging
     url: https://cracra-staging.herokuapp.com
@@ -49,7 +43,12 @@ deploy_staging:
 
 deploy_prod:
   stage: deploy
+  variables:
+    NODE_ENV: production
   script:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+    - yarn
+    - yarn dist
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl
