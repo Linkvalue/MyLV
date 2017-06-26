@@ -1,13 +1,12 @@
-import { push } from 'react-router-redux'
 import 'whatwg-fetch'
 import LVConnectSDK from 'sdk-lvconnect'
 
 import { cracraEndpoint, lvConnect } from './lvconnect'
 
-export const login = () => (dispatch) =>
-  lvConnect.login()
-    .then(() => dispatch(fetchUserData()))
-    .then(() => dispatch(push('/')))
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const loginError = () => ({
+  type: LOGIN_ERROR
+})
 
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 

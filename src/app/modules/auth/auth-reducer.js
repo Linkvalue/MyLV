@@ -1,6 +1,7 @@
 import { REHYDRATE } from 'redux-persist/constants'
 
 import {
+  LOGIN_ERROR,
   LOGOUT,
   RECEIVE_USER_DATA,
   RECEIVE_USER_DATA_FAILED
@@ -13,6 +14,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        error: true
+      }
     case RECEIVE_USER_DATA:
       return {
         ...state,

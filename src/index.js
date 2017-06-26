@@ -6,17 +6,22 @@ import { push } from 'react-router-redux'
 import './index.scss'
 import { configureStore } from './app/store/configure-store'
 import { Root } from './app/containers/root'
-import { receiveAuthTokens, fetchUserData } from './app/modules/auth/auth-actions'
+import { fetchUserData, loginError } from './app/modules/auth/auth-actions'
+import { lvConnect } from './app/modules/auth/lvconnect'
 // import { registerWorker } from './service-worker/register-worker'
 
 // registerWorker()
 const store = configureStore()
 
-window.loginDone = (authData) => {
-  store.dispatch(receiveAuthTokens(authData))
+lvConnect.on('loginSuccess', () => {
   store.dispatch(fetchUserData())
     .then(() => store.dispatch(push('/')))
-}
+})
+
+lvConnect.on('loginError', () => {
+  store.dispatch(loginError())
+    .then(() => store.dispatch(push('/')))
+})
 
 moment.locale('fr')
 
