@@ -37,12 +37,29 @@ deploy_staging:
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl
-    - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
+    - dpl --provider=heroku --app=cracra-staging --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
   only:
     - master
   environment:
     name: staging
+    url: https://cracra-staging.herokuapp.com
+  tags:
+    - node
+
+deploy_prod:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby
+    - gem install dpl
+    - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
+    - ls -l
+  only:
+    - tags
+  when: manual
+  environment:
+    name: production
     url: https://cracra.herokuapp.com
   tags:
     - node
