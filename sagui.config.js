@@ -11,8 +11,7 @@ module.exports = {
   pages: ['index'],
   develop: {
     proxy: {
-      '/api/*': 'http://localhost:8001',
-      '/mdl/*': 'http://localhost:8001'
+      '/api/*': 'http://localhost:8001'
     }
   },
   webpack: {
@@ -26,6 +25,12 @@ module.exports = {
       }, {
         from: path.resolve(__dirname, 'node_modules/material-design-icons/sprites/svg-sprite'),
         to: path.resolve(__dirname, 'dist/icons')
+      }, {
+        from: path.resolve(__dirname, 'node_modules/material-design-lite/dist/material.blue-light_blue.min.css'),
+        to: path.resolve(__dirname, 'dist/assets/mdl')
+      }, {
+        from: path.resolve(__dirname, 'node_modules/material-design-lite/dist/material.min.js'),
+        to: path.resolve(__dirname, 'dist/assets/mdl')
       }]),
       new DefinePlugin({
         'process.env.appId': `"${appId}"`

@@ -2,13 +2,13 @@
   "name": "cracra",
   "version": "1.0.2",
   "description": "CRA editor",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
     "build": "sagui build",
     "develop": "sagui develop --port 7000",
     "dist": "sagui dist",
     "start": "sagui develop --port 3000",
-    "start:server": "nodemon .",
+    "start:server": "nodemon ./src/server",
     "test": "sagui test",
     "test:lint": "sagui test:lint",
     "test:typecheck": "sagui test:typecheck",
@@ -51,6 +51,7 @@
     "hapi": "^16.1.1",
     "inert": "^4.2.0",
     "joi": "^10.5.0",
+    "mongoose": "^4.10.8",
     "node-fetch": "^1.6.3",
     "sdk-lvconnect": "^0.1.3"
   },

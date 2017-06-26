@@ -1,6 +1,7 @@
 const Glue = require('glue')
 const config = require('config')
-const routes = require('./src/server/routes')
+
+const routes = require('./routes/routes')
 
 const manifest = {
   registrations: [{
