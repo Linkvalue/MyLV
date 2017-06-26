@@ -2,7 +2,7 @@
   "name": "cracra",
   "version": "1.0.2",
   "description": "CRA editor",
-  "main": "./server/index.js",
+  "main": "./src/server/index.js",
   "scripts": {
     "build": "sagui build",
     "develop": "sagui develop --port 7000",
