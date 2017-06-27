@@ -1,6 +1,6 @@
 {
   "name": "cracra",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CRA editor",
   "main": "./src/server/index.js",
   "scripts": {
