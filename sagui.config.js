@@ -33,6 +33,7 @@ module.exports = {
         to: path.resolve(__dirname, 'dist/assets/mdl')
       }]),
       new DefinePlugin({
+        'process.env.NODE_ENV': `"${process.env.NODE_ENV !== 'dev' ? 'production' : 'dev'}"`,
         'process.env.APP_ID': `"${appId}"`
       })
     ]
