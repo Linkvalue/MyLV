@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`worklog/reducer WORKLOG_FILL_MONTH should fill an entry for each working day of the month with given label 1`] = `
+Object {
+  "entries": Object {
+    "0000-00-01-am": "world",
+    "0000-00-01-pm": "world",
+    "0000-00-02-am": "world",
+    "0000-00-02-pm": "world",
+    "0000-00-03-am": "world",
+    "0000-00-03-pm": "world",
+    "0000-00-04-am": "world",
+    "0000-00-04-pm": "world",
+    "0000-00-05-am": "world",
+    "0000-00-05-pm": "world",
+    "0000-00-08-am": "world",
+    "0000-00-08-pm": "world",
+    "0000-00-09-am": "world",
+    "0000-00-09-pm": "world",
+    "0000-00-10-am": "world",
+    "0000-00-10-pm": "world",
+    "0000-00-11-am": "world",
+    "0000-00-11-pm": "world",
+    "0000-00-15-am": "world",
+    "0000-00-15-pm": "world",
+    "0000-00-16-am": "world",
+    "0000-00-16-pm": "world",
+    "0000-00-17-am": "world",
+    "0000-00-17-pm": "world",
+    "0000-00-18-am": "world",
+    "0000-00-18-pm": "world",
+    "0000-00-19-am": "world",
+    "0000-00-19-pm": "world",
+    "0000-00-22-am": "world",
+    "0000-00-22-pm": "world",
+    "0000-00-23-am": "world",
+    "0000-00-23-pm": "world",
+    "0000-00-24-am": "world",
+    "0000-00-24-pm": "world",
+    "0000-00-25-am": "world",
+    "0000-00-25-pm": "world",
+    "0000-00-26-am": "world",
+    "0000-00-26-pm": "world",
+    "0000-00-29-am": "world",
+    "0000-00-29-pm": "world",
+    "0000-00-30-am": "world",
+    "0000-00-30-pm": "world",
+  },
+}
+`;
+
+exports[`worklog/reducer WORKLOG_FILL_WEEK should fill an entry for each day of the week with given label 1`] = `
+Object {
+  "entries": Object {
+    "foo-1-am": "world",
+    "foo-1-pm": "world",
+    "foo-2-am": "world",
+    "foo-2-pm": "world",
+    "foo-3-am": "world",
+    "foo-3-pm": "world",
+    "foo-4-am": "world",
+    "foo-4-pm": "world",
+    "foo-5-am": "world",
+    "foo-5-pm": "world",
+  },
+}
+`;

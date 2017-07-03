@@ -8,7 +8,7 @@ import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../calendar-actions'
 import * as worklogActions from '../../worklog-actions'
 import { calendarDaysSelector, calendarLabelsSelector } from '../../calendar-selectors'
-import { publicHolidays } from '../../calendar.constants'
+import { publicHolidays } from '../../calendar-constants'
 import styles from './calendar.scss'
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']

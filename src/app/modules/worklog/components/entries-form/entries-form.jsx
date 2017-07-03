@@ -51,12 +51,12 @@ const EntriesForm = ({
       <div className={styles.buttonList}>
         <button
           className={styles.entryButton}
-          onClick={handleSubmit(({label}) => fillMorning(`${year}-${month}-${day}-am`, label))}>
+          onClick={handleSubmit(({label}) => fillMorning(`${year}-${month}-${day}`, label))}>
           Matinée
         </button>
         <button
           className={styles.entryButton}
-          onClick={handleSubmit(({label}) => fillAfternoon(`${year}-${month}-${day}-pm`, label))}>
+          onClick={handleSubmit(({label}) => fillAfternoon(`${year}-${month}-${day}`, label))}>
           Après-midi
         </button>
         <button

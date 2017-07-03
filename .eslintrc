@@ -1,3 +1,6 @@
 {
-  "extends": "sagui"
+  "extends": "sagui",
+  "env": {
+    "jest": true
+  }
 }

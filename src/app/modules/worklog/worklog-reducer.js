@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-import { publicHolidays } from './calendar.constants'
+import { publicHolidays } from './calendar-constants'
 import {
   WORKLOG_FILL_MORNING,
   WORKLOG_FILL_AFTERNOON,
@@ -10,7 +10,6 @@ import {
   WORKLOG_EMPTY_DAY,
   WORKLOG_ADD_LABEL
 } from './worklog-actions'
-import { REHYDRATE } from 'redux-persist/constants'
 
 const initialState = {
   entries: {},
@@ -38,9 +37,9 @@ const setDay = (state, day, label) =>
 export default function (state = initialState, { type, payload }) {
   switch (type) {
     case WORKLOG_FILL_MORNING:
-      return setEntry(state, payload.date, payload.label)
+      return setEntry(state, `${payload.date}-am`, payload.label)
     case WORKLOG_FILL_AFTERNOON:
-      return setEntry(state, payload.date, payload.label)
+      return setEntry(state, `${payload.date}-pm`, payload.label)
     case WORKLOG_FILL_DAY:
       return setDay(state, payload.day, payload.label)
     case WORKLOG_FILL_WEEK:
@@ -73,15 +72,6 @@ export default function (state = initialState, { type, payload }) {
           [payload.label]: payload.color
         }
       }
-    case REHYDRATE:
-      const incoming = payload.worklog
-      if (incoming) {
-        return {
-          ...state,
-          entries: incoming.entries
-        }
-      }
-      return state
     default:
       return state
   }
