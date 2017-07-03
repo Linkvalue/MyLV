@@ -8,7 +8,7 @@ import { configureStore } from './app/store/configure-store'
 import { Root } from './app/containers/root'
 import { fetchUserData, loginError } from './app/modules/auth/auth-actions'
 import { lvConnect } from './app/modules/auth/lvconnect'
-// import { registerWorker } from './service-worker/register-worker'
+import { registerWorker } from './app/service-worker/register-worker'
 
 // registerWorker()
 const store = configureStore()
@@ -23,6 +23,10 @@ lvConnect.on('loginError', () => {
 })
 
 moment.locale('fr')
+
+if (process.env.NODE_ENV !== 'dev') {
+  registerWorker()
+}
 
 ReactDOM.render(
   <Root store={store} />,
