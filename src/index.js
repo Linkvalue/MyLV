@@ -20,7 +20,6 @@ lvConnect.on('loginSuccess', () => {
 
 lvConnect.on('loginError', () => {
   store.dispatch(loginError())
-    .then(() => store.dispatch(push('/')))
 })
 
 moment.locale('fr')
