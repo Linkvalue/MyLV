@@ -1,7 +1,8 @@
 const { DefinePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { lvconnect: { appId } } = require('config')
 const path = require('path')
+const { util } = require('config')
+const { lvconnect: { appId } } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
 /**
  * Sagui configuration object

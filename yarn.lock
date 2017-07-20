@@ -6299,7 +6299,7 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-sdk-lvconnect@^1.0.0:
+sdk-lvconnect@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/sdk-lvconnect/-/sdk-lvconnect-1.1.0.tgz#1d5636f2c1aceaa6d149a914733467379843f375"
   dependencies:
