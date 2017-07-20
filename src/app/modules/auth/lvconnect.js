@@ -2,8 +2,8 @@ import LVConnectSDK from 'sdk-lvconnect'
 
 export const cracraEndpoint = `${window.location.protocol}//${window.location.host}`
 
-if (process.env.NODE_ENV === 'dev') {
-  LVConnectSDK.overrideLVConnectEndpoint('http://localhost:8000')
+if (typeof process.env.LVCONNECT_ENDPOINT !== 'undefined' && process.env.LVCONNECT_ENDPOINT) {
+  LVConnectSDK.overrideLVConnectEndpoint(process.env.LVCONNECT_ENDPOINT)
 }
 
 export const lvConnect = new LVConnectSDK({
