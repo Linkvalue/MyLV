@@ -3,10 +3,15 @@ image: node:boron
 stages:
 #  - test
   - deploy
+  - .yarn
 
 cache:
   paths:
     - node_modules/
+
+before_script:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - yarn config set cache-folder .yarn
 
 #unit_tests:
 #  stage: test
@@ -23,7 +28,6 @@ deploy_staging:
   variables:
     NODE_ENV: staging
   script:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn
     - yarn dist
     - apt-get update -qy
@@ -46,7 +50,6 @@ deploy_prod:
   variables:
     NODE_ENV: production
   script:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn --production=false
     - yarn dist
     - apt-get update -qy

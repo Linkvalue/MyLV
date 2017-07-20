@@ -66,6 +66,6 @@
   },
   "homepage": "https://gitlab.com/LinkValue/Lab/CraCra#readme",
   "engines": {
-    "node": ">6.9.x"
+    "node": ">7.9.x"
   }
 }
