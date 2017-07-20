@@ -5,37 +5,11 @@
 CRA editor for LinkValue built with React, Redux and [SaguiJS](https://github.com/saguijs/sagui) (Webpack, Babel, Eslint, SCSS).
 The objective of this project is to be able to fill out your CRA within 10 seconds without effort.
 
-## Contributing
+## Installation
 
 Before anything, be sure to have Node 7.9.x at least installed.
-To contribute to this project, clone the project then run in the root folder of the project:
-
-```
-yarn
-```
-
-Then run for development, you'll have to use for the frontend:
-
-```
-yarn start
-```
-
-And for the backend:
-
-```
-yarn start:server
-```
-
-Or for dist build:
-
-```
-yarn dist
-```
-
-This project uses ESLint to check code style and uses the default configuration from SaguiJS which is semicolon free.
-We recommend the usage of a plugin for your IDE to enable lint inside it. At this moment the project is lacking unit
-testing and feature testing which opens a window for regressions so be careful. Also you'll have to create a local
-configuration file under `config/local.{js,json}` containing the following fields:
+Before anything you'll have to create a local configuration file under `config/local.{js,json}` containing the
+following fields:
 
 ```json
 {
@@ -46,7 +20,44 @@ configuration file under `config/local.{js,json}` containing the following field
 }
 ```
 
-This file can override any fields contained in other configuration files.
+This file can override any fields contained in other configuration files. More information about configuration
+[here](https://www.npmjs.com/package/config).
+
+Next, you'll have to install the dependencies by running:
+
+```
+yarn
+```
+
+To build the frontend application for production use, you'll have to run:
+
+```
+yarn dist
+```
+
+Finally, to start the application in production environment:
+
+```
+NODE_ENV=production node .
+```
+
+## Contributing
+
+This project uses ESLint to check code style and uses the default configuration from SaguiJS which is semicolon free.
+We recommend the usage of a plugin for your IDE to enable lint inside it. At this moment the project is lacking unit
+testing and feature testing which opens a window for regressions so be careful.
+
+To start the frontend watch mode build, run:
+
+```
+yarn start
+```
+
+And for the backend watch mode, run:
+
+```
+yarn start:server
+```
 
 ## Licence
 
