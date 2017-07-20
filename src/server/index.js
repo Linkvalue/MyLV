@@ -5,6 +5,7 @@ const routes = require('./routes/routes')
 const lvConnect = require('./helpers/lvconnect.helper')
 const Client = require('./models/client.model')
 const Entry = require('./models/entry.model')
+const Manager = require('./models/manager.model')
 
 const manifest = {
   registrations: [{
@@ -69,7 +70,8 @@ if (require.main === module) {
 
       server.app.models = {
         Client,
-        Entry
+        Entry,
+        Manager
       }
 
       // Handle uncaught promise rejections
