@@ -55,7 +55,7 @@
     "joi": "^10.5.0",
     "mongoose": "^4.10.8",
     "node-fetch": "^1.6.3",
-    "sdk-lvconnect": "^1.0.0"
+    "sdk-lvconnect": "^1.1.0"
   },
   "repository": {
     "type": "git",
