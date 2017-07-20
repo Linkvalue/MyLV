@@ -1,6 +1,7 @@
 module.exports = {
   server: {},
   host: {
+    hostname: null,
     port: 8001
   },
   logs: {
@@ -12,6 +13,8 @@ module.exports = {
     }
   },
   lvconnect: {
+    appId: null,
+    appSecret: null,
     endpoint: 'https://lvconnect.link-value.fr'
   }
 }
