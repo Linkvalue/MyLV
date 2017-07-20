@@ -1,8 +1,8 @@
 const LVConnectSDK = require('sdk-lvconnect')
-const { lvconnect: { appId, appSecret } } = require('config')
+const { lvconnect: { appId, appSecret, endpoint } } = require('config')
 
-if (process.env.NODE_ENV === 'dev') {
-  LVConnectSDK.overrideLVConnectEndpoint('http://localhost:8000')
+if (endpoint) {
+  LVConnectSDK.overrideLVConnectEndpoint(endpoint)
 }
 
 module.exports = new LVConnectSDK({
