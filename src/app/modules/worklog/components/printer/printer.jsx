@@ -84,6 +84,10 @@ const Printer = ({ user, client, calendar, entries, labels, totalExpectedDays })
           </tr>
         </tbody>
       </table>
+      <div className={styles.printerFooter}>
+        LinkValue – 108 rue des Dames, 75017 PARIS – www.link-value.fr<br />
+        SAS au capital de 75 000 euros – RCS Paris B 803 833 748 – SIRET 80383374800012 - TVA intracommunautaire FR67803833748
+      </div>
     </div>
   )
 }
