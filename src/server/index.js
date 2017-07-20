@@ -2,6 +2,7 @@ const Glue = require('glue')
 const config = require('config')
 
 const routes = require('./routes/routes')
+const lvConnect = require('./helpers/lvconnect.helper')
 
 const manifest = {
   registrations: [{
@@ -11,6 +12,8 @@ const manifest = {
     }
   }, {
     plugin: 'inert'
+  }, {
+    plugin: 'hapi-auth-bearer-token'
   }],
   connections: [{
     host: config.host.hostname,
@@ -31,6 +34,18 @@ if (require.main === module) {
     .then(server => server.start().then(() => server))
     .then((server) => {
       server.log('info', `Server started on port ${server.connections[0].info.uri}`)
+
+      server.auth.strategy('bearer', 'bearer-access-token', {
+        validateFunc (token, callback) {
+          lvConnect
+            .setAccessToken(token)
+            .getUserProfile()
+            .then(user => callback(null, true, user, { token }))
+            .catch(err => callback(err, false))
+        }
+      })
+
+      server.auth.default('bearer')
 
       server.route(routes)
 

@@ -7,6 +7,7 @@ module.exports = {
   method: 'POST',
   path: '/api/auth',
   config: {
+    auth: false,
     validate: {
       payload: Joi.object({
         grant_type: Joi.string().valid(['refresh_token', 'authorization_code']).required(),
