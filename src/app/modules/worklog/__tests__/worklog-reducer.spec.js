@@ -1,9 +1,15 @@
 import worklogReducer from '../worklog-reducer'
 import {
   WORKLOG_EMPTY_DAY,
-  WORKLOG_FILL_AFTERNOON, WORKLOG_FILL_DAY, WORKLOG_FILL_MONTH, WORKLOG_FILL_MORNING,
+  WORKLOG_FILL_AFTERNOON,
+  WORKLOG_FILL_DAY,
+  WORKLOG_FILL_MONTH,
+  WORKLOG_FILL_MORNING,
   WORKLOG_FILL_WEEK
 } from '../worklog-actions'
+
+jest.unmock('../worklog-reducer')
+jest.unmock('../worklog-actions')
 
 jest.mock('../calendar-constants')
 jest.mock('moment', () => jest.fn((stringDate) => {

@@ -30,15 +30,15 @@ module.exports = {
     })
 
     if (isOutOfBounds) {
-      res(Boom.badRequest('One or more entries have dates farther than to months from now'))
+      return res(Boom.badRequest('One or more entries have dates farther than to months from now'))
     }
 
     if (missingClientOrManager) {
-      res(Boom.badRequest('One or more entries have specified a client without a manager'))
+      return res(Boom.badRequest('One or more entries have specified a client without a manager'))
     }
 
     const entries = req.payload.map(entry => Object.assign(entry, { userId: req.auth.credentials.id }))
-    req.server.app.models.Entry.create(entries)
+    return req.server.app.models.Entry.create(entries)
       .then(() => {
         res({ success: true })
       })

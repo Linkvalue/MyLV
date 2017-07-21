@@ -21,7 +21,7 @@ module.exports = {
     }
   },
   handler (req, res) {
-    lvConnect.proxy(req.payload)
+    return lvConnect.proxy(req.payload)
       .then((response) => res(response))
       .catch((err) => err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err)))
   }

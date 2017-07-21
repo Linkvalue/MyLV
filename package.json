@@ -2,6 +2,17 @@
   "name": "cracra",
   "version": "1.2.1",
   "description": "CRA editor",
+  "keywords": [],
+  "homepage": "https://gitlab.com/LinkValue/Lab/CraCra#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/LinkValue/Lab/CraCra.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/LinkValue/Lab/CraCra/issues"
+  },
+  "author": "LinkValue",
+  "license": "ISC",
   "main": "./src/server/index.js",
   "scripts": {
     "build": "sagui build",
@@ -15,9 +26,6 @@
     "test:unit": "jest",
     "test:unit:watch": "jest --watch"
   },
-  "keywords": [],
-  "author": "LinkValue",
-  "license": "ISC",
   "devDependencies": {
     "browser-filesaver": "1.1.1",
     "classnames": "2.2.5",
@@ -58,14 +66,9 @@
     "node-fetch": "^1.6.3",
     "sdk-lvconnect": "^1.1.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/LinkValue/Lab/CraCra.git"
+  "jest": {
+    "automock": true
   },
-  "bugs": {
-    "url": "https://gitlab.com/LinkValue/Lab/CraCra/issues"
-  },
-  "homepage": "https://gitlab.com/LinkValue/Lab/CraCra#readme",
   "engines": {
     "node": ">7.9.x"
   }

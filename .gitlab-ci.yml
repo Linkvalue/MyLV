@@ -1,9 +1,8 @@
 image: node:boron
 
 stages:
-#  - test
+  - test
   - deploy
-  - .yarn
 
 cache:
   paths:
@@ -11,24 +10,21 @@ cache:
 
 before_script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - yarn config set cache-folder .yarn
+  - yarn
 
-#unit_tests:
-#  stage: test
-#  script:
-#    - curl -o- -L https://yarnpkg.com/install.sh | bash
-#    - yarn
-#    - yarn test:lint
-#    - yarn test:unit
-#  tags:
-#    - node
+unit_tests:
+  stage: test
+  script:
+    - yarn test:lint
+    - yarn test:unit
+  tags:
+    - node
 
 deploy_staging:
   stage: deploy
   variables:
     NODE_ENV: staging
   script:
-    - yarn
     - yarn dist
     - apt-get update -qy
     - apt-get install -y ruby
@@ -50,7 +46,6 @@ deploy_prod:
   variables:
     NODE_ENV: production
   script:
-    - yarn --production=false
     - yarn dist
     - apt-get update -qy
     - apt-get install -y ruby

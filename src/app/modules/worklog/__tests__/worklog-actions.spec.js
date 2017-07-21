@@ -17,6 +17,8 @@ import {
   WORKLOG_ADD_LABEL
 } from '../worklog-actions'
 
+jest.unmock('../worklog-actions')
+
 describe('worklog/actions', () => {
   describe('fillMorning()', () => {
     it('should return WORKLOG_FILL_MORNING action', () => {
