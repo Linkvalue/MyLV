@@ -3,12 +3,20 @@ const config = require('config')
 
 const routes = require('./routes/routes')
 const lvConnect = require('./helpers/lvconnect.helper')
+const Client = require('./models/client.model')
+const Entry = require('./models/entry.model')
+const Manager = require('./models/manager.model')
 
 const manifest = {
   registrations: [{
     plugin: {
       register: 'good',
       options: config.logs
+    }
+  }, {
+    plugin: {
+      register: './plugins/mongodb.plugin',
+      options: config.mongodb
     }
   }, {
     plugin: 'inert'
@@ -59,6 +67,12 @@ if (require.main === module) {
           }
         }
       })
+
+      server.app.models = {
+        Client,
+        Entry,
+        Manager
+      }
 
       // Handle uncaught promise rejections
       process.on('unhandledRejection', (reason) => {

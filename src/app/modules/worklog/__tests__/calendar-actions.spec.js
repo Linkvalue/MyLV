@@ -1,5 +1,7 @@
 import { CALENDAR_SET_DATE, setDate } from '../calendar-actions'
 
+jest.unmock('../calendar-actions')
+
 describe('calendar/actions', () => {
   describe('setDate()', () => {
     it('should return SET_DATE action', () => {

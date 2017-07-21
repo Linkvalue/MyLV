@@ -12,6 +12,14 @@ module.exports = {
       }, 'stdout']
     }
   },
+  mongodb: {
+    host: 'localhost',
+    port: 27017,
+    database: 'cracra',
+    config: {
+      useMongoClient: true
+    }
+  },
   lvconnect: {
     appId: null,
     appSecret: null,

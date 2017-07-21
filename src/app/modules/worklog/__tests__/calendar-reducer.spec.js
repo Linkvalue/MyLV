@@ -1,6 +1,9 @@
 import calendarReducer from '../calendar-reducer'
 import { CALENDAR_SET_DATE } from '../calendar-actions'
 
+jest.unmock('../calendar-reducer')
+jest.unmock('../calendar-actions')
+
 jest.mock('moment', () => jest.fn(() => ({
   format: jest.fn(() => 'foo-bar-baz')
 })))
