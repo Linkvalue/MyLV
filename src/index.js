@@ -4,7 +4,7 @@ import moment from 'moment'
 import { push } from 'react-router-redux'
 
 import './index.scss'
-import { configureStore } from './app/store/configure-store'
+import { configureStore, browserHistory } from './app/store/configure-store'
 import { Root } from './app/containers/root'
 import { fetchUserData, loginError } from './app/modules/auth/auth-actions'
 import { lvConnect } from './app/modules/auth/lvconnect'
@@ -29,6 +29,6 @@ if (process.env.NODE_ENV !== 'dev') {
 }
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Root store={store} history={browserHistory} />,
   document.getElementById('cracra')
 )

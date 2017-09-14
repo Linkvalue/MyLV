@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -20,13 +21,14 @@ class AuthCallbackPage extends React.Component {
   }
 
   componentDidMount () {
-    if (!this.props.location.query.code) {
+    const [, code] = /code=(\w+)/.exec(this.props.location.search)
+    if (!code) {
       this.setState({
         error: true
       })
     }
 
-    this.props.loginDone(this.props.location.query.code)
+    this.props.loginDone(code)
   }
 
   render () {
@@ -45,6 +47,12 @@ class AuthCallbackPage extends React.Component {
 
     return null
   }
+}
+
+AuthCallbackPage.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string
+  }).isRequired
 }
 
 export default connect(undefined, mapDispatchToProps)(AuthCallbackPage)

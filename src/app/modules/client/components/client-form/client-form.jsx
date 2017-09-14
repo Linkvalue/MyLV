@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
@@ -10,7 +10,7 @@ import styles from './client-form.scss'
 import { userEntry } from '../../client-actions'
 
 const mapStateToProps = state => ({
-  initialValues: state.user
+  initialValues: state.client
 })
 
 const validate = ({ clientName, clientAddress }) => ({

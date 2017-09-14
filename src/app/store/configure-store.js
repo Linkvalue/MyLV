@@ -3,19 +3,22 @@ import thunk from 'redux-thunk'
 import { initialize } from 'redux-form'
 import { routerMiddleware } from 'react-router-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
-import { browserHistory } from 'react-router'
+import { createBrowserHistory } from 'history'
 
 import { rootReducer } from './root-reducer'
 import { fetchUserData } from '../modules/auth/auth-actions'
 
+export const browserHistory = createBrowserHistory()
+
 export function configureStore () {
   const storeEnhancers = [
     autoRehydrate(),
-    applyMiddleware(thunk, routerMiddleware(browserHistory)),
-    window.devToolsExtension && process.env.NODE_ENV !== 'production' ? window.devToolsExtension() : (f) => f
+    applyMiddleware(thunk, routerMiddleware(browserHistory))
   ]
 
-  const store = compose(...storeEnhancers)(createStore)(rootReducer)
+  const isProd = process.env.NODE_ENV !== 'production'
+  const composeEnhancers = (isProd && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+  const store = composeEnhancers(...storeEnhancers)(createStore)(rootReducer)
   persistStore(store, {
     blacklist: ['calendar', 'routing', 'form']
   }, () => {

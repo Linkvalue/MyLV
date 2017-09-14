@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { Link, IndexLink } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import styles from './app-drawer.scss'
 import { canPrintSelector } from '../../modules/client/client-selectors'
@@ -16,7 +16,7 @@ const AppDrawer = ({ canPrint, isConnected }) => (
     <span className='mdl-layout-title'>CraCra</span>
     <nav className='mdl-navigation'>
       {isConnected ? <Link className='mdl-navigation__link' to='/client'>Client</Link> : null}
-      {isConnected && canPrint ? <IndexLink className='mdl-navigation__link' to='/'>Remplir son CRA</IndexLink> : null}
+      {isConnected && canPrint ? <Link className='mdl-navigation__link' to='/'>Remplir son CRA</Link> : null}
     </nav>
   </div>
 )

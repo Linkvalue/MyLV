@@ -7,7 +7,7 @@
 
 .clientForm {
   @extend .mdl-card, .mdl-shadow--2dp;
-  @extend .mdl-cell, .mdl-cell--8-col, .mdl-cell--8-col-tablet, .mdl-cell--2-offset;
+  @extend .mdl-cell, .mdl-cell--8-col, .mdl-cell--2-offset-desktop;
 }
 
 .clientFormGrid {
@@ -15,7 +15,7 @@
 }
 
 .clientFormColumn {
-  @extend .mdl-cell, .mdl-cell--6-col, .mdl-cell--3-offset, .mdl-cell--8-col-tablet;
+  @extend .mdl-cell, .mdl-cell--6-col, .mdl-cell--3-offset-desktop, .mdl-cell--8-col-tablet;
 }
 
 .clientFormText {

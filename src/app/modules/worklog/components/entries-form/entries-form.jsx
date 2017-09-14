@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -88,7 +88,7 @@ const EntriesForm = ({
       <div className={classNames('mdl-card__actions', 'mdl-card--border')}>
         <Link
           className={classNames('mdl-button', 'mdl-button--colored', 'mdl-js-button', 'mdl-js-ripple-effect')}
-          to='/user'>
+          to='/client'>
           Editer
         </Link>
       </div>
