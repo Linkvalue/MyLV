@@ -8,11 +8,13 @@ import {
   WORKLOG_FILL_WEEK,
   WORKLOG_FILL_MONTH,
   WORKLOG_EMPTY_DAY,
-  WORKLOG_ADD_LABEL
+  WORKLOG_ADD_LABEL,
+  WORKLOG_SAVE_SUCCESS
 } from './worklog-actions'
 
 const initialState = {
   entries: {},
+  pending: {},
   labels: {
     'Production': '#ff9999',
     'Contribution': '#99ff99',
@@ -27,6 +29,10 @@ const setEntry = (state, date, label) => ({
   ...state,
   entries: {
     ...state.entries,
+    [date]: label
+  },
+  pending: {
+    ...state.pending,
     [date]: label
   }
 })
@@ -71,6 +77,11 @@ export default function (state = initialState, { type, payload }) {
           ...state.labels,
           [payload.label]: payload.color
         }
+      }
+    case WORKLOG_SAVE_SUCCESS:
+      return {
+        ...state,
+        pending: {}
       }
     default:
       return state

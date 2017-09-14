@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import CalendarDay from '../calendar-day/calendar-day'
 import * as calendarActions from '../../calendar-actions'
 import * as worklogActions from '../../worklog-actions'
+import { hasPendingChangesSelector } from '../../worklog-selectors'
 import { calendarDaysSelector, calendarLabelsSelector } from '../../calendar-selectors'
 import { publicHolidays } from '../../calendar-constants'
 import styles from './calendar.scss'
@@ -17,12 +18,25 @@ const mapStateToProps = (state) => ({
   ...state.calendar,
   ...state.worklog,
   labelsInLegend: calendarLabelsSelector(state),
-  weeks: calendarDaysSelector(state)
+  weeks: calendarDaysSelector(state),
+  hasPendingChanges: hasPendingChangesSelector(state)
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
 
-const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay, labelsInLegend, weeks }) => {
+const Calendar = ({
+  labels,
+  entries,
+  year,
+  month,
+  day,
+  setDate,
+  emptyDay,
+  labelsInLegend,
+  weeks,
+  saveWorklog,
+  hasPendingChanges
+}) => {
   const m = moment(`${year}-${month}`, 'YYYY-MM')
 
   const removeDayEntry = (e, d) => {
@@ -87,6 +101,14 @@ const Calendar = ({ labels, entries, year, month, day, setDate, emptyDay, labels
             {label}
           </span>
         ))}
+      </div>
+      <div className={styles.calendarActions}>
+        <button
+          className='mdl-button mdl-button--colored'
+          onClick={saveWorklog}
+          disabled={!hasPendingChanges}>
+          Enregistrer
+        </button>
       </div>
     </div>
   )

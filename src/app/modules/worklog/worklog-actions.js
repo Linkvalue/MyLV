@@ -1,3 +1,5 @@
+import { fetchWithAuth } from '../auth/auth-actions'
+
 export const WORKLOG_FILL_MORNING = 'WORKLOG_FILL_MORNING'
 export const WORKLOG_FILL_AFTERNOON = 'WORKLOG_FILL_AFTERNOON'
 export const WORKLOG_FILL_DAY = 'WORKLOG_FILL_DAY'
@@ -6,6 +8,7 @@ export const WORKLOG_FILL_MONTH = 'WORKLOG_FILL_MONTH'
 export const WORKLOG_FILL_RANGE = 'WORKLOG_FILL_RANGE'
 export const WORKLOG_EMPTY_DAY = 'WORKLOG_EMPTY_DAY'
 export const WORKLOG_ADD_LABEL = 'WORKLOG_ADD_LABEL'
+export const WORKLOG_SAVE_SUCCESS = 'WORKLOG_SAVE_SUCCESS'
 
 export const fillMorning = (date, label) => ({
   type: WORKLOG_FILL_MORNING,
@@ -46,3 +49,21 @@ export const addLabel = (label, color) => ({
   type: WORKLOG_ADD_LABEL,
   payload: {label, color}
 })
+
+export const worklogSaveSuccess = () => ({
+  type: WORKLOG_SAVE_SUCCESS
+})
+
+export const saveWorklog = () => (dispatch, getState) => {
+  const { worklog: { pending } } = getState()
+
+  if (Object.keys(pending).length === 0) {
+    return Promise.resolve()
+  }
+
+  return dispatch(fetchWithAuth('/api/worklog', {
+    method: 'PUT',
+    body: JSON.stringify(Object.entries(pending).map(([date, label]) => ({ date, label })))
+  }))
+    .then(() => dispatch(worklogSaveSuccess()))
+}

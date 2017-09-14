@@ -5,7 +5,8 @@ import {
   WORKLOG_FILL_DAY,
   WORKLOG_FILL_MONTH,
   WORKLOG_FILL_MORNING,
-  WORKLOG_FILL_WEEK
+  WORKLOG_FILL_WEEK,
+  WORKLOG_SAVE_SUCCESS
 } from '../worklog-actions'
 
 jest.unmock('../worklog-reducer')
@@ -42,6 +43,9 @@ describe('worklog/reducer', () => {
         entries: {
           foo: 'bar',
           'hello-am': 'world'
+        },
+        pending: {
+          'hello-am': 'world'
         }
       })
     })
@@ -56,7 +60,7 @@ describe('worklog/reducer', () => {
       const state = worklogReducer({}, action)
 
       // Then
-      expect(state).toEqual({ entries: { 'hello-pm': 'world' } })
+      expect(state).toEqual({ entries: { 'hello-pm': 'world' }, pending: { 'hello-pm': 'world' } })
     })
   })
 
@@ -69,7 +73,10 @@ describe('worklog/reducer', () => {
       const state = worklogReducer({}, action)
 
       // Then
-      expect(state).toEqual({ entries: { 'hello-am': 'world', 'hello-pm': 'world' } })
+      expect(state).toEqual({
+        entries: { 'hello-am': 'world', 'hello-pm': 'world' },
+        pending: { 'hello-am': 'world', 'hello-pm': 'world' }
+      })
     })
   })
 
@@ -108,7 +115,23 @@ describe('worklog/reducer', () => {
       const state = worklogReducer({ entries: { 'foo-am': 'bar', 'foo-pm': 'bar' } }, action)
 
       // Then
-      expect(state).toEqual({ entries: { 'foo-am': undefined, 'foo-pm': undefined } })
+      expect(state).toEqual({
+        entries: { 'foo-am': undefined, 'foo-pm': undefined },
+        pending: { 'foo-am': undefined, 'foo-pm': undefined }
+      })
+    })
+  })
+
+  describe('WORKLOG_SAVE_SUCCESS', () => {
+    it('should empty pending changes', () => {
+      // Given
+      const action = { type: WORKLOG_SAVE_SUCCESS }
+
+      // When
+      const state = worklogReducer({ pending: { 'foo-am': 'bar', 'foo-pm': 'bar' } }, action)
+
+      // Then
+      expect(state).toEqual({ pending: {} })
     })
   })
 })
