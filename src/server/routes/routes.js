@@ -4,6 +4,7 @@ const postAuth = require('./post-auth')
 const putWorklog = require('./put-worklog')
 const postClient = require('./post-client')
 const postManager = require('./post-manager')
+const getWorklog = require('./get-worklog')
 
 module.exports = [
   getAssets,
@@ -11,5 +12,6 @@ module.exports = [
   postAuth,
   putWorklog,
   postClient,
-  postManager
+  postManager,
+  getWorklog
 ]
