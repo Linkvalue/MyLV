@@ -16,6 +16,9 @@ module.exports = {
     }
   },
   webpack: {
+    output: {
+      publicPath: '/'
+    },
     plugins: [
       new CopyWebpackPlugin([{
         from: path.resolve(__dirname, 'src/{manifest.json,favicon.ico}'),

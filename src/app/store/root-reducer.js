@@ -7,6 +7,7 @@ import worklog from '../modules/worklog/worklog-reducer'
 import client from '../modules/client/client-reducer'
 import settings from '../modules/settings/settings-reducer'
 import auth from '../modules/auth/auth-reducer'
+import display from '../modules/display/display.reducer'
 
 export const rootReducer = combineReducers({
   calendar,
@@ -14,6 +15,7 @@ export const rootReducer = combineReducers({
   client,
   settings,
   auth,
+  display,
 
   // Vendor reducers
   form,
