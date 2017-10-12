@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { REHYDRATE } from 'redux-persist/constants'
 
 import { publicHolidays } from './calendar-constants'
 import {
@@ -96,6 +97,12 @@ export default function (state = initialState, { type, payload }) {
     case WORKLOG_SAVE_SUCCESS:
       return {
         ...state,
+        pending: {}
+      }
+    case REHYDRATE:
+      return {
+        ...state,
+        ...payload.worklog,
         pending: {}
       }
     default:

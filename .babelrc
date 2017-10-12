@@ -1,3 +1,4 @@
 {
-  "presets": ["sagui"]
+  "presets": ["sagui"],
+  "plugins": ["transform-class-properties"]
 }

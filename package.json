@@ -54,6 +54,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "boom": "^5.2.0",
     "config": "^1.26.1",
     "glue": "^4.1.0",
@@ -66,6 +67,9 @@
     "history": "^4.7.2",
     "inert": "^4.2.0",
     "joi": "^10.5.0",
+    "lodash.debounce": "^4.0.8",
+    "material-ui": "1.0.0-beta.16",
+    "material-ui-icons": "1.0.0-beta.15",
     "mongoose": "^4.10.8",
     "node-fetch": "^1.6.3",
     "prop-types": "^15.5.10",
