@@ -1,13 +1,12 @@
 import React from 'react'
-import { TextField } from 'material-ui'
+import { FormControl, FormHelperText, Input, InputLabel } from 'material-ui'
 
 const WrappedTextField = field => (
-  <TextField
-    {...field.input}
-    className={field.className}
-    label={field.label}
-    error={field.meta.error}
-  />
+  <FormControl className={field.className} error={!!field.meta.error} fullWidth={field.fullWidth}>
+    <InputLabel htmlFor={field.input.id}>{field.label}</InputLabel>
+    <Input {...field.input} />
+    <FormHelperText>{field.meta.error}</FormHelperText>
+  </FormControl>
 )
 
 export default WrappedTextField

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Drawer, Divider, List, withStyles } from 'material-ui'
-import { BeachAccess, Person, Event } from 'material-ui-icons'
+import { BeachAccess, Person, Event, Restaurant } from 'material-ui-icons'
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
@@ -25,11 +25,12 @@ const styles = theme => ({
 
 const mapStateToProps = (state) => ({
   isConnected: !!state.auth.user,
+  user: state.auth.user,
   canPrint: canPrintSelector(state),
   shouldCollapseDrawer: state.display.isMobile || state.display.isTablet
 })
 
-const AppDrawer = ({ classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose }) => {
+const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose }) => {
   const links = []
   if (isConnected) {
     links.push(<AppDrawerItem to='/client' icon={<Person />} text='Client' key='client' />)
@@ -40,6 +41,10 @@ const AppDrawer = ({ classes, open, canPrint, isConnected, shouldCollapseDrawer,
       <AppDrawerItem to='/' icon={<Event />} text='Remplir son CRA' key='cra' />,
       <AppDrawerItem to='/holidays' icon={<BeachAccess />} text='Demande de congés' key='holidays' />
     )
+  }
+
+  if (isConnected && ['business', 'hr'].find(role => user.roles.indexOf(role) >= 0)) {
+    links.push(<AppDrawerItem to='/lunches' icon={<Restaurant />} text='Déjeuners' key='lunches' />)
   }
 
   const collapsed = shouldCollapseDrawer || !isConnected

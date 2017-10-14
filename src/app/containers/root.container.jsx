@@ -13,6 +13,9 @@ import LoginPage from '../modules/auth/pages/login-page/login-page'
 import LoginRequired from '../modules/auth/components/loginRequired.hoc'
 import HolidaysPage from '../modules/holidays/pages/holidays.page'
 import HolidayRequestPage from '../modules/holidays/pages/holidayRequest.page'
+import LunchesPage from '../modules/lunches/pages/lunches.page'
+import EditLunchPage from '../modules/lunches/pages/editLunch.page'
+import NewLunchPage from '../modules/lunches/pages/newLunch.page'
 import theme from '../modules/display/theme'
 
 export const Root = ({ store, history }) => (
@@ -26,6 +29,9 @@ export const Root = ({ store, history }) => (
             <Route exact path='/client' component={LoginRequired(ClientPage)} />
             <Route exact path='/holidays/new' component={LoginRequired(HolidayRequestPage)} />
             <Route exact path='/holidays' component={LoginRequired(HolidaysPage)} />
+            <Route exact path='/lunches/new' component={LoginRequired(NewLunchPage)} />
+            <Route exact path='/lunches/:id' component={LoginRequired(EditLunchPage)} />
+            <Route exact path='/lunches' component={LoginRequired(LunchesPage)} />
             <Route exact path='/' component={LoginRequired(WorklogPage)} />
           </Switch>
         </App>
