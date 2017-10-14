@@ -6,6 +6,11 @@ const postClient = require('./post-client')
 const postManager = require('./post-manager')
 const getWorklog = require('./get-worklog')
 
+const getLunches = require('./lunches/getLunches.route')
+const postLunch = require('./lunches/postLunch.route')
+const putLunch = require('./lunches/putLunch.route')
+const getLunch = require('./lunches/getLunch.route')
+
 module.exports = [
   getAssets,
   getMe,
@@ -13,5 +18,9 @@ module.exports = [
   putWorklog,
   postClient,
   postManager,
-  getWorklog
+  getWorklog,
+  getLunch,
+  getLunches,
+  postLunch,
+  putLunch
 ]

@@ -20,6 +20,10 @@ function mongodbSerializer (value, omit) {
     payload = Object.assign(value.toJSON(), {
       id: value._id.toString()
     })
+  } else if (value._id) {
+    payload = Object.assign({}, value, {
+      id: value._id
+    })
   }
 
   omit.concat(['_id', '__v']).forEach((key) => {
