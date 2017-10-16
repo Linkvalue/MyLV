@@ -23,6 +23,9 @@ module.exports = {
       workerReporting: reportingFactory('./logs/hapi/hapi-worker.log', { worker: '*' })
     }
   },
+  mongodb: {
+    uri: process.env.MONGODB_URI
+  },
   lvconnect: {
     appId: process.env.LVCONNECT_STAGING_APP_ID,
     appSecret: process.env.LVCONNECT_STAGING_APP_SECRET
