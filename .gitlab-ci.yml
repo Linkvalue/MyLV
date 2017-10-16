@@ -9,15 +9,14 @@ cache:
     - node_modules/
 
 before_script:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn
+  - npm install
+  - npm rebuild
 
 unit_tests:
   stage: test
   script:
-    - yarn test:lint
-    - yarn test:unit
+    - npm run test:lint
+    - npm run test:unit
   tags:
     - node
 
@@ -26,7 +25,7 @@ deploy_staging:
   variables:
     NODE_ENV: staging
   script:
-    - yarn dist
+    - npm run dist
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl
@@ -47,7 +46,7 @@ deploy_prod:
   variables:
     NODE_ENV: production
   script:
-    - yarn dist
+    - npm run dist
     - apt-get update -qy
     - apt-get install -y ruby
     - gem install dpl

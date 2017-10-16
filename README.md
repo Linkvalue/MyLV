@@ -26,13 +26,13 @@ This file can override any fields contained in other configuration files. More i
 Next, you'll have to install the dependencies by running:
 
 ```
-yarn
+npm
 ```
 
 To build the frontend application for production use, you'll have to run:
 
 ```
-yarn dist
+npm run dist
 ```
 
 Finally, to start the application in production environment:
@@ -50,13 +50,13 @@ testing and feature testing which opens a window for regressions so be careful.
 To start the frontend watch mode build, run:
 
 ```
-yarn start
+npm run start
 ```
 
 And for the backend watch mode, run:
 
 ```
-yarn start:server
+npm run start:server
 ```
 
 ## Licence
