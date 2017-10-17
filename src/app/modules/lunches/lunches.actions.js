@@ -31,3 +31,8 @@ export const putLunch = ({ id, ...lunch }) => dispatch =>
     method: 'PUT',
     body: lunch
   }))
+
+export const LUNCH_DELETE_SUCCESS = 'LUNCH_DELETE_SUCCESS'
+export const deleteLunch = id => dispatch =>
+  dispatch(fetchWithAuth(`/api/lunches/${id}`, { method: 'DELETE' }))
+    .then(() => dispatch({ type: LUNCH_DELETE_SUCCESS, payload: { id } }))

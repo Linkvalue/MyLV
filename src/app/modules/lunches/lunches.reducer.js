@@ -1,4 +1,5 @@
 import {
+  LUNCH_DELETE_SUCCESS,
   LUNCHES_FETCH_DETAILS_ERROR, LUNCHES_FETCH_DETAILS_START, LUNCHES_FETCH_DETAILS_SUCCESS,
   LUNCHES_FETCH_SUCCESS
 } from './lunches.actions'
@@ -39,6 +40,13 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: false
+      }
+    case LUNCH_DELETE_SUCCESS:
+      const { [payload.id]: deleted, ...remaining } = state.lunchesById
+      return {
+        ...state,
+        lunchesById: remaining,
+        lunchesList: state.lunchesList.filter(lunchId => lunchId !== deleted.id)
       }
     default:
       return state

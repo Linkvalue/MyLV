@@ -36,6 +36,8 @@ class LunchRow extends Component {
 
   handleRequestClose = () => this.setState({ open: false })
 
+  handleLunchDelete = () => this.props.onLunchDelete(this.props.lunch.id)
+
   render () {
     const { lunch, classes } = this.props
 
@@ -53,7 +55,7 @@ class LunchRow extends Component {
             onRequestClose={this.handleRequestClose}
           >
             <MenuItem onClick={this.handleRequestClose} component={Link} to={`/lunches/${lunch.id}`}>Éditer</MenuItem>
-            <MenuItem onClick={this.handleRequestClose}>Supprimer</MenuItem>
+            <MenuItem onClick={this.handleLunchDelete}>Supprimer</MenuItem>
           </Menu>
         </TableCell>
         <TableCell>{lunch.date.toString()}</TableCell>
@@ -70,7 +72,8 @@ LunchRow.propTypes = {
     date: PropTypes.any.isRequired,
     attendants: PropTypes.array.isRequired
   }).isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  onLunchDelete: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(LunchRow)
