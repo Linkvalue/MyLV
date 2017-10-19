@@ -1,4 +1,4 @@
-jest.unmock('../get-me')
+jest.unmock('../getMe.route')
 
 const getMe = require('../getMe.route')
 

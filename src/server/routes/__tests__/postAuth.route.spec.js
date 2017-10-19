@@ -1,5 +1,5 @@
 jest.unmock('joi')
-jest.unmock('../post-auth')
+jest.unmock('../postAuth.route')
 
 jest.mock('boom', () => ({ wrap: jest.fn(err => ({ wrapped: err })) }))
 jest.mock('../../helpers/lvconnect.helper', () => ({

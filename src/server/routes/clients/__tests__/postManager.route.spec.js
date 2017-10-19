@@ -1,16 +1,16 @@
 jest.unmock('joi')
-jest.unmock('../post-client')
+jest.unmock('../postManager.route')
 
-const postClient = require('../clients/postClient.route')
+const postManager = require('../postManager.route')
 
-describe('POST /api/clients', () => {
+describe('POST /api/managers', () => {
   let request
   let reply
   beforeEach(() => {
     const server = {
       app: {
         models: {
-          Client: {
+          Manager: {
             create: jest.fn(obj => Promise.resolve(obj))
           }
         }
@@ -21,19 +21,20 @@ describe('POST /api/clients', () => {
     reply = jest.fn()
   })
 
-  it('should return created client', async () => {
+  it('should return created manager', async () => {
     // Given
     expect.assertions(2)
     request.payload = {
-      name: 'foo',
-      address: 'bar'
+      firstName: 'foo',
+      lastName: 'bar',
+      clientId: 'hello'
     }
 
     // When
-    await postClient.handler(request, reply)
+    await postManager.handler(request, reply)
 
     // Then
-    expect(request.server.app.models.Client.create).toHaveBeenCalledWith(request.payload)
+    expect(request.server.app.models.Manager.create).toHaveBeenCalledWith(request.payload)
     expect(reply).toHaveBeenCalledWith(request.payload)
   })
 })

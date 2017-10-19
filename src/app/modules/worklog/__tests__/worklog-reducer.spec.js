@@ -57,7 +57,7 @@ describe('worklog/reducer', () => {
       const action = { type: WORKLOG_FILL_AFTERNOON, payload: { date: 'hello', label: 'world' } }
 
       // When
-      const state = worklogReducer({}, action)
+      const state = worklogReducer({ entries: {} }, action)
 
       // Then
       expect(state).toEqual({ entries: { 'hello-pm': 'world' }, pending: { 'hello-pm': 'world' } })
@@ -70,7 +70,7 @@ describe('worklog/reducer', () => {
       const action = { type: WORKLOG_FILL_DAY, payload: { day: 'hello', label: 'world' } }
 
       // When
-      const state = worklogReducer({}, action)
+      const state = worklogReducer({ entries: {} }, action)
 
       // Then
       expect(state).toEqual({
@@ -86,7 +86,7 @@ describe('worklog/reducer', () => {
       const action = { type: WORKLOG_FILL_WEEK, payload: { day: 'hello', label: 'world' } }
 
       // When
-      const state = worklogReducer({}, action)
+      const state = worklogReducer({ entries: {} }, action)
 
       // Then
       expect(state).toMatchSnapshot()
@@ -99,7 +99,7 @@ describe('worklog/reducer', () => {
       const action = { type: WORKLOG_FILL_MONTH, payload: { month: '0000-00', label: 'world' } }
 
       // When
-      const state = worklogReducer({}, action)
+      const state = worklogReducer({ entries: {} }, action)
 
       // Then
       expect(state).toMatchSnapshot()
@@ -117,7 +117,7 @@ describe('worklog/reducer', () => {
       // Then
       expect(state).toEqual({
         entries: { 'foo-am': undefined, 'foo-pm': undefined },
-        pending: { 'foo-am': undefined, 'foo-pm': undefined }
+        pending: { 'foo-am': null, 'foo-pm': null }
       })
     })
   })

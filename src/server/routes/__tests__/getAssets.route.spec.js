@@ -1,4 +1,4 @@
-jest.unmock('../get-assets')
+jest.unmock('../getAssets.route')
 
 const getAssets = require('../getAssets.route')
 

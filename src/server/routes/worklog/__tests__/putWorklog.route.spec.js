@@ -1,13 +1,13 @@
 jest.unmock('moment')
 jest.unmock('joi')
-jest.unmock('../put-worklog')
+jest.unmock('../putWorklog.route')
 
 jest.mock('boom', () => ({
   badRequest: jest.fn(message => message)
 }))
 
 const moment = require('moment')
-const putWorklog = require('../worklog/putWorklog.route')
+const putWorklog = require('../putWorklog.route')
 
 describe('PUT /api/worklog', () => {
   let request
@@ -17,7 +17,8 @@ describe('PUT /api/worklog', () => {
       app: {
         models: {
           Entry: {
-            create: jest.fn(() => Promise.resolve())
+            create: jest.fn(() => Promise.resolve()),
+            deleteMany: jest.fn(() => Promise.resolve())
           }
         }
       }
@@ -75,7 +76,8 @@ describe('PUT /api/worklog', () => {
     request.payload = [{
       date: `${moment().add(1, 'months').format('YYYY-MM-DD')}-am`,
       client: 'foo',
-      manager: 'bar'
+      manager: 'bar',
+      label: 'yolo'
     }]
 
     // When

@@ -5,8 +5,10 @@ if (endpoint) {
   LVConnectSDK.overrideLVConnectEndpoint(endpoint)
 }
 
-module.exports = new LVConnectSDK({
+const lvConnect = new LVConnectSDK({
   mode: 'private',
   appId,
   appSecret
 })
+
+module.exports = lvConnect
