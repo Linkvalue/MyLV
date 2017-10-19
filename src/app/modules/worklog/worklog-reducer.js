@@ -34,9 +34,9 @@ const setEntry = (state, date, label) => ({
     ...state.entries,
     [date]: label
   },
-  pending: {
+  pending: state.entries[date] === label ? state.pending : {
     ...state.pending,
-    [date]: label
+    [date]: label || null
   }
 })
 

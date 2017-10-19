@@ -11,7 +11,7 @@ export const loginError = () => ({
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 
 export const fetchWithAuth = (url, options = {}) => (dispatch, getState) =>
-  lvConnect.api(cracraEndpoint + url, { ...options, body: options.body && JSON.stringify(options.body) })
+  lvConnect.api(cracraEndpoint + url, options)
     .then((res) => res.status >= 400 ? Promise.reject(res) : res.json())
 
 export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA'
