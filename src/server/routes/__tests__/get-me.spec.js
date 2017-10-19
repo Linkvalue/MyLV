@@ -1,6 +1,6 @@
 jest.unmock('../get-me')
 
-const getMe = require('../get-me')
+const getMe = require('../getMe.route')
 
 describe('GET /api/me', () => {
   let request

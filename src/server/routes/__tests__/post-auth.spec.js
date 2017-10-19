@@ -6,7 +6,7 @@ jest.mock('../../helpers/lvconnect.helper', () => ({
   proxy: jest.fn(() => Promise.resolve({ token: 'yolo' }))
 }))
 
-const getAssets = require('../post-auth')
+const getAssets = require('../postAuth.route')
 const lvConnect = require('../../helpers/lvconnect.helper')
 
 describe('POST /api/auth', () => {

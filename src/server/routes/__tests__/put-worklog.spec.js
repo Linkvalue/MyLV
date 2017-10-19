@@ -7,7 +7,7 @@ jest.mock('boom', () => ({
 }))
 
 const moment = require('moment')
-const putWorklog = require('../put-worklog')
+const putWorklog = require('../worklog/putWorklog.route')
 
 describe('PUT /api/worklog', () => {
   let request

@@ -11,7 +11,7 @@ module.exports = {
         date: Joi.string().regex(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])-(am|pm)$/).required(),
         client: Joi.string(),
         manager: Joi.string(),
-        label: Joi.string().required()
+        label: Joi.alternatives().try(Joi.any().allow(null), Joi.string())
       }))
     }
   },
@@ -37,11 +37,20 @@ module.exports = {
       return res(Boom.badRequest('One or more entries have specified a client without a manager'))
     }
 
-    const entries = req.payload.map(entry => Object.assign(entry, { userId: req.auth.credentials.id }))
-    return req.server.app.models.Entry.create(entries)
+    const entriesToAdd = req.payload
+      .map(entry => Object.assign(entry, { userId: req.auth.credentials.id }))
+      .filter(entry => !!entry.label)
+
+    return req.server.app.models.Entry.deleteMany({
+      userId: req.auth.credentials.id,
+      date: { $in: req.payload.map(entry => entry.date) }
+    })
       .then(() => {
-        res({ success: true })
+        if (entriesToAdd.length > 0) {
+          return req.server.app.models.Entry.create(entriesToAdd)
+        }
       })
+      .then(() => res({ success: true }))
       .catch(err => res(Boom.wrap(err)))
   }
 }

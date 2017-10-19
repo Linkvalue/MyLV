@@ -1,7 +1,7 @@
 jest.unmock('joi')
 jest.unmock('../post-client')
 
-const postClient = require('../post-client')
+const postClient = require('../clients/postClient.route')
 
 describe('POST /api/clients', () => {
   let request

@@ -1,10 +1,12 @@
-const getAssets = require('./get-assets')
-const getMe = require('./get-me')
-const postAuth = require('./post-auth')
-const putWorklog = require('./put-worklog')
-const postClient = require('./post-client')
-const postManager = require('./post-manager')
-const getWorklog = require('./get-worklog')
+const getAssets = require('./getAssets.route')
+const getMe = require('./getMe.route')
+const postAuth = require('./postAuth.route')
+
+const postClient = require('./clients/postClient.route')
+const postManager = require('./clients/postManager.route')
+
+const putWorklog = require('./worklog/putWorklog.route')
+const getWorklog = require('./worklog/getWorklog.route')
 
 const getLunches = require('./lunches/getLunches.route')
 const postLunch = require('./lunches/postLunch.route')

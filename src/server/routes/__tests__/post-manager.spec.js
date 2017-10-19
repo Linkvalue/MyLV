@@ -1,7 +1,7 @@
 jest.unmock('joi')
 jest.unmock('../post-manager')
 
-const postManager = require('../post-manager')
+const postManager = require('../clients/postManager.route')
 
 describe('POST /api/managers', () => {
   let request

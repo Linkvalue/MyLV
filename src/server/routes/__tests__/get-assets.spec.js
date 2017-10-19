@@ -1,6 +1,6 @@
 jest.unmock('../get-assets')
 
-const getAssets = require('../get-assets')
+const getAssets = require('../getAssets.route')
 
 describe('GET /{path*}', () => {
   let request
