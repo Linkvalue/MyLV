@@ -2,5 +2,8 @@
   "extends": "sagui",
   "env": {
     "jest": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"]
   }
 }

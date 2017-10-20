@@ -31,7 +31,7 @@ const NewLunchPage = props => (
 )
 
 NewLunchPage.propTypes = {
-  postLunch: PropTypes.func.isRequired
+  postLunch: PropTypes.func.isRequired,
 }
 
 export default connect(undefined, mapDispatchToProps)(NewLunchPage)

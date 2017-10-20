@@ -6,7 +6,7 @@ import { Button, Card, CardActions, CardContent, Grid, Typography } from 'materi
 import { stopProcessReminder } from '../../settings/settings-actions'
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  stopProcessReminder
+  stopProcessReminder,
 }, dispatch)
 
 const Process = ({ stopProcessReminder, classes }) => (

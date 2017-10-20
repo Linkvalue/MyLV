@@ -3,7 +3,7 @@ jest.unmock('../postAuth.route')
 
 jest.mock('boom', () => ({ wrap: jest.fn(err => ({ wrapped: err })) }))
 jest.mock('../../helpers/lvconnect.helper', () => ({
-  proxy: jest.fn(() => Promise.resolve({ token: 'yolo' }))
+  proxy: jest.fn(() => Promise.resolve({ token: 'yolo' })),
 }))
 
 const getAssets = require('../postAuth.route')

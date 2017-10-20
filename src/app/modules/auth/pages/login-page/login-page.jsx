@@ -8,11 +8,11 @@ import { lvConnect } from '../../lvconnect'
 
 const mapStateToProps = (state) => ({
   isConnected: !!state.auth.user,
-  error: state.auth.error
+  error: state.auth.error,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  push
+  push,
 }, dispatch)
 
 class LoginPage extends Component {

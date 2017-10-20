@@ -8,7 +8,7 @@ import { loginDone, fetchUserData } from '../../auth-actions'
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   loginDone,
-  fetchUserData
+  fetchUserData,
 }, dispatch)
 
 class AuthCallbackPage extends React.Component {
@@ -16,7 +16,7 @@ class AuthCallbackPage extends React.Component {
     super(props, context)
 
     this.state = {
-      error: false
+      error: false,
     }
   }
 
@@ -24,7 +24,7 @@ class AuthCallbackPage extends React.Component {
     const [, code] = /code=(\w+)/.exec(this.props.location.search)
     if (!code) {
       this.setState({
-        error: true
+        error: true,
       })
     }
 
@@ -51,8 +51,8 @@ class AuthCallbackPage extends React.Component {
 
 AuthCallbackPage.propTypes = {
   location: PropTypes.shape({
-    search: PropTypes.string
-  }).isRequired
+    search: PropTypes.string,
+  }).isRequired,
 }
 
 export default connect(undefined, mapDispatchToProps)(AuthCallbackPage)

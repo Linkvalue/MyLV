@@ -9,8 +9,8 @@ describe('partners.selectors', () => {
       const state = {
         partners: {
           partnersById: { foo: { id: 'foo' } },
-          partnersSearchResults: ['foo']
-        }
+          partnersSearchResults: ['foo'],
+        },
       }
 
       // When
@@ -27,8 +27,8 @@ describe('partners.selectors', () => {
       const state = {
         partners: {
           partnersById: { foo: { id: 'foo' } },
-          partnersList: ['foo']
-        }
+          partnersList: ['foo'],
+        },
       }
 
       // When

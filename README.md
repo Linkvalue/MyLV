@@ -1,4 +1,4 @@
-# CraCra 
+# CraCra
 
 [![Travis](https://img.shields.io/travis/LinkValue/CraCra.svg?style=flat-square)](https://travis-ci.org/LinkValue/CraCra)
 
@@ -40,6 +40,39 @@ Finally, to start the application in production environment:
 ```
 NODE_ENV=production node .
 ```
+
+## Development
+
+You can run the server and its database in a docker by running :
+
+```
+docker-compose up
+```
+
+Note : You will need to update/create the configuration file `config/local.js` to run node on correct host.
+
+```
+module.exports = {
+  host: {
+    hostname: '0.0.0.0',
+  },
+  lvconnect: {
+    appId: '731c8e87-xxxx-xxxx-xxxx-xxxxxxxxxxx',
+    appSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    endpoint: 'https://lvconnect.link-value.fr', // use lvconnect prod
+  },
+  mongodb: {
+    host: 'db', // http://db is the docker address in the default network
+    port: 27017,
+    database: 'cracra',
+    config: {
+      useMongoClient: true,
+    },
+  },
+}
+```
+
+
 
 ## Contributing
 

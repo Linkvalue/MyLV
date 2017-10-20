@@ -23,14 +23,14 @@ export const fetchLunchDetails = lunchId => dispatch => {
 export const postLunch = lunch => dispatch => {
   return dispatch(fetchWithAuth('/api/lunches', {
     method: 'POST',
-    body: lunch
+    body: lunch,
   }))
 }
 
 export const putLunch = ({ id, ...lunch }) => dispatch =>
   dispatch(fetchWithAuth(`/api/lunches/${id}`, {
     method: 'PUT',
-    body: lunch
+    body: lunch,
   }))
 
 export const LUNCH_DELETE_SUCCESS = 'LUNCH_DELETE_SUCCESS'

@@ -3,7 +3,7 @@ jest.unmock('joi')
 jest.unmock('../putWorklog.route')
 
 jest.mock('boom', () => ({
-  badRequest: jest.fn(message => message)
+  badRequest: jest.fn(message => message),
 }))
 
 const moment = require('moment')
@@ -18,10 +18,10 @@ describe('PUT /api/worklog', () => {
         models: {
           Entry: {
             create: jest.fn(() => Promise.resolve()),
-            deleteMany: jest.fn(() => Promise.resolve())
-          }
-        }
-      }
+            deleteMany: jest.fn(() => Promise.resolve()),
+          },
+        },
+      },
     }
     const auth = { credentials: { id: 'hello' } }
 
@@ -32,7 +32,7 @@ describe('PUT /api/worklog', () => {
   it('should return an out of bounds error when at least one date is invalid', () => {
     // Given
     request.payload = [{
-      date: `${moment().add(3, 'months').format('YYYY-MM-DD')}-am`
+      date: `${moment().add(3, 'months').format('YYYY-MM-DD')}-am`,
     }]
 
     // When
@@ -46,7 +46,7 @@ describe('PUT /api/worklog', () => {
     // Given
     request.payload = [{
       date: `${moment().add(1, 'months').format('YYYY-MM-DD')}-am`,
-      client: 'foo'
+      client: 'foo',
     }]
 
     // When
@@ -60,7 +60,7 @@ describe('PUT /api/worklog', () => {
     // Given
     request.payload = [{
       date: `${moment().add(1, 'months').format('YYYY-MM-DD')}-am`,
-      manager: 'foo'
+      manager: 'foo',
     }]
 
     // When
@@ -77,7 +77,7 @@ describe('PUT /api/worklog', () => {
       date: `${moment().add(1, 'months').format('YYYY-MM-DD')}-am`,
       client: 'foo',
       manager: 'bar',
-      label: 'yolo'
+      label: 'yolo',
     }]
 
     // When

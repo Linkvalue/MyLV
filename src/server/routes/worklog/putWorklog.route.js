@@ -11,9 +11,9 @@ module.exports = {
         date: Joi.string().regex(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])-(am|pm)$/).required(),
         client: Joi.string(),
         manager: Joi.string(),
-        label: Joi.alternatives().try(Joi.any().allow(null), Joi.string())
-      }))
-    }
+        label: Joi.alternatives().try(Joi.any().allow(null), Joi.string()),
+      })),
+    },
   },
   handler (req, res) {
     let isOutOfBounds
@@ -43,7 +43,7 @@ module.exports = {
 
     return req.server.app.models.Entry.deleteMany({
       userId: req.auth.credentials.id,
-      date: { $in: req.payload.map(entry => entry.date) }
+      date: { $in: req.payload.map(entry => entry.date) },
     })
       .then(() => {
         if (entriesToAdd.length > 0) {
@@ -52,5 +52,5 @@ module.exports = {
       })
       .then(() => res({ success: true }))
       .catch(err => res(Boom.wrap(err)))
-  }
+  },
 }

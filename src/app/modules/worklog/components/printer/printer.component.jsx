@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
   calendar: state.calendar,
   entries: state.worklog.entries,
   labels: calendarLabelsSelector(state),
-  totalExpectedDays: calendarExpectedDaysSelector(state)
+  totalExpectedDays: calendarExpectedDaysSelector(state),
 })
 
 const Printer = ({ user, client, calendar, entries, labels, totalExpectedDays }) => {
@@ -48,7 +48,7 @@ const Printer = ({ user, client, calendar, entries, labels, totalExpectedDays })
               {listDays.map((i) => (<td key={i} className={styles.printerCell}>{
                 entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 1 : 0
               }</td>))}
-            </tr>
+            </tr>,
           ], [])}
           <tr className={styles.printerSeparator} />
           <tr>

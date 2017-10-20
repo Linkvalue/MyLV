@@ -6,7 +6,7 @@ import {
   WORKLOG_FILL_MONTH,
   WORKLOG_FILL_MORNING,
   WORKLOG_FILL_WEEK,
-  WORKLOG_SAVE_SUCCESS
+  WORKLOG_SAVE_SUCCESS,
 } from '../worklog-actions'
 
 jest.unmock('../worklog-reducer')
@@ -24,7 +24,7 @@ jest.mock('moment', () => jest.fn((stringDate) => {
     }),
     format: jest.fn(() => `foo-${counter}`),
     daysInMonth: jest.fn(() => 30),
-    day: jest.fn(() => Number(stringDate.slice(-2)) % 7)
+    day: jest.fn(() => Number(stringDate.slice(-2)) % 7),
   }
   return momentMock
 }))
@@ -42,11 +42,11 @@ describe('worklog/reducer', () => {
       expect(state).toEqual({
         entries: {
           foo: 'bar',
-          'hello-am': 'world'
+          'hello-am': 'world',
         },
         pending: {
-          'hello-am': 'world'
-        }
+          'hello-am': 'world',
+        },
       })
     })
   })
@@ -75,7 +75,7 @@ describe('worklog/reducer', () => {
       // Then
       expect(state).toEqual({
         entries: { 'hello-am': 'world', 'hello-pm': 'world' },
-        pending: { 'hello-am': 'world', 'hello-pm': 'world' }
+        pending: { 'hello-am': 'world', 'hello-pm': 'world' },
       })
     })
   })
@@ -117,7 +117,7 @@ describe('worklog/reducer', () => {
       // Then
       expect(state).toEqual({
         entries: { 'foo-am': undefined, 'foo-pm': undefined },
-        pending: { 'foo-am': null, 'foo-pm': null }
+        pending: { 'foo-am': null, 'foo-pm': null },
       })
     })
   })

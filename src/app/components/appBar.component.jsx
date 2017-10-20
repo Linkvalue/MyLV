@@ -11,7 +11,7 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  withStyles
+  withStyles,
 } from 'material-ui'
 import { Menu as MenuIcon } from 'material-ui-icons'
 
@@ -22,29 +22,29 @@ const styles = () => ({
   appBar: {
     position: 'absolute',
     width: '100%',
-    order: 1
+    order: 1,
   },
   appBarDesktop: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`
+    width: `calc(100% - ${drawerWidth}px)`,
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20
+    marginRight: 20,
   },
   '@media print': {
     appBar: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 })
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
-  shouldCollapseBar: state.display.isDesktop
+  shouldCollapseBar: state.display.isDesktop,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ logout }, dispatch)
@@ -55,7 +55,7 @@ class AppBar extends React.Component {
 
     this.state = {
       anchor: null,
-      open: false
+      open: false,
     }
   }
 
@@ -116,11 +116,11 @@ AppBar.propTypes = {
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    profilePictureUrl: PropTypes.string.isRequired
+    profilePictureUrl: PropTypes.string.isRequired,
   }),
   logout: PropTypes.func.isRequired,
   shouldCollapseBar: PropTypes.bool.isRequired,
-  onDrawerOpen: PropTypes.func.isRequired
+  onDrawerOpen: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AppBar))

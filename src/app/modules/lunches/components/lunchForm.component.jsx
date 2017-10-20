@@ -13,18 +13,18 @@ const validate = ({ label, date, attendees }) => {
   return {
     label: !label ? 'Obligatoire' : null,
     date: !date ? 'Obligatoire' : null,
-    attendees: attendees.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null
+    attendees: attendees.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null,
   }
 }
 
 const styles = () => ({
   lunchForm: {
     maxWidth: 800,
-    margin: '0 auto'
+    margin: '0 auto',
   },
   lunchInput: {
-    width: 300
-  }
+    width: 300,
+  },
 })
 
 const LunchForm = ({ handleSubmit, render, classes, valid, pristine }) => (
@@ -56,7 +56,7 @@ const LunchForm = ({ handleSubmit, render, classes, valid, pristine }) => (
             <FieldArray name='attendees' component={PartnerList} />
           </Grid>
         </Grid>
-      )
+      ),
     })}
   </form>
 )
@@ -65,7 +65,7 @@ LunchForm.propTypes = {
   valid: PropTypes.bool.isRequired,
   pristine: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  render: PropTypes.func.isRequired
+  render: PropTypes.func.isRequired,
 }
 
 const HookedLunchForm = reduxForm({
@@ -75,7 +75,7 @@ const HookedLunchForm = reduxForm({
     console.log(moment(formData.date, 'DD/MM/YYYY').toISOString())
     return onFormSubmit({ ...formData, date: moment(formData.date, 'DD/MM/YYYY').toISOString() })
       .then(() => dispatch(push('/lunches')))
-  }
+  },
 })(LunchForm)
 
 export default withStyles(styles)(HookedLunchForm)

@@ -5,7 +5,7 @@ import { cracraEndpoint, lvConnect } from './lvconnect'
 
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const loginError = () => ({
-  type: LOGIN_ERROR
+  type: LOGIN_ERROR,
 })
 
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
@@ -17,12 +17,12 @@ export const fetchWithAuth = (url, options = {}) => (dispatch, getState) =>
 export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA'
 export const receiveUserData = (userData) => ({
   type: RECEIVE_USER_DATA,
-  payload: userData
+  payload: userData,
 })
 
 export const RECEIVE_USER_DATA_FAILED = 'RECEIVE_USER_DATA_FAILED'
 export const receiveUserDataFailed = () => ({
-  type: RECEIVE_USER_DATA_FAILED
+  type: RECEIVE_USER_DATA_FAILED,
 })
 
 export const fetchUserData = () => (dispatch) =>
@@ -41,6 +41,6 @@ export const logout = () => {
   lvConnect.logout()
 
   return {
-    type: LOGOUT
+    type: LOGOUT,
   }
 }

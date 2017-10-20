@@ -8,12 +8,12 @@ import { getPartnersSearchResults } from '../modules/partners/partners.selectors
 import { fetchPartnersSearch, clearPartnersSearch } from '../modules/partners/partners.actions'
 
 const mapStateToProps = state => ({
-  partners: getPartnersSearchResults(state)
+  partners: getPartnersSearchResults(state),
 })
 
 const mapDispatchToProps = (dispatch, { excludeSelf }) => bindActionCreators({
   fetchPartnersSearch: ({ value }) => fetchPartnersSearch(value, excludeSelf),
-  clearPartnersSearch
+  clearPartnersSearch,
 }, dispatch)
 
 const renderPartnerName = partner => `${partner.firstName} ${partner.lastName}`
@@ -32,11 +32,11 @@ PartnerAutocomplete.propTypes = {
   partners: PropTypes.array.isRequired,
   excludeSelf: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  fetchPartnersSearch: PropTypes.func.isRequired
+  fetchPartnersSearch: PropTypes.func.isRequired,
 }
 
 PartnerAutocomplete.defaultProps = {
-  excludeSelf: false
+  excludeSelf: false,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PartnerAutocomplete)

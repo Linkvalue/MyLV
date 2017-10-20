@@ -9,31 +9,31 @@ import SelectField from '../../../components/selectField.component'
 import * as worklogActions from '../worklog-actions'
 
 const validate = ({ label }) => ({
-  label: !label ? 'Obligatoire' : null
+  label: !label ? 'Obligatoire' : null,
 })
 
 const mapStateToProps = (state) => ({
   ...state.calendar,
   labels: state.worklog.labels,
   initialValues: {
-    label: 'Production'
-  }
+    label: 'Production',
+  },
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(worklogActions, dispatch)
 
 const styles = theme => ({
   selectInput: {
-    width: '100%'
+    width: '100%',
   },
   firstCard: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   cardActions: {
     flexWrap: 'wrap',
     minHeight: 52,
-    height: 'auto'
-  }
+    height: 'auto',
+  },
 })
 
 const EntriesForm = ({
@@ -47,7 +47,7 @@ const EntriesForm = ({
   month,
   day,
   handleSubmit,
-  classes
+  classes,
 }) => (
   <Grid item md={4} xs={12}>
     <Card className={classes.firstCard}>
@@ -101,7 +101,7 @@ const EntriesForm = ({
 
 const HookedEntriesForm = reduxForm({
   form: 'entriesForm',
-  validate
+  validate,
 })(EntriesForm)
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HookedEntriesForm))

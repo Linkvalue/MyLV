@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
   ...state.worklog,
   labelsInLegend: calendarLabelsSelector(state),
   weeks: calendarDaysSelector(state),
-  hasPendingChanges: hasPendingChangesSelector(state)
+  hasPendingChanges: hasPendingChangesSelector(state),
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
@@ -29,18 +29,18 @@ const styles = theme => ({
   calendarContent: { position: 'relative' },
   calendarTitle: {
     textTransform: 'capitalize',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   calendarArrow: {
     position: 'absolute',
-    top: theme.spacing.unit
+    top: theme.spacing.unit,
   },
   calendarArrowLeft: { left: 0 },
   calendarArrowRight: { right: 0 },
   calendarBody: {
     width: '100%',
     borderCollapse: 'collapse',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   calendarCell: {
     position: 'relative',
@@ -50,7 +50,7 @@ const styles = theme => ({
     height: theme.spacing.unit * 4,
     verticalAlign: 'middle',
     textAlign: 'center',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   calendarCellEmpty: { cursor: 'auto' },
   calendarCellWeekend: { color: 'lightgrey' },
@@ -59,14 +59,14 @@ const styles = theme => ({
     top: theme.spacing.unit,
     left: theme.spacing.unit,
     fontSize: '0.8rem',
-    zIndex: 2
+    zIndex: 2,
   },
   legendColor: {
     display: 'inline-block',
     width: theme.spacing.unit * 2,
     height: theme.spacing.unit,
-    margin: `0 ${theme.spacing.unit}px`
-  }
+    margin: `0 ${theme.spacing.unit}px`,
+  },
 })
 
 class Calendar extends Component {
@@ -94,7 +94,7 @@ class Calendar extends Component {
       weeks,
       saveWorklog,
       hasPendingChanges,
-      classes
+      classes,
     } = this.props
     const m = moment(`${year}-${month}`, 'YYYY-MM')
     const calendarEntries = { ...entries, ...pending }
@@ -138,7 +138,7 @@ class Calendar extends Component {
                       onClick={() => d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
                       className={classNames(classes.calendarCell, {
                         [classes.calendarCellEmpty]: !d,
-                        [classes.calendarCellWeekend]: i >= 5 || publicHolidays.has(`${month}-${d}`)
+                        [classes.calendarCellWeekend]: i >= 5 || publicHolidays.has(`${month}-${d}`),
                       })}>
                       <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
                       {d && <CalendarDay

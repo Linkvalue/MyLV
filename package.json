@@ -26,7 +26,8 @@
     "test:typecheck": "sagui test:typecheck",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
-    "version": "npm run changelog"
+    "version": "npm run changelog",
+    "lint:fix": "eslint --fix \"**/*.{js,jsx}\""
   },
   "devDependencies": {
     "browser-filesaver": "1.1.1",

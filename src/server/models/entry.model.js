@@ -5,7 +5,7 @@ const entrySchema = new mongoose.Schema({
   client: { type: mongoose.Schema.Types.ObjectId, ref: 'Client' },
   manager: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
   date: { type: String, required: true, index: true },
-  label: { type: String, required: true }
+  label: { type: String, required: true },
 })
 
 module.exports = mongoose.model('Entry', entrySchema)

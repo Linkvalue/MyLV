@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import {
   clearPartnersSearch, fetchPartners, fetchPartnersSearch, fetchPartnersSuccess, PARTNERS_CLEAR_SEARCH,
   PARTNERS_FETCH_ERROR,
-  PARTNERS_FETCH_SEARCH_SUCCESS, PARTNERS_FETCH_START, PARTNERS_FETCH_SUCCESS
+  PARTNERS_FETCH_SEARCH_SUCCESS, PARTNERS_FETCH_START, PARTNERS_FETCH_SUCCESS,
 } from '../partners.actions'
 import { lvConnect } from '../../auth/lvconnect'
 import { fetchWithAuth } from '../../auth/auth-actions'
@@ -19,7 +19,7 @@ const mockStore = configureMockStore(middlewares)
 describe('partners.actions', () => {
   beforeEach(() => {
     lvConnect.api.mockImplementation(() => Promise.resolve({
-      json: jest.fn(() => Promise.resolve({ foo: 'bar' }))
+      json: jest.fn(() => Promise.resolve({ foo: 'bar' })),
     }))
   })
 
@@ -72,7 +72,7 @@ describe('partners.actions', () => {
       // Then
       expect(store.getActions()).toEqual([
         { type: PARTNERS_FETCH_START, payload: { page: 1 } },
-        { type: PARTNERS_FETCH_SUCCESS, payload: { foo: 'bar' } }
+        { type: PARTNERS_FETCH_SUCCESS, payload: { foo: 'bar' } },
       ])
     })
 
@@ -87,7 +87,7 @@ describe('partners.actions', () => {
       // Then
       expect(store.getActions()).toEqual([
         { type: PARTNERS_FETCH_START, payload: { page: 1 } },
-        { type: PARTNERS_FETCH_ERROR }
+        { type: PARTNERS_FETCH_ERROR },
       ])
     })
   })

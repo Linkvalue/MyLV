@@ -5,11 +5,11 @@ import { push } from 'react-router-redux'
 
 const mapStateToProps = (state) => ({
   isConnected: !!state.auth.user,
-  awaitingLogin: state.auth.awaitingLogin
+  awaitingLogin: state.auth.awaitingLogin,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  push
+  push,
 }, dispatch)
 
 const LoginRequired = (WrappedComponent) => {

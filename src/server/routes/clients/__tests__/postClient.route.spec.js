@@ -11,10 +11,10 @@ describe('POST /api/clients', () => {
       app: {
         models: {
           Client: {
-            create: jest.fn(obj => Promise.resolve(obj))
-          }
-        }
-      }
+            create: jest.fn(obj => Promise.resolve(obj)),
+          },
+        },
+      },
     }
 
     request = { server }
@@ -26,7 +26,7 @@ describe('POST /api/clients', () => {
     expect.assertions(2)
     request.payload = {
       name: 'foo',
-      address: 'bar'
+      address: 'bar',
     }
 
     // When

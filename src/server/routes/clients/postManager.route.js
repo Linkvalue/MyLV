@@ -9,9 +9,9 @@ module.exports = {
       payload: {
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
-        client: Joi.string().required()
-      }
-    }
+        client: Joi.string().required(),
+      },
+    },
   },
   handler (req, res) {
     req.server.app.models.Manager.create(req.payload)
@@ -19,5 +19,5 @@ module.exports = {
         res(manager)
       })
       .catch(err => res(Boom.wrap(err)))
-  }
+  },
 }

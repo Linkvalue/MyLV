@@ -8,5 +8,5 @@ export const publicHolidays = new Set([
   '08-15',
   '11-01',
   '11-11',
-  '12-25'
+  '12-25',
 ])

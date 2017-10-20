@@ -15,14 +15,14 @@ module.exports = {
         code: Joi.alternatives().when('grant_type', { is: 'authorization_code', then: Joi.string().required() }),
         redirect_uri: Joi.alternatives().when('grant_type', {
           is: 'authorization_code',
-          then: Joi.string().required()
-        })
-      })
-    }
+          then: Joi.string().required(),
+        }),
+      }),
+    },
   },
   handler (req, res) {
     return lvConnect.proxy(req.payload)
       .then((response) => res(response))
       .catch((err) => err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err)))
-  }
+  },
 }

@@ -10,8 +10,8 @@ const mapStateToProps = state => ({ partners: state.partners.partnersById })
 
 const styles = theme => ({
   errorListItem: {
-    color: theme.palette.error[500]
-  }
+    color: theme.palette.error[500],
+  },
 })
 
 class PartnerList extends Component {
@@ -19,7 +19,7 @@ class PartnerList extends Component {
     super(props, context)
 
     this.state = {
-      openDialog: false
+      openDialog: false,
     }
   }
 
@@ -75,12 +75,12 @@ PartnerList.propTypes = {
   fields: PropTypes.shape({
     push: PropTypes.func.isRequired,
     map: PropTypes.func.isRequired,
-    get: PropTypes.func.isRequired
+    get: PropTypes.func.isRequired,
   }).isRequired,
   meta: PropTypes.shape({
     error: PropTypes.string,
-    submitFailed: PropTypes.bool
-  }).isRequired
+    submitFailed: PropTypes.bool,
+  }).isRequired,
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(PartnerList))
