@@ -1,5 +1,8 @@
 const Joi = require('joi')
 const Boom = require('boom')
+const config = require('config')
+
+const hasRole = require('../../helpers/hasRole.pre')
 
 module.exports = {
   method: 'POST',
@@ -9,9 +12,10 @@ module.exports = {
       payload: {
         label: Joi.string().required(),
         date: Joi.date().iso().required(),
-        attendants: Joi.array().min(1).items(Joi.string()).required()
+        attendees: Joi.array().min(1).items(Joi.string()).required()
       }
-    }
+    },
+    pre: [hasRole(config.cracra.lunchesRoles)]
   },
   handler (req, res) {
     req.server.app.models.Lunch.create(Object.assign({ owner: req.auth.credentials.id }, req.payload))

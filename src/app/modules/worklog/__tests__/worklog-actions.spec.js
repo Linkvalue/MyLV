@@ -167,7 +167,7 @@ describe('worklog/actions', () => {
         url: '/api/worklog',
         options: {
           method: 'PUT',
-          body: '[{"date":"foo","label":"bar"}]'
+          body: [{date: 'foo', label: 'bar'}]
         }
       })
       expect(dispatch).toHaveBeenCalledWith({ type: WORKLOG_SAVE_SUCCESS })

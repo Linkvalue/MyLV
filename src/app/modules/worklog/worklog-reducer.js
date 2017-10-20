@@ -21,6 +21,7 @@ const initialState = {
   labels: {
     'Production': '#ff9999',
     'Contribution': '#99ff99',
+    'Conferences': '#ffcc99',
     'Conges payes': '#9999ff',
     'Conges sans solde': '#ff99ff',
     'Maladie': '#ffff99',
@@ -102,8 +103,7 @@ export default function (state = initialState, { type, payload }) {
     case REHYDRATE:
       return {
         ...state,
-        ...payload.worklog,
-        pending: {}
+        entries: payload.worklog.entries
       }
     default:
       return state

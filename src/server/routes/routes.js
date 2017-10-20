@@ -14,6 +14,8 @@ const putLunch = require('./lunches/putLunch.route')
 const getLunch = require('./lunches/getLunch.route')
 const deleteLunch = require('./lunches/deleteLunch.route')
 
+const getPartners = require('./partners/getPartners.route')
+
 module.exports = [
   getAssets,
   getMe,
@@ -26,5 +28,6 @@ module.exports = [
   getLunches,
   postLunch,
   putLunch,
-  deleteLunch
+  deleteLunch,
+  getPartners
 ]

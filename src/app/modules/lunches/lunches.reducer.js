@@ -32,7 +32,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         lunchesById: {
           ...state.lunchesById,
-          [payload.id]: { ...payload, attendants: payload.attendants.map(partner => partner.id) }
+          [payload.id]: { ...payload, attendees: payload.attendees.map(partner => partner.id) }
         },
         isLoading: false
       }

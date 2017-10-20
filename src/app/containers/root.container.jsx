@@ -16,6 +16,7 @@ import HolidayRequestPage from '../modules/holidays/pages/holidayRequest.page'
 import LunchesPage from '../modules/lunches/pages/lunches.page'
 import EditLunchPage from '../modules/lunches/pages/editLunch.page'
 import NewLunchPage from '../modules/lunches/pages/newLunch.page'
+import PartnersPage from '../modules/partners/pages/partners.page'
 import theme from '../modules/display/theme'
 
 export const Root = ({ store, history }) => (
@@ -32,6 +33,7 @@ export const Root = ({ store, history }) => (
             <Route exact path='/lunches/new' component={LoginRequired(NewLunchPage)} />
             <Route exact path='/lunches/:id' component={LoginRequired(EditLunchPage)} />
             <Route exact path='/lunches' component={LoginRequired(LunchesPage)} />
+            <Route exact path='/partners/:page?' component={LoginRequired(PartnersPage)} />
             <Route exact path='/' component={LoginRequired(WorklogPage)} />
           </Switch>
         </App>

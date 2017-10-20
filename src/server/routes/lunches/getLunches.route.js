@@ -1,5 +1,8 @@
 const Joi = require('joi')
 const Boom = require('boom')
+const config = require('config')
+
+const hasRole = require('../../helpers/hasRole.pre')
 
 module.exports = {
   method: 'GET',
@@ -10,7 +13,8 @@ module.exports = {
         limit: Joi.number().min(1).max(100),
         page: Joi.number().min(1)
       }
-    }
+    },
+    pre: [hasRole(config.cracra.lunchesRoles)]
   },
   handler (req, res) {
     const limit = req.query.limit || 20
