@@ -29,5 +29,5 @@ module.exports = [
   postLunch,
   putLunch,
   deleteLunch,
-  getPartners
+  getPartners,
 ]

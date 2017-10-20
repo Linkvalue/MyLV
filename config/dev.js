@@ -1,5 +1,5 @@
 module.exports = {
   host: {
-    hostname: 'localhost'
-  }
+    hostname: 'localhost',
+  },
 }

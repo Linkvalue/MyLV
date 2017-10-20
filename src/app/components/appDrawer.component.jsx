@@ -13,21 +13,21 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative',
     height: '100%',
-    width: drawerWidth
+    width: drawerWidth,
   },
   drawerHeader: theme.mixins.toolbar,
   '@media print': {
     drawerPaper: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 })
 
 const mapStateToProps = (state) => ({
   isConnected: !!state.auth.user,
   user: state.auth.user,
   canPrint: canPrintSelector(state),
-  shouldCollapseDrawer: state.display.isMobile || state.display.isTablet
+  shouldCollapseDrawer: state.display.isMobile || state.display.isTablet,
 })
 
 const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose }) => {
@@ -73,7 +73,7 @@ AppDrawer.propTypes = {
   canPrint: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,
   shouldCollapseDrawer: PropTypes.bool.isRequired,
-  onDrawerClose: PropTypes.func.isRequired
+  onDrawerClose: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(AppDrawer))

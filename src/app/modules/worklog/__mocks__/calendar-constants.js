@@ -1,3 +1,3 @@
 export const publicHolidays = new Set([
-  '00-12'
+  '00-12',
 ])

@@ -7,19 +7,19 @@ import { Link } from 'react-router-dom'
 const styles = theme => ({
   lunchRow: {
     '&:hover $editLunchButton': {
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
   lunchLabelCell: {
     position: 'relative',
-    width: '70%'
+    width: '70%',
   },
   editLunchButton: {
     display: 'none',
     position: 'absolute',
     top: 0,
-    right: theme.spacing.unit
-  }
+    right: theme.spacing.unit,
+  },
 })
 
 class LunchRow extends Component {
@@ -28,7 +28,7 @@ class LunchRow extends Component {
 
     this.state = {
       anchorEl: null,
-      open: false
+      open: false,
     }
   }
 
@@ -70,10 +70,10 @@ LunchRow.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
-    attendees: PropTypes.array.isRequired
+    attendees: PropTypes.array.isRequired,
   }).isRequired,
   classes: PropTypes.object.isRequired,
-  onLunchDelete: PropTypes.func.isRequired
+  onLunchDelete: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(LunchRow)

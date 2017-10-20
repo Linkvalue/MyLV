@@ -10,12 +10,12 @@ import { fetchLunchDetails, putLunch } from '../lunches.actions'
 
 const mapStateToProps = (state, { match }) => ({
   lunch: state.lunches.lunchesById[match.params.id],
-  isLoading: state.lunches.isLoading
+  isLoading: state.lunches.isLoading,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   putLunch: ({ owner, ...data }) => putLunch(data),
-  fetchLunchDetails
+  fetchLunchDetails,
 }, dispatch)
 
 class EditLunchPage extends Component {
@@ -54,11 +54,11 @@ class EditLunchPage extends Component {
 
 EditLunchPage.propTypes = {
   match: PropTypes.shape({
-    params: PropTypes.shape({ id: PropTypes.string.isRequired })
+    params: PropTypes.shape({ id: PropTypes.string.isRequired }),
   }),
   lunch: PropTypes.object.isRequired,
   putLunch: PropTypes.func.isRequired,
-  fetchLunchDetails: PropTypes.func.isRequired
+  fetchLunchDetails: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditLunchPage)

@@ -12,7 +12,7 @@ import Printer from '../components/printer/printer.component'
 
 const mapStateToProps = state => ({
   shouldRemindProcess: state.settings.shouldRemindProcess,
-  canPrint: canPrintSelector(state)
+  canPrint: canPrintSelector(state),
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ push }, dispatch)
@@ -22,15 +22,15 @@ const printCra = () => window.print()
 const styles = theme => ({
   '@media print': {
     worklogPage: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   printButton: {
     position: 'fixed',
     right: theme.spacing.unit * 2,
     bottom: theme.spacing.unit * 2,
-    zIndex: 10
-  }
+    zIndex: 10,
+  },
 })
 
 class WorklogPage extends React.Component {

@@ -10,5 +10,5 @@ export const lvConnect = new LVConnectSDK({
   mode: 'proxy',
   appId: process.env.APP_ID,
   redirectUri: `${cracraEndpoint}/auth`,
-  tokenEndpoint: '/api/auth'
+  tokenEndpoint: '/api/auth',
 })

@@ -11,10 +11,10 @@ describe('POST /api/managers', () => {
       app: {
         models: {
           Manager: {
-            create: jest.fn(obj => Promise.resolve(obj))
-          }
-        }
-      }
+            create: jest.fn(obj => Promise.resolve(obj)),
+          },
+        },
+      },
     }
 
     request = { server }
@@ -27,7 +27,7 @@ describe('POST /api/managers', () => {
     request.payload = {
       firstName: 'foo',
       lastName: 'bar',
-      clientId: 'hello'
+      clientId: 'hello',
     }
 
     // When

@@ -18,11 +18,11 @@ function mongodbSerializer (value, omit) {
   let payload = value
   if (value.toJSON) {
     payload = Object.assign(value.toJSON(), {
-      id: value._id.toString()
+      id: value._id.toString(),
     })
   } else if (value._id) {
     payload = Object.assign({}, value, {
-      id: value._id
+      id: value._id,
     })
   }
 
@@ -55,5 +55,5 @@ exports.register = (server, { uri, username, password, host, port, database, con
 
 exports.register.attributes = {
   name: 'mongodb',
-  version: '0.0.1'
+  version: '0.0.1',
 }

@@ -12,27 +12,27 @@ const manifest = {
   registrations: [{
     plugin: {
       register: 'good',
-      options: config.logs
-    }
+      options: config.logs,
+    },
   }, {
     plugin: {
       register: './plugins/mongodb.plugin',
-      options: config.mongodb
-    }
+      options: config.mongodb,
+    },
   }, {
-    plugin: 'inert'
+    plugin: 'inert',
   }, {
-    plugin: 'hapi-auth-bearer-token'
+    plugin: 'hapi-auth-bearer-token',
   }],
   connections: [{
     host: config.host.hostname,
-    port: config.host.port
-  }]
+    port: config.host.port,
+  }],
 }
 
 function createServer () {
   return Glue.compose(manifest, {
-    relativeTo: __dirname
+    relativeTo: __dirname,
   })
 }
 
@@ -51,7 +51,7 @@ if (require.main === module) {
             .getUserProfile()
             .then(user => callback(null, true, user, { token }))
             .catch(err => callback(err, false))
-        }
+        },
       })
 
       server.auth.default('bearer')
@@ -66,14 +66,14 @@ if (require.main === module) {
           } else {
             return res.continue()
           }
-        }
+        },
       })
 
       server.app.models = {
         Client,
         Entry,
         Manager,
-        Lunch
+        Lunch,
       }
 
       // Handle uncaught promise rejections

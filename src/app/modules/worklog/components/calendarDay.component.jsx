@@ -8,20 +8,20 @@ const mapStateToProps = (state) => ({ labels: state.worklog.labels })
 const styles = theme => ({
   calendarDay: {
     height: '100%',
-    maxHeight: '5rem'
+    maxHeight: '5rem',
   },
   calendarDayFill: {
     display: 'block',
     width: '100%',
     height: '100%',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   calendarDaySelected: {
     position: 'relative',
     zIndex: 1,
     border: `solid 2px ${theme.palette.primary['500']}`,
-    boxShadow: theme.shadows[8]
-  }
+    boxShadow: theme.shadows[8],
+  },
 })
 
 const CalendarDay = ({labels, labelMorning, labelAfternoon, selected, classes}) => (
@@ -29,7 +29,7 @@ const CalendarDay = ({labels, labelMorning, labelAfternoon, selected, classes}) 
     <svg
       className={classNames({
         [classes.calendarDayFill]: true,
-        [classes.calendarDaySelected]: selected
+        [classes.calendarDaySelected]: selected,
       })}
       viewBox='0 0 50 50'
       preserveAspectRatio='none'>

@@ -15,5 +15,5 @@ module.exports = {
           .then(res => res.json())
           .then(({ results: attendees }) => res.mongodb(Object.assign({}, lunch.toJSON(), { attendees }))))
       .catch(err => res(Boom.wrap(err)))
-  }
+  },
 }

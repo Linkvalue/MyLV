@@ -5,7 +5,7 @@ jest.unmock('../calendar-reducer')
 jest.unmock('../calendar-actions')
 
 jest.mock('moment', () => jest.fn(() => ({
-  format: jest.fn(() => 'foo-bar-baz')
+  format: jest.fn(() => 'foo-bar-baz'),
 })))
 
 describe('calendar/reducer', () => {
@@ -18,7 +18,7 @@ describe('calendar/reducer', () => {
       expect(state).toEqual({
         year: 'foo',
         month: 'bar',
-        day: 'baz'
+        day: 'baz',
       })
     })
   })
@@ -35,7 +35,7 @@ describe('calendar/reducer', () => {
       expect(state).toEqual({
         year: 'hello',
         month: 'world',
-        day: 'foo'
+        day: 'foo',
       })
     })
   })

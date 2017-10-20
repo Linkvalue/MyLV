@@ -13,14 +13,14 @@ export const browserHistory = createBrowserHistory()
 export function configureStore () {
   const storeEnhancers = [
     autoRehydrate(),
-    applyMiddleware(thunk, routerMiddleware(browserHistory))
+    applyMiddleware(thunk, routerMiddleware(browserHistory)),
   ]
 
   const isProd = process.env.NODE_ENV !== 'production'
   const composeEnhancers = (isProd && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
   const store = composeEnhancers(...storeEnhancers)(createStore)(rootReducer)
   persistStore(store, {
-    blacklist: ['calendar', 'routing', 'form']
+    blacklist: ['calendar', 'routing', 'form'],
   }, () => {
     const state = store.getState()
     store.dispatch(initialize('clientForm', state.client))

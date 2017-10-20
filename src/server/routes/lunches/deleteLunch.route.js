@@ -11,5 +11,5 @@ module.exports = {
     req.server.app.models.Lunch.deleteOne({ _id: req.params.id })
       .then(() => res({ deleted: true }))
       .catch(err => Boom.wrap(err))
-  }
+  },
 }

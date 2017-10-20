@@ -1,7 +1,7 @@
 import partnersReducer from '../partners.reducer'
 import {
   PARTNERS_CLEAR_SEARCH, PARTNERS_FETCH_ERROR, PARTNERS_FETCH_SEARCH_SUCCESS, PARTNERS_FETCH_START,
-  PARTNERS_FETCH_SUCCESS
+  PARTNERS_FETCH_SUCCESS,
 } from '../partners.actions'
 
 jest.unmock('../partners.reducer')
@@ -13,8 +13,8 @@ describe('partners.reducer', () => {
     const action = {
       type: PARTNERS_FETCH_SEARCH_SUCCESS,
       payload: {
-        results: [{ id: 'foo' }]
-      }
+        results: [{ id: 'foo' }],
+      },
     }
 
     // When
@@ -23,9 +23,9 @@ describe('partners.reducer', () => {
     // Then
     expect(state).toEqual({
       partnersById: {
-        foo: { id: 'foo' }
+        foo: { id: 'foo' },
       },
-      partnersSearchResults: ['foo']
+      partnersSearchResults: ['foo'],
     })
   })
 
@@ -38,7 +38,7 @@ describe('partners.reducer', () => {
 
     // Then
     expect(state).toEqual({
-      partnersSearchResults: []
+      partnersSearchResults: [],
     })
   })
 
@@ -53,7 +53,7 @@ describe('partners.reducer', () => {
     expect(state).toEqual({
       partnersList: [],
       isLoading: true,
-      limit: 42
+      limit: 42,
     })
   })
 
@@ -63,8 +63,8 @@ describe('partners.reducer', () => {
       type: PARTNERS_FETCH_SUCCESS,
       payload: {
         pageCount: 42,
-        results: [{ id: 'foo' }]
-      }
+        results: [{ id: 'foo' }],
+      },
     }
 
     // When
@@ -73,11 +73,11 @@ describe('partners.reducer', () => {
     // Then
     expect(state).toEqual({
       partnersById: {
-        foo: { id: 'foo' }
+        foo: { id: 'foo' },
       },
       partnersList: ['foo'],
       isLoading: false,
-      pageCount: 42
+      pageCount: 42,
     })
   })
 
@@ -90,7 +90,7 @@ describe('partners.reducer', () => {
 
     // Then
     expect(state).toEqual({
-      isLoading: false
+      isLoading: false,
     })
   })
 })

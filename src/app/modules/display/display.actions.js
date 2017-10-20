@@ -6,6 +6,6 @@ export const detectDevice = () => ({
   payload: {
     isMobile: window.innerWidth <= theme.breakpoints.values.sm,
     isTablet: window.innerWidth > theme.breakpoints.values.sm && window.innerWidth <= theme.breakpoints.values.md,
-    isDesktop: window.innerWidth > theme.breakpoints.values.md
-  }
+    isDesktop: window.innerWidth > theme.breakpoints.values.md,
+  },
 })

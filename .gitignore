@@ -4,3 +4,5 @@ npm-debug.log
 dist/
 logs/
 config/local.js
+.idea/
+data

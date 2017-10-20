@@ -11,10 +11,10 @@ module.exports = {
     validate: {
       query: {
         limit: Joi.number().min(1).max(100),
-        page: Joi.number().min(1)
-      }
+        page: Joi.number().min(1),
+      },
     },
-    pre: [hasRole(config.cracra.lunchesRoles)]
+    pre: [hasRole(config.cracra.lunchesRoles)],
   },
   handler (req, res) {
     const limit = req.query.limit || 20
@@ -34,8 +34,8 @@ module.exports = {
         results: lunches,
         page: page + 1,
         pageCount: Math.ceil(count / limit),
-        limit
+        limit,
       }, ['owner']))
       .catch(err => res(Boom.wrap(err)))
-  }
+  },
 }

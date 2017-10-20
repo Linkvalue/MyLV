@@ -20,22 +20,22 @@ describe('PartnersPage', () => {
         firstName: 'hello',
         lastName: 'world',
         entryCounts: {
-          foo: 10
-        }
+          foo: 10,
+        },
       }],
       isLoading: false,
       labels: {
         foo: 'bar',
-        baz: 'qux'
+        baz: 'qux',
       },
       classes: {},
       pageCount: 10,
       limit: 25,
       match: {
         params: {
-          page: '1'
-        }
-      }
+          page: '1',
+        },
+      },
     }
   })
 

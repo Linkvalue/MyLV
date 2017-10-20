@@ -10,7 +10,7 @@ import {
   WORKLOG_FILL_MONTH,
   WORKLOG_EMPTY_DAY,
   WORKLOG_ADD_LABEL,
-  WORKLOG_SAVE_SUCCESS, WORKLOG_GET_START, WORKLOG_GET_SUCCESS
+  WORKLOG_SAVE_SUCCESS, WORKLOG_GET_START, WORKLOG_GET_SUCCESS,
 } from './worklog-actions'
 
 const initialState = {
@@ -25,20 +25,20 @@ const initialState = {
     'Conges payes': '#9999ff',
     'Conges sans solde': '#ff99ff',
     'Maladie': '#ffff99',
-    'Autre': '#99ffff'
-  }
+    'Autre': '#99ffff',
+  },
 }
 
 const setEntry = (state, date, label) => ({
   ...state,
   entries: {
     ...state.entries,
-    [date]: label
+    [date]: label,
   },
   pending: state.entries[date] === label ? state.pending : {
     ...state.pending,
-    [date]: label || null
-  }
+    [date]: label || null,
+  },
 })
 
 const setDay = (state, day, label) =>
@@ -79,31 +79,31 @@ export default function (state = initialState, { type, payload }) {
         ...state,
         labels: {
           ...state.labels,
-          [payload.label]: payload.color
-        }
+          [payload.label]: payload.color,
+        },
       }
     case WORKLOG_GET_START:
       return {
         ...state,
         entries: {},
         error: false,
-        isLoading: true
+        isLoading: true,
       }
     case WORKLOG_GET_SUCCESS:
       return {
         ...state,
         entries: payload.reduce((entries, entry) => ({ ...entries, [entry.date]: entry.label }), {}),
-        isLoading: false
+        isLoading: false,
       }
     case WORKLOG_SAVE_SUCCESS:
       return {
         ...state,
-        pending: {}
+        pending: {},
       }
     case REHYDRATE:
       return {
         ...state,
-        entries: payload.worklog.entries
+        entries: payload.worklog.entries,
       }
     default:
       return state

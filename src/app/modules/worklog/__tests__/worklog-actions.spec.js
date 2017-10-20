@@ -16,7 +16,7 @@ import {
   addLabel,
   WORKLOG_ADD_LABEL,
   saveWorklog,
-  WORKLOG_SAVE_SUCCESS
+  WORKLOG_SAVE_SUCCESS,
 } from '../worklog-actions'
 
 jest.mock('../../auth/auth-actions', () => ({ fetchWithAuth: jest.fn((url, options) => ({ url, options })) }))
@@ -34,8 +34,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_FILL_MORNING,
         payload: {
           date: 'foo-bar-baz',
-          label: 'qux'
-        }
+          label: 'qux',
+        },
       })
     })
   })
@@ -50,8 +50,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_FILL_AFTERNOON,
         payload: {
           date: 'foo-bar-baz',
-          label: 'qux'
-        }
+          label: 'qux',
+        },
       })
     })
   })
@@ -66,8 +66,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_FILL_DAY,
         payload: {
           day: 'foo-bar-baz',
-          label: 'qux'
-        }
+          label: 'qux',
+        },
       })
     })
   })
@@ -82,8 +82,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_FILL_WEEK,
         payload: {
           day: 'foo-bar-baz',
-          label: 'qux'
-        }
+          label: 'qux',
+        },
       })
     })
   })
@@ -98,8 +98,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_FILL_MONTH,
         payload: {
           month: 'foo-bar-baz',
-          label: 'qux'
-        }
+          label: 'qux',
+        },
       })
     })
   })
@@ -115,8 +115,8 @@ describe('worklog/actions', () => {
         payload: {
           start: 'foo-bar-baz',
           end: 'hello-world-qux',
-          label: 'blah'
-        }
+          label: 'blah',
+        },
       })
     })
   })
@@ -130,8 +130,8 @@ describe('worklog/actions', () => {
       expect(action).toEqual({
         type: WORKLOG_EMPTY_DAY,
         payload: {
-          day: 'foo-bar-baz'
-        }
+          day: 'foo-bar-baz',
+        },
       })
     })
   })
@@ -146,8 +146,8 @@ describe('worklog/actions', () => {
         type: WORKLOG_ADD_LABEL,
         payload: {
           label: 'foo-bar-baz',
-          color: '#00FF00'
-        }
+          color: '#00FF00',
+        },
       })
     })
   })
@@ -167,8 +167,8 @@ describe('worklog/actions', () => {
         url: '/api/worklog',
         options: {
           method: 'PUT',
-          body: [{date: 'foo', label: 'bar'}]
-        }
+          body: [{date: 'foo', label: 'bar'}],
+        },
       })
       expect(dispatch).toHaveBeenCalledWith({ type: WORKLOG_SAVE_SUCCESS })
     })

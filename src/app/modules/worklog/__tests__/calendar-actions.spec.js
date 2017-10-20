@@ -11,7 +11,7 @@ describe('calendar/actions', () => {
       // Then
       expect(action).toEqual({
         type: CALENDAR_SET_DATE,
-        payload: { date: 'foo' }
+        payload: { date: 'foo' },
       })
     })
   })

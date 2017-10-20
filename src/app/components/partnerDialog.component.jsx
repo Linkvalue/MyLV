@@ -6,8 +6,8 @@ import PartnerAutocomplete from './partnerAutocomplete.component'
 
 const styles = () => ({
   dialogContent: {
-    overflowY: 'visible'
-  }
+    overflowY: 'visible',
+  },
 })
 
 class PartnerDialog extends Component {
@@ -15,7 +15,7 @@ class PartnerDialog extends Component {
     super(props, context)
 
     this.state = {
-      partnerId: null
+      partnerId: null,
     }
   }
 
@@ -57,7 +57,7 @@ PartnerDialog.propTypes = {
   onPartnerSelected: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  action: PropTypes.string.isRequired
+  action: PropTypes.string.isRequired,
 }
 
 export default withStyles(styles)(PartnerDialog)

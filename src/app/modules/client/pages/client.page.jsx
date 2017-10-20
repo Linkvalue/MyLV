@@ -9,23 +9,23 @@ import TextField from '../../../components/textField.component'
 import { userEntry } from '../client-actions'
 
 const mapStateToProps = state => ({
-  initialValues: state.client
+  initialValues: state.client,
 })
 
 const validate = ({ clientName, clientAddress }) => ({
   clientName: !clientName ? 'Obligatoire' : null,
-  clientAddress: !clientAddress ? 'Obligatoire' : null
+  clientAddress: !clientAddress ? 'Obligatoire' : null,
 })
 
 const styles = theme => ({
   inputList: {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit,
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
-  }
+    width: 200,
+  },
 })
 
 const ClientPage = ({ handleSubmit, pristine, invalid, classes }) => (
@@ -70,7 +70,7 @@ const HookedClientPage = reduxForm({
   onSubmit: (formData, dispatch) => {
     dispatch(userEntry(formData))
     dispatch(push('/'))
-  }
+  },
 })(ClientPage)
 
 export default connect(mapStateToProps)(withStyles(styles)(HookedClientPage))

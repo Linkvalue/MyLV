@@ -5,7 +5,7 @@ import { push } from 'react-router-redux'
 import PropTypes from 'prop-types'
 import {
   Typography, Table, TableBody, TableHead, TableRow, TableCell, withStyles,
-  TableFooter, TablePagination, Paper, Toolbar, CircularProgress
+  TableFooter, TablePagination, Paper, Toolbar, CircularProgress,
 } from 'material-ui'
 
 import { fetchPartners } from '../partners.actions'
@@ -16,44 +16,44 @@ const mapStateToProps = state => ({
   pageCount: state.partners.pageCount,
   limit: state.partners.limit,
   isLoading: state.partners.isLoading,
-  labels: state.worklog.labels
+  labels: state.worklog.labels,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchPartners, push }, dispatch)
 
 const styles = theme => ({
   fullNameCell: {
-    width: '70%'
+    width: '70%',
   },
   [theme.breakpoints.down('md')]: {
     entryCountCell: {
       paddingLeft: theme.spacing.unit * 2,
-      paddingRight: theme.spacing.unit * 2
-    }
+      paddingRight: theme.spacing.unit * 2,
+    },
   },
   tableWrapper: {
-    overflowX: 'auto'
+    overflowX: 'auto',
   },
   partnersTable: {
-    overflowY: 'visible'
+    overflowY: 'visible',
   },
   tableFooter: {
-    width: '100%'
+    width: '100%',
   },
   loaderContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '100%'
-  }
+    height: '100%',
+  },
 })
 
 export class PartnersPage extends Component {
   componentWillMount () {
     this.props.fetchPartners({
       page: this.props.match.params.page || 1,
-      limit: this.props.limit
+      limit: this.props.limit,
     })
   }
 
@@ -61,7 +61,7 @@ export class PartnersPage extends Component {
     if (this.props.match.params.page !== nextProps.match.params.page) {
       this.props.fetchPartners({
         page: nextProps.match.params.page,
-        limit: nextProps.limit
+        limit: nextProps.limit,
       })
     }
   }
@@ -72,7 +72,7 @@ export class PartnersPage extends Component {
 
   handleChangeRowsPerPage = event => this.props.fetchPartners({
     page: this.props.match.params.page || 1,
-    limit: event.target.value
+    limit: event.target.value,
   })
 
   render () {
@@ -150,9 +150,9 @@ PartnersPage.propTypes = {
   limit: PropTypes.number.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      page: PropTypes.string
-    }).isRequired
-  }).isRequired
+      page: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PartnersPage))

@@ -11,8 +11,8 @@ export const fetchPartnersSearch = (search, excludeSelf) => (dispatch, getState)
       type: PARTNERS_FETCH_SEARCH_SUCCESS,
       payload: !excludeSelf ? data : {
         ...data,
-        results: data.results.filter(partner => partner.id !== getState().auth.user.id)
-      }
+        results: data.results.filter(partner => partner.id !== getState().auth.user.id),
+      },
     }))
 
 export const PARTNERS_CLEAR_SEARCH = 'PARTNERS_CLEAR_SEARCH'

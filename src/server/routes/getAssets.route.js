@@ -10,5 +10,5 @@ module.exports = {
     }
 
     return res.file(path.join('dist', req.params.path))
-  }
+  },
 }

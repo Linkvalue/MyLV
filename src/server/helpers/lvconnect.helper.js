@@ -8,7 +8,7 @@ if (endpoint) {
 const lvConnect = new LVConnectSDK({
   mode: 'private',
   appId,
-  appSecret
+  appSecret,
 })
 
 module.exports = lvConnect

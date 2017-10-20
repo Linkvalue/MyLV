@@ -10,13 +10,13 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     zIndex: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   appFrame: {
     position: 'relative',
     display: 'flex',
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   appContent: {
     backgroundColor: theme.palette.background.default,
@@ -28,14 +28,14 @@ const styles = theme => ({
     overflowY: 'auto',
     [theme.breakpoints.up('sm')]: {
       height: 'calc(100% - 64px)',
-      marginTop: 64
-    }
+      marginTop: 64,
+    },
   },
   '@media print': {
     appContent: {
-      marginTop: 0
-    }
-  }
+      marginTop: 0,
+    },
+  },
 })
 
 class App extends React.Component {
@@ -43,7 +43,7 @@ class App extends React.Component {
     super(...args)
 
     this.state = {
-      drawerOpen: false
+      drawerOpen: false,
     }
   }
 

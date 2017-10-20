@@ -16,10 +16,10 @@ module.exports = {
       query: {
         page: Joi.number().min(1),
         limit: Joi.number().min(1).max(100),
-        search: Joi.string().max(30)
-      }
+        search: Joi.string().max(30),
+      },
     },
-    pre: [hasRole(config.cracra.partnersRoles)]
+    pre: [hasRole(config.cracra.partnersRoles)],
   },
   async handler (request, reply) {
     const query = qs.stringify(request.query)
@@ -29,15 +29,15 @@ module.exports = {
     const [entries, lunches] = await Promise.all([
       request.server.app.models.Entry.find({
         userId: { $in: data.results.map(partner => partner.id) },
-        date: { $regex: moment().format('YYYY-MM-') }
+        date: { $regex: moment().format('YYYY-MM-') },
       }),
       request.server.app.models.Lunch.find({
         $or: [
           { attendees: request.auth.credentials.id },
-          { owner: request.auth.credentials.id }
+          { owner: request.auth.credentials.id },
         ],
-        date: { $gt: moment(`${moment().year()}-${moment().month()}`, 'YYYY-MM').toDate() }
-      })
+        date: { $gt: moment(`${moment().year()}-${moment().month()}`, 'YYYY-MM').toDate() },
+      }),
     ])
 
     reply.mongodb(Object.assign({}, data, {
@@ -48,11 +48,11 @@ module.exports = {
         return Object.assign({}, partner, {
           mealVouchers: Math.max(mealVouchers - lunches.length, 0),
           entryCounts: partnerEntries.reduce((acc, entry) => Object.assign(acc, {
-            [entry.label]: (acc[entry.label] || 0) + 0.5
+            [entry.label]: (acc[entry.label] || 0) + 0.5,
           }), {}),
-          lunchesCount: lunches.length
+          lunchesCount: lunches.length,
         })
-      })
+      }),
     }))
-  }
+  },
 }

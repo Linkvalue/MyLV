@@ -8,9 +8,9 @@ module.exports = {
     validate: {
       payload: {
         name: Joi.string().required(),
-        address: Joi.string().required()
-      }
-    }
+        address: Joi.string().required(),
+      },
+    },
   },
   handler (req, res) {
     req.server.app.models.Client.create(req.payload)
@@ -18,5 +18,5 @@ module.exports = {
         res(client)
       })
       .catch(err => res(Boom.wrap(err)))
-  }
+  },
 }

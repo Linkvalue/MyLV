@@ -1,5 +1,5 @@
 import {
-  SAVE_CLIENT
+  SAVE_CLIENT,
 } from './client-actions'
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   lastName: '',
   clientName: '',
   clientAddress: '',
-  managerName: ''
+  managerName: '',
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -18,7 +18,7 @@ export default function (state = initialState, { type, payload }) {
         lastName: payload.lastName,
         clientName: payload.clientName,
         clientAddress: payload.clientAddress,
-        managerName: payload.managerName
+        managerName: payload.managerName,
       }
     default:
       return state

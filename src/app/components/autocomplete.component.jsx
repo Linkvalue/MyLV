@@ -18,9 +18,9 @@ function renderInput (inputProps) {
       inputRef={ref}
       InputProps={{
         classes: {
-          input: classes.input
+          input: classes.input,
         },
-        ...other
+        ...other,
       }}
     />
   )
@@ -39,7 +39,7 @@ function renderSuggestionsContainer (options) {
 const styles = theme => ({
   container: {
     flexGrow: 1,
-    position: 'relative'
+    position: 'relative',
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -47,19 +47,19 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
     left: 0,
     right: 0,
-    zIndex: 10
+    zIndex: 10,
   },
   suggestion: {
-    display: 'block'
+    display: 'block',
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: 'none'
+    listStyleType: 'none',
   },
   textField: {
-    width: '100%'
-  }
+    width: '100%',
+  },
 })
 
 class Autocomplete extends Component {
@@ -67,7 +67,7 @@ class Autocomplete extends Component {
     super(props, context)
 
     this.state = {
-      value: ''
+      value: '',
     }
   }
 
@@ -105,7 +105,7 @@ class Autocomplete extends Component {
       fetchSuggestions,
       clearSuggestions,
       onChange,
-      debounceTime
+      debounceTime,
     } = this.props
 
     return (
@@ -114,7 +114,7 @@ class Autocomplete extends Component {
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
           suggestionsList: classes.suggestionsList,
-          suggestion: classes.suggestion
+          suggestion: classes.suggestion,
         }}
         renderInputComponent={renderInput}
         suggestions={suggestions}
@@ -129,7 +129,7 @@ class Autocomplete extends Component {
           autoFocus: true,
           classes,
           value: this.state.value,
-          onChange: this.handleChange
+          onChange: this.handleChange,
         }}
       />
     )
@@ -143,11 +143,11 @@ Autocomplete.propTypes = {
   clearSuggestions: PropTypes.func.isRequired,
   getSuggestionValue: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  debounceTime: PropTypes.number
+  debounceTime: PropTypes.number,
 }
 
 Autocomplete.defaultProps = {
-  debounceTime: 300
+  debounceTime: 300,
 }
 
 export default withStyles(styles)(Autocomplete)
