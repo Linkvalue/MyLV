@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Drawer, Divider, List, withStyles } from 'material-ui'
-import { BeachAccess, Person, Event, Restaurant } from 'material-ui-icons'
+import {BeachAccess, Person, Event, Restaurant, SupervisorAccount} from 'material-ui-icons'
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
@@ -43,8 +43,12 @@ const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseD
     )
   }
 
-  if (isConnected && ['business', 'hr'].find(role => user.roles.indexOf(role) >= 0)) {
+  if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
     links.push(<AppDrawerItem to='/lunches' icon={<Restaurant />} text='Déjeuners' key='lunches' />)
+  }
+
+  if (isConnected && ['hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
+    links.push(<AppDrawerItem to='/partners' icon={<SupervisorAccount />} text='Partners' key='partners' />)
   }
 
   const collapsed = shouldCollapseDrawer || !isConnected

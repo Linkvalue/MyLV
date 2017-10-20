@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PartnersPage should render loader when fetching 1`] = `
+<div>
+  <withStyles(CircularProgress)
+    size={100}
+  />
+</div>
+`;
+
+exports[`PartnersPage should render partners list 1`] = `
+<withStyles(Paper)>
+  <withStyles(Toolbar)>
+    <withStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      type="headline"
+    >
+      Partners
+    </withStyles(Typography)>
+  </withStyles(Toolbar)>
+  <div>
+    <withStyles(Table)>
+      <withStyles(TableHead)>
+        <withStyles(TableRow)>
+          <withStyles(TableCell)>
+            Nom
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            key="foo"
+            numeric={true}
+          >
+            foo
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            key="baz"
+            numeric={true}
+          >
+            baz
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            numeric={true}
+          >
+            Déjeuners
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            numeric={true}
+          >
+            Ticket restaurants
+          </withStyles(TableCell)>
+        </withStyles(TableRow)>
+      </withStyles(TableHead)>
+      <withStyles(TableBody)>
+        <withStyles(TableRow)
+          hover={true}
+          key="my_anaconda_dont"
+        >
+          <withStyles(TableCell)>
+            hello
+             
+            world
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            key="foo"
+            numeric={true}
+          >
+            10
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            key="baz"
+            numeric={true}
+          >
+            0
+          </withStyles(TableCell)>
+          <withStyles(TableCell)
+            numeric={true}
+          />
+          <withStyles(TableCell)
+            numeric={true}
+          />
+        </withStyles(TableRow)>
+      </withStyles(TableBody)>
+    </withStyles(Table)>
+  </div>
+  <table>
+    <withStyles(TableFooter)>
+      <withStyles(TableRow)>
+        <withStyles(TablePagination)
+          count={250}
+          labelDisplayedRows={[Function]}
+          onChangePage={[Function]}
+          onChangeRowsPerPage={[Function]}
+          page={0}
+          rowsPerPage={25}
+          rowsPerPageOptions={
+            Array [
+              1,
+              25,
+              50,
+              100,
+            ]
+          }
+        />
+      </withStyles(TableRow)>
+    </withStyles(TableFooter)>
+  </table>
+</withStyles(Paper)>
+`;

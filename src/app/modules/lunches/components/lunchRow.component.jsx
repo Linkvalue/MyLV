@@ -59,7 +59,7 @@ class LunchRow extends Component {
           </Menu>
         </TableCell>
         <TableCell>{lunch.date.toString()}</TableCell>
-        <TableCell numeric>{lunch.attendants.length}</TableCell>
+        <TableCell numeric>{lunch.attendees.length}</TableCell>
       </TableRow>
     )
   }
@@ -70,7 +70,7 @@ LunchRow.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
-    attendants: PropTypes.array.isRequired
+    attendees: PropTypes.array.isRequired
   }).isRequired,
   classes: PropTypes.object.isRequired,
   onLunchDelete: PropTypes.func.isRequired

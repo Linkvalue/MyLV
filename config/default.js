@@ -24,5 +24,9 @@ module.exports = {
     appId: null,
     appSecret: null,
     endpoint: 'https://lvconnect.link-value.fr'
+  },
+  cracra: {
+    lunchesRoles: ['rh', 'board', 'business'],
+    partnersRoles: ['rh', 'board']
   }
 }

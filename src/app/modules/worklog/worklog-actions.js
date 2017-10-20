@@ -70,7 +70,7 @@ export const saveWorklog = () => (dispatch, getState) => {
 
   return dispatch(fetchWithAuth('/api/worklog', {
     method: 'PUT',
-    body: JSON.stringify(Object.entries(pending).map(([date, label]) => ({ date, label })))
+    body: Object.entries(pending).map(([date, label]) => ({ date, label }))
   }))
     .then(() => dispatch({ type: WORKLOG_SAVE_SUCCESS }))
 }

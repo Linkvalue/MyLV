@@ -9,11 +9,11 @@ import TextField from '../../../components/textField.component'
 import DateField from '../../../components/dateField.component'
 import PartnerList from '../../../components/partnerList.component'
 
-const validate = ({ label, date, attendants }) => {
+const validate = ({ label, date, attendees }) => {
   return {
     label: !label ? 'Obligatoire' : null,
     date: !date ? 'Obligatoire' : null,
-    attendants: attendants.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null
+    attendees: attendees.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null
   }
 }
 
@@ -53,7 +53,7 @@ const LunchForm = ({ handleSubmit, render, classes, valid, pristine }) => (
             />
           </Grid>
           <Grid item xs={12}>
-            <FieldArray name='attendants' component={PartnerList} />
+            <FieldArray name='attendees' component={PartnerList} />
           </Grid>
         </Grid>
       )
