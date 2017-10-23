@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Grid = require('gridfs-stream')
 
 mongoose.Promise = global.Promise
 
@@ -48,6 +49,8 @@ exports.register = (server, { uri, username, password, host, port, database, con
     .then(() => {
       server.on('stop', () => mongoose.disconnect())
       server.expose('mongoose', mongoose)
+      const gridfs = Grid(mongoose.connection.db, mongoose.mongo)
+      server.expose('gridfs', gridfs)
       next()
     })
     .catch(next)
