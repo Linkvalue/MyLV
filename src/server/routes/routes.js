@@ -16,6 +16,9 @@ const deleteLunch = require('./lunches/deleteLunch.route')
 
 const getPartners = require('./partners/getPartners.route')
 
+const postProofOfTransport = require('./proofOfTransports/postProofOfTransport.route')
+const getProofOfTransportsZip = require('./proofOfTransports/getProofOfTransportsZip.route')
+
 module.exports = [
   getAssets,
   getMe,
@@ -30,4 +33,6 @@ module.exports = [
   putLunch,
   deleteLunch,
   getPartners,
+  postProofOfTransport,
+  getProofOfTransportsZip,
 ]

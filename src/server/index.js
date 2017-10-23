@@ -7,6 +7,7 @@ const Client = require('./models/client.model')
 const Entry = require('./models/entry.model')
 const Manager = require('./models/manager.model')
 const Lunch = require('./models/lunch.model')
+const ProofOfTransport = require('./models/proofOfTransport.model')
 
 const manifest = {
   registrations: [{
@@ -74,6 +75,7 @@ if (require.main === module) {
         Entry,
         Manager,
         Lunch,
+        ProofOfTransport,
       }
 
       // Handle uncaught promise rejections
