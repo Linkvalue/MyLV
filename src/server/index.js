@@ -70,6 +70,8 @@ if (require.main === module) {
         },
       })
 
+      server.on('tail', () => lvConnect.logout())
+
       server.app.models = {
         Client,
         Entry,

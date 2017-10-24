@@ -29,4 +29,9 @@ module.exports = {
     lunchesRoles: ['rh', 'board', 'business'],
     partnersRoles: ['rh', 'board'],
   },
+  front: {
+    featureFlipping: {
+      holidays: false,
+    },
+  },
 }

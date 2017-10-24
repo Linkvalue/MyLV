@@ -6,6 +6,7 @@ import {BeachAccess, Person, Event, Restaurant, SupervisorAccount} from 'materia
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
+import config from '../config'
 
 export const drawerWidth = 240
 
@@ -37,10 +38,11 @@ const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseD
   }
 
   if (isConnected && canPrint) {
-    links.push(
-      <AppDrawerItem to='/' icon={<Event />} text='Remplir son CRA' key='cra' />,
-      <AppDrawerItem to='/holidays' icon={<BeachAccess />} text='Demande de congés' key='holidays' />
-    )
+    links.push(<AppDrawerItem to='/' icon={<Event />} text='Remplir son CRA' key='cra' />)
+  }
+
+  if (isConnected && config.featureFlipping.holidays) {
+    links.push(<AppDrawerItem to='/holidays' icon={<BeachAccess />} text='Demande de congés' key='holidays' />)
   }
 
   if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {

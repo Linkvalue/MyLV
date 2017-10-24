@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
-import { Card, CardContent, CardActions, Button, Typography, withStyles } from 'material-ui'
+import {Card, CardContent, CardActions, Button, Typography, withStyles, Grid} from 'material-ui'
 
 import TextField from '../../../components/textField.component'
 import { userEntry } from '../client-actions'
@@ -32,29 +32,35 @@ const ClientPage = ({ handleSubmit, pristine, invalid, classes }) => (
   <form onSubmit={handleSubmit}>
     <Card>
       <CardContent>
-        <Typography type='headline' component='h2'>
+        <Typography type='headline' component='h2' gutterBottom>
           Informations client
         </Typography>
-        <div className={classes.inputList}>
-          <Field
-            name='clientName'
-            type='text'
-            label='Nom du client'
-            className={classes.textField}
-            component={TextField} />
-          <Field
-            name='clientAddress'
-            type='text'
-            label='Adresse du client'
-            className={classes.textField}
-            component={TextField} />
-          <Field
-            name='managerName'
-            type='text'
-            label='Nom du responsable'
-            className={classes.textField}
-            component={TextField} />
-        </div>
+        <Grid container>
+          <Grid item xs={6} md={4}>
+            <Field
+              name='clientName'
+              type='text'
+              label='Nom du client'
+              fullWidth
+              component={TextField} />
+          </Grid>
+          <Grid item xs={6} md={4}>
+            <Field
+              name='clientAddress'
+              type='text'
+              label='Adresse du client'
+              fullWidth
+              component={TextField} />
+          </Grid>
+          <Grid item xs={6} md={4}>
+            <Field
+              name='managerName'
+              type='text'
+              label='Nom du responsable'
+              fullWidth
+              component={TextField} />
+          </Grid>
+        </Grid>
       </CardContent>
       <CardActions>
         <Button dense color='primary' type='submit' disabled={pristine || invalid}>Enregistrer</Button>
