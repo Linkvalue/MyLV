@@ -1,7 +1,8 @@
-const { DefinePlugin } = require('webpack')
+const { DefinePlugin, IgnorePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const { util } = require('config')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
@@ -21,6 +22,7 @@ module.exports = {
       publicPath: '/',
     },
     plugins: [
+      new IgnorePlugin(/punycode/),
       new CopyWebpackPlugin([{
         from: path.resolve(__dirname, 'src/{manifest.json,favicon.ico}'),
         to: path.resolve(__dirname, 'dist'),
