@@ -1,9 +1,9 @@
 const { DefinePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
-const config = require('config')
+const { util } = require('config')
 
-const { lvconnect: { appId, endpoint } } = config
+const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
 /**
  * Sagui configuration object
@@ -41,7 +41,7 @@ module.exports = {
         'process.env.NODE_ENV': `"${process.env.NODE_ENV !== 'dev' ? 'production' : 'dev'}"`,
         'process.env.APP_ID': `"${appId}"`,
         'process.env.LVCONNECT_ENDPOINT': `"${endpoint}"`,
-        'process.env.CONFIG': JSON.stringify(config.front),
+        'process.env.CONFIG': JSON.stringify(front),
       }),
     ],
   },
