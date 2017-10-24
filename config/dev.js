@@ -5,6 +5,7 @@ module.exports = {
   front: {
     featureFlipping: {
       holidays: true,
+      transport: true,
     },
   },
 }

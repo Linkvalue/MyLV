@@ -7,10 +7,10 @@ import {
   PARTNERS_FETCH_SEARCH_SUCCESS, PARTNERS_FETCH_START, PARTNERS_FETCH_SUCCESS,
 } from '../partners.actions'
 import { lvConnect } from '../../auth/lvconnect'
-import { fetchWithAuth } from '../../auth/auth-actions'
+import { fetchWithAuth } from '../../auth/auth.actions'
 
 jest.mock('../../auth/lvconnect', () => ({ lvConnect: { api: jest.fn() } }))
-jest.mock('../../auth/auth-actions', () => ({ fetchWithAuth: jest.fn() }))
+jest.mock('../../auth/auth.actions', () => ({ fetchWithAuth: jest.fn() }))
 jest.unmock('../partners.actions')
 
 const middlewares = [thunk]

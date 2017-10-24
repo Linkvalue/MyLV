@@ -6,7 +6,7 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import { createBrowserHistory } from 'history'
 
 import { rootReducer } from './root-reducer'
-import { fetchUserData } from '../modules/auth/auth-actions'
+import { fetchUserData } from '../modules/auth/auth.actions'
 
 export const browserHistory = createBrowserHistory()
 

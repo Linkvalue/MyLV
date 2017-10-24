@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorklogPage should display process reminder 1`] = `
+<div>
+  <withStyles(GridWrapper)
+    container={true}
+  >
+    <Connect(Process) />
+    <Connect(withStyles(ReduxForm)) />
+    <Connect(withStyles(Calendar)) />
+    <withStyles(Button)
+      color="primary"
+      fab={true}
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        print
+      </i>
+    </withStyles(Button)>
+  </withStyles(GridWrapper)>
+  <Connect(withStyles(Printer)) />
+</div>
+`;
+
+exports[`WorklogPage should render properly 1`] = `
+<div>
+  <withStyles(GridWrapper)
+    container={true}
+  >
+    <Connect(withStyles(ReduxForm)) />
+    <Connect(withStyles(Calendar)) />
+    <withStyles(Button)
+      color="primary"
+      fab={true}
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        print
+      </i>
+    </withStyles(Button)>
+  </withStyles(GridWrapper)>
+  <Connect(withStyles(Printer)) />
+</div>
+`;
+
+exports[`WorklogPage should render transport dialog 1`] = `
+<div>
+  <withStyles(GridWrapper)
+    container={true}
+  >
+    <Connect(withStyles(ReduxForm)) />
+    <Connect(withStyles(Calendar)) />
+    <withStyles(Button)
+      color="primary"
+      fab={true}
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        print
+      </i>
+    </withStyles(Button)>
+  </withStyles(GridWrapper)>
+  <Connect(withStyles(Printer)) />
+  <ProofOfTransportDialog
+    onDecline={[Function]}
+    onRequestClose={[Function]}
+    open={true}
+  />
+</div>
+`;

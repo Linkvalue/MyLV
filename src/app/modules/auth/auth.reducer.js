@@ -5,11 +5,12 @@ import {
   LOGOUT,
   RECEIVE_USER_DATA,
   RECEIVE_USER_DATA_FAILED,
-} from './auth-actions'
+} from './auth.actions'
 
 const initialState = {
   user: null,
   awaitingLogin: true,
+  error: false,
 }
 
 export default (state = initialState, { type, payload }) => {

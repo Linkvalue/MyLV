@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Button, Card, CardActions, CardContent, Grid, Typography, withStyles } from 'material-ui'
 
-import SelectField from '../../../components/selectField.component'
+import SelectField from '../../../components/inputs/selectField.component'
 import * as worklogActions from '../worklog-actions'
 
 const validate = ({ label }) => ({

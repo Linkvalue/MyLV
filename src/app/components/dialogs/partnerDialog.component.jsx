@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, withStyles } from 'material-ui'
 
-import PartnerAutocomplete from './partnerAutocomplete.component'
+import PartnerAutocomplete from '../autocomplete/partnerAutocomplete.component'
 
 const styles = () => ({
   dialogContent: {

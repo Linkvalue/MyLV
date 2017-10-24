@@ -2,6 +2,7 @@ import 'whatwg-fetch'
 import LVConnectSDK from 'sdk-lvconnect'
 
 import { cracraEndpoint, lvConnect } from './lvconnect'
+import { postTransportProofSuccess } from '../transport/transport.actions'
 
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const loginError = () => ({
@@ -11,8 +12,10 @@ export const loginError = () => ({
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 
 export const fetchWithAuth = (url, options = {}) => (dispatch, getState) =>
-  lvConnect.api(cracraEndpoint + url, options.body ? { ...options, body: JSON.stringify(options.body) } : options)
-    .then((res) => res.status >= 400 ? Promise.reject(res) : res.json())
+  lvConnect.api(
+    cracraEndpoint + url,
+    options.body && !(options.body instanceof window.FormData) ? { ...options, body: JSON.stringify(options.body) } : options
+  ).then((res) => res.status >= 400 ? Promise.reject(res) : res.json())
 
 export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA'
 export const receiveUserData = (userData) => ({
@@ -29,6 +32,7 @@ export const fetchUserData = () => (dispatch) =>
   dispatch(fetchWithAuth('/api/me'))
     .then(userData => {
       dispatch(receiveUserData(userData))
+      dispatch(postTransportProofSuccess(userData.proofOfTransport))
       return userData
     })
     .catch(e => {

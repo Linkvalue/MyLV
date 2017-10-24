@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import {Card, CardContent, CardActions, Button, Typography, withStyles, Grid} from 'material-ui'
 
-import TextField from '../../../components/textField.component'
+import TextField from '../../../components/inputs/textField.component'
 import { userEntry } from '../client-actions'
 
 const mapStateToProps = state => ({

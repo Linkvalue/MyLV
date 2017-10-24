@@ -1,3 +1,1 @@
-const config = process.env.CONFIG
-
-export default config
+module.exports = process.env.CONFIG

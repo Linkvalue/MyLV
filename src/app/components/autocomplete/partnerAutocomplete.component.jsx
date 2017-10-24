@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Autocomplete from './autocomplete.component'
-import { getPartnersSearchResults } from '../modules/partners/partners.selectors'
-import { fetchPartnersSearch, clearPartnersSearch } from '../modules/partners/partners.actions'
+import { getPartnersSearchResults } from '../../modules/partners/partners.selectors'
+import { fetchPartnersSearch, clearPartnersSearch } from '../../modules/partners/partners.actions'
 
 const mapStateToProps = state => ({
   partners: getPartnersSearchResults(state),

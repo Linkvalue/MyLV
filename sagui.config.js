@@ -21,7 +21,7 @@ module.exports = {
       publicPath: '/',
     },
     plugins: [
-      new IgnorePlugin(/punycode/),
+      ...(process.env.NODE_ENV !== 'dev' ? [new IgnorePlugin(/punycode/)] : []),
       new CopyWebpackPlugin([{
         from: path.resolve(__dirname, 'src/{manifest.json,favicon.ico}'),
         to: path.resolve(__dirname, 'dist'),

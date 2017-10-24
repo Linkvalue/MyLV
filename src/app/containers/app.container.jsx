@@ -34,6 +34,7 @@ const styles = theme => ({
   '@media print': {
     appContent: {
       marginTop: 0,
+      padding: 0,
     },
   },
 })

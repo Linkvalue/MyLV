@@ -5,8 +5,8 @@ import { push } from 'react-router-redux'
 import { Grid, withStyles } from 'material-ui'
 import moment from 'moment'
 
-import TextField from '../../../components/textField.component'
-import DateField from '../../../components/dateField.component'
+import TextField from '../../../components/inputs/textField.component'
+import DateField from '../../../components/inputs/dateField.component'
 import PartnerList from '../../../components/partnerList.component'
 
 const validate = ({ label, date, attendees }) => {

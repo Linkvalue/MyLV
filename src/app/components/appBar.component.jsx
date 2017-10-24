@@ -15,7 +15,7 @@ import {
 } from 'material-ui'
 import { Menu as MenuIcon } from 'material-ui-icons'
 
-import { logout } from '../modules/auth/auth-actions'
+import { logout } from '../modules/auth/auth.actions'
 import { drawerWidth } from './appDrawer.component'
 
 const styles = () => ({

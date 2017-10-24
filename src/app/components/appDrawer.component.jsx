@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Drawer, Divider, List, withStyles } from 'material-ui'
-import {BeachAccess, Person, Event, Restaurant, SupervisorAccount} from 'material-ui-icons'
+import { BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload } from 'material-ui-icons'
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
-import config from '../config'
+import { featureFlipping } from '../config'
 
 export const drawerWidth = 240
 
@@ -33,16 +33,20 @@ const mapStateToProps = (state) => ({
 
 const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose }) => {
   const links = []
-  if (isConnected) {
+  if (isConnected && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
     links.push(<AppDrawerItem to='/client' icon={<Person />} text='Client' key='client' />)
   }
 
-  if (isConnected && canPrint) {
+  if (isConnected && canPrint && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
     links.push(<AppDrawerItem to='/' icon={<Event />} text='Remplir son CRA' key='cra' />)
   }
 
-  if (isConnected && config.featureFlipping.holidays) {
+  if (isConnected && featureFlipping.holidays) {
     links.push(<AppDrawerItem to='/holidays' icon={<BeachAccess />} text='Demande de congés' key='holidays' />)
+  }
+
+  if (isConnected && featureFlipping.transport) {
+    links.push(<AppDrawerItem to='/proof-upload' icon={<FileUpload />} text='Justificatif de transport' key='proof-of-transport' />)
   }
 
   if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {

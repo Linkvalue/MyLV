@@ -1,7 +1,8 @@
-import { STOP_PROCESS_REMINDER } from './settings-actions'
+import { STOP_PROCESS_REMINDER, DISABLE_PROOF_OF_TRANSPORT_DIALOG } from './settings-actions'
 
 const initialState = {
   shouldRemindProcess: true,
+  shouldDisplayProofOfTransportDialog: true,
 }
 
 export default (state = initialState, action) => {
@@ -10,6 +11,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         shouldRemindProcess: false,
+      }
+    case DISABLE_PROOF_OF_TRANSPORT_DIALOG:
+      return {
+        ...state,
+        shouldDisplayProofOfTransportDialog: false,
       }
     default:
       return state
