@@ -2,7 +2,6 @@ const { DefinePlugin, IgnorePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path')
 const { util } = require('config')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
