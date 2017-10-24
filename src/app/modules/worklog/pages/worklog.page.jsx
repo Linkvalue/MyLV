@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
@@ -8,14 +9,19 @@ import { canPrintSelector } from '../../client/client-selectors'
 import Calendar from '../components/calendar.component'
 import EntriesForm from '../components/entriesForm.component'
 import Process from '../components/process.component'
-import Printer from '../components/printer/printer.component'
+import Printer from '../components/printer.component'
+import ProofOfTransportDialog from '../../../components/dialogs/proofOfTansportDialog.component'
+import { disableProofOfTransportDialog } from '../../settings/settings-actions'
+import { featureFlipping } from '../../../config'
 
 const mapStateToProps = state => ({
   shouldRemindProcess: state.settings.shouldRemindProcess,
   canPrint: canPrintSelector(state),
+  shouldDisplayProofOfTransportDialog: state.settings.shouldDisplayProofOfTransportDialog,
+  hasInvalidTransportProof: state.transport.expirationDate < Date.now(),
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ push }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ push, disableProofOfTransportDialog }, dispatch)
 
 const printCra = () => window.print()
 
@@ -33,15 +39,30 @@ const styles = theme => ({
   },
 })
 
-class WorklogPage extends React.Component {
-  componentDidMount () {
+export class WorklogPage extends React.Component {
+  constructor (props, context) {
+    super(props, context)
+
+    this.state = {
+      openProofOfTransportDialog: true,
+    }
+  }
+
+  componentWillMount () {
     if (!this.props.canPrint) {
       this.props.push('/client')
     }
   }
 
+  handleRequestClose = () => this.setState({ openProofOfTransportDialog: false })
+
+  handleDecline = () => {
+    this.setState({ openProofOfTransportDialog: false })
+    this.props.disableProofOfTransportDialog()
+  }
+
   render () {
-    const { shouldRemindProcess, classes } = this.props
+    const { shouldRemindProcess, shouldDisplayProofOfTransportDialog, hasInvalidTransportProof, classes } = this.props
 
     return (
       <div>
@@ -54,9 +75,24 @@ class WorklogPage extends React.Component {
           </Button>
         </Grid>
         <Printer />
+        {featureFlipping.transport ? <ProofOfTransportDialog
+          open={this.state.openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
+          onRequestClose={this.handleRequestClose}
+          onDecline={this.handleDecline}
+        /> : null}
       </div>
     )
   }
+}
+
+WorklogPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+  shouldRemindProcess: PropTypes.bool.isRequired,
+  canPrint: PropTypes.bool.isRequired,
+  push: PropTypes.func.isRequired,
+  disableProofOfTransportDialog: PropTypes.func.isRequired,
+  shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
+  hasInvalidTransportProof: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(WorklogPage))

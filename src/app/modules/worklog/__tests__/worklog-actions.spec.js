@@ -19,7 +19,7 @@ import {
   WORKLOG_SAVE_SUCCESS,
 } from '../worklog-actions'
 
-jest.mock('../../auth/auth-actions', () => ({ fetchWithAuth: jest.fn((url, options) => ({ url, options })) }))
+jest.mock('../../auth/auth.actions', () => ({ fetchWithAuth: jest.fn((url, options) => ({ url, options })) }))
 
 jest.unmock('../worklog-actions')
 

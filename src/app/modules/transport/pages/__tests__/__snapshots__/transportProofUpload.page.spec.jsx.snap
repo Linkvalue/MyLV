@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransportProofPage should render properly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <Card
+    raised={false}
+  >
+    <withStyles(CardContent)>
+      <withStyles(GridWrapper)
+        container={true}
+      >
+        <withStyles(GridWrapper)
+          item={true}
+          xs={12}
+        >
+          <withStyles(Typography)
+            component="h2"
+            gutterBottom={true}
+            type="headline"
+          >
+            Uploader un jsutificatif de titre de transport
+          </withStyles(Typography)>
+          <withStyles(Typography)
+            gutterBottom={true}
+          >
+            Ce justificatif te permettra d'être remboursé pour votre titre de transport, merci donc de le fournir avant le 25 du mois. Renseignez aussi la date d'expiration du justificatif afin d'être rappellé automatiquement lorsque celui-ci arrive à expiration.
+          </withStyles(Typography)>
+        </withStyles(GridWrapper)>
+        <withStyles(GridWrapper)
+          item={true}
+          md={4}
+          xs={12}
+        >
+          <Field
+            autoFocus={true}
+            component={[Function]}
+            fullWidth={true}
+            label="Date de début de validité"
+            name="startingDate"
+            type="text"
+          />
+        </withStyles(GridWrapper)>
+        <withStyles(GridWrapper)
+          item={true}
+          md={4}
+          xs={12}
+        >
+          <Field
+            component={[Function]}
+            fullWidth={true}
+            label="Date d'expiration"
+            name="expirationDate"
+            type="text"
+          />
+        </withStyles(GridWrapper)>
+        <withStyles(GridWrapper)
+          item={true}
+          md={4}
+          xs={12}
+        >
+          <div>
+            <withStyles(Button)
+              color="primary"
+              onClick={[Function]}
+            >
+              Valide pour ce mois
+            </withStyles(Button)>
+          </div>
+        </withStyles(GridWrapper)>
+        <withStyles(GridWrapper)
+          item={true}
+          xs={12}
+        >
+          <Field
+            accept="jpg,jpeg,JPG,JPEG,pdf,PDF,png,PNG"
+            component={[Function]}
+            label="Choisir un fichier"
+            name="file"
+          />
+        </withStyles(GridWrapper)>
+      </withStyles(GridWrapper)>
+    </withStyles(CardContent)>
+    <withStyles(CardActions)>
+      <withStyles(Button)
+        color="primary"
+        dense={true}
+        disabled={true}
+        type="submit"
+      >
+        Upload
+      </withStyles(Button)>
+    </withStyles(CardActions)>
+  </Card>
+</form>
+`;

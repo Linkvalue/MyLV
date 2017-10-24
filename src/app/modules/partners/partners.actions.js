@@ -1,7 +1,7 @@
 import * as qs from 'qs'
 
 import { lvConnect } from '../auth/lvconnect'
-import { fetchWithAuth } from '../auth/auth-actions'
+import { fetchWithAuth } from '../auth/auth.actions'
 
 export const PARTNERS_FETCH_SEARCH_SUCCESS = 'PARTNERS_FETCH_SEARCH_SUCCESS'
 export const fetchPartnersSearch = (search, excludeSelf) => (dispatch, getState) =>

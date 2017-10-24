@@ -1,4 +1,4 @@
-import { fetchWithAuth } from '../auth/auth-actions'
+import { fetchWithAuth } from '../auth/auth.actions'
 import { fetchPartnersSuccess } from '../partners/partners.actions'
 
 export const LUNCHES_FETCH_SUCCESS = 'LUNCHES_FETCH_SUCCESS'

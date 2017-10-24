@@ -1,4 +1,4 @@
-import { fetchWithAuth } from '../auth/auth-actions'
+import { fetchWithAuth } from '../auth/auth.actions'
 
 export const WORKLOG_FILL_MORNING = 'WORKLOG_FILL_MORNING'
 export const WORKLOG_FILL_AFTERNOON = 'WORKLOG_FILL_AFTERNOON'

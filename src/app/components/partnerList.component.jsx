@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Avatar, List, ListItem, ListItemIcon, ListItemText, ListSubheader, withStyles } from 'material-ui'
 import { Add, Error } from 'material-ui-icons'
 
-import PartnerDialog from './partnerDialog.component'
+import PartnerDialog from './dialogs/partnerDialog.component'
 
 const mapStateToProps = state => ({ partners: state.partners.partnersById })
 
