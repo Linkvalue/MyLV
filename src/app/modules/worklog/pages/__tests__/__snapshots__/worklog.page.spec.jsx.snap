@@ -13,11 +13,7 @@ exports[`WorklogPage should display process reminder 1`] = `
       fab={true}
       onClick={[Function]}
     >
-      <i
-        className="material-icons"
-      >
-        print
-      </i>
+      <pure(Print) />
     </withStyles(Button)>
   </withStyles(GridWrapper)>
   <Connect(withStyles(Printer)) />
@@ -36,11 +32,7 @@ exports[`WorklogPage should render properly 1`] = `
       fab={true}
       onClick={[Function]}
     >
-      <i
-        className="material-icons"
-      >
-        print
-      </i>
+      <pure(Print) />
     </withStyles(Button)>
   </withStyles(GridWrapper)>
   <Connect(withStyles(Printer)) />
@@ -59,11 +51,7 @@ exports[`WorklogPage should render transport dialog 1`] = `
       fab={true}
       onClick={[Function]}
     >
-      <i
-        className="material-icons"
-      >
-        print
-      </i>
+      <pure(Print) />
     </withStyles(Button)>
   </withStyles(GridWrapper)>
   <Connect(withStyles(Printer)) />

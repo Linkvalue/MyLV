@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
 import { Button, Grid, withStyles } from 'material-ui'
+import { Print } from 'material-ui-icons'
 
 import { canPrintSelector } from '../../client/client-selectors'
 import Calendar from '../components/calendar.component'
@@ -71,7 +72,7 @@ export class WorklogPage extends React.Component {
           <EntriesForm />
           <Calendar />
           <Button fab color='primary' className={classes.printButton} onClick={printCra}>
-            <i className='material-icons'>print</i>
+            <Print />
           </Button>
         </Grid>
         <Printer />

@@ -28,7 +28,6 @@ module.exports = {
     const userId = req.auth.credentials.id
     const { firstName, lastName } = req.auth.credentials
 
-    console.log(file)
     const fileExt = file.hapi.filename.split('.').slice(1).join('.')
     const filename = `Proof of transport ${firstName} ${lastName} ${formatDate(startingDate)} ${formatDate(expirationDate)}.${fileExt}`
 

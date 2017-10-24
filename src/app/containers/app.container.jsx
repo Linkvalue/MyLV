@@ -37,6 +37,9 @@ const styles = theme => ({
       padding: 0,
     },
   },
+  '@global iframe': {
+    border: 'none',
+  },
 })
 
 class App extends React.Component {
