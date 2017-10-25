@@ -1,3 +1,13 @@
+<a name="2.0.3"></a>
+## [2.0.3](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.0.2...v2.0.3) (2017-10-25)
+
+
+### Bug Fixes
+
+* **worklog:** Fixed missing userId in worklog query ([2dc25c9](http://gitlab.com/LinkValue/Lab/CraCra/commit/2dc25c9))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.0.1...v2.0.2) (2017-10-25)
 
