@@ -5,7 +5,6 @@ module.exports = {
   method: 'GET',
   path: '/api/worklog',
   config: {
-    auth: false,
     validate: {
       query: {
         year: Joi.string().required(),
@@ -17,6 +16,7 @@ module.exports = {
     const { Entry } = req.server.app.models
 
     return Entry.find({
+      userId: req.auth.credentials.id,
       date: { $regex: `${req.query.year}-${req.query.month}-` },
     })
       .then(entries => res.mongodb(entries, ['client', 'manager', 'id', 'userId']))
