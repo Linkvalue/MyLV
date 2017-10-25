@@ -16,7 +16,7 @@
   "main": "./src/server/index.js",
   "scripts": {
     "build": "sagui build",
-    "changelog": "conventional-changelog -c .conventional-changelog -p angular -i CHANGELOG.md -s",
+    "changelog": "conventional-changelog -c .conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "develop": "sagui develop --port 7000",
     "dist": "sagui dist",
     "start": "sagui develop --port 3000",
@@ -26,7 +26,7 @@
     "test:typecheck": "sagui test:typecheck",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
-    "version": "npm run changelog",
+    "version": "npm run changelog && git add CHANGELOG.md",
     "lint:fix": "eslint --fix \"**/*.{js,jsx}\""
   },
   "devDependencies": {
