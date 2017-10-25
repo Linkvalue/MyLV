@@ -18,7 +18,7 @@ import { Menu as MenuIcon } from 'material-ui-icons'
 import { logout } from '../modules/auth/auth.actions'
 import { drawerWidth } from './appDrawer.component'
 
-const styles = () => ({
+const styles = theme => ({
   appBar: {
     position: 'absolute',
     width: '100%',
@@ -30,6 +30,14 @@ const styles = () => ({
   },
   flex: {
     flex: 1,
+  },
+  userDetails: {
+    display: 'flex',
+    alignItems: 'center',
+    textTransform: 'capitalize',
+  },
+  avatar: {
+    marginLeft: theme.spacing.unit,
   },
   menuButton: {
     marginLeft: -12,
@@ -75,17 +83,20 @@ class AppBar extends React.Component {
     if (user) {
       const fullName = `${user.firstName} ${user.lastName}`
       avatar = (
-        <IconButton color='contrast' onClick={this.handleMenuOpen}>
-          <Avatar alt={fullName} src={user.profilePictureUrl} />
-          <Menu
-            id='account-menu'
-            anchorEl={this.state.anchor}
-            open={this.state.open}
-            onRequestClose={this.handleRequestClose}
-          >
-            <MenuItem onClick={logout}>Logout</MenuItem>
-          </Menu>
-        </IconButton>
+        <div className={classes.userDetails}>
+          {fullName}
+          <IconButton color='contrast' onClick={this.handleMenuOpen} className={classes.avatar}>
+            <Avatar alt={fullName} src={user.profilePictureUrl} />
+            <Menu
+              id='account-menu'
+              anchorEl={this.state.anchor}
+              open={this.state.open}
+              onRequestClose={this.handleRequestClose}
+            >
+              <MenuItem onClick={logout}>Logout</MenuItem>
+            </Menu>
+          </IconButton>
+        </div>
       )
     }
 
