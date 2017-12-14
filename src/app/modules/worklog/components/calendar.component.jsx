@@ -3,13 +3,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import classNames from 'classnames'
-import { Button, Card, CardActions, CardContent, Grid, IconButton, Typography, withStyles } from 'material-ui'
+import { Card, CardContent, Grid, IconButton, Typography, withStyles } from 'material-ui'
 import { ChevronLeft, ChevronRight } from 'material-ui-icons'
 
 import CalendarDay from './calendarDay.component'
 import * as calendarActions from '../calendar-actions'
 import * as worklogActions from '../worklog-actions'
-import { hasPendingChangesSelector } from '../worklog-selectors'
 import { calendarDaysSelector, calendarLabelsSelector } from '../calendar-selectors'
 import { publicHolidays } from '../calendar-constants'
 
@@ -20,7 +19,6 @@ const mapStateToProps = (state) => ({
   ...state.worklog,
   labelsInLegend: calendarLabelsSelector(state),
   weeks: calendarDaysSelector(state),
-  hasPendingChanges: hasPendingChangesSelector(state),
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
@@ -92,8 +90,6 @@ class Calendar extends Component {
       emptyDay,
       labelsInLegend,
       weeks,
-      saveWorklog,
-      hasPendingChanges,
       classes,
     } = this.props
     const m = moment(`${year}-${month}`, 'YYYY-MM')
@@ -160,11 +156,6 @@ class Calendar extends Component {
               </span>
             ))}
           </CardContent>
-          <CardActions>
-            <Button dense color='primary' onClick={saveWorklog} disabled={!hasPendingChanges}>
-              Enregistrer
-            </Button>
-          </CardActions>
         </Card>
       </Grid>
     )

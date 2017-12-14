@@ -13,37 +13,55 @@ export const WORKLOG_GET_START = 'WORKLOG_GET_START'
 export const WORKLOG_GET_SUCCESS = 'WORKLOG_GET_SUCCESS'
 export const WORKLOG_GET_ERROR = 'WORKLOG_GET_ERROR'
 
-export const fillMorning = (date, label) => ({
+export const saveWorklog = (preSaveAction) => (dispatch, getState) => {
+  if (preSaveAction) {
+    dispatch(preSaveAction)
+  }
+
+  const { worklog: { pending } } = getState()
+
+  if (Object.keys(pending).length === 0) {
+    return Promise.resolve()
+  }
+
+  return dispatch(fetchWithAuth('/api/worklog', {
+    method: 'PUT',
+    body: Object.entries(pending).map(([date, label]) => ({ date, label })),
+  }))
+    .then(() => dispatch({ type: WORKLOG_SAVE_SUCCESS }))
+}
+
+export const fillMorning = (date, label) => saveWorklog({
   type: WORKLOG_FILL_MORNING,
   payload: {date, label},
 })
 
-export const fillAfternoon = (date, label) => ({
+export const fillAfternoon = (date, label) => saveWorklog({
   type: WORKLOG_FILL_AFTERNOON,
   payload: {date, label},
 })
 
-export const fillDay = (day, label) => ({
+export const fillDay = (day, label) => saveWorklog({
   type: WORKLOG_FILL_DAY,
   payload: {day, label},
 })
 
-export const fillWeek = (day, label) => ({
+export const fillWeek = (day, label) => saveWorklog({
   type: WORKLOG_FILL_WEEK,
   payload: {day, label},
 })
 
-export const fillMonth = (month, label) => ({
+export const fillMonth = (month, label) => saveWorklog({
   type: WORKLOG_FILL_MONTH,
   payload: {month, label},
 })
 
-export const fillRange = (start, end, label) => ({
+export const fillRange = (start, end, label) => saveWorklog({
   type: WORKLOG_FILL_RANGE,
   payload: {start, end, label},
 })
 
-export const emptyDay = (day) => ({
+export const emptyDay = (day) => saveWorklog({
   type: WORKLOG_EMPTY_DAY,
   payload: {day},
 })
@@ -59,18 +77,4 @@ export const getWorklog = (year, month) => (dispatch) => {
   return dispatch(fetchWithAuth(`/api/worklog?year=${year}&month=${month}`))
     .then(entries => dispatch({ type: WORKLOG_GET_SUCCESS, payload: entries }))
     .catch(() => dispatch({ type: WORKLOG_GET_ERROR }))
-}
-
-export const saveWorklog = () => (dispatch, getState) => {
-  const { worklog: { pending } } = getState()
-
-  if (Object.keys(pending).length === 0) {
-    return Promise.resolve()
-  }
-
-  return dispatch(fetchWithAuth('/api/worklog', {
-    method: 'PUT',
-    body: Object.entries(pending).map(([date, label]) => ({ date, label })),
-  }))
-    .then(() => dispatch({ type: WORKLOG_SAVE_SUCCESS }))
 }
