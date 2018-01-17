@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { REHYDRATE } from 'redux-persist/constants'
 
-import { publicHolidays } from './calendar-constants'
+import { publicHolidays } from '../../../shared/calendar-constants'
 import {
   WORKLOG_FILL_MORNING,
   WORKLOG_FILL_AFTERNOON,

@@ -47,6 +47,12 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
   },
+  incompleteWorklog: {
+    background: theme.palette.error[100],
+    '&:hover': {
+      background: theme.palette.error[50],
+    },
+  },
 })
 
 export class PartnersPage extends Component {
@@ -77,6 +83,7 @@ export class PartnersPage extends Component {
 
   render () {
     const { partners, isLoading, labels, classes, match, pageCount, limit } = this.props
+    const inValidWorklogClasses = { root: classes.incompleteWorklog }
 
     if (isLoading) {
       return (
@@ -105,7 +112,7 @@ export class PartnersPage extends Component {
             </TableHead>
             <TableBody>
               {partners.map(partner => (
-                <TableRow hover key={partner.id}>
+                <TableRow hover key={partner.id} classes={partner.isWorklogComplete ? undefined : inValidWorklogClasses}>
                   <TableCell>
                     {partner.firstName} {partner.lastName}
                   </TableCell>

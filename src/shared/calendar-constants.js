@@ -1,4 +1,4 @@
-export const publicHolidays = new Set([
+exports.publicHolidays = new Set([
   '01-01',
   '04-17',
   '05-01',

@@ -5,8 +5,26 @@ const config = require('config')
 
 const lvConnect = require('../../helpers/lvconnect.helper')
 const hasRole = require('../../helpers/hasRole.pre')
+const { publicHolidays } = require('../../../shared/calendar-constants')
 
 const compensatedMealLabels = ['Production', 'Conferences']
+
+function getLunchesForPartner (lunches, partner) {
+  return lunches.filter(lunch =>
+    lunch.owner.toString() === partner.id || lunch.attendees.some(attendeeId => attendeeId.toString() === partner.id))
+}
+
+function getWorkingDays (date) {
+  let days = 0
+  for (let i = 1; i <= moment(date, 'YYYY-MM').daysInMonth(); i++) {
+    const d = moment(date, 'YYYY-MM').date(i)
+    if (d.day() !== 0 && d.day() !== 6 && !publicHolidays.has(d.format('MM-DD'))) {
+      days += 1
+    }
+  }
+
+  return days
+}
 
 module.exports = {
   method: 'GET',
@@ -17,40 +35,42 @@ module.exports = {
         page: Joi.number().min(1),
         limit: Joi.number().min(1).max(100),
         search: Joi.string().max(30),
+        date: Joi.string().regex(/^\d{4}-\d{2}/),
       },
     },
     pre: [hasRole(config.cracra.partnersRoles)],
   },
   async handler (request, reply) {
     const query = qs.stringify(request.query)
+    const date = request.query.date || moment().format('YYYY-MM')
 
     const res = await lvConnect.api(`/users?${query}`)
     const data = await res.json()
     const [entries, lunches] = await Promise.all([
       request.server.app.models.Entry.find({
         userId: { $in: data.results.map(partner => partner.id) },
-        date: { $regex: moment().format('YYYY-MM-') },
+        date: { $regex: date },
       }),
       request.server.app.models.Lunch.find({
-        $or: [
-          { attendees: request.auth.credentials.id },
-          { owner: request.auth.credentials.id },
-        ],
-        date: { $gt: moment(`${moment().year()}-${moment().month()}`, 'YYYY-MM').toDate() },
+        date: { $gt: moment(date, 'YYYY-MM').toDate() },
       }),
     ])
+
+    const expectedDays = getWorkingDays(date)
 
     reply.mongodb(Object.assign({}, data, {
       results: data.results.map(partner => {
         const partnerEntries = entries.filter(entry => entry.userId.toString() === partner.id)
         const mealVouchers = partnerEntries.reduce((nb, entry) =>
           /-am$/.test(entry.date) && compensatedMealLabels.indexOf(entry.label) >= 0 ? nb + 1 : nb, 0)
+        const lunchesCount = getLunchesForPartner(lunches, partner).length
         return Object.assign({}, partner, {
-          mealVouchers: Math.max(mealVouchers - lunches.length, 0),
+          mealVouchers: Math.max(mealVouchers - lunchesCount, 0),
           entryCounts: partnerEntries.reduce((acc, entry) => Object.assign(acc, {
             [entry.label]: (acc[entry.label] || 0) + 0.5,
           }), {}),
-          lunchesCount: lunches.length,
+          lunchesCount,
+          isWorklogComplete: partnerEntries.length / 2 === expectedDays && partner.roles.includes('tech'),
         })
       }),
     }))

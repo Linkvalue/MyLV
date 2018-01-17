@@ -10,7 +10,7 @@ import CalendarDay from './calendarDay.component'
 import * as calendarActions from '../calendar-actions'
 import * as worklogActions from '../worklog-actions'
 import { calendarDaysSelector, calendarLabelsSelector } from '../calendar-selectors'
-import { publicHolidays } from '../calendar-constants'
+import { publicHolidays } from '../../../../shared/calendar-constants'
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
