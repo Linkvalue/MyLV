@@ -26,8 +26,8 @@ module.exports = {
     endpoint: 'https://lvconnect.link-value.fr',
   },
   cracra: {
-    lunchesRoles: ['rh', 'board', 'business'],
-    partnersRoles: ['rh', 'board'],
+    lunchesRoles: ['hr', 'board', 'business'],
+    partnersRoles: ['hr', 'board'],
   },
   front: {
     featureFlipping: {
