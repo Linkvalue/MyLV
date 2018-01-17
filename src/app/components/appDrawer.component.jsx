@@ -49,12 +49,13 @@ const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseD
     links.push(<AppDrawerItem to='/proof-upload' icon={<FileUpload />} text='Justificatif de transport' key='proof-of-transport' />)
   }
 
+  const adminLinks = []
   if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to='/lunches' icon={<Restaurant />} text='Déjeuners' key='lunches' />)
+    adminLinks.push(<AppDrawerItem to='/lunches' icon={<Restaurant />} text='Déjeuners' key='lunches' />)
   }
 
   if (isConnected && ['hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to='/partners' icon={<SupervisorAccount />} text='Partners' key='partners' />)
+    adminLinks.push(<AppDrawerItem to='/partners' icon={<SupervisorAccount />} text='Partners' key='partners' />)
   }
 
   const collapsed = shouldCollapseDrawer || !isConnected
@@ -69,6 +70,8 @@ const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseD
       <Divider />
       <List>
         {links}
+        <Divider />
+        {adminLinks}
       </List>
     </Drawer>
   )
