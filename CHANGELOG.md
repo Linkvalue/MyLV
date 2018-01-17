@@ -1,3 +1,13 @@
+<a name="2.1.3"></a>
+## [2.1.3](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.2...v2.1.3) (2018-01-17)
+
+
+### Bug Fixes
+
+* **partners:** Fix partners roles ([d73f81b](http://gitlab.com/LinkValue/Lab/CraCra/commit/d73f81b))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.1...v2.1.2) (2018-01-17)
 
