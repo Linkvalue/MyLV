@@ -72,7 +72,7 @@ export class PartnersPage extends Component {
     }
   }
 
-  getRowDisplay = ({from, to, count}) => `${from} of ${count / this.props.limit}`
+  getRowDisplay = ({from, to, count}) => `${Math.round(from / count)} of ${count / this.props.limit}`
 
   handleChangePage = (event, page) => this.props.push(`/partners/${page + 1}`)
 
