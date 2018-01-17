@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.1...v2.1.2) (2018-01-17)
+
+
+### Bug Fixes
+
+* **partners:** Fix partners pagination display bug again ([a079e37](http://gitlab.com/LinkValue/Lab/CraCra/commit/a079e37))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.0...v2.1.1) (2018-01-17)
 
