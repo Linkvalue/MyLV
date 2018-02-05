@@ -64,19 +64,19 @@ const EntriesForm = ({
           component={SelectField} />
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button dense onClick={handleSubmit(({label}) => fillMorning(`${year}-${month}-${day}`, label))}>
+        <Button size='small' onClick={handleSubmit(({label}) => fillMorning(`${year}-${month}-${day}`, label))}>
           AM
         </Button>
-        <Button dense onClick={handleSubmit(({label}) => fillAfternoon(`${year}-${month}-${day}`, label))}>
+        <Button size='small' onClick={handleSubmit(({label}) => fillAfternoon(`${year}-${month}-${day}`, label))}>
           PM
         </Button>
-        <Button dense onClick={handleSubmit(({label}) => fillDay(`${year}-${month}-${day}`, label))}>
+        <Button size='small' onClick={handleSubmit(({label}) => fillDay(`${year}-${month}-${day}`, label))}>
           Jour
         </Button>
-        <Button dense onClick={handleSubmit(({label}) => fillWeek(`${year}-${month}-${day}`, label))}>
+        <Button size='small' onClick={handleSubmit(({label}) => fillWeek(`${year}-${month}-${day}`, label))}>
           Semaine
         </Button>
-        <Button dense onClick={handleSubmit(({label}) => fillMonth(`${year}-${month}`, label))}>
+        <Button size='small' onClick={handleSubmit(({label}) => fillMonth(`${year}-${month}`, label))}>
           Mois
         </Button>
       </CardActions>
@@ -93,7 +93,7 @@ const EntriesForm = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button dense color='primary' component={Link} to='/client'>Editer</Button>
+        <Button size='small' color='primary' component={Link} to='/client'>Editer</Button>
       </CardActions>
     </Card>
   </Grid>

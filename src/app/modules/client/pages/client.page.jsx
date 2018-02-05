@@ -63,8 +63,8 @@ const ClientPage = ({ handleSubmit, pristine, invalid, classes }) => (
         </Grid>
       </CardContent>
       <CardActions>
-        <Button dense color='primary' type='submit' disabled={pristine || invalid}>Enregistrer</Button>
-        <Button dense component={Link} to='/'>Retour à l'édition</Button>
+        <Button size='small' color='primary' type='submit' disabled={pristine || invalid}>Enregistrer</Button>
+        <Button size='small' component={Link} to='/'>Retour à l'édition</Button>
       </CardActions>
     </Card>
   </form>

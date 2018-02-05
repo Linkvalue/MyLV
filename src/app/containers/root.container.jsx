@@ -18,6 +18,7 @@ import EditLunchPage from '../modules/lunches/pages/editLunch.page'
 import NewLunchPage from '../modules/lunches/pages/newLunch.page'
 import PartnersPage from '../modules/partners/pages/partners.page'
 import TransportProofPage from '../modules/transport/pages/transportProofUpload.page'
+import NotFound from '../components/notFound.component'
 import theme from '../modules/display/theme'
 
 export const Root = ({ store, history }) => (
@@ -37,6 +38,7 @@ export const Root = ({ store, history }) => (
             <Route exact path='/lunches' component={LoginRequired(LunchesPage)} />
             <Route exact path='/partners/:page?' component={LoginRequired(PartnersPage)} />
             <Route exact path='/' component={LoginRequired(WorklogPage)} />
+            <Route component={NotFound} />
           </Switch>
         </App>
       </MuiThemeProvider>

@@ -10,7 +10,7 @@ describe('worklog/actions', () => {
       // Given
       expect.assertions(2)
       const dispatch = jest.fn(() => Promise.resolve())
-      const getState = jest.fn(() => ({ worklog: { pending: { foo: 'bar' } } }))()
+      const getState = jest.fn(() => ({ worklog: { pending: { foo: 'bar' } } }))
 
       // When
       await saveWorklog()(dispatch, getState)

@@ -5,7 +5,7 @@ import { FormControl, FormHelperText, Input, InputLabel } from 'material-ui'
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('dd/mm/yyyy')
 
-const TextMaskCustom = props => {
+const TextMaskCustom = ({ inputRef, ...props }) => {
   return (
     <MaskedInput
       {...props}

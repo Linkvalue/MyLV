@@ -58,7 +58,7 @@ class FileField extends Component {
         {fileDetails}
         <input className={classes.uploadInput} type='file' id={input.name} {...input} />
         <label htmlFor={input.name}>
-          <Button raised component='span'>
+          <Button variant='raised' component='span'>
             {label}
           </Button>
         </label>

@@ -49,7 +49,7 @@ class LunchesPage extends Component {
           </Table>
         </CardContent>
         <CardActions>
-          <Button dense color='primary' component={Link} to='/lunches/new'>Ajouter un déjeuner</Button>
+          <Button size='small' color='primary' component={Link} to='/lunches/new'>Ajouter un déjeuner</Button>
         </CardActions>
       </Card>
     )

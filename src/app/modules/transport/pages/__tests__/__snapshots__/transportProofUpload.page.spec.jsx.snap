@@ -7,28 +7,28 @@ exports[`TransportProofPage should render properly 1`] = `
   <Card
     raised={false}
   >
-    <withStyles(CardContent)>
-      <withStyles(GridWrapper)
+    <WithStyles(CardContent)>
+      <WithStyles(GridWrapper)
         container={true}
       >
-        <withStyles(GridWrapper)
+        <WithStyles(GridWrapper)
           item={true}
           xs={12}
         >
-          <withStyles(Typography)
+          <WithStyles(Typography)
             component="h2"
             gutterBottom={true}
             type="headline"
           >
             Uploader un jsutificatif de titre de transport
-          </withStyles(Typography)>
-          <withStyles(Typography)
+          </WithStyles(Typography)>
+          <WithStyles(Typography)
             gutterBottom={true}
           >
             Ce justificatif te permettra d'être remboursé pour votre titre de transport, merci donc de le fournir avant le 25 du mois. Renseignez aussi la date d'expiration du justificatif afin d'être rappellé automatiquement lorsque celui-ci arrive à expiration.
-          </withStyles(Typography)>
-        </withStyles(GridWrapper)>
-        <withStyles(GridWrapper)
+          </WithStyles(Typography)>
+        </WithStyles(GridWrapper)>
+        <WithStyles(GridWrapper)
           item={true}
           md={4}
           xs={12}
@@ -41,8 +41,8 @@ exports[`TransportProofPage should render properly 1`] = `
             name="startingDate"
             type="text"
           />
-        </withStyles(GridWrapper)>
-        <withStyles(GridWrapper)
+        </WithStyles(GridWrapper)>
+        <WithStyles(GridWrapper)
           item={true}
           md={4}
           xs={12}
@@ -54,22 +54,22 @@ exports[`TransportProofPage should render properly 1`] = `
             name="expirationDate"
             type="text"
           />
-        </withStyles(GridWrapper)>
-        <withStyles(GridWrapper)
+        </WithStyles(GridWrapper)>
+        <WithStyles(GridWrapper)
           item={true}
           md={4}
           xs={12}
         >
           <div>
-            <withStyles(Button)
+            <WithStyles(Button)
               color="primary"
               onClick={[Function]}
             >
               Valide pour ce mois
-            </withStyles(Button)>
+            </WithStyles(Button)>
           </div>
-        </withStyles(GridWrapper)>
-        <withStyles(GridWrapper)
+        </WithStyles(GridWrapper)>
+        <WithStyles(GridWrapper)
           item={true}
           xs={12}
         >
@@ -79,19 +79,19 @@ exports[`TransportProofPage should render properly 1`] = `
             label="Choisir un fichier"
             name="file"
           />
-        </withStyles(GridWrapper)>
-      </withStyles(GridWrapper)>
-    </withStyles(CardContent)>
-    <withStyles(CardActions)>
-      <withStyles(Button)
+        </WithStyles(GridWrapper)>
+      </WithStyles(GridWrapper)>
+    </WithStyles(CardContent)>
+    <WithStyles(CardActions)>
+      <WithStyles(Button)
         color="primary"
-        dense={true}
         disabled={true}
+        size="small"
         type="submit"
       >
         Upload
-      </withStyles(Button)>
-    </withStyles(CardActions)>
+      </WithStyles(Button)>
+    </WithStyles(CardActions)>
   </Card>
 </form>
 `;

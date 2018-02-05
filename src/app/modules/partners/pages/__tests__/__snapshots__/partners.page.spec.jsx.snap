@@ -2,90 +2,101 @@
 
 exports[`PartnersPage should render loader when fetching 1`] = `
 <div>
-  <withStyles(CircularProgress)
+  <WithStyles(CircularProgress)
     size={100}
   />
 </div>
 `;
 
 exports[`PartnersPage should render partners list 1`] = `
-<withStyles(Paper)>
-  <withStyles(Toolbar)>
-    <withStyles(Typography)
+<WithStyles(Paper)>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
       type="headline"
     >
       Partners
-    </withStyles(Typography)>
-  </withStyles(Toolbar)>
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
   <div>
-    <withStyles(Table)>
-      <withStyles(TableHead)>
-        <withStyles(TableRow)>
-          <withStyles(TableCell)>
+    <WithStyles(Table)>
+      <TableHead
+        component="thead"
+      >
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
             Nom
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             key="foo"
             numeric={true}
           >
             foo
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             key="baz"
             numeric={true}
           >
             baz
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             numeric={true}
           >
             Déjeuners
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             numeric={true}
           >
             Ticket restaurants
-          </withStyles(TableCell)>
-        </withStyles(TableRow)>
-      </withStyles(TableHead)>
-      <withStyles(TableBody)>
-        <withStyles(TableRow)
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </TableHead>
+      <TableBody
+        component="tbody"
+      >
+        <WithStyles(TableRow)
+          classes={
+            Object {
+              "root": undefined,
+            }
+          }
           hover={true}
           key="my_anaconda_dont"
         >
-          <withStyles(TableCell)>
+          <WithStyles(TableCell)>
             hello
              
             world
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             key="foo"
             numeric={true}
           >
             10
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             key="baz"
             numeric={true}
           >
             0
-          </withStyles(TableCell)>
-          <withStyles(TableCell)
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
             numeric={true}
           />
-          <withStyles(TableCell)
+          <WithStyles(TableCell)
             numeric={true}
           />
-        </withStyles(TableRow)>
-      </withStyles(TableBody)>
-    </withStyles(Table)>
+        </WithStyles(TableRow)>
+      </TableBody>
+    </WithStyles(Table)>
   </div>
   <table>
-    <withStyles(TableFooter)>
-      <withStyles(TableRow)>
-        <withStyles(TablePagination)
+    <TableFooter
+      component="tfoot"
+    >
+      <WithStyles(TableRow)>
+        <WithStyles(TablePagination)
           count={250}
           labelDisplayedRows={[Function]}
           onChangePage={[Function]}
@@ -101,8 +112,8 @@ exports[`PartnersPage should render partners list 1`] = `
             ]
           }
         />
-      </withStyles(TableRow)>
-    </withStyles(TableFooter)>
+      </WithStyles(TableRow)>
+    </TableFooter>
   </table>
-</withStyles(Paper)>
+</WithStyles(Paper)>
 `;

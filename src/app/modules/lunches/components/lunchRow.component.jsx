@@ -52,7 +52,7 @@ class LunchRow extends Component {
             id={`lunch-menu-${lunch.id}`}
             anchorEl={this.state.anchorEl}
             open={this.state.open}
-            onRequestClose={this.handleRequestClose}
+            onClose={this.handleRequestClose}
           >
             <MenuItem onClick={this.handleRequestClose} component={Link} to={`/lunches/${lunch.id}`}>Éditer</MenuItem>
             <MenuItem onClick={this.handleLunchDelete}>Supprimer</MenuItem>

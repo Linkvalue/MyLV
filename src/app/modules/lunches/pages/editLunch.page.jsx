@@ -43,7 +43,7 @@ class EditLunchPage extends Component {
               {children}
             </CardContent>
             <CardActions>
-              <Button dense color='primary' type='submit' disabled={!valid || pristine}>Enregistrer</Button>
+              <Button size='small' color='primary' type='submit' disabled={!valid || pristine}>Enregistrer</Button>
             </CardActions>
           </Card>
         )}

@@ -61,7 +61,7 @@ class PartnerList extends Component {
           description="Taper le nom d'un partner à ajouter à la liste des participants au déjeuner"
           action='Ajouter'
           open={this.state.openDialog}
-          onRequestClose={this.handleDialogClose}
+          onClose={this.handleDialogClose}
           onPartnerSelected={partnerId => fields.push(partnerId)}
         />
       </List>

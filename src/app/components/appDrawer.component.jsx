@@ -61,10 +61,10 @@ const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseD
   const collapsed = shouldCollapseDrawer || !isConnected
   return (
     <Drawer
-      type={collapsed ? 'temporary' : 'permanent'}
+      variant={collapsed ? 'temporary' : 'permanent'}
       open={open}
       classes={collapsed ? {} : { paper: classes.drawerPaper }}
-      onRequestClose={onDrawerClose}
+      onClose={onDrawerClose}
     >
       {collapsed ? null : <div className={classes.drawerHeader} />}
       <Divider />

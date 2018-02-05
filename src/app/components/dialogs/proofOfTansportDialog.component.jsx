@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from 'material-ui'
 import { Link } from 'react-router-dom'
 
-const ProofOfTransportDialog = ({ open, onRequestClose, onDecline }) => (
-  <Dialog open={open} onRequestClose={onRequestClose}>
+const ProofOfTransportDialog = ({ open, onClose, onDecline }) => (
+  <Dialog open={open} onClose={onClose}>
     <DialogTitle>Titre de transport requis</DialogTitle>
     <DialogContent>
       <DialogContentText>
@@ -12,7 +12,7 @@ const ProofOfTransportDialog = ({ open, onRequestClose, onDecline }) => (
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onRequestClose} color='default'>
+      <Button onClick={onClose} color='default'>
         Passer
       </Button>
       <Button onClick={onDecline}>
@@ -27,7 +27,7 @@ const ProofOfTransportDialog = ({ open, onRequestClose, onDecline }) => (
 
 ProofOfTransportDialog.propTypes = {
   open: PropTypes.bool.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   onDecline: PropTypes.func.isRequired,
 }
 

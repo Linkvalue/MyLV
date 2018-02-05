@@ -83,7 +83,7 @@ export const TransportProofPage = ({ classes, valid, handleSubmit, ...actions })
         </Grid>
       </CardContent>
       <CardActions>
-        <Button dense color='primary' type='submit' disabled={!valid}>Upload</Button>
+        <Button size='small' color='primary' type='submit' disabled={!valid}>Upload</Button>
       </CardActions>
     </Card>
   </form>

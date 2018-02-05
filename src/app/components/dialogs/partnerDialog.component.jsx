@@ -24,14 +24,14 @@ class PartnerDialog extends Component {
   handleFormSubmit = e => {
     e.preventDefault()
     this.props.onPartnerSelected(this.state.partnerId)
-    this.props.onRequestClose()
+    this.props.onClose()
   }
 
   render () {
-    const { classes, title, description, action, open, onRequestClose } = this.props
+    const { classes, title, description, action, open, onClose } = this.props
 
     return (
-      <Dialog open={open} onRequestClose={onRequestClose}>
+      <Dialog open={open} onClose={onClose}>
         <form onSubmit={this.handleFormSubmit}>
           <DialogTitle>{title}</DialogTitle>
           <DialogContent className={classes.dialogContent}>
@@ -39,10 +39,10 @@ class PartnerDialog extends Component {
             <PartnerAutocomplete onChange={this.handlePartnerSelect} excludeSelf />
           </DialogContent>
           <DialogActions>
-            <Button dense onClick={onRequestClose}>
+            <Button size='small' onClick={onClose}>
               Annuler
             </Button>
-            <Button dense color='primary' type='submit' disabled={!this.state.partnerId}>{action}</Button>
+            <Button size='small' color='primary' type='submit' disabled={!this.state.partnerId}>{action}</Button>
           </DialogActions>
         </form>
       </Dialog>
@@ -53,7 +53,7 @@ class PartnerDialog extends Component {
 PartnerDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
   onPartnerSelected: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

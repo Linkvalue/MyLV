@@ -117,7 +117,9 @@ export class PartnersPage extends Component {
                     {partner.firstName} {partner.lastName}
                   </TableCell>
                   {Object.keys(labels).map(label => (
-                    <TableCell numeric key={label} className={classes.entryCountCell}>{partner.entryCounts[label] || 0}</TableCell>
+                    <TableCell numeric key={label} className={classes.entryCountCell}>
+                      {(partner.entryCounts && partner.entryCounts[label]) || 0}
+                    </TableCell>
                   ))}
                   <TableCell numeric>{partner.lunchesCount}</TableCell>
                   <TableCell numeric>{partner.mealVouchers}</TableCell>

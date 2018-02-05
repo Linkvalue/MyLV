@@ -37,7 +37,7 @@ const Process = ({ stopProcessReminder, classes }) => (
         </Typography>
       </CardContent>
       <CardActions>
-        <Button dense color='primary' component='a' onClick={stopProcessReminder}>Ne plus afficher</Button>
+        <Button size='small' color='primary' component='a' onClick={stopProcessReminder}>Ne plus afficher</Button>
       </CardActions>
     </Card>
   </Grid>

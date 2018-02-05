@@ -85,13 +85,13 @@ class AppBar extends React.Component {
       avatar = (
         <div className={classes.userDetails}>
           {fullName}
-          <IconButton color='contrast' onClick={this.handleMenuOpen} className={classes.avatar}>
+          <IconButton color='inherit' onClick={this.handleMenuOpen} className={classes.avatar}>
             <Avatar alt={fullName} src={user.profilePictureUrl} />
             <Menu
               id='account-menu'
               anchorEl={this.state.anchor}
               open={this.state.open}
-              onRequestClose={this.handleRequestClose}
+              onClose={this.handleRequestClose}
             >
               <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
@@ -103,7 +103,7 @@ class AppBar extends React.Component {
     let menuButton
     if (!shouldCollapseBar && user) {
       menuButton = (
-        <IconButton color='contrast' className={classes.menuButton} onClick={onDrawerOpen}>
+        <IconButton color='inherit' className={classes.menuButton} onClick={onDrawerOpen}>
           <MenuIcon />
         </IconButton>
       )
@@ -113,7 +113,7 @@ class AppBar extends React.Component {
       <MuiAppBar className={classnames(classes.appBar, collapsed && classes.appBarDesktop)}>
         <Toolbar>
           {menuButton}
-          <Typography type='title' color='inherit' className={classes.flex}>
+          <Typography variant='title' color='inherit' className={classes.flex}>
             CraCra
           </Typography>
           {avatar}

@@ -10,7 +10,7 @@ const HolidayRequestPage = () => (
         </Typography>
       </CardContent>
       <CardActions>
-        <Button dense color='primary'>Envoyer</Button>
+        <Button size='small' color='primary'>Envoyer</Button>
       </CardActions>
     </Card>
   </form>

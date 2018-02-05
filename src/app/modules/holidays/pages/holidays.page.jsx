@@ -13,7 +13,7 @@ const HolidaysPage = () => (
       </Typography>
     </CardContent>
     <CardActions>
-      <Button dense color='primary' component={Link} to='/holidays/new'>
+      <Button size='small' color='primary' component={Link} to='/holidays/new'>
         Nouvelle demande
       </Button>
     </CardActions>

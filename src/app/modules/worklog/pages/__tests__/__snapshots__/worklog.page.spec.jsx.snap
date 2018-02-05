@@ -2,62 +2,62 @@
 
 exports[`WorklogPage should display process reminder 1`] = `
 <div>
-  <withStyles(GridWrapper)
+  <WithStyles(GridWrapper)
     container={true}
   >
     <Connect(Process) />
-    <Connect(withStyles(ReduxForm)) />
-    <Connect(withStyles(Calendar)) />
-    <withStyles(Button)
+    <Connect(WithStyles(ReduxForm)) />
+    <Connect(WithStyles(Calendar)) />
+    <WithStyles(Button)
       color="primary"
-      fab={true}
       onClick={[Function]}
+      variant="fab"
     >
       <pure(Print) />
-    </withStyles(Button)>
-  </withStyles(GridWrapper)>
-  <Connect(withStyles(Printer)) />
+    </WithStyles(Button)>
+  </WithStyles(GridWrapper)>
+  <Connect(WithStyles(Printer)) />
 </div>
 `;
 
 exports[`WorklogPage should render properly 1`] = `
 <div>
-  <withStyles(GridWrapper)
+  <WithStyles(GridWrapper)
     container={true}
   >
-    <Connect(withStyles(ReduxForm)) />
-    <Connect(withStyles(Calendar)) />
-    <withStyles(Button)
+    <Connect(WithStyles(ReduxForm)) />
+    <Connect(WithStyles(Calendar)) />
+    <WithStyles(Button)
       color="primary"
-      fab={true}
       onClick={[Function]}
+      variant="fab"
     >
       <pure(Print) />
-    </withStyles(Button)>
-  </withStyles(GridWrapper)>
-  <Connect(withStyles(Printer)) />
+    </WithStyles(Button)>
+  </WithStyles(GridWrapper)>
+  <Connect(WithStyles(Printer)) />
 </div>
 `;
 
 exports[`WorklogPage should render transport dialog 1`] = `
 <div>
-  <withStyles(GridWrapper)
+  <WithStyles(GridWrapper)
     container={true}
   >
-    <Connect(withStyles(ReduxForm)) />
-    <Connect(withStyles(Calendar)) />
-    <withStyles(Button)
+    <Connect(WithStyles(ReduxForm)) />
+    <Connect(WithStyles(Calendar)) />
+    <WithStyles(Button)
       color="primary"
-      fab={true}
       onClick={[Function]}
+      variant="fab"
     >
       <pure(Print) />
-    </withStyles(Button)>
-  </withStyles(GridWrapper)>
-  <Connect(withStyles(Printer)) />
+    </WithStyles(Button)>
+  </WithStyles(GridWrapper)>
+  <Connect(WithStyles(Printer)) />
   <ProofOfTransportDialog
+    onClose={[Function]}
     onDecline={[Function]}
-    onRequestClose={[Function]}
     open={true}
   />
 </div>

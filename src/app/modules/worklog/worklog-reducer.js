@@ -25,7 +25,7 @@ const initialState = {
     'Conges payes': '#9999ff',
     'Conges sans solde': '#ff99ff',
     'Maladie': '#ffff99',
-    'Autre': '#99ffff',
+    'Absences Syntec': '#99ffff',
   },
 }
 

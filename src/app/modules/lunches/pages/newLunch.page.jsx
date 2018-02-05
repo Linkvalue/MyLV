@@ -23,7 +23,7 @@ const NewLunchPage = props => (
           {children}
         </CardContent>
         <CardActions>
-          <Button dense color='primary' type='submit' disabled={!valid}>Créer</Button>
+          <Button size='small' color='primary' type='submit' disabled={!valid}>Créer</Button>
         </CardActions>
       </Card>
     )}

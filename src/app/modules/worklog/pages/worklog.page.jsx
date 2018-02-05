@@ -71,14 +71,14 @@ export class WorklogPage extends React.Component {
           {shouldRemindProcess ? <Process /> : null}
           <EntriesForm />
           <Calendar />
-          <Button fab color='primary' className={classes.printButton} onClick={printCra}>
+          <Button variant='fab' color='primary' className={classes.printButton} onClick={printCra}>
             <Print />
           </Button>
         </Grid>
         <Printer />
         {featureFlipping.transport ? <ProofOfTransportDialog
           open={this.state.openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
-          onRequestClose={this.handleRequestClose}
+          onClose={this.handleRequestClose}
           onDecline={this.handleDecline}
         /> : null}
       </div>
