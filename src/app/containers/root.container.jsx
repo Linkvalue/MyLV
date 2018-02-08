@@ -1,4 +1,5 @@
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
@@ -21,7 +22,7 @@ import TransportProofPage from '../modules/transport/pages/transportProofUpload.
 import NotFound from '../components/notFound.component'
 import theme from '../modules/display/theme'
 
-export const Root = ({ store, history }) => (
+const Root = ({ store, history }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider theme={theme}>
@@ -54,3 +55,5 @@ Root.propTypes = {
     getState: PropTypes.func.isRequired,
   }).isRequired,
 }
+
+export default hot(module)(Root)

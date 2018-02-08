@@ -1,9 +1,11 @@
 {
-  "extends": "sagui",
+  "parser": "babel-eslint",
+  "extends": "airbnb",
   "env": {
+    "browser": true,
     "jest": true
   },
   "rules": {
-    "comma-dangle": ["error", "always-multiline"]
+    "semi": ["error", "never"]
   }
 }
