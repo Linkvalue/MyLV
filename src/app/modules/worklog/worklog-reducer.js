@@ -19,12 +19,12 @@ const initialState = {
   entries: {},
   pending: {},
   labels: {
-    'Production': '#ff9999',
-    'Contribution': '#99ff99',
-    'Conferences': '#ffcc99',
+    Production: '#ff9999',
+    Contribution: '#99ff99',
+    Conferences: '#ffcc99',
     'Conges payes': '#9999ff',
     'Conges sans solde': '#ff99ff',
-    'Maladie': '#ffff99',
+    Maladie: '#ffff99',
     'Absences Syntec': '#99ffff',
   },
 }
@@ -52,7 +52,7 @@ export default function (state = initialState, { type, payload }) {
       return setEntry(state, `${payload.date}-pm`, payload.label)
     case WORKLOG_FILL_DAY:
       return setDay(state, payload.day, payload.label)
-    case WORKLOG_FILL_WEEK:
+    case WORKLOG_FILL_WEEK: {
       const startDate = moment(payload.day).startOf('week').subtract(1, 'day')
       return new Array(5)
         .fill(0)
@@ -63,6 +63,7 @@ export default function (state = initialState, { type, payload }) {
           }
           return setDay(s, startDate.format('YYYY-MM-DD'), payload.label)
         }, state)
+    }
     case WORKLOG_FILL_MONTH:
       return new Array(moment(`${payload.month}-01`).daysInMonth())
         .fill(0)

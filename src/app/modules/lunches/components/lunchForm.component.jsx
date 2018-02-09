@@ -9,13 +9,11 @@ import TextField from '../../../components/inputs/textField.component'
 import DateField from '../../../components/inputs/dateField.component'
 import PartnerList from '../../../components/partnerList.component'
 
-const validate = ({ label, date, attendees }) => {
-  return {
-    label: !label ? 'Obligatoire' : null,
-    date: !date ? 'Obligatoire' : null,
-    attendees: attendees.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null,
-  }
-}
+const validate = ({ label, date, attendees }) => ({
+  label: !label ? 'Obligatoire' : null,
+  date: !date ? 'Obligatoire' : null,
+  attendees: attendees.length === 0 ? { _error: 'Vous devez saisir au moins 1 participant' } : null,
+})
 
 const styles = () => ({
   lunchForm: {
@@ -27,7 +25,9 @@ const styles = () => ({
   },
 })
 
-const LunchForm = ({ handleSubmit, render, classes, valid, pristine }) => (
+const LunchForm = ({
+  handleSubmit, render, classes, valid, pristine,
+}) => (
   <form className={classes.lunchForm} onSubmit={handleSubmit}>
     {render({
       valid,
@@ -36,24 +36,24 @@ const LunchForm = ({ handleSubmit, render, classes, valid, pristine }) => (
         <Grid container>
           <Grid item md={6} xs={12}>
             <Field
-              name='label'
-              type='text'
-              label='Intitulé'
+              name="label"
+              type="text"
+              label="Intitulé"
               fullWidth
               component={TextField}
             />
           </Grid>
           <Grid item md={6} xs={12}>
             <Field
-              name='date'
-              type='text'
-              label='Date'
+              name="date"
+              type="text"
+              label="Date"
               fullWidth
               component={DateField}
             />
           </Grid>
           <Grid item xs={12}>
-            <FieldArray name='attendees' component={PartnerList} />
+            <FieldArray name="attendees" component={PartnerList} />
           </Grid>
         </Grid>
       ),

@@ -43,7 +43,7 @@ const styles = theme => ({
 })
 
 class App extends React.Component {
-  constructor (...args) {
+  constructor(...args) {
     super(...args)
 
     this.state = {
@@ -59,7 +59,7 @@ class App extends React.Component {
     this.setState({ drawerOpen: false })
   }
 
-  render () {
+  render() {
     const { classes, children } = this.props
 
     return (

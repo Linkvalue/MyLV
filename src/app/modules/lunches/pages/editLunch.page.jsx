@@ -19,11 +19,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 class EditLunchPage extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchLunchDetails(this.props.match.params.id)
   }
 
-  render () {
+  render() {
     const { lunch, isLoading } = this.props
 
     if (isLoading) {
@@ -37,13 +37,13 @@ class EditLunchPage extends Component {
         render={({ children, valid, pristine }) => (
           <Card>
             <CardContent>
-              <Typography type='headline' component='h2' gutterBottom>
+              <Typography type="headline" component="h2" gutterBottom>
                 Modification de : {lunch.label}
               </Typography>
               {children}
             </CardContent>
             <CardActions>
-              <Button size='small' color='primary' type='submit' disabled={!valid || pristine}>Enregistrer</Button>
+              <Button size="small" color="primary" type="submit" disabled={!valid || pristine}>Enregistrer</Button>
             </CardActions>
           </Card>
         )}
@@ -55,7 +55,7 @@ class EditLunchPage extends Component {
 EditLunchPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({ id: PropTypes.string.isRequired }),
-  }),
+  }).isRequired,
   lunch: PropTypes.object.isRequired,
   putLunch: PropTypes.func.isRequired,
   fetchLunchDetails: PropTypes.func.isRequired,

@@ -41,7 +41,7 @@ const styles = theme => ({
 })
 
 export class WorklogPage extends React.Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -49,7 +49,7 @@ export class WorklogPage extends React.Component {
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
     if (!this.props.canPrint) {
       this.props.push('/client')
     }
@@ -62,8 +62,14 @@ export class WorklogPage extends React.Component {
     this.props.disableProofOfTransportDialog()
   }
 
-  render () {
-    const { shouldRemindProcess, shouldDisplayProofOfTransportDialog, hasInvalidTransportProof, classes } = this.props
+  render() {
+    const { openProofOfTransportDialog } = this.state
+    const {
+      shouldRemindProcess,
+      shouldDisplayProofOfTransportDialog,
+      hasInvalidTransportProof,
+      classes,
+    } = this.props
 
     return (
       <div>
@@ -71,13 +77,13 @@ export class WorklogPage extends React.Component {
           {shouldRemindProcess ? <Process /> : null}
           <EntriesForm />
           <Calendar />
-          <Button variant='fab' color='primary' className={classes.printButton} onClick={printCra}>
+          <Button variant="fab" color="primary" className={classes.printButton} onClick={printCra}>
             <Print />
           </Button>
         </Grid>
         <Printer />
         {featureFlipping.transport ? <ProofOfTransportDialog
-          open={this.state.openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
+          open={openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
           onClose={this.handleRequestClose}
           onDecline={this.handleDecline}
         /> : null}

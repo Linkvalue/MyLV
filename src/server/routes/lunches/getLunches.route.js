@@ -16,7 +16,7 @@ module.exports = {
     },
     pre: [hasRole(config.cracra.lunchesRoles)],
   },
-  handler (req, res) {
+  handler(req, res) {
     const limit = req.query.limit || 20
     const page = req.query.page - 1 || 0
 

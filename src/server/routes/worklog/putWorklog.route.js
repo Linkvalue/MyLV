@@ -15,7 +15,7 @@ module.exports = {
       })),
     },
   },
-  handler (req, res) {
+  handler(req, res) {
     let isOutOfBounds
     let missingClientOrManager
     req.payload.forEach(({ date, client, manager }) => {

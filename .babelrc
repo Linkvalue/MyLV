@@ -1,4 +1,28 @@
 {
-  "presets": ["sagui"],
-  "plugins": ["transform-class-properties"]
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["Chrome >= 60", "Safari >= 10.1", "iOS >= 10.3", "Firefox >= 54", "Edge >= 15"]
+      },
+      "modules": false
+    }],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["@babel/plugin-proposal-object-rest-spread", { "useBuiltIns": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-env", {
+          "targets": {
+            "node": "current"
+          }
+        }],
+        "@babel/preset-react"
+      ]
+    }
+  }
 }

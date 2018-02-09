@@ -17,9 +17,9 @@ module.exports = {
     },
     pre: [hasRole(config.cracra.lunchesRoles)],
   },
-  handler (req, res) {
+  handler(req, res) {
     req.server.app.models.Lunch.findOneAndUpdate({ _id: req.params.id }, { $set: req.payload })
-      .then((lunch) => res.mongodb(lunch, ['owner']))
+      .then(lunch => res.mongodb(lunch, ['owner']))
       .catch(err => res(Boom.wrap(err)))
   },
 }

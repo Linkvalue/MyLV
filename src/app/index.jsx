@@ -4,12 +4,15 @@ import moment from 'moment'
 import { push } from 'react-router-redux'
 import debouce from 'lodash.debounce'
 
-import { configureStore, browserHistory } from './app/store/configure-store'
-import { Root } from './app/containers/root.container'
-import { fetchUserData, loginError } from './app/modules/auth/auth.actions'
-import { lvConnect } from './app/modules/auth/lvconnect'
-import { registerWorker } from './app/service-worker/register-worker'
-import { detectDevice } from './app/modules/display/display.actions'
+import { configureStore, browserHistory } from './store/configure-store'
+import Root from './containers/root.container'
+import { fetchUserData, loginError } from './modules/auth/auth.actions'
+import { lvConnect } from './modules/auth/lvconnect'
+import { registerWorker } from './service-worker/register-worker'
+import { detectDevice } from './modules/display/display.actions'
+
+// Import PWA manifest with file-loader
+import './manifest.json'
 
 // registerWorker()
 const store = configureStore()
@@ -34,5 +37,5 @@ if (process.env.NODE_ENV !== 'dev') {
 
 ReactDOM.render(
   <Root store={store} history={browserHistory} />,
-  document.getElementById('cracra')
+  document.getElementById('cracra'),
 )

@@ -41,13 +41,14 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
       }
-    case LUNCH_DELETE_SUCCESS:
+    case LUNCH_DELETE_SUCCESS: {
       const { [payload.id]: deleted, ...remaining } = state.lunchesById
       return {
         ...state,
         lunchesById: remaining,
         lunchesList: state.lunchesList.filter(lunchId => lunchId !== deleted.id),
       }
+    }
     default:
       return state
   }

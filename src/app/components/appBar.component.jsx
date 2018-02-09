@@ -50,15 +50,15 @@ const styles = theme => ({
   },
 })
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.auth.user,
   shouldCollapseBar: state.display.isDesktop,
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ logout }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch)
 
 class AppBar extends React.Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -67,7 +67,7 @@ class AppBar extends React.Component {
     }
   }
 
-  handleMenuOpen = event => {
+  handleMenuOpen = (event) => {
     this.setState({ open: true, anchor: event.currentTarget })
   }
 
@@ -75,8 +75,10 @@ class AppBar extends React.Component {
     this.setState({ open: false })
   }
 
-  render () {
-    const { user, logout, classes, shouldCollapseBar, onDrawerOpen } = this.props
+  render() {
+    const {
+      user, logout, classes, shouldCollapseBar, onDrawerOpen,
+    } = this.props
     const collapsed = shouldCollapseBar && user
 
     let avatar
@@ -85,10 +87,10 @@ class AppBar extends React.Component {
       avatar = (
         <div className={classes.userDetails}>
           {fullName}
-          <IconButton color='inherit' onClick={this.handleMenuOpen} className={classes.avatar}>
+          <IconButton color="inherit" onClick={this.handleMenuOpen} className={classes.avatar}>
             <Avatar alt={fullName} src={user.profilePictureUrl} />
             <Menu
-              id='account-menu'
+              id="account-menu"
               anchorEl={this.state.anchor}
               open={this.state.open}
               onClose={this.handleRequestClose}
@@ -103,7 +105,7 @@ class AppBar extends React.Component {
     let menuButton
     if (!shouldCollapseBar && user) {
       menuButton = (
-        <IconButton color='inherit' className={classes.menuButton} onClick={onDrawerOpen}>
+        <IconButton color="inherit" className={classes.menuButton} onClick={onDrawerOpen}>
           <MenuIcon />
         </IconButton>
       )
@@ -113,7 +115,7 @@ class AppBar extends React.Component {
       <MuiAppBar className={classnames(classes.appBar, collapsed && classes.appBarDesktop)}>
         <Toolbar>
           {menuButton}
-          <Typography variant='title' color='inherit' className={classes.flex}>
+          <Typography variant="title" color="inherit" className={classes.flex}>
             CraCra
           </Typography>
           {avatar}
@@ -121,6 +123,10 @@ class AppBar extends React.Component {
       </MuiAppBar>
     )
   }
+}
+
+AppBar.defaultProps = {
+  user: null,
 }
 
 AppBar.propTypes = {

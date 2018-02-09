@@ -21,7 +21,7 @@ const validate = ({ file, expirationDate, startingDate }) => ({
   file: !file ? 'Obligatoire' : null,
 })
 
-const styles = theme => ({
+const styles = () => ({
   uploadButtonWrapper: {
     display: 'flex',
     justifyContent: 'center',
@@ -33,26 +33,28 @@ const styles = theme => ({
   },
 })
 
-export const TransportProofPage = ({ classes, valid, handleSubmit, ...actions }) => (
+export const TransportProofPage = ({
+  classes, valid, handleSubmit, ...actions
+}) => (
   <form onSubmit={handleSubmit}>
     <Card>
       <CardContent>
         <Grid container>
           <Grid item xs={12}>
-            <Typography type='headline' component='h2' gutterBottom>
+            <Typography type="headline" component="h2" gutterBottom>
               Uploader un jsutificatif de titre de transport
             </Typography>
             <Typography gutterBottom>
-              Ce justificatif te permettra d'être remboursé pour votre titre de transport, merci donc de le fournir avant
-              le 25 du mois. Renseignez aussi la date d'expiration du justificatif afin d'être rappellé automatiquement
-              lorsque celui-ci arrive à expiration.
+              Ce justificatif te permettra d'être remboursé pour votre titre de transport, merci donc de le fournir
+              avant le 25 du mois. Renseignez aussi la date d'expiration du justificatif afin d'être rappellé
+              automatiquement lorsque celui-ci arrive à expiration.
             </Typography>
           </Grid>
           <Grid item md={4} xs={12}>
             <Field
-              name='startingDate'
-              type='text'
-              label='Date de début de validité'
+              name="startingDate"
+              type="text"
+              label="Date de début de validité"
               fullWidth
               autoFocus
               component={DateField}
@@ -60,8 +62,8 @@ export const TransportProofPage = ({ classes, valid, handleSubmit, ...actions })
           </Grid>
           <Grid item md={4} xs={12}>
             <Field
-              name='expirationDate'
-              type='text'
+              name="expirationDate"
+              type="text"
               label="Date d'expiration"
               fullWidth
               component={DateField}
@@ -69,21 +71,21 @@ export const TransportProofPage = ({ classes, valid, handleSubmit, ...actions })
           </Grid>
           <Grid item md={4} xs={12}>
             <div className={classes.uploadButtonWrapper}>
-              <Button color='primary' onClick={actions.setExpirationDateToCurrentMonth}>Valide pour ce mois</Button>
+              <Button color="primary" onClick={actions.setExpirationDateToCurrentMonth}>Valide pour ce mois</Button>
             </div>
           </Grid>
           <Grid item xs={12}>
             <Field
-              name='file'
-              accept='jpg,jpeg,JPG,JPEG,pdf,PDF,png,PNG'
-              label='Choisir un fichier'
+              name="file"
+              accept="jpg,jpeg,JPG,JPEG,pdf,PDF,png,PNG"
+              label="Choisir un fichier"
               component={FileField}
             />
           </Grid>
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size='small' color='primary' type='submit' disabled={!valid}>Upload</Button>
+        <Button size="small" color="primary" type="submit" disabled={!valid}>Upload</Button>
       </CardActions>
     </Card>
   </form>

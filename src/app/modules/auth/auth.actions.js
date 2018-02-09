@@ -11,14 +11,15 @@ export const loginError = () => ({
 
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 
-export const fetchWithAuth = (url, options = {}) => (dispatch, getState) =>
-  lvConnect.api(
-    cracraEndpoint + url,
-    options.body && !(options.body instanceof window.FormData) ? { ...options, body: JSON.stringify(options.body) } : options
-  ).then((res) => res.status >= 400 ? Promise.reject(res) : res.json())
+export const fetchWithAuth = (url, options = {}) => () => {
+  const isJsonBody = options.body && !(options.body instanceof window.FormData)
+  const formattedOptions = isJsonBody ? { ...options, body: JSON.stringify(options.body) } : options
+  return lvConnect.api(cracraEndpoint + url, formattedOptions)
+    .then(res => (res.status >= 400 ? Promise.reject(res) : res.json()))
+}
 
 export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA'
-export const receiveUserData = (userData) => ({
+export const receiveUserData = userData => ({
   type: RECEIVE_USER_DATA,
   payload: userData,
 })
@@ -28,14 +29,14 @@ export const receiveUserDataFailed = () => ({
   type: RECEIVE_USER_DATA_FAILED,
 })
 
-export const fetchUserData = () => (dispatch) =>
+export const fetchUserData = () => dispatch =>
   dispatch(fetchWithAuth('/api/me'))
-    .then(userData => {
+    .then((userData) => {
       dispatch(receiveUserData(userData))
       dispatch(postTransportProofSuccess(userData.proofOfTransport))
       return userData
     })
-    .catch(e => {
+    .catch((e) => {
       dispatch(receiveUserDataFailed())
       return Promise.reject(e)
     })

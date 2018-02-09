@@ -24,38 +24,45 @@ const styles = theme => ({
   },
 })
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   user: state.auth.user,
   canPrint: canPrintSelector(state),
   shouldCollapseDrawer: state.display.isMobile || state.display.isTablet,
 })
 
-const AppDrawer = ({ user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose }) => {
+const AppDrawer = ({
+  user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose,
+}) => {
   const links = []
   if (isConnected && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to='/client' icon={<Person />} text='Client' key='client' />)
+    links.push(<AppDrawerItem to="/client" icon={<Person />} text="Client" key="client" />)
   }
 
   if (isConnected && canPrint && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to='/' icon={<Event />} text='Remplir son CRA' key='cra' />)
+    links.push(<AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" key="cra" />)
   }
 
   if (isConnected && featureFlipping.holidays) {
-    links.push(<AppDrawerItem to='/holidays' icon={<BeachAccess />} text='Demande de congés' key='holidays' />)
+    links.push(<AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demande de congés" key="holidays" />)
   }
 
   if (isConnected && featureFlipping.transport) {
-    links.push(<AppDrawerItem to='/proof-upload' icon={<FileUpload />} text='Justificatif de transport' key='proof-of-transport' />)
+    links.push(<AppDrawerItem
+      to="/proof-upload"
+      icon={<FileUpload />}
+      text="Justificatif de transport"
+      key="proof-of-transport"
+    />)
   }
 
   const adminLinks = []
   if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    adminLinks.push(<AppDrawerItem to='/lunches' icon={<Restaurant />} text='Déjeuners' key='lunches' />)
+    adminLinks.push(<AppDrawerItem to="/lunches" icon={<Restaurant />} text="Déjeuners" key="lunches" />)
   }
 
   if (isConnected && ['hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    adminLinks.push(<AppDrawerItem to='/partners' icon={<SupervisorAccount />} text='Partners' key='partners' />)
+    adminLinks.push(<AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" key="partners" />)
   }
 
   const collapsed = shouldCollapseDrawer || !isConnected

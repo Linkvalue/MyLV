@@ -9,7 +9,7 @@ import { lvConnect } from '../lvconnect'
 import bgUrl from '../../../assets/images/login-bg.svg'
 import logoUrl from '../../../assets/images/logo-lv.svg'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   error: state.auth.error,
 })
@@ -34,34 +34,34 @@ const styles = theme => ({
   },
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = dispatch => bindActionCreators({
   push,
 }, dispatch)
 
 class LoginPage extends Component {
-  componentDidMount () {
+  componentDidMount() {
     lvConnect.mountLoginButton(this.loginButtonContainer)
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     if (props.isConnected) {
       this.props.push('/')
     }
   }
 
-  render () {
+  render() {
     const { classes, error } = this.props
 
     return (
       <div className={classes.loginPage}>
-        <img src={logoUrl} className={classes.logoLV} />
+        <img src={logoUrl} alt="Logo LinkValue" className={classes.logoLV} />
         <Card>
           <CardContent>
-            <Typography type='headline' component='h2' gutterBottom>
+            <Typography type="headline" component="h2" gutterBottom>
               Bienvenue sur CraCra
             </Typography>
-            <div className={classes.loginButtonWrapper} ref={el => { this.loginButtonContainer = el }} />
-            {error ? <Typography color='error'>An error occurred during login</Typography> : null}
+            <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />
+            {error ? <Typography color="error">An error occurred during login</Typography> : null}
           </CardContent>
         </Card>
       </div>

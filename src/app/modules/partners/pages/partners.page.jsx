@@ -56,14 +56,14 @@ const styles = theme => ({
 })
 
 export class PartnersPage extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchPartners({
       page: this.props.match.params.page || 1,
       limit: this.props.limit,
     })
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.match.params.page !== nextProps.match.params.page) {
       this.props.fetchPartners({
         page: nextProps.match.params.page,
@@ -72,7 +72,7 @@ export class PartnersPage extends Component {
     }
   }
 
-  getRowDisplay = ({to, count}) => `${Math.round(to / count)} of ${count / this.props.limit}`
+  getRowDisplay = ({ to, count }) => `${Math.round(to / count)} of ${count / this.props.limit}`
 
   handleChangePage = (event, page) => this.props.push(`/partners/${page + 1}`)
 
@@ -81,8 +81,10 @@ export class PartnersPage extends Component {
     limit: event.target.value,
   })
 
-  render () {
-    const { partners, isLoading, labels, classes, match, pageCount, limit } = this.props
+  render() {
+    const {
+      partners, isLoading, labels, classes, match, pageCount, limit,
+    } = this.props
     const inValidWorklogClasses = { root: classes.incompleteWorklog }
 
     if (isLoading) {
@@ -96,7 +98,7 @@ export class PartnersPage extends Component {
     return (
       <Paper>
         <Toolbar>
-          <Typography type='headline' component='h2' gutterBottom>
+          <Typography type="headline" component="h2" gutterBottom>
             Partners
           </Typography>
         </Toolbar>
@@ -105,14 +107,20 @@ export class PartnersPage extends Component {
             <TableHead>
               <TableRow>
                 <TableCell className={classes.fullNameCell}>Nom</TableCell>
-                {Object.keys(labels).map(label => <TableCell numeric key={label} className={classes.entryCountCell}>{label}</TableCell>)}
+                {Object.keys(labels).map(label => (
+                  <TableCell numeric key={label} className={classes.entryCountCell}>{label}</TableCell>
+                ))}
                 <TableCell numeric>Déjeuners</TableCell>
                 <TableCell numeric>Ticket restaurants</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {partners.map(partner => (
-                <TableRow hover key={partner.id} classes={partner.isWorklogComplete ? undefined : inValidWorklogClasses}>
+                <TableRow
+                  hover
+                  key={partner.id}
+                  classes={partner.isWorklogComplete ? undefined : inValidWorklogClasses}
+                >
                   <TableCell>
                     {partner.firstName} {partner.lastName}
                   </TableCell>

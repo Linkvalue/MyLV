@@ -10,7 +10,7 @@ import { fetchUserData } from '../modules/auth/auth.actions'
 
 export const browserHistory = createBrowserHistory()
 
-export function configureStore () {
+export function configureStore() {
   const storeEnhancers = [
     autoRehydrate(),
     applyMiddleware(thunk, routerMiddleware(browserHistory)),

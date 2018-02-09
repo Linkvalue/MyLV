@@ -19,7 +19,7 @@ const styles = theme => ({
 })
 
 class FileField extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -27,9 +27,9 @@ class FileField extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (
-        this.props.input.value !== nextProps.input.value &&
+      this.props.input.value !== nextProps.input.value &&
         nextProps.input.value[0] &&
         nextProps.input.value[0].type !== 'application/pdf'
     ) {
@@ -39,15 +39,16 @@ class FileField extends Component {
     }
   }
 
-  render () {
+  render() {
     const { classes, label, input: { value, ...input } } = this.props
 
     let fileDetails
     if (value && value[0]) {
+      const isPdfFile = value[0].type === 'application/pdf'
       fileDetails = (
         <Chip
           className={classes.uploadChip}
-          avatar={value[0].type === 'application/pdf' ? <Avatar><PictureAsPdf /></Avatar> : <Avatar src={this.state.preview} />}
+          avatar={isPdfFile ? <Avatar><PictureAsPdf /></Avatar> : <Avatar src={this.state.preview} />}
           label={value[0].name}
         />
       )
@@ -56,9 +57,9 @@ class FileField extends Component {
     return (
       <div className={classes.uploadButtonWrapper}>
         {fileDetails}
-        <input className={classes.uploadInput} type='file' id={input.name} {...input} />
+        <input className={classes.uploadInput} type="file" id={input.name} {...input} />
         <label htmlFor={input.name}>
-          <Button variant='raised' component='span'>
+          <Button variant="raised" component="span">
             {label}
           </Button>
         </label>

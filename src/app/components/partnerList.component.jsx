@@ -15,7 +15,7 @@ const styles = theme => ({
 })
 
 class PartnerList extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -27,8 +27,10 @@ class PartnerList extends Component {
 
   handleDialogClose = () => this.setState({ openDialog: false })
 
-  render () {
-    const { fields, partners, meta: { error, submitFailed }, classes } = this.props
+  render() {
+    const {
+      fields, partners, meta: { error, submitFailed }, classes,
+    } = this.props
 
     return (
       <List subheader={<ListSubheader>Participants</ListSubheader>}>
@@ -54,12 +56,12 @@ class PartnerList extends Component {
           <ListItemIcon>
             <Add />
           </ListItemIcon>
-          <ListItemText inset primary='Ajouter un nouveau participant' />
+          <ListItemText inset primary="Ajouter un nouveau participant" />
         </ListItem>
         <PartnerDialog
-          title='Ajout de participant'
+          title="Ajout de participant"
           description="Taper le nom d'un partner à ajouter à la liste des participants au déjeuner"
-          action='Ajouter'
+          action="Ajouter"
           open={this.state.openDialog}
           onClose={this.handleDialogClose}
           onPartnerSelected={partnerId => fields.push(partnerId)}

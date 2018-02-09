@@ -3,7 +3,9 @@ import { ListItem, ListItemIcon, ListItemText } from 'material-ui'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 
-const AppDrawerItem = ({ to, text, icon, handleClick }) => (
+const mapDispatchToProps = (dispatch, { to }) => ({ handleClick: () => dispatch(push(to)) })
+
+const AppDrawerItem = ({ text, icon, handleClick }) => (
   <ListItem button onClick={handleClick}>
     <ListItemIcon>
       {icon}
@@ -11,7 +13,5 @@ const AppDrawerItem = ({ to, text, icon, handleClick }) => (
     <ListItemText primary={text} />
   </ListItem>
 )
-
-const mapDispatchToProps = (dispatch, { to }) => ({ handleClick: () => dispatch(push(to)) })
 
 export default connect(undefined, mapDispatchToProps)(AppDrawerItem)
