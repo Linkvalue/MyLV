@@ -41,7 +41,7 @@ export const TransportProofPage = ({
       <CardContent>
         <Grid container>
           <Grid item xs={12}>
-            <Typography type="headline" component="h2" gutterBottom>
+            <Typography variant="headline" component="h2" gutterBottom>
               Uploader un jsutificatif de titre de transport
             </Typography>
             <Typography gutterBottom>

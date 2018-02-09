@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
 const path = require('path')
 const { util } = require('config')
 
@@ -24,6 +25,7 @@ module.exports = (env = {}) => ({
   module: {
     rules: [
       { test: /manifest\.json$/, use: { loader: 'file-loader', options: { name: 'manifest.json' } } },
+      { test: /push\.js$/, use: { loader: 'file-loader', options: { name: 'assets/scripts/push.js' } } },
       { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,
@@ -63,6 +65,7 @@ module.exports = (env = {}) => ({
       template: 'index.html',
       favicon: 'favicon.ico',
     }),
+    new OfflinePlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': `"${process.env.NODE_ENV !== 'dev' ? 'production' : 'dev'}"`,
       'process.env.APP_ID': `"${appId}"`,

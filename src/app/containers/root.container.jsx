@@ -19,6 +19,7 @@ import EditLunchPage from '../modules/lunches/pages/editLunch.page'
 import NewLunchPage from '../modules/lunches/pages/newLunch.page'
 import ConnectedPartnersPage from '../modules/partners/pages/partners.page'
 import ConnectedTransportProofPage from '../modules/transport/pages/transportProofUpload.page'
+import ConnectedSettingsPage from '../modules/settings/pages/settings.page'
 import NotFound from '../components/notFound.component'
 import theme from '../modules/display/theme'
 
@@ -30,6 +31,7 @@ const Root = ({ store, history }) => (
           <Switch>
             <Route exact path="/auth" component={AuthCallbackPage} />
             <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/settings" component={LoginRequired(ConnectedSettingsPage)} />
             <Route exact path="/client" component={LoginRequired(ClientPage)} />
             <Route exact path="/holidays/new" component={LoginRequired(HolidayRequestPage)} />
             <Route exact path="/holidays" component={LoginRequired(HolidaysPage)} />

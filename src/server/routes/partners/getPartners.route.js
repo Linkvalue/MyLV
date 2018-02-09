@@ -5,25 +5,13 @@ const config = require('config')
 
 const lvConnect = require('../../helpers/lvconnect.helper')
 const hasRole = require('../../helpers/hasRole.pre')
-const { publicHolidays } = require('../../../shared/calendar-constants')
+const getWorkingDays = require('../../helpers/getWorkingDays.helper')
 
 const compensatedMealLabels = ['Production', 'Conferences']
 
 function getLunchesForPartner(lunches, partner) {
   return lunches.filter(lunch =>
     lunch.owner.toString() === partner.id || lunch.attendees.some(attendeeId => attendeeId.toString() === partner.id))
-}
-
-function getWorkingDays(date) {
-  let days = 0
-  for (let i = 1; i <= moment(date, 'YYYY-MM').daysInMonth(); i++) {
-    const d = moment(date, 'YYYY-MM').date(i)
-    if (d.day() !== 0 && d.day() !== 6 && !publicHolidays.has(d.format('MM-DD'))) {
-      days += 1
-    }
-  }
-
-  return days
 }
 
 module.exports = {
@@ -70,7 +58,7 @@ module.exports = {
             [entry.label]: (acc[entry.label] || 0) + 0.5,
           }), {}),
           lunchesCount,
-          isWorklogComplete: partnerEntries.length / 2 === expectedDays || !partner.roles.includes('tech'),
+          isWorklogComplete: partnerEntries.length / 2 >= expectedDays || !partner.roles.includes('tech'),
         })
       }),
     }))

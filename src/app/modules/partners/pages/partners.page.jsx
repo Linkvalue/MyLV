@@ -5,10 +5,10 @@ import { push } from 'react-router-redux'
 import PropTypes from 'prop-types'
 import {
   Typography, Table, TableBody, TableHead, TableRow, TableCell, withStyles,
-  TableFooter, TablePagination, Paper, Toolbar, CircularProgress,
+  TableFooter, TablePagination, Paper, Toolbar, CircularProgress, Button, CardActions,
 } from 'material-ui'
 
-import { fetchPartners } from '../partners.actions'
+import { fetchPartners, notifyAllPartners } from '../partners.actions'
 import { getPartnersList } from '../partners.selectors'
 
 const mapStateToProps = state => ({
@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
   labels: state.worklog.labels,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchPartners, push }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchPartners, push, notifyAllPartners }, dispatch)
 
 const styles = theme => ({
   fullNameCell: {
@@ -83,7 +83,7 @@ export class PartnersPage extends Component {
 
   render() {
     const {
-      partners, isLoading, labels, classes, match, pageCount, limit,
+      partners, isLoading, labels, classes, match, pageCount, limit, notifyAllPartners,
     } = this.props
     const inValidWorklogClasses = { root: classes.incompleteWorklog }
 
@@ -98,7 +98,7 @@ export class PartnersPage extends Component {
     return (
       <Paper>
         <Toolbar>
-          <Typography type="headline" component="h2" gutterBottom>
+          <Typography variant="headline" component="h2" gutterBottom>
             Partners
           </Typography>
         </Toolbar>
@@ -151,6 +151,9 @@ export class PartnersPage extends Component {
             </TableRow>
           </TableFooter>
         </table>
+        <CardActions>
+          <Button color="primary" onClick={notifyAllPartners}>Envoyer un rappel</Button>
+        </CardActions>
       </Paper>
     )
   }
@@ -158,6 +161,7 @@ export class PartnersPage extends Component {
 
 PartnersPage.propTypes = {
   fetchPartners: PropTypes.func.isRequired,
+  notifyAllPartners: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   partners: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,

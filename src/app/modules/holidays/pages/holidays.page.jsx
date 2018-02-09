@@ -5,7 +5,7 @@ import { Button, Card, CardActions, CardContent, Typography } from 'material-ui'
 const HolidaysPage = () => (
   <Card>
     <CardContent>
-      <Typography type="headline" component="h2" gutterBottom>
+      <Typography variant="headline" component="h2" gutterBottom>
         Mes demandes de congés
       </Typography>
       <Typography>

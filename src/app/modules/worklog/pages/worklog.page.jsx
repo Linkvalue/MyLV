@@ -11,18 +11,13 @@ import Calendar from '../components/calendar.component'
 import EntriesForm from '../components/entriesForm.component'
 import Process from '../components/process.component'
 import Printer from '../components/printer.component'
-import ProofOfTransportDialog from '../../../components/dialogs/proofOfTansportDialog.component'
-import { disableProofOfTransportDialog } from '../../settings/settings-actions'
-import { featureFlipping } from '../../../config'
 
 const mapStateToProps = state => ({
   shouldRemindProcess: state.settings.shouldRemindProcess,
   canPrint: canPrintSelector(state),
-  shouldDisplayProofOfTransportDialog: state.settings.shouldDisplayProofOfTransportDialog,
-  hasInvalidTransportProof: state.transport.expirationDate < Date.now(),
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ push, disableProofOfTransportDialog }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ push }, dispatch)
 
 const printCra = () => window.print()
 
@@ -41,33 +36,15 @@ const styles = theme => ({
 })
 
 export class WorklogPage extends React.Component {
-  constructor(props, context) {
-    super(props, context)
-
-    this.state = {
-      openProofOfTransportDialog: true,
-    }
-  }
-
   componentWillMount() {
     if (!this.props.canPrint) {
       this.props.push('/client')
     }
   }
 
-  handleRequestClose = () => this.setState({ openProofOfTransportDialog: false })
-
-  handleDecline = () => {
-    this.setState({ openProofOfTransportDialog: false })
-    this.props.disableProofOfTransportDialog()
-  }
-
   render() {
-    const { openProofOfTransportDialog } = this.state
     const {
       shouldRemindProcess,
-      shouldDisplayProofOfTransportDialog,
-      hasInvalidTransportProof,
       classes,
     } = this.props
 
@@ -82,11 +59,6 @@ export class WorklogPage extends React.Component {
           </Button>
         </Grid>
         <Printer />
-        {featureFlipping.transport ? <ProofOfTransportDialog
-          open={openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
-          onClose={this.handleRequestClose}
-          onDecline={this.handleDecline}
-        /> : null}
       </div>
     )
   }
@@ -97,9 +69,6 @@ WorklogPage.propTypes = {
   shouldRemindProcess: PropTypes.bool.isRequired,
   canPrint: PropTypes.bool.isRequired,
   push: PropTypes.func.isRequired,
-  disableProofOfTransportDialog: PropTypes.func.isRequired,
-  shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
-  hasInvalidTransportProof: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(WorklogPage))

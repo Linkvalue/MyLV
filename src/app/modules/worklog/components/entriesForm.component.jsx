@@ -15,9 +15,6 @@ const validate = ({ label }) => ({
 const mapStateToProps = state => ({
   ...state.calendar,
   labels: state.worklog.labels,
-  initialValues: {
-    label: 'Production',
-  },
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(worklogActions, dispatch)
@@ -52,7 +49,7 @@ const EntriesForm = ({
   <Grid item md={4} xs={12}>
     <Card className={classes.firstCard}>
       <CardContent>
-        <Typography type="headline" component="h2" gutterBottom>
+        <Typography variant="headline" component="h2" gutterBottom>
           Imputation
         </Typography>
         <Field
@@ -84,7 +81,7 @@ const EntriesForm = ({
     </Card>
     <Card>
       <CardContent>
-        <Typography type="headline" component="h2" gutterBottom>
+        <Typography variant="headline" component="h2" gutterBottom>
           Changement de client ?
         </Typography>
         <Typography>
@@ -103,6 +100,9 @@ const EntriesForm = ({
 const HookedEntriesForm = reduxForm({
   form: 'entriesForm',
   validate,
+  initialValues: {
+    label: 'Production',
+  },
 })(EntriesForm)
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HookedEntriesForm))

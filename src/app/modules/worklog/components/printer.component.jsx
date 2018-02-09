@@ -70,10 +70,10 @@ const Printer = ({
   return (
     <div className={classes.printer}>
       <div className={classes.printerContainer}>
-        <Typography type="headline" component="h2" gutterBottom>
+        <Typography variant="headline" component="h2" gutterBottom>
           Feuille d'activité LinkValue - {moment(`${calendar.year}-${calendar.month}`).format('MMMM YYYY')}
         </Typography>
-        <Typography type="subheading" component="h5" gutterBottom>
+        <Typography variant="subheading" component="h5" gutterBottom>
           A renvoyer signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable
           commercial en cc.
         </Typography>

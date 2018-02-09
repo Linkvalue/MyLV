@@ -1,12 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui'
-import { push } from 'react-router-redux'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-const mapDispatchToProps = (dispatch, { to }) => ({ handleClick: () => dispatch(push(to)) })
-
-const AppDrawerItem = ({ text, icon, handleClick }) => (
-  <ListItem button onClick={handleClick}>
+const AppDrawerItem = ({ text, icon, to }) => (
+  <ListItem button component={Link} to={to}>
     <ListItemIcon>
       {icon}
     </ListItemIcon>
@@ -14,4 +12,10 @@ const AppDrawerItem = ({ text, icon, handleClick }) => (
   </ListItem>
 )
 
-export default connect(undefined, mapDispatchToProps)(AppDrawerItem)
+AppDrawerItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  to: PropTypes.string.isRequired,
+}
+
+export default AppDrawerItem

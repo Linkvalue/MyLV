@@ -1,5 +1,6 @@
 const Glue = require('glue')
 const config = require('config')
+const webPush = require('web-push')
 
 const routes = require('./routes/routes')
 const lvConnect = require('./helpers/lvconnect.helper')
@@ -8,6 +9,8 @@ const Entry = require('./models/entry.model')
 const Manager = require('./models/manager.model')
 const Lunch = require('./models/lunch.model')
 const ProofOfTransport = require('./models/proofOfTransport.model')
+const Subscription = require('./models/subscription.model')
+const Profile = require('./models/profile.model')
 
 const manifest = {
   registrations: [{
@@ -45,6 +48,32 @@ if (require.main === module) {
     .then((server) => {
       server.log('info', `Server started on port ${server.connections[0].info.uri}`)
 
+      webPush.setVapidDetails(
+        config.pushNotifications.email,
+        config.front.push.publicKey,
+        config.pushNotifications.privateKey,
+      )
+
+      server.method('sendPushNotification', async (user, data) => {
+        try {
+          const subscriptions = await Subscription.find({ user: { $in: Array.isArray(user) ? user : [user] } })
+
+          return Promise.all(subscriptions.map(async (subscription) => {
+            try {
+              await webPush.sendNotification(subscription, data)
+            } catch (e) {
+              if (e.statusCode === 410) {
+                await subscription.remove()
+              } else {
+                throw e
+              }
+            }
+          }))
+        } catch (e) {
+          throw e
+        }
+      })
+
       server.auth.strategy('bearer', 'bearer-access-token', {
         validateFunc(token, callback) {
           lvConnect
@@ -77,6 +106,8 @@ if (require.main === module) {
         Manager,
         Lunch,
         ProofOfTransport,
+        Subscription,
+        Profile,
       }
 
       // Handle uncaught promise rejections

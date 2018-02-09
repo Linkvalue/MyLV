@@ -57,7 +57,7 @@ class LoginPage extends Component {
         <img src={logoUrl} alt="Logo LinkValue" className={classes.logoLV} />
         <Card>
           <CardContent>
-            <Typography type="headline" component="h2" gutterBottom>
+            <Typography variant="headline" component="h2" gutterBottom>
               Bienvenue sur CraCra
             </Typography>
             <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />

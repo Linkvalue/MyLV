@@ -6,7 +6,8 @@ import { BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload }
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
-import { featureFlipping } from '../config'
+import Restricted from './restricted.component'
+import FeatureFlipping from './featureFlipping'
 
 export const drawerWidth = 240
 
@@ -34,37 +35,6 @@ const mapStateToProps = state => ({
 const AppDrawer = ({
   user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose,
 }) => {
-  const links = []
-  if (isConnected && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to="/client" icon={<Person />} text="Client" key="client" />)
-  }
-
-  if (isConnected && canPrint && ['tech'].find(role => user.roles.indexOf(role) >= 0)) {
-    links.push(<AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" key="cra" />)
-  }
-
-  if (isConnected && featureFlipping.holidays) {
-    links.push(<AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demande de congés" key="holidays" />)
-  }
-
-  if (isConnected && featureFlipping.transport) {
-    links.push(<AppDrawerItem
-      to="/proof-upload"
-      icon={<FileUpload />}
-      text="Justificatif de transport"
-      key="proof-of-transport"
-    />)
-  }
-
-  const adminLinks = []
-  if (isConnected && ['business', 'hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    adminLinks.push(<AppDrawerItem to="/lunches" icon={<Restaurant />} text="Déjeuners" key="lunches" />)
-  }
-
-  if (isConnected && ['hr', 'board'].find(role => user.roles.indexOf(role) >= 0)) {
-    adminLinks.push(<AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" key="partners" />)
-  }
-
   const collapsed = shouldCollapseDrawer || !isConnected
   return (
     <Drawer
@@ -76,9 +46,23 @@ const AppDrawer = ({
       {collapsed ? null : <div className={classes.drawerHeader} />}
       <Divider />
       <List>
-        {links}
+        <Restricted roles={['tech']} user={user}>
+          <AppDrawerItem to="/client" icon={<Person />} text="Client" />
+          {canPrint ? <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" /> : null}
+        </Restricted>
+        <FeatureFlipping feature="holidays">
+          <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demande de congés" />
+        </FeatureFlipping>
+        <FeatureFlipping feature="transport">
+          <AppDrawerItem to="/proof-upload" icon={<FileUpload />} text="Justificatif de transport" />
+        </FeatureFlipping>
         <Divider />
-        {adminLinks}
+        <Restricted roles={['business', 'hr', 'board']} user={user}>
+          <AppDrawerItem to="/lunches" icon={<Restaurant />} text="Déjeuners" />
+        </Restricted>
+        <Restricted roles={['hr', 'board']} user={user}>
+          <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
+        </Restricted>
       </List>
     </Drawer>
   )

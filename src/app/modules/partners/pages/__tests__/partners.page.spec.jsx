@@ -14,6 +14,7 @@ describe('PartnersPage', () => {
   beforeEach(() => {
     props = {
       fetchPartners: jest.fn(),
+      notifyAllPartners: jest.fn(),
       push: jest.fn(),
       partners: [{
         id: 'my_anaconda_dont',

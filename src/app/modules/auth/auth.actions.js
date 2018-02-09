@@ -1,5 +1,6 @@
 import 'whatwg-fetch'
 import LVConnectSDK from 'sdk-lvconnect'
+import { push } from 'react-router-redux'
 
 import { cracraEndpoint, lvConnect } from './lvconnect'
 import { postTransportProofSuccess } from '../transport/transport.actions'
@@ -42,10 +43,12 @@ export const fetchUserData = () => dispatch =>
     })
 
 export const LOGOUT = 'LOGOUT'
-export const logout = () => {
+export const logout = () => (dispatch) => {
   lvConnect.logout()
 
-  return {
+  dispatch(push('/login'))
+
+  return dispatch({
     type: LOGOUT,
-  }
+  })
 }

@@ -21,7 +21,7 @@ const ClientPage = ({ handleSubmit, pristine, invalid }) => (
   <form onSubmit={handleSubmit}>
     <Card>
       <CardContent>
-        <Typography type="headline" component="h2" gutterBottom>
+        <Typography variant="headline" component="h2" gutterBottom>
           Informations client
         </Typography>
         <Grid container>

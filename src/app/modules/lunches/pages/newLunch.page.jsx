@@ -17,7 +17,7 @@ const NewLunchPage = props => (
     render={({ children, valid }) => (
       <Card>
         <CardContent>
-          <Typography type="headline" component="h2" gutterBottom>
+          <Typography variant="headline" component="h2" gutterBottom>
             Nouveau déjeuner
           </Typography>
           {children}

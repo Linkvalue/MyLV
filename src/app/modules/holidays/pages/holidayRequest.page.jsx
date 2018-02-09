@@ -5,7 +5,7 @@ const HolidayRequestPage = () => (
   <form>
     <Card>
       <CardContent>
-        <Typography type="headline" component="h2">
+        <Typography variant="headline" component="h2">
           Nouvelle demande de congé
         </Typography>
       </CardContent>

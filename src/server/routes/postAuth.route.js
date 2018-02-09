@@ -20,9 +20,23 @@ module.exports = {
       }),
     },
   },
-  handler(req, res) {
-    return lvConnect.proxy(req.payload)
-      .then(response => res(response))
-      .catch(err => (err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err))))
+  async handler(req, res) {
+    let response
+    try {
+      response = await lvConnect.proxy(req.payload)
+    } catch (err) {
+      return err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err))
+    }
+
+    const user = await lvConnect
+      .setAccessToken(response.access_token)
+      .getUserProfile()
+    const profile = await req.server.app.models.Profile.findOne({ userId: user.id })
+
+    if (!profile) {
+      await req.server.app.models.Profile.create({ userId: user.id })
+    }
+
+    res(response)
   },
 }
