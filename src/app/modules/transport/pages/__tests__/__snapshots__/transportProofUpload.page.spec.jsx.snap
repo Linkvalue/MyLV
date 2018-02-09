@@ -2,7 +2,7 @@
 
 exports[`TransportProofPage should render properly 1`] = `
 <form
-  onSubmit={[Function]}
+  onSubmit={[MockFunction]}
 >
   <Card
     raised={false}
@@ -35,7 +35,7 @@ exports[`TransportProofPage should render properly 1`] = `
         >
           <Field
             autoFocus={true}
-            component={[Function]}
+            component={[MockFunction]}
             fullWidth={true}
             label="Date de début de validité"
             name="startingDate"
@@ -48,7 +48,7 @@ exports[`TransportProofPage should render properly 1`] = `
           xs={12}
         >
           <Field
-            component={[Function]}
+            component={[MockFunction]}
             fullWidth={true}
             label="Date d'expiration"
             name="expirationDate"
@@ -63,7 +63,7 @@ exports[`TransportProofPage should render properly 1`] = `
           <div>
             <WithStyles(Button)
               color="primary"
-              onClick={[Function]}
+              onClick={[MockFunction]}
             >
               Valide pour ce mois
             </WithStyles(Button)>
@@ -75,7 +75,7 @@ exports[`TransportProofPage should render properly 1`] = `
         >
           <Field
             accept="jpg,jpeg,JPG,JPEG,pdf,PDF,png,PNG"
-            component={[Function]}
+            component={[MockFunction]}
             label="Choisir un fichier"
             name="file"
           />

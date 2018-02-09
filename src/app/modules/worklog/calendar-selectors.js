@@ -15,7 +15,7 @@ export const calendarDaysSelector = createSelector(
 
     let w
     for (let i = 1; i <= m.daysInMonth(); i++) {
-      let d = m.clone().date(i)
+      const d = m.clone().date(i)
       if (!w || d.day() === 1) {
         w = Array.from({ length: 7 }, () => undefined)
         weeks.push(w)
@@ -24,7 +24,7 @@ export const calendarDaysSelector = createSelector(
     }
 
     return weeks
-  }
+  },
 )
 
 export const calendarLabelsSelector = createSelector(
@@ -35,9 +35,9 @@ export const calendarLabelsSelector = createSelector(
     const dateRegExp = new RegExp(`^${year}-${month}`)
     const labelsSet = Object
       .keys(entries)
-      .reduce((acc, date) => entries[date] && dateRegExp.test(date) ? acc.add(entries[date]) : acc, new Set())
+      .reduce((acc, date) => (entries[date] && dateRegExp.test(date) ? acc.add(entries[date]) : acc), new Set())
     return Array.from(labelsSet)
-  }
+  },
 )
 
 export const calendarExpectedDaysSelector = createSelector(
@@ -46,6 +46,6 @@ export const calendarExpectedDaysSelector = createSelector(
   calendarMonthSelector,
   (entries, year, month) => {
     const dateRegExp = new RegExp(`^${year}-${month}`)
-    return Object.keys(entries).filter((i) => entries[i] && dateRegExp.test(i)).length / 2
-  }
+    return Object.keys(entries).filter(i => entries[i] && dateRegExp.test(i)).length / 2
+  },
 )

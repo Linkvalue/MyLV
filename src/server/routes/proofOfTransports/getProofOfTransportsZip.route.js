@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  async handler (req, res) {
+  async handler(req, res) {
     const { date } = req.query
     const { gridfs } = req.server.plugins.mongodb
     const gridFindOne = promisify(gridfs.findOne.bind(gridfs))
@@ -23,8 +23,8 @@ module.exports = {
     const zip = Archiver.create('zip')
 
     const proofs = await ProofOfTransport.find({
-      startingDate: { '$lte': date },
-      expirationDate: { '$gt': date },
+      startingDate: { $lte: date },
+      expirationDate: { $gt: date },
     })
 
     const filename = `Export proofs of transportation ${formatDate(date)}.zip`

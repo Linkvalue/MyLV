@@ -5,12 +5,12 @@ const HolidayRequestPage = () => (
   <form>
     <Card>
       <CardContent>
-        <Typography type='headline' component='h2'>
+        <Typography type="headline" component="h2">
           Nouvelle demande de congé
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small' color='primary'>Envoyer</Button>
+        <Button size="small" color="primary">Envoyer</Button>
       </CardActions>
     </Card>
   </form>

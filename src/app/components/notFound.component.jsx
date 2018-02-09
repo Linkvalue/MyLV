@@ -19,8 +19,8 @@ const styles = theme => ({
 
 const NotFound = ({ classes }) => (
   <div className={classes.notFoundPage}>
-    <Typography className={classes.notFoundTitle} variant='display4' component='h1' gutterBottom>404 :(</Typography>
-    <Typography className={classes.notFoundBody} variant='display1'>
+    <Typography className={classes.notFoundTitle} variant="display4" component="h1" gutterBottom>404 :(</Typography>
+    <Typography className={classes.notFoundBody} variant="display1">
       Oups ! Il semblerait que cette page n'existe pas/plus
     </Typography>
   </div>

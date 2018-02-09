@@ -9,23 +9,21 @@ export const fetchUserLunches = () => dispatch =>
 export const LUNCHES_FETCH_DETAILS_START = 'LUNCHES_FETCH_DETAILS_START'
 export const LUNCHES_FETCH_DETAILS_SUCCESS = 'LUNCHES_FETCH_DETAILS_SUCCESS'
 export const LUNCHES_FETCH_DETAILS_ERROR = 'LUNCHES_FETCH_DETAILS_ERROR'
-export const fetchLunchDetails = lunchId => dispatch => {
+export const fetchLunchDetails = lunchId => (dispatch) => {
   dispatch({ type: LUNCHES_FETCH_DETAILS_START })
 
   return dispatch(fetchWithAuth(`/api/lunches/${lunchId}`))
-    .then(data => {
+    .then((data) => {
       dispatch({ type: LUNCHES_FETCH_DETAILS_SUCCESS, payload: data })
       dispatch(fetchPartnersSuccess({ results: data.attendees }))
     })
     .catch(() => dispatch({ type: LUNCHES_FETCH_DETAILS_ERROR }))
 }
 
-export const postLunch = lunch => dispatch => {
-  return dispatch(fetchWithAuth('/api/lunches', {
-    method: 'POST',
-    body: lunch,
-  }))
-}
+export const postLunch = lunch => dispatch => dispatch(fetchWithAuth('/api/lunches', {
+  method: 'POST',
+  body: lunch,
+}))
 
 export const putLunch = ({ id, ...lunch }) => dispatch =>
   dispatch(fetchWithAuth(`/api/lunches/${id}`, {

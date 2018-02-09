@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-Button, Card, CardActions, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography,
+  Button, Card, CardActions, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography,
 } from 'material-ui'
 
 import LunchRow from '../components/lunchRow.component'
-import {deleteLunch, fetchUserLunches} from '../lunches.actions'
+import { deleteLunch, fetchUserLunches } from '../lunches.actions'
 import { getLunches } from '../lunches.selectors'
 
 const mapStateToProps = state => ({
@@ -18,17 +18,17 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchUserLunches, deleteLunch }, dispatch)
 
 class LunchesPage extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchUserLunches()
   }
 
-  render () {
+  render() {
     const { lunches, ...actions } = this.props
 
     return (
       <Card>
         <CardContent>
-          <Typography type='headline' component='h2' gutterBottom>
+          <Typography type="headline" component="h2" gutterBottom>
             Mes déjeuners
           </Typography>
           <Typography gutterBottom>
@@ -49,7 +49,7 @@ class LunchesPage extends Component {
           </Table>
         </CardContent>
         <CardActions>
-          <Button size='small' color='primary' component={Link} to='/lunches/new'>Ajouter un déjeuner</Button>
+          <Button size="small" color="primary" component={Link} to="/lunches/new">Ajouter un déjeuner</Button>
         </CardActions>
       </Card>
     )

@@ -17,13 +17,13 @@ const NewLunchPage = props => (
     render={({ children, valid }) => (
       <Card>
         <CardContent>
-          <Typography type='headline' component='h2' gutterBottom>
+          <Typography type="headline" component="h2" gutterBottom>
             Nouveau déjeuner
           </Typography>
           {children}
         </CardContent>
         <CardActions>
-          <Button size='small' color='primary' type='submit' disabled={!valid}>Créer</Button>
+          <Button size="small" color="primary" type="submit" disabled={!valid}>Créer</Button>
         </CardActions>
       </Card>
     )}

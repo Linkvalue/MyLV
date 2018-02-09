@@ -23,7 +23,7 @@ export const fetchPartnersSuccess = data => ({ type: PARTNERS_FETCH_SUCCESS, pay
 
 export const PARTNERS_FETCH_START = 'PARTNERS_FETCH_START'
 export const PARTNERS_FETCH_ERROR = 'PARTNERS_FETCH_ERROR'
-export const fetchPartners = (params = { page: 1 }) => dispatch => {
+export const fetchPartners = (params = { page: 1 }) => (dispatch) => {
   dispatch({ type: PARTNERS_FETCH_START, payload: params })
 
   const query = qs.stringify(params)

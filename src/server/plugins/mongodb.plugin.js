@@ -3,7 +3,7 @@ const Grid = require('gridfs-stream')
 
 mongoose.Promise = global.Promise
 
-function mongodbSerializer (value, omit) {
+function mongodbSerializer(value, omit) {
   if (!value) {
     return value
   }
@@ -34,14 +34,16 @@ function mongodbSerializer (value, omit) {
   return payload
 }
 
-function mongodbReply (value, omit = []) {
+function mongodbReply(value, omit = []) {
   if (Promise.resolve(value) === value) {
     return this.response(value.then(payload => mongodbSerializer(payload, omit)))
   }
   return this.response(mongodbSerializer(value, omit))
 }
 
-exports.register = (server, { uri, username, password, host, port, database, config }, next) => {
+exports.register = (server, {
+  uri, username, password, host, port, database, config,
+}, next) => {
   server.decorate('reply', 'mongodb', mongodbReply)
 
   const userPart = username ? `${username}:${password}@` : ''

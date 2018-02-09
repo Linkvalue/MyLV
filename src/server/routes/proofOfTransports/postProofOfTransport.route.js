@@ -21,7 +21,7 @@ module.exports = {
       },
     },
   },
-  async handler (req, res) {
+  async handler(req, res) {
     const { file, expirationDate, startingDate } = req.payload
     const { gridfs } = req.server.plugins.mongodb
     const { ProofOfTransport } = req.server.app.models
@@ -29,7 +29,7 @@ module.exports = {
     const { firstName, lastName } = req.auth.credentials
 
     const fileExt = file.hapi.filename.split('.').slice(1).join('.')
-    const filename = `Proof of transport ${firstName} ${lastName} ${formatDate(startingDate)} ${formatDate(expirationDate)}.${fileExt}`
+    const filename = `${firstName}-${lastName}-${formatDate(startingDate)}-${formatDate(expirationDate)}.${fileExt}`
 
     const gridFile = gridfs.createWriteStream({
       filename,

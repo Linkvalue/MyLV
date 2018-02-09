@@ -31,7 +31,7 @@ const manifest = {
   }],
 }
 
-function createServer () {
+function createServer() {
   return Glue.compose(manifest, {
     relativeTo: __dirname,
   })
@@ -46,7 +46,7 @@ if (require.main === module) {
       server.log('info', `Server started on port ${server.connections[0].info.uri}`)
 
       server.auth.strategy('bearer', 'bearer-access-token', {
-        validateFunc (token, callback) {
+        validateFunc(token, callback) {
           lvConnect
             .setAccessToken(token)
             .getUserProfile()
@@ -61,12 +61,11 @@ if (require.main === module) {
 
       server.ext({
         type: 'onRequest',
-        method (req, res) {
+        method(req, res) {
           if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV !== 'dev') {
             return res.redirect(`https://${req.info.host}${req.path}`)
-          } else {
-            return res.continue()
           }
+          return res.continue()
         },
       })
 

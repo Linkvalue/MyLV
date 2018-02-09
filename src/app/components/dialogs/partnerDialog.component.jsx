@@ -11,7 +11,7 @@ const styles = () => ({
 })
 
 class PartnerDialog extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -21,14 +21,16 @@ class PartnerDialog extends Component {
 
   handlePartnerSelect = (e, { suggestion: partner }) => this.setState({ partnerId: partner.id })
 
-  handleFormSubmit = e => {
+  handleFormSubmit = (e) => {
     e.preventDefault()
     this.props.onPartnerSelected(this.state.partnerId)
     this.props.onClose()
   }
 
-  render () {
-    const { classes, title, description, action, open, onClose } = this.props
+  render() {
+    const {
+      classes, title, description, action, open, onClose,
+    } = this.props
 
     return (
       <Dialog open={open} onClose={onClose}>
@@ -39,10 +41,10 @@ class PartnerDialog extends Component {
             <PartnerAutocomplete onChange={this.handlePartnerSelect} excludeSelf />
           </DialogContent>
           <DialogActions>
-            <Button size='small' onClick={onClose}>
+            <Button size="small" onClick={onClose}>
               Annuler
             </Button>
-            <Button size='small' color='primary' type='submit' disabled={!this.state.partnerId}>{action}</Button>
+            <Button size="small" color="primary" type="submit" disabled={!this.state.partnerId}>{action}</Button>
           </DialogActions>
         </form>
       </Dialog>

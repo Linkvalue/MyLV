@@ -12,7 +12,7 @@ module.exports = {
       },
     },
   },
-  handler (req, res) {
+  handler(req, res) {
     req.server.app.models.Client.create(req.payload)
       .then((client) => {
         res(client)

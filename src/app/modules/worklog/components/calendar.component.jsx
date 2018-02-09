@@ -14,14 +14,14 @@ import { publicHolidays } from '../../../../shared/calendar-constants'
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   ...state.calendar,
   ...state.worklog,
   labelsInLegend: calendarLabelsSelector(state),
   weeks: calendarDaysSelector(state),
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({...calendarActions, ...worklogActions}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...calendarActions, ...worklogActions }, dispatch)
 
 const styles = theme => ({
   calendarContent: { position: 'relative' },
@@ -68,17 +68,17 @@ const styles = theme => ({
 })
 
 class Calendar extends Component {
-  componentWillMount () {
+  componentWillMount() {
     this.props.getWorklog(this.props.year, this.props.month)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.year !== nextProps.year || this.props.month !== nextProps.month) {
       this.props.getWorklog(nextProps.year, nextProps.month)
     }
   }
 
-  render () {
+  render() {
     const {
       labels,
       entries,
@@ -106,36 +106,39 @@ class Calendar extends Component {
           <CardContent className={classes.calendarContent}>
             <IconButton
               className={`${classes.calendarArrow} ${classes.calendarArrowLeft}`}
-              onClick={() => setDate(m.clone().subtract(1, 'month').format('YYYY-MM-DD'))}>
+              onClick={() => setDate(m.clone().subtract(1, 'month').format('YYYY-MM-DD'))}
+            >
               <ChevronLeft />
             </IconButton>
-            <Typography className={classes.calendarTitle} type='headline' component='h2' gutterBottom>
+            <Typography className={classes.calendarTitle} type="headline" component="h2" gutterBottom>
               {m.format('MMMM YYYY')}
             </Typography>
             <IconButton
               className={`${classes.calendarArrow} ${classes.calendarArrowRight}`}
-              onClick={() => setDate(m.clone().add(1, 'month').format('YYYY-MM-DD'))}>
+              onClick={() => setDate(m.clone().add(1, 'month').format('YYYY-MM-DD'))}
+            >
               <ChevronRight />
             </IconButton>
           </CardContent>
           <table className={classes.calendarBody}>
             <thead>
               <tr>
-                {weekDays.map((l, i) => <th key={`${l}-${i}`}>{l}</th>)}
+                {weekDays.map(l => <th key={l}>{l}</th>)}
               </tr>
             </thead>
             <tbody>
-              {weeks.map((w) => (
+              {weeks.map(w => (
                 <tr key={w}>
                   {w.map((d, i) => (
                     <td
-                      key={`${d}-${i}`}
-                      onContextMenu={(e) => removeDayEntry(e, d)}
-                      onClick={() => d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null}
+                      key={d}
+                      onContextMenu={e => removeDayEntry(e, d)}
+                      onClick={() => (d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null)}
                       className={classNames(classes.calendarCell, {
                         [classes.calendarCellEmpty]: !d,
                         [classes.calendarCellWeekend]: i >= 5 || publicHolidays.has(`${month}-${d}`),
-                      })}>
+                      })}
+                    >
                       <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
                       {d && <CalendarDay
                         labelMorning={calendarEntries[`${year}-${month}-${d}-am`]}
@@ -149,7 +152,7 @@ class Calendar extends Component {
             </tbody>
           </table>
           <CardContent>
-            {labelsInLegend.map((label) => (
+            {labelsInLegend.map(label => (
               <span key={label}>
                 <i className={classes.legendColor} style={{ backgroundColor: labels[label] }} />
                 {label}

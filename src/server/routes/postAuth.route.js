@@ -20,9 +20,9 @@ module.exports = {
       }),
     },
   },
-  handler (req, res) {
+  handler(req, res) {
     return lvConnect.proxy(req.payload)
-      .then((response) => res(response))
-      .catch((err) => err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err)))
+      .then(response => res(response))
+      .catch(err => (err.statusCode ? res(err).code(err.statusCode) : res(Boom.wrap(err))))
   },
 }

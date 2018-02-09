@@ -3,24 +3,24 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   awaitingLogin: state.auth.awaitingLogin,
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = dispatch => bindActionCreators({
   push,
 }, dispatch)
 
 const LoginRequired = (WrappedComponent) => {
   class AuthWrapper extends React.Component {
-    componentWillReceiveProps (props) {
+    componentWillReceiveProps(props) {
       if (!props.isConnected && !props.awaitingLogin) {
         this.props.push('/login')
       }
     }
 
-    render () {
+    render() {
       if (!this.props.isConnected || this.props.awaitingLogin) {
         return null
       }

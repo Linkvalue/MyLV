@@ -12,7 +12,7 @@ module.exports = {
       },
     },
   },
-  handler (req, res) {
+  handler(req, res) {
     const { Entry } = req.server.app.models
 
     return Entry.find({

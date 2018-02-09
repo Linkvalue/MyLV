@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
-import {Card, CardContent, CardActions, Button, Typography, withStyles, Grid} from 'material-ui'
+import { Card, CardContent, CardActions, Button, Typography, Grid } from 'material-ui'
 
 import TextField from '../../../components/inputs/textField.component'
 import { userEntry } from '../client-actions'
@@ -17,54 +17,46 @@ const validate = ({ clientName, clientAddress }) => ({
   clientAddress: !clientAddress ? 'Obligatoire' : null,
 })
 
-const styles = theme => ({
-  inputList: {
-    marginTop: theme.spacing.unit,
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-})
-
-const ClientPage = ({ handleSubmit, pristine, invalid, classes }) => (
+const ClientPage = ({ handleSubmit, pristine, invalid }) => (
   <form onSubmit={handleSubmit}>
     <Card>
       <CardContent>
-        <Typography type='headline' component='h2' gutterBottom>
+        <Typography type="headline" component="h2" gutterBottom>
           Informations client
         </Typography>
         <Grid container>
           <Grid item xs={6} md={4}>
             <Field
-              name='clientName'
-              type='text'
-              label='Nom du client'
+              name="clientName"
+              type="text"
+              label="Nom du client"
               fullWidth
-              component={TextField} />
+              component={TextField}
+            />
           </Grid>
           <Grid item xs={6} md={4}>
             <Field
-              name='clientAddress'
-              type='text'
-              label='Adresse du client'
+              name="clientAddress"
+              type="text"
+              label="Adresse du client"
               fullWidth
-              component={TextField} />
+              component={TextField}
+            />
           </Grid>
           <Grid item xs={6} md={4}>
             <Field
-              name='managerName'
-              type='text'
-              label='Nom du responsable'
+              name="managerName"
+              type="text"
+              label="Nom du responsable"
               fullWidth
-              component={TextField} />
+              component={TextField}
+            />
           </Grid>
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size='small' color='primary' type='submit' disabled={pristine || invalid}>Enregistrer</Button>
-        <Button size='small' component={Link} to='/'>Retour à l'édition</Button>
+        <Button size="small" color="primary" type="submit" disabled={pristine || invalid}>Enregistrer</Button>
+        <Button size="small" component={Link} to="/">Retour à l'édition</Button>
       </CardActions>
     </Card>
   </form>
@@ -79,4 +71,4 @@ const HookedClientPage = reduxForm({
   },
 })(ClientPage)
 
-export default connect(mapStateToProps)(withStyles(styles)(HookedClientPage))
+export default connect(mapStateToProps)(HookedClientPage)

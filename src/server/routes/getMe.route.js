@@ -1,7 +1,7 @@
 module.exports = {
   method: 'GET',
   path: '/api/me',
-  async handler (req, res) {
+  async handler(req, res) {
     const { ProofOfTransport } = req.server.app.models
 
     const proofOfTransport = await ProofOfTransport.findOne({

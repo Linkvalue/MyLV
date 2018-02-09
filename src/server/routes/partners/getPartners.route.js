@@ -9,12 +9,12 @@ const { publicHolidays } = require('../../../shared/calendar-constants')
 
 const compensatedMealLabels = ['Production', 'Conferences']
 
-function getLunchesForPartner (lunches, partner) {
+function getLunchesForPartner(lunches, partner) {
   return lunches.filter(lunch =>
     lunch.owner.toString() === partner.id || lunch.attendees.some(attendeeId => attendeeId.toString() === partner.id))
 }
 
-function getWorkingDays (date) {
+function getWorkingDays(date) {
   let days = 0
   for (let i = 1; i <= moment(date, 'YYYY-MM').daysInMonth(); i++) {
     const d = moment(date, 'YYYY-MM').date(i)
@@ -40,7 +40,7 @@ module.exports = {
     },
     pre: [hasRole(config.cracra.partnersRoles)],
   },
-  async handler (request, reply) {
+  async handler(request, reply) {
     const query = qs.stringify(request.query)
     const date = request.query.date || moment().format('YYYY-MM')
 
@@ -59,10 +59,10 @@ module.exports = {
     const expectedDays = getWorkingDays(date)
 
     reply.mongodb(Object.assign({}, data, {
-      results: data.results.map(partner => {
+      results: data.results.map((partner) => {
         const partnerEntries = entries.filter(entry => entry.userId.toString() === partner.id)
         const mealVouchers = partnerEntries.reduce((nb, entry) =>
-          /-am$/.test(entry.date) && compensatedMealLabels.indexOf(entry.label) >= 0 ? nb + 1 : nb, 0)
+          (/-am$/.test(entry.date) && compensatedMealLabels.indexOf(entry.label) >= 0 ? nb + 1 : nb), 0)
         const lunchesCount = getLunchesForPartner(lunches, partner).length
         return Object.assign({}, partner, {
           mealVouchers: Math.max(mealVouchers - lunchesCount, 0),

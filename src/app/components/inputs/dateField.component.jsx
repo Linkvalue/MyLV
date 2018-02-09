@@ -5,17 +5,15 @@ import { FormControl, FormHelperText, Input, InputLabel } from 'material-ui'
 
 const autoCorrectedDatePipe = createAutoCorrectedDatePipe('dd/mm/yyyy')
 
-const TextMaskCustom = ({ inputRef, ...props }) => {
-  return (
-    <MaskedInput
-      {...props}
-      mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-      placeholderChar={'\u2000'}
-      showMask
-      pipe={autoCorrectedDatePipe}
-    />
-  )
-}
+const TextMaskCustom = ({ inputRef, ...props }) => (
+  <MaskedInput
+    {...props}
+    mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+    placeholderChar={'\u2000'}
+    showMask
+    pipe={autoCorrectedDatePipe}
+  />
+)
 
 const WrappedDateField = field => (
   <FormControl className={field.className} error={!!field.meta.error} fullWidth={field.fullWidth}>

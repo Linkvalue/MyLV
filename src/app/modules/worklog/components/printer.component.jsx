@@ -6,7 +6,7 @@ import { Typography, withStyles } from 'material-ui'
 
 import { calendarLabelsSelector, calendarExpectedDaysSelector } from '../calendar-selectors'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.auth.user,
   client: state.client,
   calendar: state.calendar,
@@ -60,52 +60,59 @@ const styles = theme => ({
   },
 })
 
-const Printer = ({ classes, user, client, calendar, entries, labels, totalExpectedDays }) => {
+const Printer = ({
+  classes, user, client, calendar, entries, labels, totalExpectedDays,
+}) => {
   const days = moment(`${calendar.year}-${calendar.month}`).startOf('month').daysInMonth()
-  const listDays = Array.from({length: days}, (_, i) => i >= 9 ? String(i + 1) : '0' + (i + 1))
+  const listDays = Array.from({ length: days }, (_, i) => (i >= 9 ? String(i + 1) : `0${i + 1}`))
   const dateRegExp = new RegExp(`^${calendar.year}-${calendar.month}`)
 
   return (
     <div className={classes.printer}>
       <div className={classes.printerContainer}>
-        <Typography type='headline' component='h2' gutterBottom>
-          Feuille d'activité LinkValue - {moment(calendar.year + '-' + calendar.month).format('MMMM YYYY')}
+        <Typography type="headline" component="h2" gutterBottom>
+          Feuille d'activité LinkValue - {moment(`${calendar.year}-${calendar.month}`).format('MMMM YYYY')}
         </Typography>
-        <Typography type='subheading' component='h5' gutterBottom>
-          A renvoyer signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable commercial en cc.
+        <Typography type="subheading" component="h5" gutterBottom>
+          A renvoyer signé impérativement avant le 25 du mois en cours à admin@link-value.fr. Mettre votre responsable
+          commercial en cc.
         </Typography>
-        <Typography component='div'>
+        <Typography component="div">
           <table className={classes.printerTable}>
             <thead>
               <tr>
                 <th className={classes.printerCell}>Activité</th>
-                {listDays.map((x) => <th key={x} className={classes.printerCell}>{x}</th>)}
+                {listDays.map(x => <th key={x} className={classes.printerCell}>{x}</th>)}
                 <th className={classes.printerCell}>Total</th>
               </tr>
             </thead>
             <tbody>
-              {labels.reduce((acc, activity, i) => [
+              {labels.reduce((acc, activity) => [
                 ...acc,
                 <tr key={`separator-${activity}`} className={classes.printerSeparator} />,
                 <tr key={`${activity}-am`}>
-                  <td className={classes.printerCell} rowSpan='2'>{activity}</td>
-                  {listDays.map((i) => (<td key={i} className={classes.printerCell}>{
-                    entries[`${calendar.year}-${calendar.month}-${i}-am`] === activity ? 1 : 0
-                  }</td>))}
-                  <td className={classes.printerCell} rowSpan='2'>
-                    {Object.keys(entries).filter((i) => entries[i] === activity && dateRegExp.test(i)).length / 2}
+                  <td className={classes.printerCell} rowSpan="2">{activity}</td>
+                  {listDays.map(day => (
+                    <td key={day} className={classes.printerCell}>
+                      {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
+                    </td>
+                  ))}
+                  <td className={classes.printerCell} rowSpan="2">
+                    {Object.keys(entries).filter(i => entries[i] === activity && dateRegExp.test(i)).length / 2}
                   </td>
                 </tr>,
                 <tr key={`${activity}-pm`}>
-                  {listDays.map((i) => (<td key={i} className={classes.printerCell}>{
-                    entries[`${calendar.year}-${calendar.month}-${i}-pm`] === activity ? 1 : 0
-                  }</td>))}
+                  {listDays.map(day => (
+                    <td key={day} className={classes.printerCell}>
+                      {entries[`${calendar.year}-${calendar.month}-${day}-pm`] === activity ? 1 : 0}
+                    </td>
+                  ))}
                 </tr>,
               ], [])}
               <tr className={classes.printerSeparator} />
               <tr>
                 <td colSpan={listDays.length - 9} />
-                <td className={classes.printerCell} colSpan='10'>Nombre de jour attendus :</td>
+                <td className={classes.printerCell} colSpan="10">Nombre de jour attendus :</td>
                 <td className={classes.printerCell}>{totalExpectedDays}</td>
               </tr>
               <tr>
@@ -113,33 +120,34 @@ const Printer = ({ classes, user, client, calendar, entries, labels, totalExpect
               </tr>
               <tr>
                 <td />
-                <td colSpan='15'>Nom : <b>{user.lastName}</b></td>
-                <td colSpan='15'>Nom du client : <b>{client.clientName}</b></td>
+                <td colSpan="15">Nom : <b>{user.lastName}</b></td>
+                <td colSpan="15">Nom du client : <b>{client.clientName}</b></td>
               </tr>
               <tr>
                 <td />
-                <td colSpan='15'>Prénom : <b>{user.firstName}</b></td>
-                <td colSpan='15'>Adresse client : <b>{client.clientAddress}</b></td>
+                <td colSpan="15">Prénom : <b>{user.firstName}</b></td>
+                <td colSpan="15">Adresse client : <b>{client.clientAddress}</b></td>
               </tr>
               <tr>
                 <td />
-                <td colSpan='15' />
-                <td colSpan='15'>Nom du responsable : <b>{client.managerName}</b></td>
+                <td colSpan="15" />
+                <td colSpan="15">Nom du responsable : <b>{client.managerName}</b></td>
               </tr>
               <tr>
                 <td className={classes.printerSpacer} />
               </tr>
               <tr>
                 <td />
-                <td colSpan='15'>Signature partner :</td>
-                <td colSpan='10'>Visa pour information :</td>
+                <td colSpan="15">Signature partner :</td>
+                <td colSpan="10">Visa pour information :</td>
               </tr>
             </tbody>
           </table>
         </Typography>
-        <Typography component='div' className={classes.printerFooter}>
+        <Typography component="div" className={classes.printerFooter}>
           LinkValue – 108 rue des Dames, 75017 PARIS – www.link-value.fr<br />
-          SAS au capital de 75 000 euros – RCS Paris B 803 833 748 – SIRET 80383374800012 - TVA intracommunautaire FR67803833748
+          SAS au capital de 75 000 euros – RCS Paris B 803 833 748 – SIRET 80383374800012
+          - TVA intracommunautaire FR67803833748
         </Typography>
       </div>
     </div>

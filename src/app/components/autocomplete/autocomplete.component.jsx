@@ -6,8 +6,10 @@ import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 import debounce from 'lodash.debounce'
 
-function renderInput (inputProps) {
-  const { classes, autoFocus, value, ref, label, ...other } = inputProps
+function renderInput(inputProps) {
+  const {
+    classes, autoFocus, value, ref, label, ...other
+  } = inputProps
 
   return (
     <TextField
@@ -26,7 +28,7 @@ function renderInput (inputProps) {
   )
 }
 
-function renderSuggestionsContainer (options) {
+function renderSuggestionsContainer(options) {
   const { containerProps, children } = options
 
   return (
@@ -63,7 +65,7 @@ const styles = theme => ({
 })
 
 class Autocomplete extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -71,32 +73,31 @@ class Autocomplete extends Component {
     }
   }
 
+  handleChange = (event, { newValue }) => this.setState({ value: newValue })
+
   renderSuggestion = (suggestion, { query, isHighlighted }) => {
     const matches = match(this.props.getSuggestionValue(suggestion), query)
     const parts = parse(this.props.getSuggestionValue(suggestion), matches)
 
     return (
-      <MenuItem selected={isHighlighted} component='div'>
+      <MenuItem selected={isHighlighted} component="div">
         <div>
-          {parts.map((part, index) =>
-            part.highlight ? (
-              <b key={index}>
+          {parts.map(part =>
+            (part.highlight ? (
+              <b key={part.text}>
                 {part.text}
               </b>
             ) : (
-              <span key={index}>
+              <span key={part.text}>
                 {part.text}
               </span>
-            )
-          )}
+            )))}
         </div>
       </MenuItem>
     )
   }
 
-  handleChange = (event, { newValue }) => this.setState({ value: newValue })
-
-  render () {
+  render() {
     const {
       label,
       classes,
@@ -137,7 +138,7 @@ class Autocomplete extends Component {
 }
 
 Autocomplete.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object.isRequired,
   suggestions: PropTypes.array.isRequired,
   fetchSuggestions: PropTypes.func.isRequired,
   clearSuggestions: PropTypes.func.isRequired,

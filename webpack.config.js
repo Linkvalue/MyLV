@@ -10,7 +10,7 @@ const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join
 
 module.exports = (env = {}) => ({
   entry: {
-    index: './index.js',
+    index: './index.jsx',
   },
   context: path.resolve(__dirname, 'src/app'),
   resolve: {

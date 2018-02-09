@@ -12,7 +12,7 @@ const validate = ({ label }) => ({
   label: !label ? 'Obligatoire' : null,
 })
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   ...state.calendar,
   labels: state.worklog.labels,
   initialValues: {
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
   },
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(worklogActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(worklogActions, dispatch)
 
 const styles = theme => ({
   selectInput: {
@@ -52,38 +52,39 @@ const EntriesForm = ({
   <Grid item md={4} xs={12}>
     <Card className={classes.firstCard}>
       <CardContent>
-        <Typography type='headline' component='h2' gutterBottom>
+        <Typography type="headline" component="h2" gutterBottom>
           Imputation
         </Typography>
         <Field
           className={classes.selectInput}
           options={labels}
-          name='label'
-          type='text'
-          label='Choisissez un label'
-          component={SelectField} />
+          name="label"
+          type="text"
+          label="Choisissez un label"
+          component={SelectField}
+        />
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size='small' onClick={handleSubmit(({label}) => fillMorning(`${year}-${month}-${day}`, label))}>
+        <Button size="small" onClick={handleSubmit(({ label }) => fillMorning(`${year}-${month}-${day}`, label))}>
           AM
         </Button>
-        <Button size='small' onClick={handleSubmit(({label}) => fillAfternoon(`${year}-${month}-${day}`, label))}>
+        <Button size="small" onClick={handleSubmit(({ label }) => fillAfternoon(`${year}-${month}-${day}`, label))}>
           PM
         </Button>
-        <Button size='small' onClick={handleSubmit(({label}) => fillDay(`${year}-${month}-${day}`, label))}>
+        <Button size="small" onClick={handleSubmit(({ label }) => fillDay(`${year}-${month}-${day}`, label))}>
           Jour
         </Button>
-        <Button size='small' onClick={handleSubmit(({label}) => fillWeek(`${year}-${month}-${day}`, label))}>
+        <Button size="small" onClick={handleSubmit(({ label }) => fillWeek(`${year}-${month}-${day}`, label))}>
           Semaine
         </Button>
-        <Button size='small' onClick={handleSubmit(({label}) => fillMonth(`${year}-${month}`, label))}>
+        <Button size="small" onClick={handleSubmit(({ label }) => fillMonth(`${year}-${month}`, label))}>
           Mois
         </Button>
       </CardActions>
     </Card>
     <Card>
       <CardContent>
-        <Typography type='headline' component='h2' gutterBottom>
+        <Typography type="headline" component="h2" gutterBottom>
           Changement de client ?
         </Typography>
         <Typography>
@@ -93,7 +94,7 @@ const EntriesForm = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small' color='primary' component={Link} to='/client'>Editer</Button>
+        <Button size="small" color="primary" component={Link} to="/client">Editer</Button>
       </CardActions>
     </Card>
   </Grid>

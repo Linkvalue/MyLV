@@ -3,9 +3,11 @@ import moment from 'moment'
 
 import { fetchWithAuth } from '../auth/auth.actions'
 
-export const setExpirationDateToCurrentMonth = () => dispatch => {
-  dispatch(change('transportProofUploadForm', 'startingDate', moment().set('date', 1).format('DD/MM/YYYY')))
-  dispatch(change('transportProofUploadForm', 'expirationDate', moment().add(1, 'month').set('date', 1).format('DD/MM/YYYY')))
+export const setExpirationDateToCurrentMonth = () => (dispatch) => {
+  const startingDate = moment().set('date', 1).format('DD/MM/YYYY')
+  const expirationDate = moment().add(1, 'month').set('date', 1).format('DD/MM/YYYY')
+  dispatch(change('transportProofUploadForm', 'startingDate', startingDate))
+  dispatch(change('transportProofUploadForm', 'expirationDate', expirationDate))
 }
 
 export const TRANSPORT_UPLOAD_PROOF_SUCCESS = 'TRANSPORT_UPLOAD_PROOF_SUCCESS'

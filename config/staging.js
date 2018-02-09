@@ -1,4 +1,4 @@
-function reportingFactory (path, options) {
+function reportingFactory(path, options) {
   return [{
     module: 'good-squeeze',
     name: 'Squeeze',

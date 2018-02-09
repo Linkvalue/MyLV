@@ -23,7 +23,7 @@ const styles = theme => ({
 })
 
 class LunchRow extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
 
     this.state = {
@@ -38,7 +38,7 @@ class LunchRow extends Component {
 
   handleLunchDelete = () => this.props.onLunchDelete(this.props.lunch.id)
 
-  render () {
+  render() {
     const { lunch, classes } = this.props
 
     return (
