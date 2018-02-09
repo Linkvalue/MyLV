@@ -15,9 +15,10 @@ import {
 import FeatureFlipping from '../components/featureFlipping'
 import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.component'
 
-const mapStateToProps = ({ settings, transport }) => ({
+const mapStateToProps = ({ settings, transport, auth }) => ({
+  isConnected: !!auth.user,
   shouldDisplayPushNotificationSnack:
-  settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsEnabled && settings.rehydrated,
+    settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsEnabled && settings.rehydrated,
   shouldDisplayProofOfTransportDialog: settings.shouldDisplayProofOfTransportDialog && settings.rehydrated,
   hasInvalidTransportProof: transport.expirationDate < Date.now(),
 })
@@ -101,8 +102,11 @@ class App extends React.Component {
       togglePushNotificationSnack,
       shouldDisplayProofOfTransportDialog,
       hasInvalidTransportProof,
+      isConnected,
     } = this.props
 
+    const openTransportProofDialog = isConnected && shouldDisplayProofOfTransportDialog
+      && hasInvalidTransportProof && openProofOfTransportDialog
     return (
       <div className={classes.appRoot}>
         <div className={classes.appFrame}>
@@ -111,20 +115,24 @@ class App extends React.Component {
           <div className={classes.appContent}>
             {children}
           </div>
-          <Snackbar
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            open={shouldDisplayPushNotificationSnack}
-            message="Les notifications push sont maintenant disponnibles ! Elles permettent de te rappeller
-            automatiquement quand tu dois remplir ton CRA. Tu peux les activer/désactiver depuis les paramètres de ton
-            compte en haut à droite"
-            action={[
-              <Button key="ignore" color="inherit" size="small" onClick={togglePushNotificationSnack}>Ignorer</Button>,
-              <Button key="ok" color="secondary" size="small" onClick={togglePushNotifications}>Activer</Button>,
-            ]}
-          />
+          <FeatureFlipping feature="pushNotifications">
+            <Snackbar
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              open={shouldDisplayPushNotificationSnack && isConnected}
+              message="Les notifications push sont maintenant disponnibles ! Elles permettent de te rappeller
+              automatiquement quand tu dois remplir ton CRA. Tu peux les activer/désactiver depuis les paramètres de ton
+              compte en haut à droite"
+              action={[
+                <Button key="ignore" color="inherit" size="small" onClick={togglePushNotificationSnack}>
+                  Ignorer
+                </Button>,
+                <Button key="ok" color="secondary" size="small" onClick={togglePushNotifications}>Activer</Button>,
+              ]}
+            />
+          </FeatureFlipping>
           <FeatureFlipping feature="transport">
             <ProofOfTransportDialog
-              open={openProofOfTransportDialog && shouldDisplayProofOfTransportDialog && hasInvalidTransportProof}
+              open={openTransportProofDialog}
               onClose={this.handleDialogClose}
               onDecline={this.handleDecline}
             />
@@ -144,6 +152,7 @@ App.propTypes = {
   toggleProofOfTransportDialog: PropTypes.func.isRequired,
   shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
   hasInvalidTransportProof: PropTypes.bool.isRequired,
+  isConnected: PropTypes.bool.isRequired,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App)))
