@@ -37,7 +37,7 @@ class EditLunchPage extends Component {
         render={({ children, valid, pristine }) => (
           <Card>
             <CardContent>
-              <Typography type="headline" component="h2" gutterBottom>
+              <Typography variant="headline" component="h2" gutterBottom>
                 Modification de : {lunch.label}
               </Typography>
               {children}

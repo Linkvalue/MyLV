@@ -3,18 +3,19 @@ import ReactDOM from 'react-dom'
 import moment from 'moment'
 import { push } from 'react-router-redux'
 import debouce from 'lodash.debounce'
+import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 
 import { configureStore, browserHistory } from './store/configure-store'
 import Root from './containers/root.container'
 import { fetchUserData, loginError } from './modules/auth/auth.actions'
 import { lvConnect } from './modules/auth/lvconnect'
-import { registerWorker } from './service-worker/register-worker'
 import { detectDevice } from './modules/display/display.actions'
+import { featureFlipping } from './config'
+import { installPushNotifications } from './modules/settings/push.service'
 
 // Import PWA manifest with file-loader
 import './manifest.json'
 
-// registerWorker()
 const store = configureStore()
 
 lvConnect.on('loginSuccess', () => {
@@ -31,9 +32,11 @@ moment.locale('fr')
 const handleWindowResize = debouce(() => store.dispatch(detectDevice()), 200)
 window.addEventListener('resize', handleWindowResize)
 
-if (process.env.NODE_ENV !== 'dev') {
-  registerWorker()
+if (featureFlipping.offlineMode) {
+  OfflinePluginRuntime.install()
 }
+
+installPushNotifications(store)
 
 ReactDOM.render(
   <Root store={store} history={browserHistory} />,

@@ -32,3 +32,5 @@ export const fetchPartners = (params = { page: 1 }) => (dispatch) => {
     .then(data => dispatch(fetchPartnersSuccess(data)))
     .catch(() => dispatch({ type: PARTNERS_FETCH_ERROR }))
 }
+
+export const notifyAllPartners = () => dispatch => dispatch(fetchWithAuth('/api/worklog/notify', { method: 'POST' }))

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -123,7 +125,7 @@ class Calendar extends Component {
           <table className={classes.calendarBody}>
             <thead>
               <tr>
-                {weekDays.map(l => <th key={l}>{l}</th>)}
+                {weekDays.map((l, i) => <th key={i}>{l}</th>)}
               </tr>
             </thead>
             <tbody>
@@ -131,7 +133,7 @@ class Calendar extends Component {
                 <tr key={w}>
                   {w.map((d, i) => (
                     <td
-                      key={d}
+                      key={`${d}-${i}`}
                       onContextMenu={e => removeDayEntry(e, d)}
                       onClick={() => (d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null)}
                       className={classNames(classes.calendarCell, {

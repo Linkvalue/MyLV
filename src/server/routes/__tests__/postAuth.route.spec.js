@@ -2,9 +2,14 @@ jest.unmock('joi')
 jest.unmock('../postAuth.route')
 
 jest.mock('boom', () => ({ wrap: jest.fn(err => ({ wrapped: err })) }))
-jest.mock('../../helpers/lvconnect.helper', () => ({
-  proxy: jest.fn(() => Promise.resolve({ token: 'yolo' })),
-}))
+jest.mock('../../helpers/lvconnect.helper', () => {
+  const lvConnectMock = {
+    proxy: jest.fn(() => Promise.resolve({ token: 'yolo' })),
+    setAccessToken: jest.fn(() => lvConnectMock),
+    getUserProfile: jest.fn(() => Promise.resolve({ id: 'foo' })),
+  }
+  return lvConnectMock
+})
 
 const getAssets = require('../postAuth.route')
 const lvConnect = require('../../helpers/lvconnect.helper')
@@ -13,7 +18,17 @@ describe('POST /api/auth', () => {
   let request
   let reply
   beforeEach(() => {
-    request = { auth: { credentials: { foo: 'bar' } } }
+    const server = {
+      app: {
+        models: {
+          Profile: {
+            findOne: jest.fn(() => Promise.resolve()),
+            create: jest.fn(profile => Promise.resolve(profile)),
+          },
+        },
+      },
+    }
+    request = { auth: { credentials: { foo: 'bar' } }, server }
     reply = jest.fn(() => reply)
     reply.code = jest.fn()
   })

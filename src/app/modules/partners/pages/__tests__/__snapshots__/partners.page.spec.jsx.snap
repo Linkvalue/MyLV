@@ -14,7 +14,7 @@ exports[`PartnersPage should render partners list 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      type="headline"
+      variant="headline"
     >
       Partners
     </WithStyles(Typography)>
@@ -115,5 +115,13 @@ exports[`PartnersPage should render partners list 1`] = `
       </WithStyles(TableRow)>
     </TableFooter>
   </table>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      Envoyer un rappel
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
 </WithStyles(Paper)>
 `;

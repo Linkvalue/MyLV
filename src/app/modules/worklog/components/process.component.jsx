@@ -1,19 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Button, Card, CardActions, CardContent, Grid, Typography } from 'material-ui'
 
-import { stopProcessReminder } from '../../settings/settings-actions'
+import { toggleProcessReminder } from '../../settings/settings.actions'
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  stopProcessReminder,
+  toggleProcessReminder: () => toggleProcessReminder(),
 }, dispatch)
 
-const Process = ({ stopProcessReminder }) => (
+const Process = ({ toggleProcessReminder }) => (
   <Grid item xs={12}>
     <Card>
       <CardContent>
-        <Typography type="headline" component="h2" gutterBottom>
+        <Typography variant="headline" component="h2" gutterBottom>
           Informations
         </Typography>
         <Typography gutterBottom>
@@ -38,10 +39,14 @@ const Process = ({ stopProcessReminder }) => (
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component="a" onClick={stopProcessReminder}>Ne plus afficher</Button>
+        <Button size="small" color="primary" component="a" onClick={toggleProcessReminder}>Ne plus afficher</Button>
       </CardActions>
     </Card>
   </Grid>
 )
+
+Process.propTypes = {
+  toggleProcessReminder: PropTypes.func.isRequired,
+}
 
 export default connect(undefined, mapDispatchToProps)(Process)

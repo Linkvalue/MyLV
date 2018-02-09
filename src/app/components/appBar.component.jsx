@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import {
   AppBar as MuiAppBar,
   Toolbar,
@@ -71,13 +72,19 @@ class AppBar extends React.Component {
     this.setState({ open: true, anchor: event.currentTarget })
   }
 
-  handleRequestClose = () => {
+  handleMenuClose = () => {
+    console.log('foo')
     this.setState({ open: false })
+  }
+
+  handleLogout = () => {
+    this.setState({ open: false })
+    this.props.logout()
   }
 
   render() {
     const {
-      user, logout, classes, shouldCollapseBar, onDrawerOpen,
+      user, classes, shouldCollapseBar, onDrawerOpen,
     } = this.props
     const collapsed = shouldCollapseBar && user
 
@@ -93,9 +100,10 @@ class AppBar extends React.Component {
               id="account-menu"
               anchorEl={this.state.anchor}
               open={this.state.open}
-              onClose={this.handleRequestClose}
+              onClose={this.handleMenuClose}
             >
-              <MenuItem onClick={logout}>Logout</MenuItem>
+              <MenuItem component={Link} to="/settings" onClick={this.handleMenuClose}>Paramètres</MenuItem>
+              <MenuItem onClick={this.handleLogout}>Se déconnecter</MenuItem>
             </Menu>
           </IconButton>
         </div>
@@ -130,6 +138,7 @@ AppBar.defaultProps = {
 }
 
 AppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,

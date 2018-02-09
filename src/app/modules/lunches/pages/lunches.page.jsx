@@ -28,7 +28,7 @@ class LunchesPage extends Component {
     return (
       <Card>
         <CardContent>
-          <Typography type="headline" component="h2" gutterBottom>
+          <Typography variant="headline" component="h2" gutterBottom>
             Mes déjeuners
           </Typography>
           <Typography gutterBottom>

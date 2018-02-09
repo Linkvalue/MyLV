@@ -19,7 +19,7 @@ describe('WorklogPage', () => {
       shouldRemindProcess: false,
       canPrint: false,
       push: jest.fn(),
-      disableProofOfTransportDialog: jest.fn(),
+      toggleProofOfTransportDialog: jest.fn(),
       shouldDisplayProofOfTransportDialog: false,
       hasInvalidTransportProof: false,
     }

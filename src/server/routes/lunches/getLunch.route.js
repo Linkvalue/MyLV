@@ -11,7 +11,7 @@ module.exports = {
   handler(req, res) {
     req.server.app.models.Lunch.findById(req.params.id)
       .then(lunch =>
-        lvConnect.api(`/users?ids=${lunch.attendees.join(',')}`)
+        lvConnect.api(`/users?${lunch.attendees.map(id => `ids=${id}`).join('&')}`)
           .then(res => res.json())
           .then(({ results: attendees }) => res.mongodb(Object.assign({}, lunch.toJSON(), { attendees }))))
       .catch(err => res(Boom.wrap(err)))

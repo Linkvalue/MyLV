@@ -18,7 +18,7 @@ exports[`TransportProofPage should render properly 1`] = `
           <WithStyles(Typography)
             component="h2"
             gutterBottom={true}
-            type="headline"
+            variant="headline"
           >
             Uploader un jsutificatif de titre de transport
           </WithStyles(Typography)>

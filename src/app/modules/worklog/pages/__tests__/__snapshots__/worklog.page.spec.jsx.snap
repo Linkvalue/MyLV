@@ -55,10 +55,5 @@ exports[`WorklogPage should render transport dialog 1`] = `
     </WithStyles(Button)>
   </WithStyles(GridWrapper)>
   <Connect(WithStyles(Printer)) />
-  <ProofOfTransportDialog
-    onClose={[Function]}
-    onDecline={[Function]}
-    open={true}
-  />
 </div>
 `;

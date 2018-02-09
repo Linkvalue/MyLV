@@ -104,7 +104,7 @@ export default function (state = initialState, { type, payload }) {
     case REHYDRATE:
       return {
         ...state,
-        entries: payload.worklog.entries,
+        entries: payload.worklog && payload.worklog.entries,
       }
     default:
       return state
