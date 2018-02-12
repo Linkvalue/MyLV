@@ -73,7 +73,6 @@ class AppBar extends React.Component {
   }
 
   handleMenuClose = () => {
-    console.log('foo')
     this.setState({ open: false })
   }
 
@@ -96,16 +95,16 @@ class AppBar extends React.Component {
           {fullName}
           <IconButton color="inherit" onClick={this.handleMenuOpen} className={classes.avatar}>
             <Avatar alt={fullName} src={user.profilePictureUrl} />
-            <Menu
-              id="account-menu"
-              anchorEl={this.state.anchor}
-              open={this.state.open}
-              onClose={this.handleMenuClose}
-            >
-              <MenuItem component={Link} to="/settings" onClick={this.handleMenuClose}>Paramètres</MenuItem>
-              <MenuItem onClick={this.handleLogout}>Se déconnecter</MenuItem>
-            </Menu>
           </IconButton>
+          <Menu
+            id="account-menu"
+            anchorEl={this.state.anchor}
+            open={this.state.open}
+            onClose={this.handleMenuClose}
+          >
+            <MenuItem component={Link} to="/settings" onClick={this.handleMenuClose}>Paramètres</MenuItem>
+            <MenuItem onClick={this.handleLogout}>Se déconnecter</MenuItem>
+          </Menu>
         </div>
       )
     }

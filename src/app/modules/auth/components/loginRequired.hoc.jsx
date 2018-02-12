@@ -1,35 +1,43 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+import { Redirect } from 'react-router-dom'
 
 const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   awaitingLogin: state.auth.awaitingLogin,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  push,
-}, dispatch)
-
-const LoginRequired = (WrappedComponent) => {
-  class AuthWrapper extends React.Component {
-    componentWillReceiveProps(props) {
-      if (!props.isConnected && !props.awaitingLogin) {
-        this.props.push('/login')
-      }
-    }
-
-    render() {
-      if (!this.props.isConnected || this.props.awaitingLogin) {
-        return null
-      }
-
-      return <WrappedComponent {...this.props} />
-    }
+const LoginRequired = ({
+  awaitingLogin, isConnected, location, children,
+}) => {
+  if (awaitingLogin) {
+    return null
   }
-  AuthWrapper.displayName = `AuthWrapper(${WrappedComponent.displayName})`
-  return connect(mapStateToProps, mapDispatchToProps)(AuthWrapper)
+
+  if (!isConnected) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/login',
+          state: { from: location },
+        }}
+      />
+    )
+  }
+
+  return (
+    <React.Fragment>
+      {children}
+    </React.Fragment>
+  )
 }
 
-export default LoginRequired
+LoginRequired.propTypes = {
+  awaitingLogin: PropTypes.bool.isRequired,
+  isConnected: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+}
+
+export default connect(mapStateToProps)(LoginRequired)
