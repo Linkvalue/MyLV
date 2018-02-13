@@ -31,17 +31,21 @@ const Root = ({ store, history }) => (
           <Switch>
             <Route exact path="/auth" component={AuthCallbackPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/settings" component={LoginRequired(ConnectedSettingsPage)} />
-            <Route exact path="/client" component={LoginRequired(ClientPage)} />
-            <Route exact path="/holidays/new" component={LoginRequired(HolidayRequestPage)} />
-            <Route exact path="/holidays" component={LoginRequired(HolidaysPage)} />
-            <Route exact path="/proof-upload" component={LoginRequired(ConnectedTransportProofPage)} />
-            <Route exact path="/lunches/new" component={LoginRequired(NewLunchPage)} />
-            <Route exact path="/lunches/:id" component={LoginRequired(EditLunchPage)} />
-            <Route exact path="/lunches" component={LoginRequired(LunchesPage)} />
-            <Route exact path="/partners/:page?" component={LoginRequired(ConnectedPartnersPage)} />
-            <Route exact path="/" component={LoginRequired(ConnectedWorklogPage)} />
-            <Route component={NotFound} />
+            <LoginRequired>
+              <Switch>
+                <Route exact path="/settings" component={ConnectedSettingsPage} />
+                <Route exact path="/client" component={ClientPage} />
+                <Route exact path="/holidays/new" component={HolidayRequestPage} />
+                <Route exact path="/holidays" component={HolidaysPage} />
+                <Route exact path="/proof-upload" component={ConnectedTransportProofPage} />
+                <Route exact path="/lunches/new" component={NewLunchPage} />
+                <Route exact path="/lunches/:id" component={EditLunchPage} />
+                <Route exact path="/lunches" component={LunchesPage} />
+                <Route exact path="/partners/:page?" component={ConnectedPartnersPage} />
+                <Route exact path="/" component={ConnectedWorklogPage} />
+                <Route component={NotFound} />
+              </Switch>
+            </LoginRequired>
           </Switch>
         </App>
       </MuiThemeProvider>
