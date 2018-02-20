@@ -18,7 +18,8 @@ import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.
 const mapStateToProps = ({ settings, transport, auth }) => ({
   isConnected: !!auth.user,
   shouldDisplayPushNotificationSnack:
-    settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsEnabled && settings.rehydrated,
+    settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsInstalled &&
+    !settings.desktopNotificationsEnabled && settings.rehydrated,
   shouldDisplayProofOfTransportDialog: settings.shouldDisplayProofOfTransportDialog && settings.rehydrated,
   hasInvalidTransportProof: transport.expirationDate < Date.now(),
 })
