@@ -1,3 +1,21 @@
+<a name="2.1.4"></a>
+## [2.1.4](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.3...v2.1.4) (2018-02-20)
+
+
+### Bug Fixes
+
+* **auth:** Converted auth HOC to auth wrapper for better perfs ([0ada011](http://gitlab.com/LinkValue/Lab/CraCra/commit/0ada011))
+* **print:** Fix printing issue on Safari ([cbcc5b7](http://gitlab.com/LinkValue/Lab/CraCra/commit/cbcc5b7))
+* **transport:** Fix proof of transport dialog ([f424c0c](http://gitlab.com/LinkValue/Lab/CraCra/commit/f424c0c))
+
+
+### Features
+
+* **deps:** Upgrade material-ui to latest beta version ([1f30d52](http://gitlab.com/LinkValue/Lab/CraCra/commit/1f30d52))
+* **partners:** Add push notifications feature ([167fc55](http://gitlab.com/LinkValue/Lab/CraCra/commit/167fc55))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.2...v2.1.3) (2018-01-17)
 
@@ -189,7 +207,17 @@
 
 
 <a name="1.0.1"></a>
-## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.1) (2016-11-23)
+## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v1.0.0...v1.0.1) (2016-11-23)
+
+
+### Bug Fixes
+
+* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.0) (2016-11-23)
 
 
 ### Bug Fixes
@@ -198,7 +226,6 @@
 * **client:** Refactored full user experience ([7a8b1e4](http://gitlab.com/LinkValue/Lab/CraCra/commit/7a8b1e4))
 * **logo:** Fixed paths to logo images ([f2e80db](http://gitlab.com/LinkValue/Lab/CraCra/commit/f2e80db))
 * **printer:** Fixed incorrect number of total expected days ([3acffd4](http://gitlab.com/LinkValue/Lab/CraCra/commit/3acffd4)), closes [#24](http://gitlab.com/LinkValue/Lab/CraCra/issues/24)
-* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
 
 
 ### Features
