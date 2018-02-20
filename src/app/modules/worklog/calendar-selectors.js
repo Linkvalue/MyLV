@@ -31,7 +31,7 @@ export const calendarLabelsSelector = createSelector(
   worklogEntriesSelector,
   calendarYearSelector,
   calendarMonthSelector,
-  (entries, year, month) => {
+  (entries = {}, year, month) => {
     const dateRegExp = new RegExp(`^${year}-${month}`)
     const labelsSet = Object
       .keys(entries)
