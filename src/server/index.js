@@ -19,14 +19,19 @@ const manifest = {
       options: config.logs,
     },
   }, {
+    plugin: 'hapi-auth-bearer-token',
+  }, {
     plugin: {
       register: './plugins/mongodb.plugin',
       options: config.mongodb,
     },
   }, {
-    plugin: 'inert',
+    plugin: {
+      register: './plugins/monitoring.plugin',
+      options: config.monitoring,
+    },
   }, {
-    plugin: 'hapi-auth-bearer-token',
+    plugin: 'inert',
   }],
   connections: [{
     host: config.host.hostname,
