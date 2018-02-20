@@ -48,7 +48,7 @@ const styles = theme => ({
   },
   printerFooter: {
     position: 'absolute',
-    bottom: '2rem',
+    bottom: '2cm',
     left: '10%',
     width: '80%',
     textAlign: 'center',

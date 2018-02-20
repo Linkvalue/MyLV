@@ -57,6 +57,9 @@ const styles = theme => ({
     },
   },
   '@media print': {
+    appRoot: {
+      position: 'static',
+    },
     appContent: {
       marginTop: 0,
       padding: 0,
