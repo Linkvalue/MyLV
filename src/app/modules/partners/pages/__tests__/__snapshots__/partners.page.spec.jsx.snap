@@ -58,7 +58,7 @@ exports[`PartnersPage should render partners list 1`] = `
         <WithStyles(TableRow)
           classes={
             Object {
-              "root": undefined,
+              "root": "incompleteWorklog",
             }
           }
           hover={true}
@@ -68,6 +68,34 @@ exports[`PartnersPage should render partners list 1`] = `
             hello
              
             world
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="foo"
+            numeric={true}
+          >
+            9
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="baz"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          />
+          <WithStyles(TableCell)
+            numeric={true}
+          />
+        </WithStyles(TableRow)>
+        <WithStyles(TableRow)
+          hover={true}
+          key="booyah"
+        >
+          <WithStyles(TableCell)>
+            foo
+             
+            bar
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
             key="foo"

@@ -21,15 +21,25 @@ describe('PartnersPage', () => {
         firstName: 'hello',
         lastName: 'world',
         entryCounts: {
+          foo: 9,
+        },
+      }, {
+        id: 'booyah',
+        firstName: 'foo',
+        lastName: 'bar',
+        entryCounts: {
           foo: 10,
         },
+        isWorklogComplete: true,
       }],
       isLoading: false,
       labels: {
         foo: 'bar',
         baz: 'qux',
       },
-      classes: {},
+      classes: {
+        incompleteWorklog: 'incompleteWorklog',
+      },
       pageCount: 10,
       limit: 25,
       match: {
