@@ -1,3 +1,13 @@
+<a name="2.1.8"></a>
+## [2.1.8](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.7...v2.1.8) (2018-02-20)
+
+
+### Bug Fixes
+
+* **push:** Fix display of push snack when not installed ([9d0bc79](http://gitlab.com/LinkValue/Lab/CraCra/commit/9d0bc79))
+
+
+
 <a name="2.1.7"></a>
 ## [2.1.7](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.6...v2.1.7) (2018-02-20)
 
