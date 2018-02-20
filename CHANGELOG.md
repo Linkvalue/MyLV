@@ -1,3 +1,14 @@
+<a name="2.1.7"></a>
+## [2.1.7](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.6...v2.1.7) (2018-02-20)
+
+
+### Bug Fixes
+
+* **monitoring:** Remove front calls from monitoring ([aef64b8](http://gitlab.com/LinkValue/Lab/CraCra/commit/aef64b8))
+* **partners:** Fix missing error color in partners list ([5057223](http://gitlab.com/LinkValue/Lab/CraCra/commit/5057223))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.5...v2.1.6) (2018-02-20)
 
