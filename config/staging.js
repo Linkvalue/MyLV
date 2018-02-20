@@ -30,4 +30,12 @@ module.exports = {
     appId: process.env.LVCONNECT_STAGING_APP_ID,
     appSecret: process.env.LVCONNECT_STAGING_APP_SECRET,
   },
+  front: {
+    featureFlipping: {
+      holidays: true,
+      transport: true,
+      offlineMode: true,
+      pushNotifications: true,
+    },
+  },
 }

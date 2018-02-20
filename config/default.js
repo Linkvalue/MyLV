@@ -39,10 +39,10 @@ module.exports = {
   },
   front: {
     featureFlipping: {
-      holidays: true,
-      transport: true,
-      offlineMode: true,
-      pushNotifications: true,
+      holidays: false,
+      transport: false,
+      offlineMode: false,
+      pushNotifications: false,
     },
     push: {
       publicKey: 'BP60hTFwFmaPMsbx_lQ7loJLWsnyXBIe218Qa46RXtZMhCgicLl6MoTo7idYG35W0jKTF5U7MB6GfI-i_H7-Mjk',
