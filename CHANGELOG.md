@@ -1,3 +1,14 @@
+<a name="2.1.6"></a>
+## [2.1.6](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.5...v2.1.6) (2018-02-20)
+
+
+### Bug Fixes
+
+* **featureFlipping:** Change feature flipping configuration to opt-in ([b66334b](http://gitlab.com/LinkValue/Lab/CraCra/commit/b66334b))
+* **safari:** Fix for empty Object.keys on Safari ([b716bd7](http://gitlab.com/LinkValue/Lab/CraCra/commit/b716bd7))
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.4...v2.1.5) (2018-02-20)
 
