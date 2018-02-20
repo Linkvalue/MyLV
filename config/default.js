@@ -33,6 +33,10 @@ module.exports = {
     email: 'mailto:no-reply@link-value.fr',
     privateKey: 'k1LSA-U-MFcGpo6lj-7WGjG5nHrSUencWBk4q4Z1z7k',
   },
+  monitoring: {
+    token: 'miajoUfOuto0yia1rl4tl2tLefOewriu',
+    metricsPath: '/api/metrics',
+  },
   front: {
     featureFlipping: {
       holidays: true,

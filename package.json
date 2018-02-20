@@ -97,6 +97,7 @@
     "moment": "^2.20.1",
     "mongoose": "^4.13.10",
     "node-fetch": "^1.6.3",
+    "prom-client": "^10.2.2",
     "promisepipe": "^2.1.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.1",
