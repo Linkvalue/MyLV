@@ -1,3 +1,13 @@
+<a name="2.1.5"></a>
+## [2.1.5](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.4...v2.1.5) (2018-02-20)
+
+
+### Bug Fixes
+
+* **safari:** Add babel polyfill for Safari support ([8926b22](http://gitlab.com/LinkValue/Lab/CraCra/commit/8926b22))
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.1.3...v2.1.4) (2018-02-20)
 
