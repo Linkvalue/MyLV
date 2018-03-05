@@ -26,7 +26,14 @@ module.exports = (env = {}) => ({
     rules: [
       { test: /manifest\.json$/, use: { loader: 'file-loader', options: { name: 'manifest.json' } } },
       { test: /push\.js$/, use: { loader: 'file-loader', options: { name: 'assets/scripts/push.js' } } },
-      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.jsx?$/,
+        use: {
+          loader: 'babel-loader',
+          options: { cacheDirectory: true },
+        },
+        exclude: /node_modules/,
+      },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,
         use: { loader: 'url-loader', options: { limit: 1, name: '[path][name]-[hash].[ext]' } },

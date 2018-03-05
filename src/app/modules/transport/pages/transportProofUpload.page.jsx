@@ -45,8 +45,8 @@ export const TransportProofPage = ({
               Uploader un jsutificatif de titre de transport
             </Typography>
             <Typography gutterBottom>
-              Ce justificatif te permettra d'être remboursé pour votre titre de transport, merci donc de le fournir
-              avant le 25 du mois. Renseignez aussi la date d'expiration du justificatif afin d'être rappellé
+              Ce justificatif te permettra d'être remboursé pour ton titre de transport, merci donc de le fournir
+              avant le 25 du mois. Renseigne aussi la date d'expiration du justificatif afin d'être rappellé
               automatiquement lorsque celui-ci arrive à expiration.
             </Typography>
           </Grid>
@@ -101,6 +101,10 @@ TransportProofPage.propTypes = {
 const HookedTransportProofPage = reduxForm({
   form: 'transportProofUploadForm',
   validate,
+  initialValues: {
+    startingDate: moment().set('date', 1).format('YYYY-MM-DD'),
+    expirationDate: moment().add(1, 'month').set('date', 1).format('YYYY-MM-DD'),
+  },
   onSubmit: ({ file, expirationDate, startingDate }, dispatch, { postTransportProof }) => {
     const multipartFormData = new window.FormData()
 

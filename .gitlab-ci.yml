@@ -10,7 +10,6 @@ cache:
 
 before_script:
   - npm install
-  - npm rebuild
 
 unit_tests:
   stage: test

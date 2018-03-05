@@ -32,7 +32,7 @@ class EditLunchPage extends Component {
 
     return (
       <LunchForm
-        initialValues={{ ...lunch, date: moment(lunch.date).format('DD/MM/YYYY') }}
+        initialValues={{ ...lunch, date: moment(lunch.date).format('YYYY-MM-DD') }}
         onFormSubmit={this.props.putLunch}
         render={({ children, valid, pristine }) => (
           <Card>

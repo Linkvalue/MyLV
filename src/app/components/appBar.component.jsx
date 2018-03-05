@@ -12,7 +12,7 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  withStyles,
+  withStyles, Hidden,
 } from 'material-ui'
 import { Menu as MenuIcon } from 'material-ui-icons'
 
@@ -92,7 +92,9 @@ class AppBar extends React.Component {
       const fullName = `${user.firstName} ${user.lastName}`
       avatar = (
         <div className={classes.userDetails}>
-          {fullName}
+          <Hidden mdDown>
+            {fullName}
+          </Hidden>
           <IconButton color="inherit" onClick={this.handleMenuOpen} className={classes.avatar}>
             <Avatar alt={fullName} src={user.profilePictureUrl} />
           </IconButton>

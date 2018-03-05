@@ -1,25 +1,11 @@
 import React from 'react'
-import MaskedInput from 'react-text-mask'
-import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe'
 import { FormControl, FormHelperText, Input, InputLabel } from 'material-ui'
-
-const autoCorrectedDatePipe = createAutoCorrectedDatePipe('dd/mm/yyyy')
-
-const TextMaskCustom = ({ inputRef, ...props }) => (
-  <MaskedInput
-    {...props}
-    mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-    placeholderChar={'\u2000'}
-    showMask
-    pipe={autoCorrectedDatePipe}
-  />
-)
 
 const WrappedDateField = field => (
   <FormControl className={field.className} error={!!field.meta.error} fullWidth={field.fullWidth}>
-    <InputLabel htmlFor={field.input.id}>{field.label}</InputLabel>
-    <Input inputComponent={TextMaskCustom} {...field.input} autoFocus={field.autoFocus} />
-    <FormHelperText>{field.meta.error}</FormHelperText>
+    {field.label && <InputLabel htmlFor={field.input.id}>{field.label}</InputLabel>}
+    <Input type="date" {...field.input} autoFocus={field.autoFocus} />
+    {field.meta.error && <FormHelperText>{field.meta.error}</FormHelperText>}
   </FormControl>
 )
 

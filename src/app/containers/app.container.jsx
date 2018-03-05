@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { Button, Snackbar, withStyles } from 'material-ui'
+import { Button, Reboot, Snackbar, withStyles } from 'material-ui'
 
 import AppBar from '../components/appBar.component'
 import AppDrawer from '../components/appDrawer.component'
@@ -81,6 +81,12 @@ class App extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location !== nextProps.location) {
+      this.setState({ drawerOpen: false })
+    }
+  }
+
   handleDrawerOpen = () => {
     this.setState({ drawerOpen: true })
   }
@@ -113,6 +119,7 @@ class App extends React.Component {
       && hasInvalidTransportProof && openProofOfTransportDialog
     return (
       <div className={classes.appRoot}>
+        <Reboot />
         <div className={classes.appFrame}>
           <AppBar onDrawerOpen={this.handleDrawerOpen} />
           <AppDrawer open={this.state.drawerOpen} onDrawerClose={this.handleDrawerClose} />
