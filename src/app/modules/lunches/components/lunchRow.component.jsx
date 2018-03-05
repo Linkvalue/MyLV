@@ -22,7 +22,7 @@ const styles = theme => ({
   },
 })
 
-class LunchRow extends Component {
+export class LunchRow extends Component {
   constructor(props, context) {
     super(props, context)
 

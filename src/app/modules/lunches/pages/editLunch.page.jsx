@@ -5,8 +5,9 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { bindActionCreators } from 'redux'
 
-import LunchForm from '../components/lunchForm.component'
+import ConnectedLunchForm from '../components/lunchForm.component'
 import { fetchLunchDetails, putLunch } from '../lunches.actions'
+import LoadingPage from '../../../components/loadingPage.component'
 
 const mapStateToProps = (state, { match }) => ({
   lunch: state.lunches.lunchesById[match.params.id],
@@ -18,7 +19,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   fetchLunchDetails,
 }, dispatch)
 
-class EditLunchPage extends Component {
+export class EditLunchPage extends Component {
   componentWillMount() {
     this.props.fetchLunchDetails(this.props.match.params.id)
   }
@@ -27,11 +28,11 @@ class EditLunchPage extends Component {
     const { lunch, isLoading } = this.props
 
     if (isLoading) {
-      return null
+      return <LoadingPage />
     }
 
     return (
-      <LunchForm
+      <ConnectedLunchForm
         initialValues={{ ...lunch, date: moment(lunch.date).format('YYYY-MM-DD') }}
         onFormSubmit={this.props.putLunch}
         render={({ children, valid, pristine }) => (
@@ -56,9 +57,13 @@ EditLunchPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({ id: PropTypes.string.isRequired }),
   }).isRequired,
-  lunch: PropTypes.object.isRequired,
+  lunch: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  }).isRequired,
   putLunch: PropTypes.func.isRequired,
   fetchLunchDetails: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditLunchPage)

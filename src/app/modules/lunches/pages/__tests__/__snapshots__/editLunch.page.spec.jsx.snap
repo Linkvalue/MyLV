@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditLunchPage should pass render function to edit form 1`] = `
+<WithStyles(Paper)
+  elevation={2}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Modification de : 
+      hello
+    </WithStyles(Typography)>
+    <div>
+      Foo
+    </div>
+  </WithStyles(CardContent)>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={true}
+      size="small"
+      type="submit"
+    >
+      Enregistrer
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</WithStyles(Paper)>
+`;
+
+exports[`EditLunchPage should render edit form if not loading 1`] = `
+<WithStyles(ReduxForm)
+  initialValues={
+    Object {
+      "date": "2012-01-01",
+      "label": "hello",
+    }
+  }
+  onFormSubmit={[MockFunction]}
+  render={[Function]}
+/>
+`;
+
+exports[`EditLunchPage should render loading screen if loading 1`] = `<WithStyles(LoadingPage) />`;
