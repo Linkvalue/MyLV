@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LunchRow should open menu on menu button click 1`] = `
+<WithStyles(TableRow)
+  hover={true}
+>
+  <WithStyles(TableCell)>
+    bar
+    <WithStyles(IconButton)
+      onClick={[Function]}
+    >
+      <pure(MoreVert) />
+    </WithStyles(IconButton)>
+    <WithStyles(Menu)
+      anchorEl="foo"
+      id="lunch-menu-foo"
+      onClose={[Function]}
+      open={true}
+    >
+      <WithStyles(MenuItem)
+        component={[Function]}
+        onClick={[Function]}
+        to="/lunches/foo"
+      >
+        Éditer
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        onClick={[Function]}
+      >
+        Supprimer
+      </WithStyles(MenuItem)>
+    </WithStyles(Menu)>
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    2012-01-01
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    numeric={true}
+  >
+    0
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;
+
+exports[`LunchRow should render properly 1`] = `
+<WithStyles(TableRow)
+  hover={true}
+>
+  <WithStyles(TableCell)>
+    bar
+    <WithStyles(IconButton)
+      onClick={[Function]}
+    >
+      <pure(MoreVert) />
+    </WithStyles(IconButton)>
+    <WithStyles(Menu)
+      anchorEl={null}
+      id="lunch-menu-foo"
+      onClose={[Function]}
+      open={false}
+    >
+      <WithStyles(MenuItem)
+        component={[Function]}
+        onClick={[Function]}
+        to="/lunches/foo"
+      >
+        Éditer
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        onClick={[Function]}
+      >
+        Supprimer
+      </WithStyles(MenuItem)>
+    </WithStyles(Menu)>
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)>
+    2012-01-01
+  </WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    numeric={true}
+  >
+    0
+  </WithStyles(TableCell)>
+</WithStyles(TableRow)>
+`;

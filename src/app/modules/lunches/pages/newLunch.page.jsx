@@ -5,13 +5,13 @@ import { Button, Card, CardActions, CardContent, Typography } from 'material-ui'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import LunchForm from '../components/lunchForm.component'
+import ConnectedLunchForm from '../components/lunchForm.component'
 import { postLunch } from '../lunches.actions'
 
 const mapDispatchToProps = dispatch => bindActionCreators({ postLunch }, dispatch)
 
-const NewLunchPage = props => (
-  <LunchForm
+export const NewLunchPage = props => (
+  <ConnectedLunchForm
     initialValues={{ date: moment().format('YYYY-MM-DD'), attendees: [] }}
     onFormSubmit={props.postLunch}
     render={({ children, valid }) => (

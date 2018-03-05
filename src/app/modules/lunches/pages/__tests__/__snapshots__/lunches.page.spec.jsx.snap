@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LunchesPage should render loader if loading 1`] = `<WithStyles(LoadingPage) />`;
+
+exports[`LunchesPage should render lunch list if not loading 1`] = `
+<Card
+  raised={false}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Mes déjeuners
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      gutterBottom={true}
+    >
+      Merci de renseigner ici les déjeuners en équipes payés par LinkValue. Ceci a pour but d'éviter de verser des tickets restaurants pour des déjeuners déjà remboursés.
+    </WithStyles(Typography)>
+    <WithStyles(Table)>
+      <TableHead
+        component="thead"
+      >
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Intitulé
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Date
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            Participants
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </TableHead>
+      <TableBody
+        component="tbody"
+      >
+        <WithStyles(LunchRow)
+          key="foo"
+          lunch={
+            Object {
+              "id": "foo",
+            }
+          }
+          onLunchDelete={[MockFunction]}
+        />
+      </TableBody>
+    </WithStyles(Table)>
+  </WithStyles(CardContent)>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      component={[Function]}
+      size="small"
+      to="/lunches/new"
+    >
+      Ajouter un déjeuner
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</Card>
+`;

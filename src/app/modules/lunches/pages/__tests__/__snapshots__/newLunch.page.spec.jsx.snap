@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewLunchPage should pass render function to edit form 1`] = `
+<WithStyles(Paper)
+  elevation={2}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Nouveau déjeuner
+    </WithStyles(Typography)>
+    <div>
+      Foo
+    </div>
+  </WithStyles(CardContent)>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={true}
+      size="small"
+      type="submit"
+    >
+      Créer
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</WithStyles(Paper)>
+`;
+
+exports[`NewLunchPage should render new lunch form 1`] = `
+<WithStyles(ReduxForm)
+  initialValues={
+    Object {
+      "attendees": Array [],
+      "date": "2018-03-05",
+    }
+  }
+  onFormSubmit={[MockFunction]}
+  render={[Function]}
+/>
+`;

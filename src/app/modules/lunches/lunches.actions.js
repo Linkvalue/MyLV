@@ -1,10 +1,13 @@
 import { fetchWithAuth } from '../auth/auth.actions'
 import { fetchPartnersSuccess } from '../partners/partners.actions'
 
+export const LUNCHES_FETCH_START = 'LUNCHES_FETCH_START'
 export const LUNCHES_FETCH_SUCCESS = 'LUNCHES_FETCH_SUCCESS'
-export const fetchUserLunches = () => dispatch =>
-  dispatch(fetchWithAuth('/api/lunches'))
-    .then(data => dispatch({ type: LUNCHES_FETCH_SUCCESS, payload: data }))
+export const fetchUserLunches = () => async (dispatch) => {
+  dispatch({ type: LUNCHES_FETCH_START })
+  const data = await dispatch(fetchWithAuth('/api/lunches'))
+  dispatch({ type: LUNCHES_FETCH_SUCCESS, payload: data })
+}
 
 export const LUNCHES_FETCH_DETAILS_START = 'LUNCHES_FETCH_DETAILS_START'
 export const LUNCHES_FETCH_DETAILS_SUCCESS = 'LUNCHES_FETCH_DETAILS_SUCCESS'

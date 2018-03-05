@@ -25,8 +25,12 @@ const styles = () => ({
   },
 })
 
-const LunchForm = ({
-  handleSubmit, render, classes, valid, pristine,
+export const LunchForm = ({
+  handleSubmit,
+  render,
+  classes,
+  valid,
+  pristine,
 }) => (
   <form className={classes.lunchForm} onSubmit={handleSubmit}>
     {render({
@@ -66,6 +70,7 @@ LunchForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   render: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
 const HookedLunchForm = reduxForm({

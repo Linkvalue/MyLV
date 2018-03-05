@@ -16,23 +16,29 @@ import {
   Typography,
 } from 'material-ui'
 
-import LunchRow from '../components/lunchRow.component'
+import StyledLunchRow from '../components/lunchRow.component'
+import LoadingPage from '../../../components/loadingPage.component'
 import { deleteLunch, fetchUserLunches } from '../lunches.actions'
 import { getLunches } from '../lunches.selectors'
 
 const mapStateToProps = state => ({
   lunches: getLunches(state),
+  isLoading: state.lunches.isLoading,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchUserLunches, deleteLunch }, dispatch)
 
-class LunchesPage extends Component {
+export class LunchesPage extends Component {
   componentWillMount() {
     this.props.fetchUserLunches()
   }
 
   render() {
-    const { lunches, ...actions } = this.props
+    const { lunches, isLoading, ...actions } = this.props
+
+    if (isLoading) {
+      return <LoadingPage />
+    }
 
     return (
       <Card>
@@ -53,7 +59,9 @@ class LunchesPage extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {lunches.map(lunch => <LunchRow lunch={lunch} onLunchDelete={actions.deleteLunch} key={lunch.id} />)}
+              {lunches.map(lunch => (
+                <StyledLunchRow lunch={lunch} onLunchDelete={actions.deleteLunch} key={lunch.id} />
+              ))}
             </TableBody>
           </Table>
         </CardContent>
@@ -66,9 +74,12 @@ class LunchesPage extends Component {
 }
 
 LunchesPage.propTypes = {
-  lunches: PropTypes.array.isRequired,
+  lunches: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })).isRequired,
   fetchUserLunches: PropTypes.func.isRequired,
   deleteLunch: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LunchesPage)

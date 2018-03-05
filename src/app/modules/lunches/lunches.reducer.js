@@ -1,6 +1,6 @@
 import {
   LUNCH_DELETE_SUCCESS,
-  LUNCHES_FETCH_DETAILS_ERROR, LUNCHES_FETCH_DETAILS_START, LUNCHES_FETCH_DETAILS_SUCCESS,
+  LUNCHES_FETCH_DETAILS_ERROR, LUNCHES_FETCH_DETAILS_START, LUNCHES_FETCH_DETAILS_SUCCESS, LUNCHES_FETCH_START,
   LUNCHES_FETCH_SUCCESS,
 } from './lunches.actions'
 
@@ -14,6 +14,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case LUNCHES_FETCH_START:
+      return {
+        ...state,
+        isLoading: true,
+      }
     case LUNCHES_FETCH_SUCCESS:
       return {
         ...state,
@@ -21,6 +26,7 @@ export default (state = initialState, { type, payload }) => {
         lunchesList: payload.results.map(lunch => lunch.id),
         page: payload.page,
         pageCount: payload.pageCount,
+        isLoading: false,
       }
     case LUNCHES_FETCH_DETAILS_START:
       return {
