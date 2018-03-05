@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchUserLunches, deleteLunch }, dispatch)
 
-export class LunchesPage extends Component {
+export class PersonalLunchesPage extends Component {
   componentWillMount() {
     this.props.fetchUserLunches()
   }
@@ -73,7 +73,7 @@ export class LunchesPage extends Component {
   }
 }
 
-LunchesPage.propTypes = {
+PersonalLunchesPage.propTypes = {
   lunches: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
   })).isRequired,
@@ -82,4 +82,4 @@ LunchesPage.propTypes = {
   isLoading: PropTypes.bool.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LunchesPage)
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalLunchesPage)

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LunchesPage should render loader if loading 1`] = `<WithStyles(LoadingPage) />`;
+exports[`PersonalLunchesPage should render loader if loading 1`] = `<WithStyles(LoadingPage) />`;
 
-exports[`LunchesPage should render lunch list if not loading 1`] = `
+exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
 <Card
   raised={false}
 >

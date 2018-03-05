@@ -16,7 +16,7 @@ import ConnectedHolidayRequestPage from '../modules/holidays/pages/holidayReques
 import ConnectedHolidayRequestEditPage from '../modules/holidays/pages/holidayRequestEdit.page'
 import ConnectedPersonalHolidaysPage from '../modules/holidays/pages/personalHolidays.page'
 import ConnectedHolidaysPage from '../modules/holidays/pages/holidays.page'
-import ConnectedLunchesPage from '../modules/lunches/pages/lunches.page'
+import ConnectedPersonalLunchesPage from '../modules/lunches/pages/personalLunches.page'
 import ConnectedEditLunchPage from '../modules/lunches/pages/editLunch.page'
 import ConnectedNewLunchPage from '../modules/lunches/pages/newLunch.page'
 import ConnectedPartnersPage from '../modules/partners/pages/partners.page'
@@ -42,9 +42,9 @@ const Root = ({ store, history }) => (
                 <Route exact path="/holidays/:id/edit" component={ConnectedHolidayRequestEditPage} />
                 <Route exact path="/holidays/:page?" component={ConnectedHolidaysPage} />
                 <Route exact path="/proof-upload" component={ConnectedTransportProofPage} />
+                <Route exact path="/lunches/me" component={ConnectedPersonalLunchesPage} />
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />
                 <Route exact path="/lunches/:id" component={ConnectedEditLunchPage} />
-                <Route exact path="/lunches" component={ConnectedLunchesPage} />
                 <Route exact path="/partners/:page?" component={ConnectedPartnersPage} />
                 <Route exact path="/" component={ConnectedWorklogPage} />
                 <Route component={NotFound} />

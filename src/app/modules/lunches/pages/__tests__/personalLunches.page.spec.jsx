@@ -2,14 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
-import { LunchesPage } from '../lunches.page'
+import { PersonalLunchesPage } from '../personalLunches.page'
 
-jest.unmock('../lunches.page')
+jest.unmock('../personalLunches.page')
 
-describe('LunchesPage', () => {
+describe('PersonalLunchesPage', () => {
   let props
 
-  const getWrapper = () => shallow(<LunchesPage {...props} />)
+  const getWrapper = () => shallow(<PersonalLunchesPage {...props} />)
 
   beforeEach(() => {
     props = {

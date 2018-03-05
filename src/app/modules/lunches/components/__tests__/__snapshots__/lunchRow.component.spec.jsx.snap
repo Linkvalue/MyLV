@@ -32,12 +32,12 @@ exports[`LunchRow should open menu on menu button click 1`] = `
     </WithStyles(Menu)>
   </WithStyles(TableCell)>
   <WithStyles(TableCell)>
-    2012-01-01
+    01-01-2012
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
     numeric={true}
   >
-    0
+    1
   </WithStyles(TableCell)>
 </WithStyles(TableRow)>
 `;
@@ -74,12 +74,12 @@ exports[`LunchRow should render properly 1`] = `
     </WithStyles(Menu)>
   </WithStyles(TableCell)>
   <WithStyles(TableCell)>
-    2012-01-01
+    01-01-2012
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
     numeric={true}
   >
-    0
+    1
   </WithStyles(TableCell)>
 </WithStyles(TableRow)>
 `;

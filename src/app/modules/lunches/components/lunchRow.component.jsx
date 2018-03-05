@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { IconButton, Menu, MenuItem, TableCell, TableRow, withStyles } from 'material-ui'
 import { MoreVert } from 'material-ui-icons'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const styles = theme => ({
   lunchRow: {
@@ -58,8 +59,8 @@ export class LunchRow extends Component {
             <MenuItem onClick={this.handleLunchDelete}>Supprimer</MenuItem>
           </Menu>
         </TableCell>
-        <TableCell>{lunch.date.toString()}</TableCell>
-        <TableCell numeric>{lunch.attendees.length}</TableCell>
+        <TableCell>{moment(lunch.date).format('DD-MM-YYYY')}</TableCell>
+        <TableCell numeric>{lunch.attendees.length + 1}</TableCell>
       </TableRow>
     )
   }

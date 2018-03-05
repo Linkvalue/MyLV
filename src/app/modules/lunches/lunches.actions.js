@@ -1,12 +1,17 @@
 import { fetchWithAuth } from '../auth/auth.actions'
 import { fetchPartnersSuccess } from '../partners/partners.actions'
 
-export const LUNCHES_FETCH_START = 'LUNCHES_FETCH_START'
-export const LUNCHES_FETCH_SUCCESS = 'LUNCHES_FETCH_SUCCESS'
+export const PERSONAL_LUNCHES_FETCH_START = 'PERSONAL_LUNCHES_FETCH_START'
+export const PERSONAL_LUNCHES_FETCH_SUCCESS = 'PERSONAL_LUNCHES_FETCH_SUCCESS'
+export const PERSONAL_LUNCHES_FETCH_ERROR = 'PERSONAL_LUNCHES_FETCH_ERROR'
 export const fetchUserLunches = () => async (dispatch) => {
-  dispatch({ type: LUNCHES_FETCH_START })
-  const data = await dispatch(fetchWithAuth('/api/lunches'))
-  dispatch({ type: LUNCHES_FETCH_SUCCESS, payload: data })
+  dispatch({ type: PERSONAL_LUNCHES_FETCH_START })
+  try {
+    const data = await dispatch(fetchWithAuth('/api/lunches'))
+    dispatch({ type: PERSONAL_LUNCHES_FETCH_SUCCESS, payload: data })
+  } catch (e) {
+    dispatch({ type: PERSONAL_LUNCHES_FETCH_ERROR })
+  }
 }
 
 export const LUNCHES_FETCH_DETAILS_START = 'LUNCHES_FETCH_DETAILS_START'

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Drawer, Divider, List, withStyles } from 'material-ui'
+import { Drawer, Divider, List, withStyles, ListSubheader } from 'material-ui'
 import { BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload } from 'material-ui-icons'
 
 import { canPrintSelector } from '../modules/client/client-selectors'
@@ -33,7 +33,13 @@ const mapStateToProps = state => ({
 })
 
 const AppDrawer = ({
-  user, classes, open, canPrint, isConnected, shouldCollapseDrawer, onDrawerClose,
+  user,
+  classes,
+  open,
+  canPrint,
+  isConnected,
+  shouldCollapseDrawer,
+  onDrawerClose,
 }) => {
   const collapsed = shouldCollapseDrawer || !isConnected
   return (
@@ -45,7 +51,13 @@ const AppDrawer = ({
     >
       {collapsed ? null : <div className={classes.drawerHeader} />}
       <Divider />
-      <List>
+      <List
+        subheader={(
+          <Restricted roles={['business', 'hr', 'board']} user={user}>
+            <ListSubheader>Personnel</ListSubheader>
+          </Restricted>
+        )}
+      >
         <Restricted roles={['tech']} user={user}>
           <AppDrawerItem to="/client" icon={<Person />} text="Client" />
           {canPrint ? <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" /> : null}
@@ -56,10 +68,11 @@ const AppDrawer = ({
         <FeatureFlipping feature="transport">
           <AppDrawerItem to="/proof-upload" icon={<FileUpload />} text="Justificatif de transport" />
         </FeatureFlipping>
-        <Divider />
         <Restricted roles={['business', 'hr', 'board']} user={user}>
-          <AppDrawerItem to="/lunches" icon={<Restaurant />} text="Déjeuners" />
+          <AppDrawerItem to="/lunches/me" icon={<Restaurant />} text="Mes déjeuners" />
         </Restricted>
+        <Divider />
+        <ListSubheader>Administration</ListSubheader>
         <Restricted roles={['hr', 'board']} user={user}>
           <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
           <FeatureFlipping feature="holidays">
@@ -71,12 +84,18 @@ const AppDrawer = ({
   )
 }
 
+AppDrawer.defaultProps = {
+  user: null,
+}
+
 AppDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   canPrint: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,
   shouldCollapseDrawer: PropTypes.bool.isRequired,
   onDrawerClose: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  classes: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(withStyles(styles)(AppDrawer))
