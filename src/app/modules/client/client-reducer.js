@@ -1,6 +1,4 @@
-import {
-  SAVE_CLIENT,
-} from './client-actions'
+import { SAVE_CLIENT } from './client-actions'
 
 const initialState = {
   firstName: '',

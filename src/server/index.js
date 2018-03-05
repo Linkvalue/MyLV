@@ -6,6 +6,7 @@ const routes = require('./routes/routes')
 const lvConnect = require('./helpers/lvconnect.helper')
 const Client = require('./models/client.model')
 const Entry = require('./models/entry.model')
+const Holiday = require('./models/holiday.model')
 const Manager = require('./models/manager.model')
 const Lunch = require('./models/lunch.model')
 const ProofOfTransport = require('./models/proofOfTransport.model')
@@ -113,6 +114,7 @@ if (require.main === module) {
         ProofOfTransport,
         Subscription,
         Profile,
+        Holiday,
       }
 
       // Handle uncaught promise rejections

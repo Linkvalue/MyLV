@@ -51,7 +51,7 @@ const AppDrawer = ({
           {canPrint ? <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" /> : null}
         </Restricted>
         <FeatureFlipping feature="holidays">
-          <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demande de congés" />
+          <AppDrawerItem to="/holidays/me" icon={<BeachAccess />} text="Mes demandes de congés" key="my-holidays" />
         </FeatureFlipping>
         <FeatureFlipping feature="transport">
           <AppDrawerItem to="/proof-upload" icon={<FileUpload />} text="Justificatif de transport" />
@@ -62,6 +62,9 @@ const AppDrawer = ({
         </Restricted>
         <Restricted roles={['hr', 'board']} user={user}>
           <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
+          <FeatureFlipping feature="holidays">
+            <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demandes de congés" key="holidays" />
+          </FeatureFlipping>
         </Restricted>
       </List>
     </Drawer>

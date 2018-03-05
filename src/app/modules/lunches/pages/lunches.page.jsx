@@ -4,7 +4,16 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-  Button, Card, CardActions, CardContent, Table, TableBody, TableCell, TableHead, TableRow, Typography,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
 } from 'material-ui'
 
 import LunchRow from '../components/lunchRow.component'

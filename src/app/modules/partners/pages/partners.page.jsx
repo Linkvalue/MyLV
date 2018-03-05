@@ -5,9 +5,10 @@ import { push } from 'react-router-redux'
 import PropTypes from 'prop-types'
 import {
   Typography, Table, TableBody, TableHead, TableRow, TableCell, withStyles,
-  TableFooter, TablePagination, Paper, Toolbar, CircularProgress, Button, CardActions,
+  TableFooter, TablePagination, Paper, Toolbar, CardActions, Button,
 } from 'material-ui'
 
+import LoadingPage from '../../../components/loadingPage.component'
 import { fetchPartners, notifyAllPartners } from '../partners.actions'
 import { getPartnersList } from '../partners.selectors'
 
@@ -39,13 +40,6 @@ const styles = theme => ({
   },
   tableFooter: {
     width: '100%',
-  },
-  loaderContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
   },
   incompleteWorklog: {
     background: theme.palette.error.light,
@@ -88,11 +82,7 @@ export class PartnersPage extends Component {
     const inValidWorklogClasses = { root: classes.incompleteWorklog }
 
     if (isLoading) {
-      return (
-        <div className={classes.loaderContainer}>
-          <CircularProgress className={classes.progress} size={100} />
-        </div>
-      )
+      return <LoadingPage />
     }
 
     return (

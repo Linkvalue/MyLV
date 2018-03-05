@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalPersonalHolidaysPage should render in loading state 1`] = `<WithStyles(LoadingPage) />`;
+
+exports[`PersonalPersonalHolidaysPage should render properly 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Mes demandes de congés
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+  <div>
+    <WithStyles(Table)>
+      <TableHead
+        component="thead"
+      >
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Titre
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Date de la demande
+          </WithStyles(TableCell)>
+          <Hidden
+            implementation="js"
+            lgDown={false}
+            lgUp={false}
+            mdDown={true}
+            mdUp={false}
+            smDown={false}
+            smUp={false}
+            xlDown={false}
+            xlUp={false}
+            xsDown={false}
+            xsUp={false}
+          >
+            <WithStyles(TableCell)
+              key="paidHolidays"
+              numeric={true}
+            >
+              Congés payés
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              key="unpaidHolidays"
+              numeric={true}
+            >
+              Congés sans solde
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              key="conventionalHolidays"
+              numeric={true}
+            >
+              Absences Syntec
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              numeric={true}
+            >
+              Status
+            </WithStyles(TableCell)>
+          </Hidden>
+        </WithStyles(TableRow)>
+      </TableHead>
+      <TableBody
+        component="tbody"
+      >
+        <WithStyles(HolidayRow)
+          holiday={
+            Object {
+              "date": "bar",
+              "id": "foo",
+              "periods": Array [
+                Object {
+                  "baz": "qux",
+                },
+              ],
+              "status": "pending",
+            }
+          }
+          key="foo"
+          onHolidayDelete={[MockFunction]}
+        />
+        <WithStyles(HolidayRow)
+          holiday={
+            Object {
+              "date": "qux",
+              "id": "baz",
+              "periods": Array [],
+              "status": "validated",
+            }
+          }
+          key="baz"
+          onHolidayDelete={[MockFunction]}
+        />
+      </TableBody>
+    </WithStyles(Table)>
+  </div>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      component={[Function]}
+      size="small"
+      to="/holidays/new"
+    >
+      Nouvelle demande
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</WithStyles(Paper)>
+`;

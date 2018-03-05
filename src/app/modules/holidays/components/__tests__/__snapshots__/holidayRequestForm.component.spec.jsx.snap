@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HolidayRequestForm should render properly 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <div>
+    <React.Fragment>
+      <Field
+        component={[MockFunction]}
+        fullWidth={true}
+        helperText="Utilisé pour repérer cette demande dans votre liste de demande de congés personnelle"
+        inputProps={
+          Object {
+            "autoFocus": true,
+          }
+        }
+        label="Titre"
+        name="title"
+        type="text"
+      />
+      <Field
+        component={[MockFunction]}
+        fullWidth={true}
+        helperText="Utilisé pour spécifier une information particulière à la personne qui va valider votre demande"
+        inputProps={
+          Object {
+            "multiline": true,
+            "rows": 3,
+          }
+        }
+        label="Commentaire"
+        name="comment"
+        type="text"
+      />
+      <FieldArray
+        component={[MockFunction]}
+        name="periods"
+      />
+      <WithStyles(Paper)>
+        <WithStyles(Table)>
+          <TableHead
+            component="thead"
+          >
+            <WithStyles(TableRow)>
+              <WithStyles(TableCell)
+                key="paidHolidays"
+                numeric={true}
+              >
+                Congés payés
+              </WithStyles(TableCell)>
+              <WithStyles(TableCell)
+                key="unpaidHolidays"
+                numeric={true}
+              >
+                Congés sans solde
+              </WithStyles(TableCell)>
+              <WithStyles(TableCell)
+                key="conventionalHolidays"
+                numeric={true}
+              >
+                Absences Syntec
+              </WithStyles(TableCell)>
+            </WithStyles(TableRow)>
+          </TableHead>
+          <TableBody
+            component="tbody"
+          >
+            <WithStyles(TableRow)>
+              <WithStyles(TableCell)
+                key="paidHolidays"
+                numeric={true}
+              >
+                paidHolidays0
+              </WithStyles(TableCell)>
+              <WithStyles(TableCell)
+                key="unpaidHolidays"
+                numeric={true}
+              >
+                unpaidHolidays0
+              </WithStyles(TableCell)>
+              <WithStyles(TableCell)
+                key="conventionalHolidays"
+                numeric={true}
+              >
+                conventionalHolidays0
+              </WithStyles(TableCell)>
+            </WithStyles(TableRow)>
+          </TableBody>
+        </WithStyles(Table)>
+      </WithStyles(Paper)>
+    </React.Fragment>
+  </div>
+</form>
+`;

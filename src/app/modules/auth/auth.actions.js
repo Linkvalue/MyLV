@@ -34,7 +34,9 @@ export const fetchUserData = () => dispatch =>
   dispatch(fetchWithAuth('/api/me'))
     .then((userData) => {
       dispatch(receiveUserData(userData))
-      dispatch(postTransportProofSuccess(userData.proofOfTransport))
+      if (userData.proofOfTransport) {
+        dispatch(postTransportProofSuccess(userData.proofOfTransport))
+      }
       return userData
     })
     .catch((e) => {

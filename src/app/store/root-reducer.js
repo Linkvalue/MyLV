@@ -11,6 +11,7 @@ import display from '../modules/display/display.reducer'
 import lunches from '../modules/lunches/lunches.reducer'
 import partners from '../modules/partners/partners.reducer'
 import transport from '../modules/transport/transport.reducer'
+import holidays from '../modules/holidays/holidays.reducer'
 
 export const rootReducer = combineReducers({
   calendar,
@@ -22,6 +23,7 @@ export const rootReducer = combineReducers({
   lunches,
   partners,
   transport,
+  holidays,
 
   // Vendor reducers
   form,

@@ -71,11 +71,9 @@ LunchForm.propTypes = {
 const HookedLunchForm = reduxForm({
   form: 'lunchForm',
   validate,
-  onSubmit: (formData, dispatch, { onFormSubmit }) => {
-    console.log(moment(formData.date, 'DD/MM/YYYY').toISOString())
-    return onFormSubmit({ ...formData, date: moment(formData.date, 'DD/MM/YYYY').toISOString() })
-      .then(() => dispatch(push('/lunches')))
-  },
+  onSubmit: (formData, dispatch, { onFormSubmit }) =>
+    onFormSubmit({ ...formData, date: moment(formData.date, 'YYYY-MM-DD').toISOString() })
+      .then(() => dispatch(push('/lunches'))),
 })(LunchForm)
 
 export default withStyles(styles)(HookedLunchForm)

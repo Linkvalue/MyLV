@@ -23,6 +23,12 @@ const getProofOfTransportsZip = require('./proofOfTransports/getProofOfTransport
 const postSubscription = require('./subscriptions/postSubscription.route')
 const deleteSubscription = require('./subscriptions/deleteSubscription.route')
 
+const postHoliday = require('./holidays/postHoliday.route')
+const putHoliday = require('./holidays/putHoliday.route')
+const deleteHoliday = require('./holidays/deleteHoliday.route')
+const getHolidays = require('./holidays/getHolidays.route')
+const getPersonalHolidays = require('./holidays/getPersonalHolidays.route')
+
 module.exports = [
   getAssets,
   getMe,
@@ -42,4 +48,9 @@ module.exports = [
   getProofOfTransportsZip,
   postSubscription,
   deleteSubscription,
+  postHoliday,
+  putHoliday,
+  deleteHoliday,
+  getHolidays,
+  getPersonalHolidays,
 ]

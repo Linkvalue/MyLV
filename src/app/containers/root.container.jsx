@@ -12,8 +12,10 @@ import ConnectedWorklogPage from '../modules/worklog/pages/worklog.page'
 import AuthCallbackPage from '../modules/auth/pages/authCallbackPage'
 import LoginPage from '../modules/auth/pages/login.page'
 import LoginRequired from '../modules/auth/components/loginRequired.hoc'
-import HolidaysPage from '../modules/holidays/pages/holidays.page'
-import HolidayRequestPage from '../modules/holidays/pages/holidayRequest.page'
+import ConnectedHolidayRequestPage from '../modules/holidays/pages/holidayRequest.page'
+import ConnectedHolidayRequestEditPage from '../modules/holidays/pages/holidayRequestEdit.page'
+import ConnectedPersonalHolidaysPage from '../modules/holidays/pages/personalHolidays.page'
+import ConnectedHolidaysPage from '../modules/holidays/pages/holidays.page'
 import LunchesPage from '../modules/lunches/pages/lunches.page'
 import EditLunchPage from '../modules/lunches/pages/editLunch.page'
 import NewLunchPage from '../modules/lunches/pages/newLunch.page'
@@ -35,8 +37,10 @@ const Root = ({ store, history }) => (
               <Switch>
                 <Route exact path="/settings" component={ConnectedSettingsPage} />
                 <Route exact path="/client" component={ClientPage} />
-                <Route exact path="/holidays/new" component={HolidayRequestPage} />
-                <Route exact path="/holidays" component={HolidaysPage} />
+                <Route exact path="/holidays/new" component={ConnectedHolidayRequestPage} />
+                <Route exact path="/holidays/me" component={ConnectedPersonalHolidaysPage} />
+                <Route exact path="/holidays/:id/edit" component={ConnectedHolidayRequestEditPage} />
+                <Route exact path="/holidays/:page?" component={ConnectedHolidaysPage} />
                 <Route exact path="/proof-upload" component={ConnectedTransportProofPage} />
                 <Route exact path="/lunches/new" component={NewLunchPage} />
                 <Route exact path="/lunches/:id" component={EditLunchPage} />

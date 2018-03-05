@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HolidayRequestEditPage should render properly 1`] = `
+<WithStyles(Paper)
+  elevation={2}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Editer une demande de congé
+    </WithStyles(Typography)>
+    <div>
+      Foo
+    </div>
+  </WithStyles(CardContent)>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      disabled={true}
+      size="small"
+      type="submit"
+    >
+      Sauvegarder
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</WithStyles(Paper)>
+`;

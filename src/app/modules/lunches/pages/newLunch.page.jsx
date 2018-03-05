@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({ postLunch }, dispatc
 
 const NewLunchPage = props => (
   <LunchForm
-    initialValues={{ date: moment().format('DD/MM/YYYY'), attendees: [] }}
+    initialValues={{ date: moment().format('YYYY-MM-DD'), attendees: [] }}
     onFormSubmit={props.postLunch}
     render={({ children, valid }) => (
       <Card>
