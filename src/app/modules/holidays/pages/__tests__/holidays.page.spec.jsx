@@ -2,17 +2,16 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
-import { PersonalHolidaysPage } from '../personalHolidays.page'
+import { HolidaysPage } from '../holidays.page'
 
-jest.mock('moment', () => jest.fn(date => ({ format: jest.fn(() => date) })))
-jest.unmock('../personalHolidays.page')
+jest.unmock('../holidays.page')
 
-describe('PersonalHolidaysPage', () => {
+describe('HolidaysPage', () => {
   let props
   beforeEach(() => {
     props = {
-      fetchPersonalHolidays: jest.fn(),
-      deleteHoliday: jest.fn(),
+      fetchHolidays: jest.fn(),
+      push: jest.fn(),
       isLoading: false,
       classes: {},
       holidays: [{
@@ -26,10 +25,15 @@ describe('PersonalHolidaysPage', () => {
         status: 'validated',
         periods: [],
       }],
+      limit: 25,
+      pageCount: 1,
+      match: {
+        params: {},
+      },
     }
   })
 
-  const getWrapper = () => shallow(<PersonalHolidaysPage {...props} />)
+  const getWrapper = () => shallow(<HolidaysPage {...props} />)
 
   it('should render properly', () => {
     // When
@@ -42,6 +46,17 @@ describe('PersonalHolidaysPage', () => {
   it('should render in loading state', () => {
     // Given
     props.isLoading = true
+
+    // When
+    const wrapper = getWrapper()
+
+    // Then
+    expect(shallowToJson(wrapper)).toMatchSnapshot()
+  })
+
+  it('should render empty holidays list', () => {
+    // Given
+    props.holidays = []
 
     // When
     const wrapper = getWrapper()

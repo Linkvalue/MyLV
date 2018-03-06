@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HolidaysPage should render empty holidays list 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Demandes de congés
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+  <div>
+    <WithStyles(Typography)>
+      Aucune demande de congés pour le moment.
+    </WithStyles(Typography)>
+  </div>
+  <table>
+    <TableFooter
+      component="tfoot"
+    >
+      <WithStyles(TableRow)>
+        <WithStyles(TablePagination)
+          count={25}
+          labelDisplayedRows={[Function]}
+          onChangePage={[Function]}
+          onChangeRowsPerPage={[Function]}
+          page={0}
+          rowsPerPage={25}
+          rowsPerPageOptions={
+            Array [
+              1,
+              25,
+              50,
+              100,
+            ]
+          }
+        />
+      </WithStyles(TableRow)>
+    </TableFooter>
+  </table>
+</WithStyles(Paper)>
+`;
+
+exports[`HolidaysPage should render in loading state 1`] = `<WithStyles(LoadingPage) />`;
+
+exports[`HolidaysPage should render properly 1`] = `
+<WithStyles(Paper)>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Demandes de congés
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+  <div>
+    <WithStyles(Table)>
+      <TableHead
+        component="thead"
+      >
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Partner
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Date de la demande
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="paidHolidays"
+            numeric={true}
+          >
+            Congés payés
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            numeric={true}
+          >
+            Congés sans solde
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            numeric={true}
+          >
+            Absences Syntec
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Status
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </TableHead>
+      <TableBody
+        component="tbody"
+      >
+        <WithStyles(HolidayRow)
+          disableMenu={true}
+          displayPartnerName={true}
+          holiday={
+            Object {
+              "date": "bar",
+              "id": "foo",
+              "periods": Array [
+                Object {
+                  "baz": "qux",
+                },
+              ],
+              "status": "pending",
+            }
+          }
+          key="foo"
+          onClick={[Function]}
+        />
+        <WithStyles(HolidayRow)
+          disableMenu={true}
+          displayPartnerName={true}
+          holiday={
+            Object {
+              "date": "qux",
+              "id": "baz",
+              "periods": Array [],
+              "status": "validated",
+            }
+          }
+          key="baz"
+          onClick={[Function]}
+        />
+      </TableBody>
+    </WithStyles(Table)>
+  </div>
+  <table>
+    <TableFooter
+      component="tfoot"
+    >
+      <WithStyles(TableRow)>
+        <WithStyles(TablePagination)
+          count={25}
+          labelDisplayedRows={[Function]}
+          onChangePage={[Function]}
+          onChangeRowsPerPage={[Function]}
+          page={0}
+          rowsPerPage={25}
+          rowsPerPageOptions={
+            Array [
+              1,
+              25,
+              50,
+              100,
+            ]
+          }
+        />
+      </WithStyles(TableRow)>
+    </TableFooter>
+  </table>
+</WithStyles(Paper)>
+`;

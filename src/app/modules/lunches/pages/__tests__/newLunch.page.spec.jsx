@@ -4,6 +4,7 @@ import { shallowToJson } from 'enzyme-to-json'
 
 import { NewLunchPage } from '../newLunch.page'
 
+jest.mock('moment', () => jest.fn(() => ({ format: jest.fn(() => '2012-01-01') })))
 jest.unmock('../newLunch.page')
 
 describe('NewLunchPage', () => {

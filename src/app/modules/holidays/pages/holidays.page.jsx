@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import {
   Paper,
   Table,
   TableBody,
-  TableCell,
-  TableHead,
+  TableCell, TableFooter,
+  TableHead, TablePagination,
   TableRow,
   Toolbar,
   Typography,
@@ -23,20 +24,37 @@ import { getPartnersHolidays } from '../holidays.selectors'
 const mapStateToProps = state => ({
   holidays: getPartnersHolidays(state),
   isLoading: state.holidays.isPartnersHolidaysLoading,
+  pageCount: state.holidays.pageCount,
+  limit: state.holidays.limit,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchHolidays }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchHolidays, push }, dispatch)
 
 const styles = () => ({
   tableWrapper: {
     overflowX: 'auto',
   },
+  tableFooter: {
+    width: '100%',
+  },
 })
 
 export class HolidaysPage extends React.Component {
   componentWillMount() {
-    this.props.fetchHolidays()
+    this.props.fetchHolidays({
+      page: this.props.match.params.page || 1,
+      limit: this.props.limit,
+    })
   }
+
+  getRowDisplay = ({ to, count }) => `${Math.round(to / count)} of ${count / this.props.limit}`
+
+  handleChangePage = (event, page) => this.props.push(`/holidays/${page + 1}`)
+
+  handleChangeRowsPerPage = event => this.props.fetchHolidays({
+    page: this.props.match.params.page || 1,
+    limit: event.target.value,
+  })
 
   render() {
     const {
@@ -44,6 +62,9 @@ export class HolidaysPage extends React.Component {
       holidays,
       classes,
       push,
+      pageCount,
+      limit,
+      match,
     } = this.props
 
     if (isLoading) {
@@ -89,6 +110,21 @@ export class HolidaysPage extends React.Component {
         <div className={classes.tableWrapper}>
           {pageContent}
         </div>
+        <table className={classes.tableFooter}>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                count={pageCount * limit}
+                rowsPerPage={limit}
+                labelDisplayedRows={this.getRowDisplay}
+                page={(match.params.page || 1) - 1}
+                onChangePage={this.handleChangePage}
+                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                rowsPerPageOptions={[1, 25, 50, 100]}
+              />
+            </TableRow>
+          </TableFooter>
+        </table>
       </Paper>
     )
   }
@@ -96,14 +132,22 @@ export class HolidaysPage extends React.Component {
 
 HolidaysPage.propTypes = {
   fetchHolidays: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
   holidays: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     periods: PropTypes.array.isRequired,
-    validated: PropTypes.bool.isRequired,
+    status: PropTypes.string.isRequired,
   })).isRequired,
+  pageCount: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      page: PropTypes.number,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HolidaysPage))

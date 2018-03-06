@@ -71,15 +71,16 @@ describe('holidays.reducer', () => {
 
   it('should handle HOLIDAYS_FETCH_START action', () => {
     // Given
-    const action = { type: HOLIDAYS_FETCH_START }
+    const action = { type: HOLIDAYS_FETCH_START, payload: { limit: 100 } }
 
     // When
     const state = holidaysReducer({ partnersHolidays: ['foo'] }, action)
 
     // Then
     expect(state).toEqual({
-      partnersHolidays: [],
       isPartnersHolidaysLoading: true,
+      limit: 100,
+      partnersHolidays: [],
     })
   })
 

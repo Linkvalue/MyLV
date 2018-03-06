@@ -34,7 +34,7 @@ exports[`NewLunchPage should render new lunch form 1`] = `
   initialValues={
     Object {
       "attendees": Array [],
-      "date": "2018-03-05",
+      "date": "2012-01-01",
     }
   }
   onFormSubmit={[MockFunction]}

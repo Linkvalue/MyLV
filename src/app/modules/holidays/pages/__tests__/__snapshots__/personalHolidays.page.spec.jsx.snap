@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonalPersonalHolidaysPage should render in loading state 1`] = `<WithStyles(LoadingPage) />`;
+exports[`PersonalHolidaysPage should render in loading state 1`] = `<WithStyles(LoadingPage) />`;
 
-exports[`PersonalPersonalHolidaysPage should render properly 1`] = `
+exports[`PersonalHolidaysPage should render properly 1`] = `
 <WithStyles(Paper)>
   <WithStyles(Toolbar)>
     <WithStyles(Typography)

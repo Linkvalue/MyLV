@@ -11,6 +11,8 @@ const initialState = {
   partnersHolidays: [],
   isPartnersHolidaysLoading: false,
   isUniqueLoading: false,
+  limit: 25,
+  pageCount: 0,
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -49,6 +51,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         partnersHolidays: [],
         isPartnersHolidaysLoading: true,
+        limit: payload.limit || state.limit,
       }
     case HOLIDAYS_FETCH_SUCCESS:
       return {
@@ -59,6 +62,7 @@ export default (state = initialState, { type, payload }) => {
         },
         partnersHolidays: payload.results.map(holiday => holiday.id),
         isPartnersHolidaysLoading: false,
+        pageCount: payload.pageCount,
       }
     case HOLIDAYS_FETCH_ERROR:
       return {

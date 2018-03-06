@@ -84,11 +84,11 @@ describe('holidays.actions', () => {
       fetchWithAuth.mockImplementation(() => jest.fn(() => Promise.resolve({ foo: 'bar' })))
 
       // When
-      await store.dispatch(fetchHolidays())
+      await store.dispatch(fetchHolidays({ page: 2, limit: 30 }))
 
       // Then
       expect(store.getActions()).toEqual([
-        { type: HOLIDAYS_FETCH_START },
+        { type: HOLIDAYS_FETCH_START, payload: { page: 2, limit: 30 } },
         { type: HOLIDAYS_FETCH_SUCCESS, payload: { foo: 'bar' } },
       ])
     })
@@ -103,7 +103,7 @@ describe('holidays.actions', () => {
 
       // Then
       expect(store.getActions()).toEqual([
-        { type: HOLIDAYS_FETCH_START },
+        { type: HOLIDAYS_FETCH_START, payload: { page: 1 } },
         { type: HOLIDAYS_FETCH_ERROR },
       ])
     })

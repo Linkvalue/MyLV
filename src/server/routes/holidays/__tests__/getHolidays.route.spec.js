@@ -17,6 +17,7 @@ describe('GET /api/holidays', () => {
       sort: jest.fn(() => Holiday),
       limit: jest.fn(() => Holiday),
       skip: jest.fn(() => Holiday),
+      count: jest.fn(() => Promise.resolve(10)),
     }
 
     const server = {
@@ -28,7 +29,7 @@ describe('GET /api/holidays', () => {
     }
     const auth = { credentials: { id: 'hello' } }
 
-    request = { server, auth, query: {} }
+    request = { server, auth, query: { page: 1, limit: 25 } }
     reply = { mongodb: jest.fn() }
   })
 
@@ -42,6 +43,11 @@ describe('GET /api/holidays', () => {
     await getHolidays.handler(request, reply)
 
     // Then
-    expect(reply.mongodb).toHaveBeenCalledWith({ results: [{ user: 'foo', partner: { id: 'foo' } }] })
+    expect(reply.mongodb).toHaveBeenCalledWith({
+      page: 1,
+      pageCount: 1,
+      limit: 25,
+      results: [{ user: 'foo', partner: { id: 'foo' } }],
+    })
   })
 })

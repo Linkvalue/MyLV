@@ -1,12 +1,16 @@
+import * as qs from 'qs'
+
 import { fetchWithAuth } from '../auth/auth.actions'
 
 export const HOLIDAYS_FETCH_START = 'HOLIDAYS_FETCH_START'
 export const HOLIDAYS_FETCH_SUCCESS = 'HOLIDAYS_FETCH_SUCCESS'
 export const HOLIDAYS_FETCH_ERROR = 'HOLIDAYS_FETCH_ERROR'
-export const fetchHolidays = () => (dispatch) => {
-  dispatch({ type: HOLIDAYS_FETCH_START })
+export const fetchHolidays = (params = { page: 1 }) => (dispatch) => {
+  dispatch({ type: HOLIDAYS_FETCH_START, payload: params })
 
-  return dispatch(fetchWithAuth('/api/holidays'))
+  const query = qs.stringify(params)
+
+  return dispatch(fetchWithAuth(`/api/holidays?${query}`))
     .then(holidays => dispatch({ type: HOLIDAYS_FETCH_SUCCESS, payload: holidays }))
     .catch(e => dispatch({ type: HOLIDAYS_FETCH_ERROR, payload: e }))
 }
