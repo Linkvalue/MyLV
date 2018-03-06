@@ -30,7 +30,6 @@ exports[`HolidaysPage should render empty holidays list 1`] = `
           rowsPerPage={25}
           rowsPerPageOptions={
             Array [
-              1,
               25,
               50,
               100,
@@ -143,7 +142,6 @@ exports[`HolidaysPage should render properly 1`] = `
           rowsPerPage={25}
           rowsPerPageOptions={
             Array [
-              1,
               25,
               50,
               100,

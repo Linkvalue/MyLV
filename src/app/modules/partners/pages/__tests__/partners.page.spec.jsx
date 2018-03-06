@@ -23,6 +23,8 @@ describe('PartnersPage', () => {
         entryCounts: {
           foo: 9,
         },
+        lunchesCount: 10,
+        mealVouchers: 21,
       }, {
         id: 'booyah',
         firstName: 'foo',
@@ -31,6 +33,8 @@ describe('PartnersPage', () => {
           foo: 10,
         },
         isWorklogComplete: true,
+        lunchesCount: 42,
+        mealVouchers: 19,
       }],
       isLoading: false,
       labels: {
@@ -42,10 +46,8 @@ describe('PartnersPage', () => {
       },
       pageCount: 10,
       limit: 25,
-      match: {
-        params: {
-          page: '1',
-        },
+      location: {
+        search: '',
       },
     }
   })

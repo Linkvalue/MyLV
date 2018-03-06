@@ -14,6 +14,7 @@ import {
   Typography,
   withStyles,
 } from 'material-ui'
+import qs from 'qs'
 
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchHolidays } from '../holidays.actions'
@@ -42,17 +43,28 @@ const styles = () => ({
 export class HolidaysPage extends React.Component {
   componentWillMount() {
     this.props.fetchHolidays({
-      page: this.props.match.params.page || 1,
+      page: this.getPageNumber(),
       limit: this.props.limit,
     })
   }
 
-  getRowDisplay = ({ to, count }) => `${Math.round(to / count)} of ${count / this.props.limit}`
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.search !== nextProps.location.search) {
+      this.props.fetchHolidays({
+        page: this.getPageNumber(nextProps),
+        limit: nextProps.limit,
+      })
+    }
+  }
 
-  handleChangePage = (event, page) => this.props.push(`/holidays/${page + 1}`)
+  getPageNumber = (props = this.props) => Number(qs.parse(props.location.search.slice(1)).page || 1)
+
+  getRowDisplay = () => `${this.getPageNumber()} of ${this.props.pageCount}`
+
+  handleChangePage = (event, page) => this.props.push(`/holidays?page=${page + 1}`)
 
   handleChangeRowsPerPage = event => this.props.fetchHolidays({
-    page: this.props.match.params.page || 1,
+    page: this.getPageNumber(),
     limit: event.target.value,
   })
 
@@ -64,7 +76,6 @@ export class HolidaysPage extends React.Component {
       push,
       pageCount,
       limit,
-      match,
     } = this.props
 
     if (isLoading) {
@@ -92,7 +103,7 @@ export class HolidaysPage extends React.Component {
                 holiday={holiday}
                 displayPartnerName
                 disableMenu
-                onClick={() => push(`/holidays/details/${holiday.id}`)}
+                onClick={() => push(`/holidays/${holiday.id}/details`)}
               />
             ))}
           </TableBody>
@@ -117,10 +128,10 @@ export class HolidaysPage extends React.Component {
                 count={pageCount * limit}
                 rowsPerPage={limit}
                 labelDisplayedRows={this.getRowDisplay}
-                page={(match.params.page || 1) - 1}
+                page={this.getPageNumber() - 1}
                 onChangePage={this.handleChangePage}
                 onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                rowsPerPageOptions={[1, 25, 50, 100]}
+                rowsPerPageOptions={[25, 50, 100]}
               />
             </TableRow>
           </TableFooter>
@@ -143,10 +154,8 @@ HolidaysPage.propTypes = {
   })).isRequired,
   pageCount: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      page: PropTypes.number,
-    }).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string,
   }).isRequired,
 }
 

@@ -45,7 +45,7 @@ const Root = ({ store, history }) => (
                 <Route exact path="/lunches/me" component={ConnectedPersonalLunchesPage} />
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />
                 <Route exact path="/lunches/:id" component={ConnectedEditLunchPage} />
-                <Route exact path="/partners/:page?" component={ConnectedPartnersPage} />
+                <Route exact path="/partners" component={ConnectedPartnersPage} />
                 <Route exact path="/" component={ConnectedWorklogPage} />
                 <Route component={NotFound} />
               </Switch>

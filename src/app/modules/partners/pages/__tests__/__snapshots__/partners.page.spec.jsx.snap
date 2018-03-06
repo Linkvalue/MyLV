@@ -77,10 +77,14 @@ exports[`PartnersPage should render partners list 1`] = `
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
             numeric={true}
-          />
+          >
+            10
+          </WithStyles(TableCell)>
           <WithStyles(TableCell)
             numeric={true}
-          />
+          >
+            21
+          </WithStyles(TableCell)>
         </WithStyles(TableRow)>
         <WithStyles(TableRow)
           hover={true}
@@ -105,10 +109,14 @@ exports[`PartnersPage should render partners list 1`] = `
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
             numeric={true}
-          />
+          >
+            42
+          </WithStyles(TableCell)>
           <WithStyles(TableCell)
             numeric={true}
-          />
+          >
+            19
+          </WithStyles(TableCell)>
         </WithStyles(TableRow)>
       </TableBody>
     </WithStyles(Table)>
@@ -127,7 +135,6 @@ exports[`PartnersPage should render partners list 1`] = `
           rowsPerPage={25}
           rowsPerPageOptions={
             Array [
-              1,
               25,
               50,
               100,

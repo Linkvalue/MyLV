@@ -27,8 +27,8 @@ describe('HolidaysPage', () => {
       }],
       limit: 25,
       pageCount: 1,
-      match: {
-        params: {},
+      location: {
+        search: '',
       },
     }
   })

@@ -7,6 +7,7 @@ import {
   Typography, Table, TableBody, TableHead, TableRow, TableCell, withStyles,
   TableFooter, TablePagination, Paper, Toolbar, CardActions, Button,
 } from 'material-ui'
+import qs from 'qs'
 
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchPartners, notifyAllPartners } from '../partners.actions'
@@ -52,32 +53,40 @@ const styles = theme => ({
 export class PartnersPage extends Component {
   componentWillMount() {
     this.props.fetchPartners({
-      page: this.props.match.params.page || 1,
+      page: this.getPageNumber(),
       limit: this.props.limit,
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.page !== nextProps.match.params.page) {
+    if (this.props.location.search !== nextProps.location.search) {
       this.props.fetchPartners({
-        page: nextProps.match.params.page,
+        page: this.getPageNumber(nextProps),
         limit: nextProps.limit,
       })
     }
   }
 
-  getRowDisplay = ({ to, count }) => `${Math.round(to / count)} of ${count / this.props.limit}`
+  getPageNumber = (props = this.props) => Number(qs.parse(props.location.search.slice(1)).page || 1)
 
-  handleChangePage = (event, page) => this.props.push(`/partners/${page + 1}`)
+  getRowDisplay = () => `${this.getPageNumber()} of ${this.props.pageCount}`
+
+  handleChangePage = (event, page) => this.props.push(`/partners?page=${page + 1}`)
 
   handleChangeRowsPerPage = event => this.props.fetchPartners({
-    page: this.props.match.params.page || 1,
+    page: this.getPageNumber(),
     limit: event.target.value,
   })
 
   render() {
     const {
-      partners, isLoading, labels, classes, match, pageCount, limit, notifyAllPartners,
+      partners,
+      isLoading,
+      labels,
+      classes,
+      pageCount,
+      limit,
+      notifyAllPartners,
     } = this.props
     const inValidWorklogClasses = { root: classes.incompleteWorklog }
 
@@ -133,10 +142,10 @@ export class PartnersPage extends Component {
                 count={pageCount * limit}
                 rowsPerPage={limit}
                 labelDisplayedRows={this.getRowDisplay}
-                page={(match.params.page || 1) - 1}
+                page={this.getPageNumber() - 1}
                 onChangePage={this.handleChangePage}
                 onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                rowsPerPageOptions={[1, 25, 50, 100]}
+                rowsPerPageOptions={[25, 50, 100]}
               />
             </TableRow>
           </TableFooter>
@@ -153,16 +162,21 @@ PartnersPage.propTypes = {
   fetchPartners: PropTypes.func.isRequired,
   notifyAllPartners: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
-  partners: PropTypes.array.isRequired,
+  partners: PropTypes.arrayOf(PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    lunchesCount: PropTypes.number.isRequired,
+    mealVouchers: PropTypes.number.isRequired,
+    entryCounts: PropTypes.object.isRequired,
+    isWorklogComplete: PropTypes.bool,
+  })).isRequired,
   isLoading: PropTypes.bool.isRequired,
   labels: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   pageCount: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      page: PropTypes.string,
-    }).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string,
   }).isRequired,
 }
 
