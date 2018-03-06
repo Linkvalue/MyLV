@@ -39,7 +39,7 @@ module.exports = {
       pageCount: Math.ceil(resultsCount / limit),
       results: holidays.map(holiday => ({
         ...holiday.toJSON(),
-        partner: results.find(partner => partner.id === holiday.user.toString()),
+        user: results.find(partner => partner.id === holiday.user.toString()),
       })),
     })
   },

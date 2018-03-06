@@ -68,7 +68,7 @@ describe('PeriodsList', () => {
   it('should render with partner name if displayPartnerName is true', () => {
     // Given
     props.holiday.status = 'validated'
-    props.holiday.partner = { firstName: 'hello', lastName: 'world' }
+    props.partner = { firstName: 'hello', lastName: 'world' }
     props.displayPartnerName = true
 
     // When

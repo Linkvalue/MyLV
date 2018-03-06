@@ -106,10 +106,16 @@ exports[`HolidaysPage should render properly 1`] = `
                 },
               ],
               "status": "pending",
+              "user": "foo",
             }
           }
           key="foo"
           onClick={[Function]}
+          partner={
+            Object {
+              "baz": "qux",
+            }
+          }
         />
         <WithStyles(HolidayRow)
           disableMenu={true}
@@ -120,10 +126,16 @@ exports[`HolidaysPage should render properly 1`] = `
               "id": "baz",
               "periods": Array [],
               "status": "validated",
+              "user": "foo",
             }
           }
           key="baz"
           onClick={[Function]}
+          partner={
+            Object {
+              "baz": "qux",
+            }
+          }
         />
       </TableBody>
     </WithStyles(Table)>

@@ -1,5 +1,8 @@
 import {
-  HOLIDAY_DELETE_SUCCESS, HOLIDAYS_FETCH_ERROR, HOLIDAYS_FETCH_START, HOLIDAYS_FETCH_SUCCESS,
+  HOLIDAY_DELETE_SUCCESS, HOLIDAY_DETAILS_FETCH_ERROR, HOLIDAY_DETAILS_FETCH_START, HOLIDAY_DETAILS_FETCH_SUCCESS,
+  HOLIDAYS_FETCH_ERROR,
+  HOLIDAYS_FETCH_START,
+  HOLIDAYS_FETCH_SUCCESS,
   PERSONAL_HOLIDAYS_FETCH_ERROR,
   PERSONAL_HOLIDAYS_FETCH_START,
   PERSONAL_HOLIDAYS_FETCH_SUCCESS,
@@ -110,5 +113,45 @@ describe('holidays.reducer', () => {
 
     // Then
     expect(state).toEqual({ isPartnersHolidaysLoading: false })
+  })
+
+  it('should handle HOLIDAY_DETAILS_FETCH_START action', () => {
+    // Given
+    const action = { type: HOLIDAY_DETAILS_FETCH_START }
+
+    // When
+    const state = holidaysReducer({}, action)
+
+    // Then
+    expect(state).toEqual({
+      isUniqueLoading: true,
+    })
+  })
+
+  it('should handle HOLIDAY_DETAILS_FETCH_SUCCESS action', () => {
+    // Given
+    const action = { type: HOLIDAY_DETAILS_FETCH_SUCCESS, payload: { id: 'foo' } }
+
+    // When
+    const state = holidaysReducer({ isUniqueLoading: true, holidaysById: { hello: { id: 'hello' } } }, action)
+
+    // Then
+    expect(state).toEqual({
+      isUniqueLoading: false,
+      holidaysById: { foo: { id: 'foo' }, hello: { id: 'hello' } },
+    })
+  })
+
+  it('should handle HOLIDAY_DETAILS_FETCH_ERROR action', () => {
+    // Given
+    const action = { type: HOLIDAY_DETAILS_FETCH_ERROR }
+
+    // When
+    const state = holidaysReducer({ isUniqueLoading: true }, action)
+
+    // Then
+    expect(state).toEqual({
+      isUniqueLoading: false,
+    })
   })
 })

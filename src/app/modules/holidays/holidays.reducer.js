@@ -1,5 +1,11 @@
 import {
-  HOLIDAY_DELETE_SUCCESS, HOLIDAYS_FETCH_ERROR, HOLIDAYS_FETCH_START, HOLIDAYS_FETCH_SUCCESS,
+  HOLIDAY_DELETE_SUCCESS,
+  HOLIDAY_DETAILS_FETCH_ERROR,
+  HOLIDAY_DETAILS_FETCH_START,
+  HOLIDAY_DETAILS_FETCH_SUCCESS,
+  HOLIDAYS_FETCH_ERROR,
+  HOLIDAYS_FETCH_START,
+  HOLIDAYS_FETCH_SUCCESS,
   PERSONAL_HOLIDAYS_FETCH_ERROR, PERSONAL_HOLIDAYS_FETCH_START,
   PERSONAL_HOLIDAYS_FETCH_SUCCESS,
 } from './holidays.actions'
@@ -68,6 +74,25 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isPartnersHolidaysLoading: false,
+      }
+    case HOLIDAY_DETAILS_FETCH_START:
+      return {
+        ...state,
+        isUniqueLoading: true,
+      }
+    case HOLIDAY_DETAILS_FETCH_SUCCESS:
+      return {
+        ...state,
+        holidaysById: {
+          ...state.holidaysById,
+          [payload.id]: payload,
+        },
+        isUniqueLoading: false,
+      }
+    case HOLIDAY_DETAILS_FETCH_ERROR:
+      return {
+        ...state,
+        isUniqueLoading: false,
       }
     default:
       return state

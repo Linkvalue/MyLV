@@ -19,17 +19,20 @@ describe('HolidaysPage', () => {
         date: 'bar',
         status: 'pending',
         periods: [{ baz: 'qux' }],
+        user: 'foo',
       }, {
         id: 'baz',
         date: 'qux',
         status: 'validated',
         periods: [],
+        user: 'foo',
       }],
       limit: 25,
       pageCount: 1,
       location: {
         search: '',
       },
+      partnersById: { foo: { baz: 'qux' } },
     }
   })
 

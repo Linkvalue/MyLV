@@ -158,16 +158,18 @@ ShallowWrapper {
       Object {
         "date": "1942-01-01",
         "id": "bar",
-        "partner": Object {
-          "firstName": "hello",
-          "lastName": "world",
-        },
         "periods": Array [],
         "status": "validated",
       }
     }
     onClick={[MockFunction]}
     onHolidayDelete={[MockFunction]}
+    partner={
+      Object {
+        "firstName": "hello",
+        "lastName": "world",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

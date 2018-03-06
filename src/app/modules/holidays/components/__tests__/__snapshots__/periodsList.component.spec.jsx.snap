@@ -32,13 +32,17 @@ exports[`PeriodsList should render properly 1`] = `
         >
           Date du premier jour d'absence
         </WithStyles(TableCell)>
-        <WithStyles(TableCell) />
+        <WithStyles(TableCell)>
+          A partir du
+        </WithStyles(TableCell)>
         <WithStyles(TableCell)
           padding="checkbox"
         >
           Date du dernier jour d'absence
         </WithStyles(TableCell)>
-        <WithStyles(TableCell) />
+        <WithStyles(TableCell)>
+          Jusqu'au
+        </WithStyles(TableCell)>
         <WithStyles(TableCell)
           padding="checkbox"
         />

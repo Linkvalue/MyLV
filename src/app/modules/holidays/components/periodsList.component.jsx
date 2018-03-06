@@ -50,9 +50,9 @@ export class PeriodsList extends React.Component {
                 <TableCell padding="checkbox" key={key}>{holidayLabels.get(key)}</TableCell>
               ))}
               <TableCell padding="checkbox">Date du premier jour d'absence</TableCell>
-              <TableCell />
+              <TableCell>A partir du</TableCell>
               <TableCell padding="checkbox">Date du dernier jour d'absence</TableCell>
-              <TableCell />
+              <TableCell>Jusqu'au</TableCell>
               <TableCell padding="checkbox" />
             </TableRow>
           </TableHead>

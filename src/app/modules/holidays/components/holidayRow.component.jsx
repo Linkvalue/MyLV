@@ -66,7 +66,10 @@ export class HolidayRow extends Component {
     this.setState({ open: true, anchorEl: e.currentTarget })
   }
 
-  handleRequestClose = () => this.setState({ open: false })
+  handleRequestClose = (e) => {
+    e.stopPropagation()
+    this.setState({ open: false })
+  }
 
   handleHolidayDelete = () => this.props.onHolidayDelete(this.props.holiday.id)
 
@@ -77,6 +80,7 @@ export class HolidayRow extends Component {
       onClick,
       disableMenu,
       displayPartnerName,
+      partner,
     } = this.props
 
     let menu
@@ -107,7 +111,7 @@ export class HolidayRow extends Component {
     return (
       <TableRow className={classes.holidayRow} hover onClick={onClick}>
         <TableCell className={classes.holidayLabelCell}>
-          {displayPartnerName ? `${holiday.partner.firstName} ${holiday.partner.lastName}` : holiday.title}
+          {displayPartnerName ? `${partner.firstName} ${partner.lastName}` : holiday.title}
           {menu}
         </TableCell>
         <TableCell className={classes.dateCell}>{moment(holiday.date).format('DD-MM-YYYY')}</TableCell>
@@ -131,6 +135,7 @@ HolidayRow.defaultProps = {
   displayPartnerName: false,
   onClick: () => {},
   onHolidayDelete: () => {},
+  partner: null,
 }
 
 HolidayRow.propTypes = {
@@ -139,11 +144,11 @@ HolidayRow.propTypes = {
     date: PropTypes.any.isRequired,
     periods: PropTypes.array.isRequired,
     status: PropTypes.string.isRequired,
-    partner: PropTypes.shape({
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
-    }),
   }).isRequired,
+  partner: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }),
   classes: PropTypes.object.isRequired,
   onClick: PropTypes.func,
   onHolidayDelete: PropTypes.func,

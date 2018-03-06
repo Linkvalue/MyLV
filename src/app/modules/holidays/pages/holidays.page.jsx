@@ -27,6 +27,7 @@ const mapStateToProps = state => ({
   isLoading: state.holidays.isPartnersHolidaysLoading,
   pageCount: state.holidays.pageCount,
   limit: state.holidays.limit,
+  partnersById: state.partners.partnersById,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchHolidays, push }, dispatch)
@@ -76,6 +77,7 @@ export class HolidaysPage extends React.Component {
       push,
       pageCount,
       limit,
+      partnersById,
     } = this.props
 
     if (isLoading) {
@@ -101,9 +103,10 @@ export class HolidaysPage extends React.Component {
               <StyledHolidayRow
                 key={holiday.id}
                 holiday={holiday}
+                partner={partnersById[holiday.user]}
                 displayPartnerName
                 disableMenu
-                onClick={() => push(`/holidays/${holiday.id}/details`)}
+                onClick={() => push(`/holidays/${holiday.id}`)}
               />
             ))}
           </TableBody>
@@ -148,10 +151,12 @@ HolidaysPage.propTypes = {
   classes: PropTypes.object.isRequired,
   holidays: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     periods: PropTypes.array.isRequired,
     status: PropTypes.string.isRequired,
   })).isRequired,
+  partnersById: PropTypes.object.isRequired,
   pageCount: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   location: PropTypes.shape({

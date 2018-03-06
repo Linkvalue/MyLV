@@ -28,6 +28,7 @@ const putHoliday = require('./holidays/putHoliday.route')
 const deleteHoliday = require('./holidays/deleteHoliday.route')
 const getHolidays = require('./holidays/getHolidays.route')
 const getPersonalHolidays = require('./holidays/getPersonalHolidays.route')
+const getHolidayDetails = require('./holidays/getHolidayDetails.route')
 
 module.exports = [
   getAssets,
@@ -53,4 +54,5 @@ module.exports = [
   deleteHoliday,
   getHolidays,
   getPersonalHolidays,
+  getHolidayDetails,
 ]

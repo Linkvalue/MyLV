@@ -14,6 +14,7 @@ import LoginPage from '../modules/auth/pages/login.page'
 import LoginRequired from '../modules/auth/components/loginRequired.hoc'
 import ConnectedHolidayRequestPage from '../modules/holidays/pages/holidayRequest.page'
 import ConnectedHolidayRequestEditPage from '../modules/holidays/pages/holidayRequestEdit.page'
+import ConnectedHolidayRequestDetailsPage from '../modules/holidays/pages/holidayRequestDetails.page'
 import ConnectedPersonalHolidaysPage from '../modules/holidays/pages/personalHolidays.page'
 import ConnectedHolidaysPage from '../modules/holidays/pages/holidays.page'
 import ConnectedPersonalLunchesPage from '../modules/lunches/pages/personalLunches.page'
@@ -40,7 +41,8 @@ const Root = ({ store, history }) => (
                 <Route exact path="/holidays/new" component={ConnectedHolidayRequestPage} />
                 <Route exact path="/holidays/me" component={ConnectedPersonalHolidaysPage} />
                 <Route exact path="/holidays/:id/edit" component={ConnectedHolidayRequestEditPage} />
-                <Route exact path="/holidays/:page?" component={ConnectedHolidaysPage} />
+                <Route exact path="/holidays/:id" component={ConnectedHolidayRequestDetailsPage} />
+                <Route exact path="/holidays" component={ConnectedHolidaysPage} />
                 <Route exact path="/proof-upload" component={ConnectedTransportProofPage} />
                 <Route exact path="/lunches/me" component={ConnectedPersonalLunchesPage} />
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />

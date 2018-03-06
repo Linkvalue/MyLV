@@ -12,11 +12,11 @@ export const formatPeriod = ({
 })
 
 const millisecondsInDay = 1000 * 60 * 60 * 24
-export const getDaysForLabel = (periods, key, shouldFormat = true) => {
-  const days = periods
-    .filter(period => period.label === key)
-    .map(shouldFormat ? formatPeriod : period => period)
-    .reduce((sum, period) =>
-      sum + (moment(period.endDate).diff(moment(period.startDate)) / millisecondsInDay), 0)
-  return Math.round(days * 2) / 2
-}
+
+export const getPeriodDayCount = period =>
+  Math.round((moment(period.endDate).diff(moment(period.startDate)) / millisecondsInDay) * 2) / 2
+
+export const getDaysForLabel = (periods, key, shouldFormat = true) => periods
+  .filter(period => period.label === key)
+  .map(shouldFormat ? formatPeriod : period => period)
+  .reduce((sum, period) => sum + getPeriodDayCount(period), 0)

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import {
   Button, CardActions, Hidden, Paper, Table, TableBody, TableCell, TableHead, TableRow, Toolbar,
   Typography, withStyles,
@@ -22,6 +23,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchPersonalHolidays,
   deleteHoliday,
+  push,
 }, dispatch)
 
 const styles = () => ({
@@ -37,7 +39,11 @@ export class PersonalHolidaysPage extends React.Component {
 
   render() {
     const {
-      isLoading, holidays, classes, deleteHoliday,
+      isLoading,
+      holidays,
+      classes,
+      deleteHoliday,
+      push,
     } = this.props
 
     if (isLoading) {
@@ -62,7 +68,12 @@ export class PersonalHolidaysPage extends React.Component {
           </TableHead>
           <TableBody>
             {holidays.map(holiday => (
-              <StyledHolidayRow key={holiday.id} holiday={holiday} onHolidayDelete={deleteHoliday} />
+              <StyledHolidayRow
+                key={holiday.id}
+                holiday={holiday}
+                onHolidayDelete={deleteHoliday}
+                onClick={() => push(`/holidays/${holiday.id}`)}
+              />
             ))}
           </TableBody>
         </Table>
@@ -92,6 +103,7 @@ export class PersonalHolidaysPage extends React.Component {
 PersonalHolidaysPage.propTypes = {
   fetchPersonalHolidays: PropTypes.func.isRequired,
   deleteHoliday: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
   holidays: PropTypes.arrayOf(PropTypes.shape({

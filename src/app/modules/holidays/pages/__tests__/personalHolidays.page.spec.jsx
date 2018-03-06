@@ -12,6 +12,7 @@ describe('PersonalHolidaysPage', () => {
   beforeEach(() => {
     props = {
       fetchPersonalHolidays: jest.fn(),
+      push: jest.fn(),
       deleteHoliday: jest.fn(),
       isLoading: false,
       classes: {},

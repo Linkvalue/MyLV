@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HolidayRequestPage should render in loading state 1`] = `<WithStyles(LoadingPage) />`;
+
+exports[`HolidayRequestPage should render not found 1`] = `<WithStyles(NotFound) />`;
+
+exports[`HolidayRequestPage should render other's holiday request 1`] = `
+<Card
+  raised={false}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Demande de congé de james bond
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      component="p"
+      gutterBottom={true}
+      variant="body1"
+    >
+      world
+    </WithStyles(Typography)>
+    <WithStyles(List)>
+      <WithStyles(ListSubheader)>
+        Période(s) demandée(s)
+      </WithStyles(ListSubheader)>
+      <WithStyles(ListItem)
+        key="qux"
+      >
+        <WithStyles(Avatar)>
+          <pure(BeachAccess) />
+        </WithStyles(Avatar)>
+        <WithStyles(ListItemText)
+          primary="Du 01/01/2012 au 02/01/2012 (42 jours)"
+          secondary="Congés payés"
+        />
+      </WithStyles(ListItem)>
+    </WithStyles(List)>
+  </WithStyles(CardContent)>
+  <Restricted
+    roles={
+      Array [
+        "hr",
+        "board",
+      ]
+    }
+    user={
+      Object {
+        "id": "foo",
+      }
+    }
+  >
+    <WithStyles(CardActions)>
+      <WithStyles(Button)
+        color="primary"
+        size="small"
+      >
+        Approuver
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        color="default"
+        size="small"
+      >
+        Refuser
+      </WithStyles(Button)>
+    </WithStyles(CardActions)>
+  </Restricted>
+</Card>
+`;
+
+exports[`HolidayRequestPage should render properly 1`] = `
+<Card
+  raised={false}
+>
+  <WithStyles(CardContent)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      hello
+    </WithStyles(Typography)>
+    <WithStyles(Typography)
+      component="p"
+      gutterBottom={true}
+      variant="body1"
+    >
+      world
+    </WithStyles(Typography)>
+    <WithStyles(List)>
+      <WithStyles(ListSubheader)>
+        Période(s) demandée(s)
+      </WithStyles(ListSubheader)>
+      <WithStyles(ListItem)
+        key="qux"
+      >
+        <WithStyles(Avatar)>
+          <pure(BeachAccess) />
+        </WithStyles(Avatar)>
+        <WithStyles(ListItemText)
+          primary="Du 01/01/2012 au 02/01/2012 (42 jours)"
+          secondary="Congés payés"
+        />
+      </WithStyles(ListItem)>
+    </WithStyles(List)>
+  </WithStyles(CardContent)>
+  <Restricted
+    roles={
+      Array [
+        "hr",
+        "board",
+      ]
+    }
+    user={
+      Object {
+        "id": "foo",
+      }
+    }
+  >
+    <WithStyles(CardActions)>
+      <WithStyles(Button)
+        color="primary"
+        size="small"
+      >
+        Approuver
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        color="default"
+        size="small"
+      >
+        Refuser
+      </WithStyles(Button)>
+    </WithStyles(CardActions)>
+  </Restricted>
+</Card>
+`;

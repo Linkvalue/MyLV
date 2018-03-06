@@ -47,7 +47,7 @@ describe('GET /api/holidays', () => {
       page: 1,
       pageCount: 1,
       limit: 25,
-      results: [{ user: 'foo', partner: { id: 'foo' } }],
+      results: [{ user: { id: 'foo' } }],
     })
   })
 })
