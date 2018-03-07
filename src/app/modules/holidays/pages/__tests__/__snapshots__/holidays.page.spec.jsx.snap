@@ -12,9 +12,11 @@ exports[`HolidaysPage should render empty holidays list 1`] = `
     </WithStyles(Typography)>
   </WithStyles(Toolbar)>
   <div>
-    <WithStyles(Typography)>
-      Aucune demande de congés pour le moment.
-    </WithStyles(Typography)>
+    <WithStyles(CardContent)>
+      <WithStyles(Typography)>
+        Aucune demande de congés pour le moment.
+      </WithStyles(Typography)>
+    </WithStyles(CardContent)>
   </div>
   <table>
     <TableFooter

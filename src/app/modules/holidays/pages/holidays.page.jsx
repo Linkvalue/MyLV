@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {
+  CardContent,
   Paper,
   Table,
   TableBody,
@@ -84,7 +85,7 @@ export class HolidaysPage extends React.Component {
       return <LoadingPage />
     }
 
-    let pageContent = <Typography>Aucune demande de congés pour le moment.</Typography>
+    let pageContent
     if (holidays.length > 0) {
       pageContent = (
         <Table className={classes.partnersTable}>
@@ -111,6 +112,12 @@ export class HolidaysPage extends React.Component {
             ))}
           </TableBody>
         </Table>
+      )
+    } else {
+      pageContent = (
+        <CardContent>
+          <Typography>Aucune demande de congés pour le moment.</Typography>
+        </CardContent>
       )
     }
 

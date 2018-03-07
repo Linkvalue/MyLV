@@ -72,8 +72,8 @@ const AppDrawer = ({
           <AppDrawerItem to="/lunches/me" icon={<Restaurant />} text="Mes déjeuners" />
         </Restricted>
         <Divider />
-        <ListSubheader>Administration</ListSubheader>
         <Restricted roles={['hr', 'board']} user={user}>
+          <ListSubheader>Administration</ListSubheader>
           <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
           <FeatureFlipping feature="holidays">
             <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demandes de congés" key="holidays" />

@@ -71,7 +71,10 @@ export class HolidayRow extends Component {
     this.setState({ open: false })
   }
 
-  handleHolidayDelete = () => this.props.onHolidayDelete(this.props.holiday.id)
+  handleHolidayDelete = (e) => {
+    e.stopPropagation()
+    this.props.onHolidayDelete(this.props.holiday.id)
+  }
 
   render() {
     const {
