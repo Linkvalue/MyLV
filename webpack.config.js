@@ -72,7 +72,12 @@ module.exports = (env = {}) => ({
       template: 'index.html',
       favicon: 'favicon.ico',
     }),
-    new OfflinePlugin(),
+    new OfflinePlugin({
+      autoUpdate: true,
+      ServiceWorker: {
+        events: true,
+      },
+    }),
     new DefinePlugin({
       'process.env.NODE_ENV': `"${process.env.NODE_ENV !== 'dev' ? 'production' : 'dev'}"`,
       'process.env.APP_ID': `"${appId}"`,

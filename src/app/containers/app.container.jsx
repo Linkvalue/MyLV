@@ -14,6 +14,7 @@ import {
 } from '../modules/settings/settings.actions'
 import FeatureFlipping from '../components/featureFlipping'
 import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.component'
+import AppUpdater from '../components/appUpdater.component'
 
 const mapStateToProps = ({ settings, transport, auth }) => ({
   isConnected: !!auth.user,
@@ -148,6 +149,7 @@ class App extends React.Component {
               onDecline={this.handleDecline}
             />
           </FeatureFlipping>
+          <AppUpdater />
         </div>
       </div>
     )
