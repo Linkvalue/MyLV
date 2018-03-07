@@ -22,6 +22,8 @@ describe('WorklogPage', () => {
       toggleProofOfTransportDialog: jest.fn(),
       shouldDisplayProofOfTransportDialog: false,
       hasInvalidTransportProof: false,
+      isTabletOrMobile: false,
+      isOffline: false,
     }
 
     config.featureFlipping = {

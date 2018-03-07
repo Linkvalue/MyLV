@@ -30,12 +30,13 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         awaitingLogin: false,
+        user: payload.shouldClearUser ? null : state.user,
       }
     case REHYDRATE:
       return payload.auth ? {
         ...state,
-        user: null,
-      } : initialState
+        user: payload.auth.user,
+      } : state
     case LOGOUT:
       return initialState
     default:

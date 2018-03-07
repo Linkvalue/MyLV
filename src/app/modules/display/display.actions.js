@@ -9,3 +9,9 @@ export const detectDevice = () => ({
     isDesktop: window.innerWidth > theme.breakpoints.values.md,
   },
 })
+
+export const SWITCH_OFFLINE_MODE = 'SWITCH_OFFLINE_MODE'
+export const switchOfflineMode = value => ({
+  type: SWITCH_OFFLINE_MODE,
+  payload: { value },
+})

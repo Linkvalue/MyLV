@@ -10,7 +10,10 @@ import {
   WORKLOG_FILL_MONTH,
   WORKLOG_EMPTY_DAY,
   WORKLOG_ADD_LABEL,
-  WORKLOG_SAVE_SUCCESS, WORKLOG_GET_START, WORKLOG_GET_SUCCESS,
+  WORKLOG_SAVE_SUCCESS,
+  WORKLOG_GET_START,
+  WORKLOG_GET_SUCCESS,
+  WORKLOG_GET_ERROR,
 } from './worklog-actions'
 
 const initialState = {
@@ -86,7 +89,6 @@ export default function (state = initialState, { type, payload }) {
     case WORKLOG_GET_START:
       return {
         ...state,
-        entries: {},
         error: false,
         isLoading: true,
       }
@@ -94,6 +96,11 @@ export default function (state = initialState, { type, payload }) {
       return {
         ...state,
         entries: payload.reduce((entries, entry) => ({ ...entries, [entry.date]: entry.label }), {}),
+        isLoading: false,
+      }
+    case WORKLOG_GET_ERROR:
+      return {
+        ...state,
         isLoading: false,
       }
     case WORKLOG_SAVE_SUCCESS:

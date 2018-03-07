@@ -1,5 +1,8 @@
 import {
-  HOLIDAY_DELETE_SUCCESS, HOLIDAY_DETAILS_FETCH_ERROR, HOLIDAY_DETAILS_FETCH_START, HOLIDAY_DETAILS_FETCH_SUCCESS,
+  HOLIDAY_DELETE_SUCCESS,
+  HOLIDAY_DETAILS_FETCH_ERROR,
+  HOLIDAY_DETAILS_FETCH_START,
+  HOLIDAY_DETAILS_FETCH_SUCCESS,
   HOLIDAYS_FETCH_ERROR,
   HOLIDAYS_FETCH_START,
   HOLIDAYS_FETCH_SUCCESS,
@@ -22,7 +25,7 @@ describe('holidays.reducer', () => {
 
     // Then
     expect(state).toEqual({
-      personalHolidays: [],
+      personalHolidays: ['foo'],
       isPersonalLoading: true,
     })
   })

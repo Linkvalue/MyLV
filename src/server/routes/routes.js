@@ -30,6 +30,8 @@ const getHolidays = require('./holidays/getHolidays.route')
 const getPersonalHolidays = require('./holidays/getPersonalHolidays.route')
 const getHolidayDetails = require('./holidays/getHolidayDetails.route')
 
+const getHealth = require('./getHealth.route')
+
 module.exports = [
   getAssets,
   getMe,
@@ -55,4 +57,5 @@ module.exports = [
   getHolidays,
   getPersonalHolidays,
   getHolidayDetails,
+  getHealth,
 ]

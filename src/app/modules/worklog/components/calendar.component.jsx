@@ -1,11 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import classNames from 'classnames'
-import { Card, CardContent, Grid, IconButton, Typography, withStyles } from 'material-ui'
+import { Card, CardContent, CircularProgress, Grid, IconButton, Typography, withStyles } from 'material-ui'
 import { ChevronLeft, ChevronRight } from 'material-ui-icons'
 
 import CalendarDay from './calendarDay.component'
@@ -21,11 +22,15 @@ const mapStateToProps = state => ({
   ...state.worklog,
   labelsInLegend: calendarLabelsSelector(state),
   weeks: calendarDaysSelector(state),
+  isOffline: state.display.isOffline,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...calendarActions, ...worklogActions }, dispatch)
 
 const styles = theme => ({
+  calendar: {
+    position: 'relative',
+  },
   calendarContent: { position: 'relative' },
   calendarTitle: {
     textTransform: 'capitalize',
@@ -67,6 +72,21 @@ const styles = theme => ({
     height: theme.spacing.unit,
     margin: `0 ${theme.spacing.unit}px`,
   },
+  calendarFooter: {
+    minHeight: 58,
+  },
+  calendarLoaderWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(255, 255, 255, 0.8)',
+    zIndex: 3,
+  },
 })
 
 class Calendar extends Component {
@@ -75,7 +95,8 @@ class Calendar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.year !== nextProps.year || this.props.month !== nextProps.month) {
+    const { year, month } = this.props
+    if (year !== nextProps.year || month !== nextProps.month) {
       this.props.getWorklog(nextProps.year, nextProps.month)
     }
   }
@@ -93,6 +114,7 @@ class Calendar extends Component {
       labelsInLegend,
       weeks,
       classes,
+      isLoading,
     } = this.props
     const m = moment(`${year}-${month}`, 'YYYY-MM')
     const calendarEntries = { ...entries, ...pending }
@@ -104,7 +126,7 @@ class Calendar extends Component {
 
     return (
       <Grid item md={8} xs={12}>
-        <Card>
+        <Card className={classes.calendar}>
           <CardContent className={classes.calendarContent}>
             <IconButton
               className={`${classes.calendarArrow} ${classes.calendarArrowLeft}`}
@@ -143,8 +165,8 @@ class Calendar extends Component {
                     >
                       <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
                       {d && <CalendarDay
-                        labelMorning={calendarEntries[`${year}-${month}-${d}-am`]}
-                        labelAfternoon={calendarEntries[`${year}-${month}-${d}-pm`]}
+                        labelMorning={!isLoading && calendarEntries[`${year}-${month}-${d}-am`]}
+                        labelAfternoon={!isLoading && calendarEntries[`${year}-${month}-${d}-pm`]}
                         selected={d === day}
                       />}
                     </td>
@@ -153,7 +175,7 @@ class Calendar extends Component {
               ))}
             </tbody>
           </table>
-          <CardContent>
+          <CardContent classes={{ root: classes.calendarFooter }}>
             {labelsInLegend.map(label => (
               <span key={label}>
                 <i className={classes.legendColor} style={{ backgroundColor: labels[label] }} />
@@ -161,10 +183,30 @@ class Calendar extends Component {
               </span>
             ))}
           </CardContent>
+          {isLoading && <div className={classes.calendarLoaderWrapper}><CircularProgress /></div>}
         </Card>
       </Grid>
     )
   }
+}
+
+Calendar.defaultProps = {
+  entries: {},
+}
+
+Calendar.propTypes = {
+  getWorklog: PropTypes.func.isRequired,
+  labels: PropTypes.object.isRequired,
+  entries: PropTypes.object,
+  pending: PropTypes.object.isRequired,
+  year: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  setDate: PropTypes.func.isRequired,
+  emptyDay: PropTypes.func.isRequired,
+  labelsInLegend: PropTypes.arrayOf(PropTypes.string).isRequired,
+  weeks: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Calendar))

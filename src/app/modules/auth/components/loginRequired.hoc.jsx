@@ -3,19 +3,26 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
+import LoadingPage from '../../../components/loadingPage.component'
+
 const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   awaitingLogin: state.auth.awaitingLogin,
+  isOffline: state.display.isOffline,
 })
 
 const LoginRequired = ({
-  awaitingLogin, isConnected, location, children,
+  awaitingLogin,
+  isConnected,
+  isOffline,
+  location,
+  children,
 }) => {
   if (awaitingLogin) {
-    return null
+    return <LoadingPage />
   }
 
-  if (!isConnected) {
+  if (!isConnected && !isOffline) {
     return (
       <Redirect
         to={{

@@ -31,7 +31,9 @@ exports[`LunchRow should open menu on menu button click 1`] = `
       </WithStyles(MenuItem)>
     </WithStyles(Menu)>
   </WithStyles(TableCell)>
-  <WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    padding="dense"
+  >
     01-01-2012
   </WithStyles(TableCell)>
   <WithStyles(TableCell)
@@ -73,7 +75,9 @@ exports[`LunchRow should render properly 1`] = `
       </WithStyles(MenuItem)>
     </WithStyles(Menu)>
   </WithStyles(TableCell)>
-  <WithStyles(TableCell)>
+  <WithStyles(TableCell)
+    padding="dense"
+  >
     01-01-2012
   </WithStyles(TableCell)>
   <WithStyles(TableCell)

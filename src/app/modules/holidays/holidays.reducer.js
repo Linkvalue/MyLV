@@ -26,7 +26,6 @@ export default (state = initialState, { type, payload }) => {
     case PERSONAL_HOLIDAYS_FETCH_START:
       return {
         ...state,
-        personalHolidays: [],
         isPersonalLoading: true,
       }
     case PERSONAL_HOLIDAYS_FETCH_SUCCESS:

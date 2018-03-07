@@ -21,7 +21,6 @@ export default (state = initialState, { type, payload }) => {
     case PERSONAL_LUNCHES_FETCH_START:
       return {
         ...state,
-        lunchesList: [],
         isLoading: true,
       }
     case PERSONAL_LUNCHES_FETCH_SUCCESS:

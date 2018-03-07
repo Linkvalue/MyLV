@@ -15,11 +15,18 @@ const styles = theme => ({
     position: 'relative',
     width: '70%',
   },
+  lunchDateCell: {
+    whiteSpace: 'nowrap',
+  },
   editLunchButton: {
     display: 'none',
     position: 'absolute',
     top: 0,
     right: theme.spacing.unit,
+
+    [theme.breakpoints.down('md')]: {
+      display: 'block',
+    },
   },
 })
 
@@ -59,7 +66,9 @@ export class LunchRow extends Component {
             <MenuItem onClick={this.handleLunchDelete}>Supprimer</MenuItem>
           </Menu>
         </TableCell>
-        <TableCell>{moment(lunch.date).format('DD-MM-YYYY')}</TableCell>
+        <TableCell className={classes.lunchDateCell} padding="dense">
+          {moment(lunch.date).format('DD-MM-YYYY')}
+        </TableCell>
         <TableCell numeric>{lunch.attendees.length + 1}</TableCell>
       </TableRow>
     )

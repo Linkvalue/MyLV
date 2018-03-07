@@ -19,7 +19,7 @@ describe('lunches.reducer', () => {
 
     // Then
     expect(state).toEqual({
-      lunchesList: [],
+      lunchesList: ['foo'],
       isLoading: true,
     })
   })

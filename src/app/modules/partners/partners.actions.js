@@ -14,6 +14,7 @@ export const fetchPartnersSearch = (search, excludeSelf) => (dispatch, getState)
         results: data.results.filter(partner => partner.id !== getState().auth.user.id),
       },
     }))
+    .catch(e => console.error(e))
 
 export const PARTNERS_CLEAR_SEARCH = 'PARTNERS_CLEAR_SEARCH'
 export const clearPartnersSearch = () => ({ type: PARTNERS_CLEAR_SEARCH })

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
 import { Button, Grid, withStyles } from 'material-ui'
 import { Print } from 'material-ui-icons'
+import classNames from 'classnames'
 
 import { canPrintSelector } from '../../client/client-selectors'
 import Calendar from '../components/calendar.component'
@@ -15,6 +16,8 @@ import Printer from '../components/printer.component'
 const mapStateToProps = state => ({
   shouldRemindProcess: state.settings.shouldRemindProcess,
   canPrint: canPrintSelector(state),
+  isOffline: state.display.isOffline,
+  isTabletOrMobile: state.display.isMobile || state.display.isTablet,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ push }, dispatch)
@@ -33,6 +36,9 @@ const styles = theme => ({
     bottom: theme.spacing.unit * 2,
     zIndex: 10,
   },
+  offsetPrintButton: {
+    bottom: theme.spacing.unit * 8,
+  },
 })
 
 export class WorklogPage extends React.Component {
@@ -46,6 +52,8 @@ export class WorklogPage extends React.Component {
     const {
       shouldRemindProcess,
       classes,
+      isOffline,
+      isTabletOrMobile,
     } = this.props
 
     return (
@@ -54,7 +62,12 @@ export class WorklogPage extends React.Component {
           {shouldRemindProcess ? <Process /> : null}
           <EntriesForm />
           <Calendar />
-          <Button variant="fab" color="primary" className={classes.printButton} onClick={printCra}>
+          <Button
+            variant="fab"
+            color="primary"
+            className={classNames(classes.printButton, { [classes.offsetPrintButton]: isOffline && isTabletOrMobile })}
+            onClick={printCra}
+          >
             <Print />
           </Button>
         </Grid>
@@ -68,6 +81,8 @@ WorklogPage.propTypes = {
   classes: PropTypes.object.isRequired,
   shouldRemindProcess: PropTypes.bool.isRequired,
   canPrint: PropTypes.bool.isRequired,
+  isTabletOrMobile: PropTypes.bool.isRequired,
+  isOffline: PropTypes.bool.isRequired,
   push: PropTypes.func.isRequired,
 }
 

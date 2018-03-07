@@ -9,6 +9,7 @@ exports[`WorklogPage should display process reminder 1`] = `
     <Connect(WithStyles(ReduxForm)) />
     <Connect(WithStyles(Calendar)) />
     <WithStyles(Button)
+      className=""
       color="primary"
       onClick={[Function]}
       variant="fab"
@@ -28,6 +29,7 @@ exports[`WorklogPage should render properly 1`] = `
     <Connect(WithStyles(ReduxForm)) />
     <Connect(WithStyles(Calendar)) />
     <WithStyles(Button)
+      className=""
       color="primary"
       onClick={[Function]}
       variant="fab"
@@ -47,6 +49,7 @@ exports[`WorklogPage should render transport dialog 1`] = `
     <Connect(WithStyles(ReduxForm)) />
     <Connect(WithStyles(Calendar)) />
     <WithStyles(Button)
+      className=""
       color="primary"
       onClick={[Function]}
       variant="fab"
