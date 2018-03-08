@@ -20,7 +20,7 @@ exports[`TransportProofPage should render properly 1`] = `
             gutterBottom={true}
             variant="headline"
           >
-            Uploader un jsutificatif de titre de transport
+            Uploader un justificatif de titre de transport
           </WithStyles(Typography)>
           <WithStyles(Typography)
             gutterBottom={true}

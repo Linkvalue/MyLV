@@ -42,7 +42,7 @@ export const TransportProofPage = ({
         <Grid container>
           <Grid item xs={12}>
             <Typography variant="headline" component="h2" gutterBottom>
-              Uploader un jsutificatif de titre de transport
+              Uploader un justificatif de titre de transport
             </Typography>
             <Typography gutterBottom>
               Ce justificatif te permettra d'être remboursé pour ton titre de transport, merci donc de le fournir
