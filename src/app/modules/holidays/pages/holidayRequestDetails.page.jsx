@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
   Avatar, Button, Card, CardActions, CardContent, List, ListItem, ListItemText, ListSubheader,
-  Typography,
+  Typography, withStyles,
 } from 'material-ui'
 import { BeachAccess, FlightTakeoff, PregnantWoman } from 'material-ui-icons'
 import moment from 'moment'
@@ -12,9 +12,10 @@ import moment from 'moment'
 import NotFound from '../../../components/notFound.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import Restricted from '../../../components/restricted.component'
-import { fetchHolidayRequestDetails } from '../holidays.actions'
+import { changeHolidayRequestStatus, fetchHolidayRequestDetails } from '../holidays.actions'
 import { getPeriodDayCount } from '../hollidays.utils'
 import { holidayLabels } from '../../../../shared/calendar-constants'
+import HolidayRequestStatusIcon from '../components/holidayRequestStatusIcon.component'
 
 const mapStateToProps = (state, { match }) => {
   const holidayRequest = state.holidays.holidaysById[match.params.id]
@@ -27,7 +28,10 @@ const mapStateToProps = (state, { match }) => {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchHolidayRequestDetails }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchHolidayRequestDetails,
+  changeHolidayRequestStatus,
+}, dispatch)
 
 const getPeriodText = (period) => {
   const startDate = moment(period.startDate).format('DD/MM/YYYY')
@@ -41,13 +45,25 @@ const iconsByLabel = {
   conventionalHolidays: <PregnantWoman />,
 }
 
+const styles = {
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+}
+
 export class HolidayRequestDetails extends React.Component {
   componentWillMount() {
     this.props.fetchHolidayRequestDetails(this.props.match.params.id)
   }
 
+  handleRequestApprove = () => this.props.changeHolidayRequestStatus(this.props.match.params.id, 'approved')
+
+  handleRequestReject = () => this.props.changeHolidayRequestStatus(this.props.match.params.id, 'rejected')
+
   render() {
     const {
+      classes,
       holidayRequest,
       user,
       isLoading,
@@ -65,11 +81,14 @@ export class HolidayRequestDetails extends React.Component {
     return (
       <Card>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
-            {holidayRequest.user === user.id ?
-              holidayRequest.title :
-              `Demande de congé de ${partner.firstName} ${partner.lastName}`}
-          </Typography>
+          <div className={classes.toolbar}>
+            <Typography variant="headline" component="h2" gutterBottom>
+              {holidayRequest.user === user.id ?
+                holidayRequest.title :
+                `Demande de congé de ${partner.firstName} ${partner.lastName}`}
+            </Typography>
+            <HolidayRequestStatusIcon status={holidayRequest.status} />
+          </div>
           <Typography variant="body1" component="p" gutterBottom>
             {holidayRequest.comment}
           </Typography>
@@ -90,8 +109,8 @@ export class HolidayRequestDetails extends React.Component {
         </CardContent>
         <Restricted roles={['hr', 'board']} user={user}>
           <CardActions>
-            <Button size="small" color="primary">Approuver</Button>
-            <Button size="small" color="default">Refuser</Button>
+            <Button size="small" color="primary" onClick={this.handleRequestApprove}>Approuver</Button>
+            <Button size="small" color="default" onClick={this.handleRequestReject}>Refuser</Button>
           </CardActions>
         </Restricted>
       </Card>
@@ -106,6 +125,7 @@ HolidayRequestDetails.defaultProps = {
 
 HolidayRequestDetails.propTypes = {
   fetchHolidayRequestDetails: PropTypes.func.isRequired,
+  changeHolidayRequestStatus: PropTypes.func.isRequired,
   holidayRequest: PropTypes.shape({
     user: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -130,6 +150,7 @@ HolidayRequestDetails.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HolidayRequestDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HolidayRequestDetails))

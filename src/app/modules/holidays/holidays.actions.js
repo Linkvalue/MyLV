@@ -70,3 +70,20 @@ export const fetchHolidayRequestDetails = id => async (dispatch) => {
     dispatch({ type: HOLIDAY_DETAILS_FETCH_ERROR, payload: e })
   }
 }
+
+export const HOLIDAY_CHANGE_STATUS_SUCCESS = 'HOLIDAY_CHANGE_STATUS_SUCCESS'
+export const changeHolidayRequestStatus = (id, status) => async (dispatch) => {
+  try {
+    const updatedRequest = await dispatch(fetchWithAuth(`/api/holidays/${id}/changeStatus`, {
+      method: 'POST',
+      body: {
+        status,
+      },
+    }))
+
+    dispatch({ type: HOLIDAY_CHANGE_STATUS_SUCCESS, payload: updatedRequest })
+  } catch (e) {
+    console.error(e)
+  }
+}
+

@@ -9,13 +9,18 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
   raised={false}
 >
   <WithStyles(CardContent)>
-    <WithStyles(Typography)
-      component="h2"
-      gutterBottom={true}
-      variant="headline"
-    >
-      Demande de congé de james bond
-    </WithStyles(Typography)>
+    <div>
+      <WithStyles(Typography)
+        component="h2"
+        gutterBottom={true}
+        variant="headline"
+      >
+        Demande de congé de james bond
+      </WithStyles(Typography)>
+      <HolidayRequestStatusIcon
+        status="pending"
+      />
+    </div>
     <WithStyles(Typography)
       component="p"
       gutterBottom={true}
@@ -56,12 +61,14 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
     <WithStyles(CardActions)>
       <WithStyles(Button)
         color="primary"
+        onClick={[Function]}
         size="small"
       >
         Approuver
       </WithStyles(Button)>
       <WithStyles(Button)
         color="default"
+        onClick={[Function]}
         size="small"
       >
         Refuser
@@ -76,13 +83,18 @@ exports[`HolidayRequestPage should render properly 1`] = `
   raised={false}
 >
   <WithStyles(CardContent)>
-    <WithStyles(Typography)
-      component="h2"
-      gutterBottom={true}
-      variant="headline"
-    >
-      hello
-    </WithStyles(Typography)>
+    <div>
+      <WithStyles(Typography)
+        component="h2"
+        gutterBottom={true}
+        variant="headline"
+      >
+        hello
+      </WithStyles(Typography)>
+      <HolidayRequestStatusIcon
+        status="pending"
+      />
+    </div>
     <WithStyles(Typography)
       component="p"
       gutterBottom={true}
@@ -123,12 +135,14 @@ exports[`HolidayRequestPage should render properly 1`] = `
     <WithStyles(CardActions)>
       <WithStyles(Button)
         color="primary"
+        onClick={[Function]}
         size="small"
       >
         Approuver
       </WithStyles(Button)>
       <WithStyles(Button)
         color="default"
+        onClick={[Function]}
         size="small"
       >
         Refuser

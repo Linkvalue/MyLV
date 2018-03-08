@@ -62,12 +62,9 @@ exports[`PeriodsList should render properly 1`] = `
       numeric={true}
     />
     <WithStyles(TableCell)>
-      <WithStyles(Tooltip)
-        placement="bottom"
-        title="En attente de validation"
-      >
-        <pure(HourglassEmpty) />
-      </WithStyles(Tooltip)>
+      <HolidayRequestStatusIcon
+        status="pending"
+      />
     </WithStyles(TableCell)>
   </Hidden>
 </WithStyles(TableRow)>
@@ -135,12 +132,9 @@ exports[`PeriodsList should render with menu when click menu button 1`] = `
       numeric={true}
     />
     <WithStyles(TableCell)>
-      <WithStyles(Tooltip)
-        placement="bottom"
-        title="En attente de validation"
-      >
-        <pure(HourglassEmpty) />
-      </WithStyles(Tooltip)>
+      <HolidayRequestStatusIcon
+        status="pending"
+      />
     </WithStyles(TableCell)>
   </Hidden>
 </WithStyles(TableRow)>
@@ -217,12 +211,9 @@ ShallowWrapper {
             numeric={true}
           />
           <WithStyles(TableCell)>
-            <WithStyles(Tooltip)
-              placement="bottom"
-              title="Demande acceptée"
-            >
-              <pure(Check) />
-            </WithStyles(Tooltip)>
+            <HolidayRequestStatusIcon
+              status="validated"
+            />
           </WithStyles(TableCell)>
         </Hidden>,
       ],
@@ -280,12 +271,9 @@ ShallowWrapper {
               />,
             ],
             <WithStyles(TableCell)>
-              <WithStyles(Tooltip)
-                placement="bottom"
-                title="Demande acceptée"
-              >
-                <pure(Check) />
-              </WithStyles(Tooltip)>
+              <HolidayRequestStatusIcon
+                status="validated"
+              />
             </WithStyles(TableCell)>,
           ],
           "implementation": "js",
@@ -343,34 +331,21 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <WithStyles(Tooltip)
-                placement="bottom"
-                title="Demande acceptée"
-              >
-                <pure(Check) />
-              </WithStyles(Tooltip)>,
+              "children": <HolidayRequestStatusIcon
+                status="validated"
+              />,
             },
             "ref": null,
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": <pure(Check) />,
-                "placement": "bottom",
-                "title": "Demande acceptée",
+                "status": "validated",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {},
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              "type": [Function],
+              "rendered": null,
+              "type": [MockFunction],
             },
             "type": [Function],
           },
@@ -420,12 +395,9 @@ ShallowWrapper {
               numeric={true}
             />
             <WithStyles(TableCell)>
-              <WithStyles(Tooltip)
-                placement="bottom"
-                title="Demande acceptée"
-              >
-                <pure(Check) />
-              </WithStyles(Tooltip)>
+              <HolidayRequestStatusIcon
+                status="validated"
+              />
             </WithStyles(TableCell)>
           </Hidden>,
         ],
@@ -483,12 +455,9 @@ ShallowWrapper {
                 />,
               ],
               <WithStyles(TableCell)>
-                <WithStyles(Tooltip)
-                  placement="bottom"
-                  title="Demande acceptée"
-                >
-                  <pure(Check) />
-                </WithStyles(Tooltip)>
+                <HolidayRequestStatusIcon
+                  status="validated"
+                />
               </WithStyles(TableCell)>,
             ],
             "implementation": "js",
@@ -546,34 +515,21 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <WithStyles(Tooltip)
-                  placement="bottom"
-                  title="Demande acceptée"
-                >
-                  <pure(Check) />
-                </WithStyles(Tooltip)>,
+                "children": <HolidayRequestStatusIcon
+                  status="validated"
+                />,
               },
               "ref": null,
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
-                  "children": <pure(Check) />,
-                  "placement": "bottom",
-                  "title": "Demande acceptée",
+                  "status": "validated",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {},
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                "type": [Function],
+                "rendered": null,
+                "type": [MockFunction],
               },
               "type": [Function],
             },

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Hidden, IconButton, Menu, MenuItem, TableCell, TableRow, Tooltip, withStyles } from 'material-ui'
-import { Check, Clear, HourglassEmpty, MoreVert } from 'material-ui-icons'
+import { Hidden, IconButton, Menu, MenuItem, TableCell, TableRow, withStyles } from 'material-ui'
+import { MoreVert } from 'material-ui-icons'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import { holidayLabels } from '../../../../shared/calendar-constants'
 import { getDaysForLabel } from '../hollidays.utils'
+import HolidayRequestStatusIcon from './holidayRequestStatusIcon.component'
 
 const styles = theme => ({
   holidayRow: {
@@ -38,18 +39,6 @@ const styles = theme => ({
     whiteSpace: 'nowrap',
   },
 })
-
-const statusIcons = {
-  pending: <HourglassEmpty />,
-  validated: <Check />,
-  rejected: <Clear />,
-}
-
-const tooltipTexts = {
-  pending: 'En attente de validation',
-  validated: 'Demande acceptée',
-  rejected: 'Demande refusée',
-}
 
 export class HolidayRow extends Component {
   constructor(props, context) {
@@ -123,9 +112,7 @@ export class HolidayRow extends Component {
             <TableCell numeric key={label}>{getDaysForLabel(holiday.periods, label, false)}</TableCell>
           ))}
           <TableCell>
-            <Tooltip title={tooltipTexts[holiday.status || 'pending']} placement="bottom">
-              {statusIcons[holiday.status || 'pending']}
-            </Tooltip>
+            <HolidayRequestStatusIcon status={holiday.status} />
           </TableCell>
         </Hidden>
       </TableRow>

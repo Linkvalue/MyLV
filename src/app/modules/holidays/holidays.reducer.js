@@ -1,4 +1,5 @@
 import {
+  HOLIDAY_CHANGE_STATUS_SUCCESS,
   HOLIDAY_DELETE_SUCCESS,
   HOLIDAY_DETAILS_FETCH_ERROR,
   HOLIDAY_DETAILS_FETCH_START,
@@ -92,6 +93,14 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         isUniqueLoading: false,
+      }
+    case HOLIDAY_CHANGE_STATUS_SUCCESS:
+      return {
+        ...state,
+        holidaysById: {
+          ...state.holidaysById,
+          [payload.id]: payload,
+        },
       }
     default:
       return state

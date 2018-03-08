@@ -12,6 +12,7 @@ describe('HolidayRequestPage', () => {
   beforeEach(() => {
     props = {
       fetchHolidayRequestDetails: jest.fn(),
+      changeHolidayRequestStatus: jest.fn(),
       holidayRequest: {
         user: 'foo',
         title: 'hello',
@@ -34,6 +35,7 @@ describe('HolidayRequestPage', () => {
         firstName: 'james',
         lastName: 'bond',
       },
+      classes: {},
     }
 
     getPeriodDayCount.mockImplementation(() => 42)
