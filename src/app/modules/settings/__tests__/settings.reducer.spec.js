@@ -2,7 +2,7 @@ import { REHYDRATE } from 'redux-persist/constants'
 
 import settingsReducer from '../settings.reducer'
 import {
-  DESKTOP_NOTIFICATIONS_INSTALLED, TOGGLE_PROCESS_REMINDER,
+  DESKTOP_NOTIFICATIONS_INSTALLED, TOGGLE_HOLIDAYS_DISCLAIMER, TOGGLE_PROCESS_REMINDER,
   TOGGLE_PROOF_OF_TRANSPORT_DIALOG, TOGGLE_PUSH_NOTIFICATION_SNACK, TOGGLE_PUSH_NOTIFICATIONS,
 } from '../settings.actions'
 
@@ -97,6 +97,20 @@ describe('settings.reducer', () => {
       foo: 'bar',
       baz: 'qux',
       rehydrated: true,
+    })
+  })
+
+  it('should handle TOGGLE_HOLIDAYS_DISCLAIMER', () => {
+    // Given
+    const action = { type: TOGGLE_HOLIDAYS_DISCLAIMER, payload: true }
+
+    // When
+    const state = settingsReducer({ foo: 'bar' }, action)
+
+    // Then
+    expect(state).toEqual({
+      shouldDisplayHolidaysDisclaimer: true,
+      foo: 'bar',
     })
   })
 })

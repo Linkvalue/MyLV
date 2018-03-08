@@ -11,7 +11,11 @@ import {
   TOGGLE_PROOF_OF_TRANSPORT_DIALOG,
   toggleProofOfTransportDialog,
   TOGGLE_PUSH_NOTIFICATIONS,
-  togglePushNotifications, togglePushNotificationSnack, TOGGLE_PUSH_NOTIFICATION_SNACK,
+  togglePushNotifications,
+  togglePushNotificationSnack,
+  TOGGLE_PUSH_NOTIFICATION_SNACK,
+  toggleHolidaysDisclaimer,
+  TOGGLE_HOLIDAYS_DISCLAIMER,
 } from '../settings.actions'
 
 jest.unmock('../settings.actions')
@@ -122,6 +126,23 @@ describe('settings.actions', () => {
 
       // Then
       expect(store.getActions()).toEqual([{ type: TOGGLE_PUSH_NOTIFICATIONS, payload: { enabled: true, id: 'foo' } }])
+    })
+  })
+  describe('toggleProcessReminder', () => {
+    it('should dispatch TOGGLE_HOLIDAYS_DISCLAIMER action with false by default', () => {
+      // When
+      const action = toggleHolidaysDisclaimer()
+
+      // Then
+      expect(action).toEqual({ type: TOGGLE_HOLIDAYS_DISCLAIMER, payload: false })
+    })
+
+    it('should dispatch TOGGLE_HOLIDAYS_DISCLAIMER action with given state', () => {
+      // When
+      const action = toggleHolidaysDisclaimer(true)
+
+      // Then
+      expect(action).toEqual({ type: TOGGLE_HOLIDAYS_DISCLAIMER, payload: true })
     })
   })
 })

@@ -21,12 +21,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   toggleProofOfTransportDialog: (_, val) => settingsActions.toggleProofOfTransportDialog(val),
-  toggleProcessReminder: (_, val) => settingsActions.toggleProcessReminder(val),
+  toggleTutorials: (_, val) => settingsActions.toggleTutorials(val),
   togglePushNotifications: (_, val) => settingsActions.togglePushNotifications(val),
 }, dispatch)
 
 export const SettingsPage = ({
-  settings, togglePushNotifications, toggleProofOfTransportDialog, toggleProcessReminder,
+  settings,
+  togglePushNotifications,
+  toggleProofOfTransportDialog,
+  toggleTutorials,
 }) => (
   <Card>
     <CardContent>
@@ -57,8 +60,8 @@ export const SettingsPage = ({
           <ListItemText primary="Afficher les tutoriels" />
           <ListItemSecondaryAction>
             <Switch
-              onChange={toggleProcessReminder}
-              checked={settings.shouldRemindProcess}
+              onChange={toggleTutorials}
+              checked={settings.shouldRemindProcess && settings.shouldDisplayHolidaysDisclaimer}
             />
           </ListItemSecondaryAction>
         </ListItem>
@@ -70,12 +73,13 @@ export const SettingsPage = ({
 SettingsPage.propTypes = {
   togglePushNotifications: PropTypes.func.isRequired,
   toggleProofOfTransportDialog: PropTypes.func.isRequired,
-  toggleProcessReminder: PropTypes.func.isRequired,
+  toggleTutorials: PropTypes.func.isRequired,
   settings: PropTypes.shape({
     desktopNotificationsInstalled: PropTypes.bool.isRequired,
     desktopNotificationsEnabled: PropTypes.bool.isRequired,
     shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
     shouldRemindProcess: PropTypes.bool.isRequired,
+    shouldDisplayHolidaysDisclaimer: PropTypes.bool.isRequired,
   }).isRequired,
 }
 

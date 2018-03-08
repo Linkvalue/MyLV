@@ -43,3 +43,15 @@ export const desktopNotificationsInstalled = isSubscribed => ({
   type: DESKTOP_NOTIFICATIONS_INSTALLED,
   payload: { isSubscribed },
 })
+
+export const TOGGLE_HOLIDAYS_DISCLAIMER = 'TOGGLE_HOLIDAYS_DISCLAIMER'
+export const toggleHolidaysDisclaimer = (value = false) => ({
+  type: TOGGLE_HOLIDAYS_DISCLAIMER,
+  payload: value,
+})
+
+export const TOGGLE_TUTORIALS = 'TOGGLE_TUTORIALS'
+export const toggleTutorials = (value = false) => ({
+  type: TOGGLE_TUTORIALS,
+  payload: value,
+})

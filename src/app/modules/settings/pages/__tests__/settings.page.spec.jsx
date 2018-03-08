@@ -15,12 +15,13 @@ describe('SettingsPage', () => {
     props = {
       togglePushNotifications: jest.fn(),
       toggleProofOfTransportDialog: jest.fn(),
-      toggleProcessReminder: jest.fn(),
+      toggleTutorials: jest.fn(),
       settings: {
         desktopNotificationsInstalled: false,
         desktopNotificationsEnabled: false,
         shouldDisplayProofOfTransportDialog: false,
         shouldRemindProcess: false,
+        shouldDisplayHolidaysDisclaimer: false,
       },
     }
   })
@@ -40,6 +41,7 @@ describe('SettingsPage', () => {
       desktopNotificationsEnabled: true,
       shouldDisplayProofOfTransportDialog: true,
       shouldRemindProcess: true,
+      shouldDisplayHolidaysDisclaimer: true,
     }
 
     // When

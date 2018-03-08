@@ -5,10 +5,13 @@ import {
   DESKTOP_NOTIFICATIONS_INSTALLED,
   TOGGLE_PUSH_NOTIFICATIONS,
   TOGGLE_PUSH_NOTIFICATION_SNACK,
+  TOGGLE_HOLIDAYS_DISCLAIMER,
+  TOGGLE_TUTORIALS,
 } from './settings.actions'
 
 const initialState = {
   shouldRemindProcess: true,
+  shouldDisplayHolidaysDisclaimer: true,
   shouldDisplayProofOfTransportDialog: true,
   shouldDisplayPushNotificationSnack: true,
   desktopNotificationsEnabled: false,
@@ -46,6 +49,17 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         shouldDisplayPushNotificationSnack: payload,
+      }
+    case TOGGLE_HOLIDAYS_DISCLAIMER:
+      return {
+        ...state,
+        shouldDisplayHolidaysDisclaimer: payload,
+      }
+    case TOGGLE_TUTORIALS:
+      return {
+        ...state,
+        shouldDisplayHolidaysDisclaimer: payload,
+        shouldRemindProcess: payload,
       }
     case REHYDRATE:
       return {

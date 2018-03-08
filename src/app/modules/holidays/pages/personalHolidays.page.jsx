@@ -5,30 +5,42 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import {
-  Button, CardActions, CardContent, Hidden, Paper, Table, TableBody, TableCell, TableHead, TableRow, Toolbar,
+  Button, CardActions, CardContent, Hidden, IconButton, Paper, Table, TableBody, TableCell, TableHead, TableRow,
+  Toolbar,
   Typography, withStyles,
 } from 'material-ui'
+import { Help } from 'material-ui-icons'
 
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteHoliday, fetchPersonalHolidays } from '../holidays.actions'
 import StyledHolidayRow from '../components/holidayRow.component'
 import { holidayLabels } from '../../../../shared/calendar-constants'
 import { getPersonalHolidays } from '../holidays.selectors'
+import HolidaysDisclaimer from '../components/holidaysDisclaimer.component'
+import { toggleHolidaysDisclaimer } from '../../settings/settings.actions'
 
 const mapStateToProps = state => ({
   holidays: getPersonalHolidays(state),
   isLoading: state.holidays.isPersonalLoading,
+  shouldDisplayHolidaysDisclaimer: state.settings.shouldDisplayHolidaysDisclaimer,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchPersonalHolidays,
   deleteHoliday,
   push,
+  toggleHolidaysDisclaimer,
 }, dispatch)
 
-const styles = () => ({
+const styles = theme => ({
   tableWrapper: {
     overflowX: 'auto',
+  },
+  disclaimer: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+  toolbar: {
+    justifyContent: 'space-between',
   },
 })
 
@@ -37,6 +49,10 @@ export class PersonalHolidaysPage extends React.Component {
     this.props.fetchPersonalHolidays()
   }
 
+  handleDisclaimerClose = () => this.props.toggleHolidaysDisclaimer()
+
+  handleDisclaimerShow = () => this.props.toggleHolidaysDisclaimer(true)
+
   render() {
     const {
       isLoading,
@@ -44,6 +60,7 @@ export class PersonalHolidaysPage extends React.Component {
       classes,
       deleteHoliday,
       push,
+      shouldDisplayHolidaysDisclaimer,
     } = this.props
 
     if (isLoading) {
@@ -87,21 +104,29 @@ export class PersonalHolidaysPage extends React.Component {
     }
 
     return (
-      <Paper>
-        <Toolbar>
-          <Typography variant="headline" component="h2" gutterBottom>
-            Mes demandes de congés
-          </Typography>
-        </Toolbar>
-        <div className={classes.tableWrapper}>
-          {pageContent}
-        </div>
-        <CardActions>
-          <Button size="small" color="primary" component={Link} to="/holidays/new">
-            Nouvelle demande
-          </Button>
-        </CardActions>
-      </Paper>
+      <div>
+        {shouldDisplayHolidaysDisclaimer && (
+          <HolidaysDisclaimer className={classes.disclaimer} onClose={this.handleDisclaimerClose} />
+        )}
+        <Paper>
+          <Toolbar className={classes.toolbar}>
+            <Typography variant="headline" component="h2" gutterBottom>
+              Mes demandes de congés
+            </Typography>
+            {!shouldDisplayHolidaysDisclaimer && (
+              <IconButton onClick={this.handleDisclaimerShow}><Help /></IconButton>
+            )}
+          </Toolbar>
+          <div className={classes.tableWrapper}>
+            {pageContent}
+          </div>
+          <CardActions>
+            <Button size="small" color="primary" component={Link} to="/holidays/new">
+              Nouvelle demande
+            </Button>
+          </CardActions>
+        </Paper>
+      </div>
     )
   }
 }
@@ -109,8 +134,10 @@ export class PersonalHolidaysPage extends React.Component {
 PersonalHolidaysPage.propTypes = {
   fetchPersonalHolidays: PropTypes.func.isRequired,
   deleteHoliday: PropTypes.func.isRequired,
+  toggleHolidaysDisclaimer: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  shouldDisplayHolidaysDisclaimer: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
   holidays: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
