@@ -44,7 +44,7 @@ export const calendarExpectedDaysSelector = createSelector(
   worklogEntriesSelector,
   calendarYearSelector,
   calendarMonthSelector,
-  (entries, year, month) => {
+  (entries = {}, year, month) => {
     const dateRegExp = new RegExp(`^${year}-${month}`)
     return Object.keys(entries).filter(i => entries[i] && dateRegExp.test(i)).length / 2
   },

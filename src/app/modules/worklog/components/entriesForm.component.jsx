@@ -23,8 +23,22 @@ const styles = theme => ({
   selectInput: {
     width: '100%',
   },
+  cardsHolder: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   firstCard: {
     marginBottom: theme.spacing.unit * 2,
+
+    [theme.breakpoints.down('md')]: {
+      order: 1,
+      marginBottom: 0,
+    },
+  },
+  secondCard: {
+    [theme.breakpoints.down('md')]: {
+      marginBottom: theme.spacing.unit * 2,
+    },
   },
   cardActions: {
     flexWrap: 'wrap',
@@ -46,7 +60,7 @@ const EntriesForm = ({
   handleSubmit,
   classes,
 }) => (
-  <Grid item md={4} xs={12}>
+  <Grid className={classes.cardsHolder} item md={4} xs={12}>
     <Card className={classes.firstCard}>
       <CardContent>
         <Typography variant="headline" component="h2" gutterBottom>
@@ -79,7 +93,7 @@ const EntriesForm = ({
         </Button>
       </CardActions>
     </Card>
-    <Card>
+    <Card className={classes.secondCard}>
       <CardContent>
         <Typography variant="headline" component="h2" gutterBottom>
           Changement de client ?

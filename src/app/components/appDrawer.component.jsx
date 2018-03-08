@@ -1,13 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Drawer, Divider, List, withStyles, ListSubheader } from 'material-ui'
-import { BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload } from 'material-ui-icons'
+import { bindActionCreators } from 'redux'
+import {
+  Drawer, Divider, List, withStyles, ListSubheader, Hidden, Avatar, Typography, ListItem,
+  ListItemIcon, ListItemText,
+} from 'material-ui'
+import {
+  BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload, Settings,
+  PowerSettingsNew,
+} from 'material-ui-icons'
 
 import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
 import Restricted from './restricted.component'
 import FeatureFlipping from './featureFlipping'
+import drawerBackground from '../assets/images/drawer-bg.jpg'
+import { logout } from '../modules/auth/auth.actions'
 
 export const drawerWidth = 240
 
@@ -17,10 +26,33 @@ const styles = theme => ({
     height: '100%',
     width: drawerWidth,
   },
+  drawerPaperCollapsed: {
+    height: '100%',
+  },
   drawerHeader: theme.mixins.toolbar,
   '@media print': {
     drawerPaper: {
       display: 'none',
+    },
+  },
+  drawerProfile: {
+    background: `url(${drawerBackground}) center no-repeat`,
+    backgroundSize: 'cover',
+    height: theme.spacing.unit * 17,
+    color: theme.palette.common.white,
+    boxSizing: 'border-box',
+    padding: `${theme.spacing.unit * 2}px`,
+  },
+  fullName: {
+    textTransform: 'capitalize',
+    fontWeight: 'bold',
+    marginTop: theme.spacing.unit * 2,
+  },
+  linkList: {
+    backgroundColor: theme.palette.common.white,
+    [theme.breakpoints.down('md')]: {
+      flex: 1,
+      overflowY: 'auto',
     },
   },
 })
@@ -32,6 +64,10 @@ const mapStateToProps = state => ({
   shouldCollapseDrawer: state.display.isMobile || state.display.isTablet,
 })
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  logout,
+}, dispatch)
+
 const AppDrawer = ({
   user,
   classes,
@@ -40,24 +76,33 @@ const AppDrawer = ({
   isConnected,
   shouldCollapseDrawer,
   onDrawerClose,
+  logout,
 }) => {
   const collapsed = shouldCollapseDrawer || !isConnected
   return (
     <Drawer
       variant={collapsed ? 'temporary' : 'permanent'}
       open={open}
-      classes={collapsed ? {} : { paper: classes.drawerPaper }}
+      classes={{ paper: collapsed ? classes.drawerPaperCollapsed : classes.drawerPaper }}
       onClose={onDrawerClose}
     >
       {collapsed ? null : <div className={classes.drawerHeader} />}
+      <Hidden mdUp>
+        {user && (
+          <div className={classes.drawerProfile}>
+            <Avatar src={user.profilePictureUrl} alt={`${user.firstName} ${user.lastName}`} />
+            <Typography color="inherit" variant="subheading" className={classes.fullName}>
+              {`${user.firstName} ${user.lastName}`}
+            </Typography>
+            <Typography color="inherit">{user.email}</Typography>
+          </div>)
+        }
+      </Hidden>
       <Divider />
-      <List
-        subheader={(
-          <Restricted roles={['business', 'hr', 'board']} user={user}>
-            <ListSubheader>Personnel</ListSubheader>
-          </Restricted>
-        )}
-      >
+      <List className={classes.linkList}>
+        <Restricted roles={['business', 'hr', 'board']} user={user}>
+          <ListSubheader>Personnel</ListSubheader>
+        </Restricted>
         <Restricted roles={['tech']} user={user}>
           <AppDrawerItem to="/client" icon={<Person />} text="Client" />
           {canPrint ? <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" /> : null}
@@ -76,10 +121,22 @@ const AppDrawer = ({
           <ListSubheader>Administration</ListSubheader>
           <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
           <FeatureFlipping feature="holidays">
-            <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demandes de congés" key="holidays" />
+            <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demandes de congés" />
           </FeatureFlipping>
         </Restricted>
       </List>
+      <Hidden mdUp>
+        <List disablePadding>
+          <Divider />
+          <AppDrawerItem to="/settings" icon={<Settings />} text="Paramètres" />
+          <ListItem button onClick={logout}>
+            <ListItemIcon>
+              <PowerSettingsNew />
+            </ListItemIcon>
+            <ListItemText primary="Se déconnecter" />
+          </ListItem>
+        </List>
+      </Hidden>
     </Drawer>
   )
 }
@@ -98,4 +155,4 @@ AppDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(AppDrawer))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AppDrawer))
