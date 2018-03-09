@@ -26,7 +26,7 @@ deploy_staging:
   script:
     - npm run dist
     - apt-get update -qy
-    - apt-get install -y ruby2.4
+    - apt-get install -y ruby-full
     - gem install dpl
     - dpl --provider=heroku --app=cracra-staging --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
