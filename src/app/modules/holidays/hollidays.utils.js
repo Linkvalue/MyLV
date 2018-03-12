@@ -1,4 +1,6 @@
-import moment from 'moment/moment'
+import moment from 'moment'
+
+import { publicHolidays } from '../../../shared/calendar-constants'
 
 export const formatPeriod = ({
   _id,
@@ -13,8 +15,23 @@ export const formatPeriod = ({
 
 const millisecondsInDay = 1000 * 60 * 60 * 24
 
-export const getPeriodDayCount = period =>
-  Math.round((moment(period.endDate).diff(moment(period.startDate)) / millisecondsInDay) * 2) / 2
+export const getPeriodDayCount = (period) => {
+  const startDate = moment(period.startDate)
+  const endDate = moment(period.endDate)
+  let days = Math.round((endDate.diff(startDate) / millisecondsInDay) * 2) / 2
+  if (days < 0) {
+    return 0
+  }
+  while (startDate.format('YYYY-MM-DD') !== endDate.format('YYYY-MM-DD')) {
+    const month = `0${startDate.month() + 1}`.slice(-2)
+    const day = `0${startDate.date()}`.slice(-2)
+    if (startDate.day() >= 5 || publicHolidays.has(`${month}-${day}`)) {
+      days -= 1
+    }
+    startDate.add(1, 'd')
+  }
+  return days
+}
 
 export const getDaysForLabel = (periods, key, shouldFormat = true) => periods
   .filter(period => period.label === key)
