@@ -26,7 +26,7 @@ deploy_staging:
   script:
     - npm run dist
     - apt-get update -qy
-    - apt-get install -y ruby-dev
+    - apt-get install -y ruby ruby-dev rubygems-integration
     - gem install dpl
     - dpl --provider=heroku --app=cracra-staging --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
@@ -47,7 +47,7 @@ deploy_prod:
   script:
     - npm run dist
     - apt-get update -qy
-    - apt-get install -y ruby
+    - apt-get install -y ruby ruby-dev rubygems-integration
     - gem install dpl
     - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
