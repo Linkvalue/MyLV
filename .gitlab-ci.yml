@@ -26,7 +26,8 @@ deploy_staging:
   script:
     - npm run dist
     - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    - \curl -sSL https://get.rvm.io | bash -s stable --ruby --gem
+    - \curl -sSL https://get.rvm.io | bash -s stable --ruby
+    - source /usr/local/rvm/scripts/rvm
     - gem install dpl
     - dpl --provider=heroku --app=cracra-staging --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
@@ -47,7 +48,8 @@ deploy_prod:
   script:
     - npm run dist
     - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    - \curl -sSL https://get.rvm.io | bash -s stable --ruby --gem
+    - \curl -sSL https://get.rvm.io | bash -s stable --ruby
+    - source /usr/local/rvm/scripts/rvm
     - gem install dpl
     - dpl --provider=heroku --app=cracra --api-key=$HEROKU_STAGING_API_KEY --skip_cleanup=true
     - ls -l
