@@ -5,6 +5,7 @@ import { push } from 'react-router-redux'
 import { cracraEndpoint, lvConnect } from './lvconnect'
 import { postTransportProofSuccess } from '../transport/transport.actions'
 import { switchOfflineMode } from '../display/display.actions'
+import { HEADER_CACHE_FIRST } from './auth.constants'
 
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const loginError = () => ({
@@ -20,18 +21,24 @@ class HttpError extends Error {
   }
 }
 
-export const fetchWithAuth = (url, options = {}, forceWhenOffline) => async (dispatch, getState) => {
+export const fetchWithAuth = (url, options = {}) => async (dispatch, getState) => {
   const { isOffline } = getState().display
-  if (isOffline && !forceWhenOffline) {
-    throw new Error('Offline')
-  }
 
   const isJsonBody = options.body && !(options.body instanceof window.FormData)
   const formattedOptions = isJsonBody ? { ...options, body: JSON.stringify(options.body) } : options
+  if (isOffline) {
+    formattedOptions.headers = {
+      ...formattedOptions.headers,
+      [HEADER_CACHE_FIRST]: 'true',
+    }
+  }
 
   let res
   try {
     res = await lvConnect.api(cracraEndpoint + url, formattedOptions)
+    if (res.headers.has('x-from-sw-cache') && !isOffline) {
+      dispatch(switchOfflineMode(true))
+    }
   } catch (e) {
     if (e instanceof TypeError && !isOffline) {
       dispatch(switchOfflineMode(true))
@@ -75,12 +82,8 @@ export const fetchUserData = () => dispatch =>
     })
 
 export const tryReconnect = () => async (dispatch) => {
-  try {
-    await dispatch(fetchWithAuth('/api/health', undefined, true))
-    dispatch(switchOfflineMode(false))
-  } catch (e) {
-    // Don't care about the error
-  }
+  await fetch('/api/health')
+  dispatch(switchOfflineMode(false))
 }
 
 export const LOGOUT = 'LOGOUT'

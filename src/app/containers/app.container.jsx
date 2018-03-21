@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { Button, CircularProgress, Reboot, Snackbar, withStyles } from 'material-ui'
+import { Button, Reboot, Snackbar, withStyles } from 'material-ui'
 
 import AppBar from '../components/appBar.component'
 import AppDrawer from '../components/appDrawer.component'
@@ -15,15 +15,13 @@ import {
 import FeatureFlipping from '../components/featureFlipping'
 import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.component'
 import AppUpdater from '../components/appUpdater.component'
-import { tryReconnect } from '../modules/auth/auth.actions'
+import OfflineSnack from '../components/offlineSnack.component'
 
 const mapStateToProps = ({
   settings,
   transport,
   auth,
-  display,
 }) => ({
-  isOffline: display.isOffline,
   isConnected: !!auth.user,
   shouldDisplayPushNotificationSnack:
     settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsInstalled &&
@@ -36,7 +34,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   togglePushNotifications,
   togglePushNotificationSnack: () => togglePushNotificationSnack(false),
   toggleProofOfTransportDialog,
-  tryReconnect,
 }, dispatch)
 
 const styles = theme => ({
@@ -78,16 +75,6 @@ const styles = theme => ({
   '@global iframe': {
     border: 'none',
   },
-  buttonWrapper: {
-    position: 'relative',
-  },
-  buttonProgress: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12,
-  },
 })
 
 class App extends React.Component {
@@ -97,7 +84,6 @@ class App extends React.Component {
     this.state = {
       drawerOpen: false,
       openProofOfTransportDialog: true,
-      awaitingReconnect: false,
     }
   }
 
@@ -122,14 +108,8 @@ class App extends React.Component {
     this.props.toggleProofOfTransportDialog()
   }
 
-  handleReconnect = async () => {
-    this.setState({ awaitingReconnect: true })
-    await this.props.tryReconnect()
-    this.setState({ awaitingReconnect: false })
-  }
-
   render() {
-    const { openProofOfTransportDialog, awaitingReconnect } = this.state
+    const { openProofOfTransportDialog } = this.state
     const {
       classes,
       children,
@@ -139,7 +119,6 @@ class App extends React.Component {
       shouldDisplayProofOfTransportDialog,
       hasInvalidTransportProof,
       isConnected,
-      isOffline,
     } = this.props
 
     const openTransportProofDialog = isConnected && shouldDisplayProofOfTransportDialog
@@ -176,17 +155,7 @@ class App extends React.Component {
             />
           </FeatureFlipping>
           <AppUpdater />
-          <Snackbar
-            open={isOffline}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-            message="Hors ligne"
-            action={(
-              <div className={classes.buttonWrapper}>
-                <Button color="primary" disabled={awaitingReconnect} onClick={this.handleReconnect}>Reconnecter</Button>
-                {awaitingReconnect && <CircularProgress size={24} className={classes.buttonProgress} />}
-              </div>
-            )}
-          />
+          <OfflineSnack />
         </div>
       </div>
     )
@@ -203,8 +172,6 @@ App.propTypes = {
   shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
   hasInvalidTransportProof: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,
-  isOffline: PropTypes.bool.isRequired,
-  tryReconnect: PropTypes.func.isRequired,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App)))

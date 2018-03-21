@@ -76,6 +76,7 @@ module.exports = (env = {}) => ({
       autoUpdate: true,
       ServiceWorker: {
         events: true,
+        entry: './assets/scripts/offline.js',
       },
     }),
     new DefinePlugin({
