@@ -9,7 +9,7 @@ import { configureStore, browserHistory } from './store/configure-store'
 import Root from './containers/root.container'
 import { fetchUserData, loginError } from './modules/auth/auth.actions'
 import { lvConnect } from './modules/auth/lvconnect'
-import { detectDevice } from './modules/display/display.actions'
+import { detectDevice, switchOfflineMode } from './modules/display/display.actions'
 import { featureFlipping } from './config'
 import { installPushNotifications } from './modules/settings/push.service'
 
@@ -37,6 +37,9 @@ if (featureFlipping.offlineMode) {
 }
 
 installPushNotifications(store)
+
+window.addEventListener('online', () => store.dispatch(switchOfflineMode(false)))
+window.addEventListener('offline', () => store.dispatch(switchOfflineMode(true)))
 
 ReactDOM.render(
   <Root store={store} history={browserHistory} />,

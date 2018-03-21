@@ -38,6 +38,8 @@ module.exports = {
     metricsPath: '/api/metrics',
   },
   front: {
+    autoReconnectTimeout: 1000 * 60,
+    autoReconnectRetries: 3,
     featureFlipping: {
       holidays: false,
       transport: false,
