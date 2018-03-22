@@ -39,9 +39,7 @@ exports[`HolidayRequestForm should render properly 1`] = `
       />
       <WithStyles(Paper)>
         <WithStyles(Table)>
-          <TableHead
-            component="thead"
-          >
+          <WithStyles(TableHead)>
             <WithStyles(TableRow)>
               <WithStyles(TableCell)
                 key="paidHolidays"
@@ -62,10 +60,8 @@ exports[`HolidayRequestForm should render properly 1`] = `
                 Absences Syntec
               </WithStyles(TableCell)>
             </WithStyles(TableRow)>
-          </TableHead>
-          <TableBody
-            component="tbody"
-          >
+          </WithStyles(TableHead)>
+          <WithStyles(TableBody)>
             <WithStyles(TableRow)>
               <WithStyles(TableCell)
                 key="paidHolidays"
@@ -86,7 +82,7 @@ exports[`HolidayRequestForm should render properly 1`] = `
                 conventionalHolidays0
               </WithStyles(TableCell)>
             </WithStyles(TableRow)>
-          </TableBody>
+          </WithStyles(TableBody)>
         </WithStyles(Table)>
       </WithStyles(Paper)>
     </React.Fragment>

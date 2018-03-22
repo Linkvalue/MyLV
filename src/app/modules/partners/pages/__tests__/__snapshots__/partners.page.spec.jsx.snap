@@ -15,9 +15,7 @@ exports[`PartnersPage should render partners list 1`] = `
   </WithStyles(Toolbar)>
   <div>
     <WithStyles(Table)>
-      <TableHead
-        component="thead"
-      >
+      <WithStyles(TableHead)>
         <WithStyles(TableRow)>
           <WithStyles(TableCell)>
             Nom
@@ -45,10 +43,8 @@ exports[`PartnersPage should render partners list 1`] = `
             Ticket restaurants
           </WithStyles(TableCell)>
         </WithStyles(TableRow)>
-      </TableHead>
-      <TableBody
-        component="tbody"
-      >
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
         <WithStyles(TableRow)
           classes={
             Object {
@@ -118,7 +114,7 @@ exports[`PartnersPage should render partners list 1`] = `
             19
           </WithStyles(TableCell)>
         </WithStyles(TableRow)>
-      </TableBody>
+      </WithStyles(TableBody)>
     </WithStyles(Table)>
   </div>
   <table>

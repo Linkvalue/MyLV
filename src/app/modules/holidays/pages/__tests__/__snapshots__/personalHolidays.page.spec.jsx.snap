@@ -20,9 +20,7 @@ exports[`PersonalHolidaysPage should render properly 1`] = `
     </WithStyles(Toolbar)>
     <div>
       <WithStyles(Table)>
-        <TableHead
-          component="thead"
-        >
+        <WithStyles(TableHead)>
           <WithStyles(TableRow)>
             <WithStyles(TableCell)>
               Titre
@@ -68,10 +66,8 @@ exports[`PersonalHolidaysPage should render properly 1`] = `
               </WithStyles(TableCell)>
             </Hidden>
           </WithStyles(TableRow)>
-        </TableHead>
-        <TableBody
-          component="tbody"
-        >
+        </WithStyles(TableHead)>
+        <WithStyles(TableBody)>
           <WithStyles(HolidayRow)
             holiday={
               Object {
@@ -102,7 +98,7 @@ exports[`PersonalHolidaysPage should render properly 1`] = `
             onClick={[Function]}
             onHolidayDelete={[MockFunction]}
           />
-        </TableBody>
+        </WithStyles(TableBody)>
       </WithStyles(Table)>
     </div>
     <WithStyles(CardActions)>

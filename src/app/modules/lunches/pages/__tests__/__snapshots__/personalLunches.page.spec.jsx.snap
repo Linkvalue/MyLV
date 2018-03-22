@@ -20,9 +20,7 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
       Merci de renseigner ici les déjeuners en équipes payés par LinkValue. Ceci a pour but d'éviter de verser des tickets restaurants pour des déjeuners déjà remboursés.
     </WithStyles(Typography)>
     <WithStyles(Table)>
-      <TableHead
-        component="thead"
-      >
+      <WithStyles(TableHead)>
         <WithStyles(TableRow)>
           <WithStyles(TableCell)>
             Intitulé
@@ -36,10 +34,8 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
             Participants
           </WithStyles(TableCell)>
         </WithStyles(TableRow)>
-      </TableHead>
-      <TableBody
-        component="tbody"
-      >
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
         <WithStyles(LunchRow)
           key="foo"
           lunch={
@@ -49,7 +45,7 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
           }
           onLunchDelete={[MockFunction]}
         />
-      </TableBody>
+      </WithStyles(TableBody)>
     </WithStyles(Table)>
   </WithStyles(CardContent)>
   <WithStyles(CardActions)>

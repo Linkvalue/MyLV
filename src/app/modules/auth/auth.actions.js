@@ -21,6 +21,17 @@ class HttpError extends Error {
   }
 }
 
+export const LOGOUT = 'LOGOUT'
+export const logout = () => (dispatch) => {
+  lvConnect.logout()
+
+  dispatch(push('/login'))
+
+  return dispatch({
+    type: LOGOUT,
+  })
+}
+
 export const fetchWithAuth = (url, options = {}) => async (dispatch, getState) => {
   const { isOffline } = getState().display
 
@@ -40,7 +51,11 @@ export const fetchWithAuth = (url, options = {}) => async (dispatch, getState) =
       dispatch(switchOfflineMode(true))
     }
   } catch (e) {
-    console.error(e)
+    if (e.message === 'No refresh token found.') {
+      dispatch(logout())
+    } else {
+      console.error(e)
+    }
   }
 
   const data = await res.json()
@@ -80,15 +95,4 @@ export const fetchUserData = () => dispatch =>
 export const tryReconnect = () => async (dispatch) => {
   await fetch('/api/health')
   dispatch(switchOfflineMode(false))
-}
-
-export const LOGOUT = 'LOGOUT'
-export const logout = () => (dispatch) => {
-  lvConnect.logout()
-
-  dispatch(push('/login'))
-
-  return dispatch({
-    type: LOGOUT,
-  })
 }

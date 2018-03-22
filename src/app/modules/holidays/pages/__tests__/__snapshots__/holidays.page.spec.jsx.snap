@@ -59,9 +59,7 @@ exports[`HolidaysPage should render properly 1`] = `
   </WithStyles(Toolbar)>
   <div>
     <WithStyles(Table)>
-      <TableHead
-        component="thead"
-      >
+      <WithStyles(TableHead)>
         <WithStyles(TableRow)>
           <WithStyles(TableCell)>
             Partner
@@ -91,10 +89,8 @@ exports[`HolidaysPage should render properly 1`] = `
             Status
           </WithStyles(TableCell)>
         </WithStyles(TableRow)>
-      </TableHead>
-      <TableBody
-        component="tbody"
-      >
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
         <WithStyles(HolidayRow)
           disableMenu={true}
           displayPartnerName={true}
@@ -139,7 +135,7 @@ exports[`HolidaysPage should render properly 1`] = `
             }
           }
         />
-      </TableBody>
+      </WithStyles(TableBody)>
     </WithStyles(Table)>
   </div>
   <table>

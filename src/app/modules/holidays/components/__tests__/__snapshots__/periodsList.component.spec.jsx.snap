@@ -6,9 +6,7 @@ exports[`PeriodsList should render properly 1`] = `
 >
   <div>
     <WithStyles(Table)>
-      <TableHead
-        component="thead"
-      >
+      <WithStyles(TableHead)>
         <WithStyles(TableRow)>
           <WithStyles(TableCell)
             key="paidHolidays"
@@ -48,10 +46,8 @@ exports[`PeriodsList should render properly 1`] = `
             padding="checkbox"
           />
         </WithStyles(TableRow)>
-      </TableHead>
-      <TableBody
-        component="tbody"
-      >
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
         <WithStyles(TableRow)
           key="0"
         >
@@ -142,7 +138,7 @@ exports[`PeriodsList should render properly 1`] = `
             padding="checkbox"
           />
         </WithStyles(TableRow)>
-      </TableBody>
+      </WithStyles(TableBody)>
     </WithStyles(Table)>
   </div>
   <table>
