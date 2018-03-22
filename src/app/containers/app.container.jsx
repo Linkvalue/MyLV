@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { Button, Reboot, Snackbar, withStyles } from 'material-ui'
+import { Button, CssBaseline, Snackbar, withStyles } from 'material-ui'
 
 import AppBar from '../components/appBar.component'
 import AppDrawer from '../components/appDrawer.component'
@@ -125,7 +125,7 @@ class App extends React.Component {
       && hasInvalidTransportProof && openProofOfTransportDialog
     return (
       <div className={classes.appRoot}>
-        <Reboot />
+        <CssBaseline />
         <div className={classes.appFrame}>
           <AppBar onDrawerOpen={this.handleDrawerOpen} />
           <AppDrawer open={this.state.drawerOpen} onDrawerClose={this.handleDrawerClose} />
