@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
 import { HolidayRequestForm } from '../holidayRequestForm.component'
-import { getDaysForLabel } from '../../hollidays.utils'
+import { getDaysForLabel } from '../../holidays.utils'
 
 jest.unmock('../holidayRequestForm.component')
 

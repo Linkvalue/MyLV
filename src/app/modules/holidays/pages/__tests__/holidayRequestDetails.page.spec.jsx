@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
 import { HolidayRequestDetails } from '../holidayRequestDetails.page'
-import { getPeriodDayCount } from '../../hollidays.utils'
+import { getPeriodDayCount } from '../../holidays.utils'
 
 jest.unmock('../holidayRequestDetails.page')
 

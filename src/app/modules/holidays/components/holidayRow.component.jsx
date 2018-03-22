@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import { holidayLabels } from '../../../../shared/calendar-constants'
-import { getDaysForLabel } from '../hollidays.utils'
+import { getDaysForLabel } from '../holidays.utils'
 import HolidayRequestStatusIcon from './holidayRequestStatusIcon.component'
 
 const styles = theme => ({

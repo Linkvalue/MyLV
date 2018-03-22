@@ -13,7 +13,7 @@ import NotFound from '../../../components/notFound.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import Restricted from '../../../components/restricted.component'
 import { changeHolidayRequestStatus, fetchHolidayRequestDetails } from '../holidays.actions'
-import { getPeriodDayCount } from '../hollidays.utils'
+import { getPeriodDayCount } from '../holidays.utils'
 import { holidayLabels } from '../../../../shared/calendar-constants'
 import HolidayRequestStatusIcon from '../components/holidayRequestStatusIcon.component'
 

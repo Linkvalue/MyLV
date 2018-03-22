@@ -40,11 +40,7 @@ export const fetchWithAuth = (url, options = {}) => async (dispatch, getState) =
       dispatch(switchOfflineMode(true))
     }
   } catch (e) {
-    if (e instanceof TypeError && !isOffline) {
-      dispatch(switchOfflineMode(true))
-    } else {
-      throw new Error('Required login')
-    }
+    console.error(e)
   }
 
   const data = await res.json()
