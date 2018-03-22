@@ -18,7 +18,7 @@ const ProofOfTransportDialog = ({ open, onClose, onDecline }) => (
       <Button onClick={onDecline}>
         Je n'ai pas de titre de transport
       </Button>
-      <Button color="primary" component={Link} to="/proof-upload">
+      <Button onClick={onClose} color="primary" component={Link} to="/proof-upload">
         Uploader
       </Button>
     </DialogActions>
