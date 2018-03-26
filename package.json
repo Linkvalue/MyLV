@@ -110,10 +110,13 @@
   },
   "jest": {
     "automock": true,
-    "setupTestFrameworkScriptFile": "./src/app/jestSetup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/jestSetup.js",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|jpg|png)$": "<rootDir>/test/emptyModule.js"
+    }
   },
   "engines": {
     "node": "8.7.x"

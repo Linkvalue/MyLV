@@ -3,19 +3,16 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { Button, CssBaseline, Snackbar, withStyles } from 'material-ui'
+import { CssBaseline, withStyles } from 'material-ui'
 
 import AppBar from '../components/appBar.component'
 import AppDrawer from '../components/appDrawer.component'
-import {
-  toggleProofOfTransportDialog,
-  togglePushNotifications,
-  togglePushNotificationSnack,
-} from '../modules/settings/settings.actions'
+import { toggleProofOfTransportDialog } from '../modules/settings/settings.actions'
 import FeatureFlipping from '../components/featureFlipping'
 import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.component'
 import AppUpdater from '../components/appUpdater.component'
 import OfflineSnack from '../components/offlineSnack.component'
+import ConnectedPushSnack from '../components/pushSnack.component'
 
 const mapStateToProps = ({
   settings,
@@ -30,11 +27,7 @@ const mapStateToProps = ({
   hasInvalidTransportProof: transport.expirationDate < Date.now(),
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  togglePushNotifications,
-  togglePushNotificationSnack: () => togglePushNotificationSnack(false),
-  toggleProofOfTransportDialog,
-}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ toggleProofOfTransportDialog }, dispatch)
 
 const styles = theme => ({
   appRoot: {
@@ -77,7 +70,7 @@ const styles = theme => ({
   },
 })
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(...args) {
     super(...args)
 
@@ -113,9 +106,6 @@ class App extends React.Component {
     const {
       classes,
       children,
-      shouldDisplayPushNotificationSnack,
-      togglePushNotifications,
-      togglePushNotificationSnack,
       shouldDisplayProofOfTransportDialog,
       hasInvalidTransportProof,
       isConnected,
@@ -133,19 +123,7 @@ class App extends React.Component {
             {children}
           </div>
           <FeatureFlipping feature="pushNotifications">
-            <Snackbar
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              open={shouldDisplayPushNotificationSnack && isConnected}
-              message="Les notifications push sont maintenant disponnibles ! Elles permettent de te rappeller
-              automatiquement quand tu dois remplir ton CRA. Tu peux les activer/désactiver depuis les paramètres de ton
-              compte en haut à droite"
-              action={[
-                <Button key="ignore" color="inherit" size="small" onClick={togglePushNotificationSnack}>
-                  Ignorer
-                </Button>,
-                <Button key="ok" color="secondary" size="small" onClick={togglePushNotifications}>Activer</Button>,
-              ]}
-            />
+            <ConnectedPushSnack />
           </FeatureFlipping>
           <FeatureFlipping feature="transport">
             <ProofOfTransportDialog
@@ -165,9 +143,6 @@ class App extends React.Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-  shouldDisplayPushNotificationSnack: PropTypes.bool.isRequired,
-  togglePushNotifications: PropTypes.func.isRequired,
-  togglePushNotificationSnack: PropTypes.func.isRequired,
   toggleProofOfTransportDialog: PropTypes.func.isRequired,
   shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
   hasInvalidTransportProof: PropTypes.bool.isRequired,

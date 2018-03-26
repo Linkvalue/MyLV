@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should handle app drawer opening 1`] = `
+<div>
+  <WithStyles(CssBaseline) />
+  <div>
+    <Connect(WithStyles(AppBar))
+      onDrawerOpen={[Function]}
+    />
+    <Connect(WithStyles(AppDrawer))
+      onDrawerClose={[Function]}
+      open={true}
+    />
+    <div>
+      Foo
+    </div>
+    <FeatureFlipping
+      feature="pushNotifications"
+    >
+      <Connect(PushSnack) />
+    </FeatureFlipping>
+    <FeatureFlipping
+      feature="transport"
+    >
+      <ProofOfTransportDialog
+        onClose={[Function]}
+        onDecline={[Function]}
+        open={false}
+      />
+    </FeatureFlipping>
+    <AppUpdater />
+    <Connect(WithStyles(OfflineSnack)) />
+  </div>
+</div>
+`;
+
+exports[`App should render properly 1`] = `
+<div>
+  <WithStyles(CssBaseline) />
+  <div>
+    <Connect(WithStyles(AppBar))
+      onDrawerOpen={[Function]}
+    />
+    <Connect(WithStyles(AppDrawer))
+      onDrawerClose={[Function]}
+      open={false}
+    />
+    <div>
+      Foo
+    </div>
+    <FeatureFlipping
+      feature="pushNotifications"
+    >
+      <Connect(PushSnack) />
+    </FeatureFlipping>
+    <FeatureFlipping
+      feature="transport"
+    >
+      <ProofOfTransportDialog
+        onClose={[Function]}
+        onDecline={[Function]}
+        open={false}
+      />
+    </FeatureFlipping>
+    <AppUpdater />
+    <Connect(WithStyles(OfflineSnack)) />
+  </div>
+</div>
+`;
