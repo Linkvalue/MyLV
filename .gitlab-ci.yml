@@ -28,7 +28,7 @@ build_staging:
 build_production:
   stage: build
   variables:
-    NODE_ENV: staging
+    NODE_ENV: production
   script:
     - npm install
     - npm run dist
