@@ -1,3 +1,5 @@
+const { version } = require('../package')
+
 module.exports = {
   server: {},
   host: {
@@ -38,6 +40,7 @@ module.exports = {
     metricsPath: '/api/metrics',
   },
   front: {
+    version,
     autoReconnectTimeout: 1000 * 60,
     autoReconnectRetries: 3,
     featureFlipping: {

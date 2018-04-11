@@ -20,7 +20,7 @@ const styles = theme => ({
     display: 'none',
     position: 'relative',
     width: '100%',
-    paddingTop: '70.70%',
+    paddingTop: '68%',
   },
   printerContainer: {
     position: 'absolute',
@@ -48,7 +48,7 @@ const styles = theme => ({
   },
   printerFooter: {
     position: 'absolute',
-    bottom: '2cm',
+    bottom: 0,
     left: '10%',
     width: '80%',
     textAlign: 'center',

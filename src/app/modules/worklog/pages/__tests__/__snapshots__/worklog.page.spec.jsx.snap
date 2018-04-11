@@ -21,27 +21,14 @@ exports[`WorklogPage should display process reminder 1`] = `
 </div>
 `;
 
-exports[`WorklogPage should render properly 1`] = `
-<div>
-  <WithStyles(GridWrapper)
-    container={true}
-  >
-    <Connect(WithStyles(ReduxForm)) />
-    <Connect(WithStyles(Calendar)) />
-    <WithStyles(Button)
-      className=""
-      color="primary"
-      onClick={[Function]}
-      variant="fab"
-    >
-      <pure(Print) />
-    </WithStyles(Button)>
-  </WithStyles(GridWrapper)>
-  <Connect(WithStyles(Printer)) />
-</div>
+exports[`WorklogPage should redirect if missing client info 1`] = `
+<Redirect
+  push={false}
+  to="/client"
+/>
 `;
 
-exports[`WorklogPage should render transport dialog 1`] = `
+exports[`WorklogPage should render properly 1`] = `
 <div>
   <WithStyles(GridWrapper)
     container={true}

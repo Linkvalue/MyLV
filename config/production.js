@@ -35,5 +35,9 @@ module.exports = {
       offlineMode: true,
       pushNotifications: true,
     },
+    sentry: {
+      dsn: '12183e96fee94f34bf55a85d0fe1c802',
+      projectId: '418084',
+    },
   },
 }

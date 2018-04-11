@@ -11,7 +11,6 @@ import {
   PowerSettingsNew,
 } from 'material-ui-icons'
 
-import { canPrintSelector } from '../modules/client/client-selectors'
 import AppDrawerItem from './appDrawerItem.component'
 import Restricted from './restricted.component'
 import FeatureFlipping from './featureFlipping'
@@ -60,7 +59,6 @@ const styles = theme => ({
 const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
   user: state.auth.user,
-  canPrint: canPrintSelector(state),
   shouldCollapseDrawer: state.display.isMobile || state.display.isTablet,
 })
 
@@ -72,7 +70,6 @@ const AppDrawer = ({
   user,
   classes,
   open,
-  canPrint,
   isConnected,
   shouldCollapseDrawer,
   onDrawerClose,
@@ -105,7 +102,7 @@ const AppDrawer = ({
         </Restricted>
         <Restricted roles={['tech']} user={user}>
           <AppDrawerItem to="/client" icon={<Person />} text="Client" />
-          {canPrint ? <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" /> : null}
+          <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" />
         </Restricted>
         <FeatureFlipping feature="holidays">
           <AppDrawerItem to="/holidays/me" icon={<BeachAccess />} text="Mes demandes de congés" key="my-holidays" />
@@ -147,7 +144,6 @@ AppDrawer.defaultProps = {
 
 AppDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
-  canPrint: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,
   shouldCollapseDrawer: PropTypes.bool.isRequired,
   onDrawerClose: PropTypes.func.isRequired,

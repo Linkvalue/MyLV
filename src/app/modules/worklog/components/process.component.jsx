@@ -18,7 +18,7 @@ const Process = ({ toggleProcessReminder }) => (
           Informations
         </Typography>
         <Typography gutterBottom>
-          Le CRA (Compte Rendu d'Activité) est un document administratif à envoyer à
+          Le CRA (Compte Rendu d'Activité) est un document administratif à envoyer à&nbsp;
           <a href="mailto:admin@link-value.fr">admin@link-value.fr</a>,
           copie Partner Business, avant le <b>25 de chaque mois</b>. Il sert à :
         </Typography>
