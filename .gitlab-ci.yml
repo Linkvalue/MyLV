@@ -60,6 +60,8 @@ deploy_staging:
   environment:
     name: staging
     url: https://cracra-staging.herokuapp.com
+  dependencies:
+    - build_staging
   tags:
     - node
 
@@ -74,5 +76,7 @@ deploy_prod:
   environment:
     name: production
     url: https://cracra.herokuapp.com
+  dependencies:
+    - build_production
   tags:
     - node
