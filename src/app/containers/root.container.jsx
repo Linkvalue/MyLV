@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import { Switch, Route } from 'react-router-dom'
 import { MuiThemeProvider } from 'material-ui'
 
-import App from './app.container'
+import ConnectedApp from './app.container'
 import ClientPage from '../modules/client/pages/client.page'
 import ConnectedWorklogPage from '../modules/worklog/pages/worklog.page'
 import AuthCallbackPage from '../modules/auth/pages/authCallbackPage'
@@ -30,7 +30,7 @@ const Root = ({ store, history }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <MuiThemeProvider theme={theme}>
-        <App>
+        <ConnectedApp>
           <Switch>
             <Route exact path="/auth" component={AuthCallbackPage} />
             <Route exact path="/login" component={LoginPage} />
@@ -53,7 +53,7 @@ const Root = ({ store, history }) => (
               </Switch>
             </LoginRequired>
           </Switch>
-        </App>
+        </ConnectedApp>
       </MuiThemeProvider>
     </ConnectedRouter>
   </Provider>

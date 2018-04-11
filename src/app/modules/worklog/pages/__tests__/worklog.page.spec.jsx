@@ -17,11 +17,7 @@ describe('WorklogPage', () => {
     props = {
       classes: {},
       shouldRemindProcess: false,
-      canPrint: false,
-      push: jest.fn(),
-      toggleProofOfTransportDialog: jest.fn(),
-      shouldDisplayProofOfTransportDialog: false,
-      hasInvalidTransportProof: false,
+      canPrint: true,
       isTabletOrMobile: false,
       isOffline: false,
     }
@@ -39,11 +35,9 @@ describe('WorklogPage', () => {
     expect(shallowToJson(wrapper)).toMatchSnapshot()
   })
 
-  it('should render transport dialog', () => {
+  it('should redirect if missing client info', () => {
     // Given
-    props.hasInvalidTransportProof = true
-    props.shouldDisplayProofOfTransportDialog = true
-    config.featureFlipping.transport = true
+    props.canPrint = false
 
     // When
     const wrapper = getWrapper()

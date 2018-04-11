@@ -3,9 +3,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const SentryCliPlugin = require('@sentry/webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 const path = require('path')
-const { util } = require('config')
+const { util, front: { version } } = require('config')
 
 const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
@@ -51,7 +52,14 @@ module.exports = (env = {}) => ({
     },
   },
   plugins: [
-    ...(env.production ? [new UglifyJSPlugin({ sourceMap: true })] : []),
+    ...(env.production ? [
+      new UglifyJSPlugin({ sourceMap: true }),
+      new SentryCliPlugin({
+        include: path.resolve(__dirname, './dist'),
+        release: version,
+        configFile: path.resolve(__dirname, './.sentryclirc'),
+      }),
+    ] : []),
     new CleanWebpackPlugin(['dist']),
     new IgnorePlugin(/node-fetch/),
     new CommonsChunkPlugin({

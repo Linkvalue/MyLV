@@ -92,7 +92,7 @@ class AppBar extends React.Component {
       const fullName = `${user.firstName} ${user.lastName}`
       avatar = (
         <div className={classes.userDetails}>
-          <Hidden mdDown>
+          <Hidden smDown>
             {fullName}
             <IconButton color="inherit" onClick={this.handleMenuOpen} className={classes.avatar}>
               <Avatar alt={fullName} src={user.profilePictureUrl} />

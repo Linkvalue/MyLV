@@ -10,11 +10,17 @@ import Root from './containers/root.container'
 import { fetchUserData, loginError } from './modules/auth/auth.actions'
 import { lvConnect } from './modules/auth/lvconnect'
 import { detectDevice, switchOfflineMode } from './modules/display/display.actions'
-import { featureFlipping } from './config'
+import { featureFlipping, sentry, version } from './config'
 import { installPushNotifications } from './modules/settings/push.service'
 
 // Import PWA manifest with file-loader
 import './manifest.json'
+
+if (sentry) {
+  window.Raven.config(`https://${sentry.dsn}@sentry.io/${sentry.projectId}`, {
+    release: version,
+  }).install()
+}
 
 const store = configureStore()
 
