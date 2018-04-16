@@ -24,6 +24,8 @@ module.exports = {
       date: moment().toDate(),
     }))
 
+    req.server.plugins.mailjet.sendHolidaysRequest(req.auth.credentials, holiday)
+
     res.mongodb(holiday)
   },
 }

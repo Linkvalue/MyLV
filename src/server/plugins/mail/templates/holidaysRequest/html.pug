@@ -1,0 +1,11 @@
+extends ../../layouts/default.pug
+
+block content
+  div.card
+    div.card-content
+      div.card-title
+        h1 Nouvelle demande de congés
+      p Une demande de congés vien d'être émise par #{user.firstName} #{user.lastName}.
+    div.card-actions
+      a.btn.btn-primary(href=`${cracraEndpoint}/holidays/${holidayRequest._id}` target="_blank")
+        = "Voir dans l'application"

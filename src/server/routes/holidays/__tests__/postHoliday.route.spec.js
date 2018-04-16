@@ -16,6 +16,11 @@ describe('POST /api/holiday', () => {
           },
         },
       },
+      plugins: {
+        mailjet: {
+          sendHolidaysRequest: jest.fn(),
+        },
+      },
     }
     const auth = { credentials: { id: 'hello' } }
 
