@@ -32,6 +32,12 @@ const metrics = {
     help: 'Number of errors by error code',
     labelNames: ['path', 'method', 'code'],
   }),
+  // Email sent
+  emailSentTotal: new client.Counter({
+    name: 'email_sent_total',
+    help: 'Number of email sent by template.',
+    labelNames: ['template'],
+  }),
 }
 
 exports.register = (server, options, next) => {
@@ -72,6 +78,8 @@ exports.register = (server, options, next) => {
       }
     }
   })
+
+  server.events.on('email-sent', template => metrics.emailSentTotal.inc({ template }))
 
   next()
 }

@@ -30,7 +30,14 @@ exports.register = async (server, options, next) => {
     },
   })
 
-  server.expose('sendHolidaysRequest', (user, holidayRequest) => emailEngine.send({
+  server.event('email-sent')
+
+  const sendEmail = (emailOptions) => {
+    server.events.emit('email-sent', emailOptions.template)
+    emailEngine.send(emailOptions)
+  }
+
+  server.expose('sendHolidaysRequest', (user, holidayRequest) => sendEmail({
     template: 'holidaysRequest',
     message: {
       to: options.toEmail,
