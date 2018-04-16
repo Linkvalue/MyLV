@@ -53,4 +53,11 @@ module.exports = {
       publicKey: 'BP60hTFwFmaPMsbx_lQ7loJLWsnyXBIe218Qa46RXtZMhCgicLl6MoTo7idYG35W0jKTF5U7MB6GfI-i_H7-Mjk',
     },
   },
+  mailjet: {
+    fromEmail: 'no-reply@link-value.fr',
+    fromName: 'CraCra',
+    toEmail: 'admin@link-value.fr',
+    apiKey: process.env.MAILJET_API_KEY,
+    apiToken: process.env.MAILJET_API_TOKEN,
+  },
 }

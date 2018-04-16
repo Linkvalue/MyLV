@@ -14,26 +14,38 @@ const Subscription = require('./models/subscription.model')
 const Profile = require('./models/profile.model')
 
 const manifest = {
-  registrations: [{
-    plugin: {
-      register: 'good',
-      options: config.logs,
+  registrations: [
+    {
+      plugin: {
+        register: 'good',
+        options: config.logs,
+      },
     },
-  }, {
-    plugin: 'hapi-auth-bearer-token',
-  }, {
-    plugin: {
-      register: './plugins/mongodb.plugin',
-      options: config.mongodb,
+    {
+      plugin: 'hapi-auth-bearer-token',
     },
-  }, {
-    plugin: {
-      register: './plugins/monitoring.plugin',
-      options: config.monitoring,
+    {
+      plugin: {
+        register: './plugins/mongodb.plugin',
+        options: config.mongodb,
+      },
     },
-  }, {
-    plugin: 'inert',
-  }],
+    {
+      plugin: {
+        register: './plugins/monitoring.plugin',
+        options: config.monitoring,
+      },
+    },
+    {
+      plugin: 'inert',
+    },
+    {
+      plugin: {
+        register: './plugins/mail/mail.plugin',
+        options: config.mailjet,
+      },
+    },
+  ],
   connections: [{
     host: config.host.hostname,
     port: config.host.port,
