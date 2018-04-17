@@ -38,4 +38,7 @@ module.exports = {
       pushNotifications: true,
     },
   },
+  mailjet: {
+    webAppUrl: 'https://cracra-staging.herokuapp.com',
+  },
 }

@@ -3,7 +3,6 @@ module.exports = {
     hostname: 'localhost',
   },
   front: {
-    url: 'http://localhost:3000',
     featureFlipping: {
       holidays: true,
       transport: true,

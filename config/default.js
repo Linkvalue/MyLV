@@ -59,5 +59,6 @@ module.exports = {
     toEmail: 'admin@link-value.fr',
     apiKey: process.env.MAILJET_API_KEY,
     apiToken: process.env.MAILJET_API_TOKEN,
+    webAppUrl: 'http://localhost:3000',
   },
 }

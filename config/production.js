@@ -40,4 +40,7 @@ module.exports = {
       projectId: '418084',
     },
   },
+  mailjet: {
+    webAppUrl: 'https://cracra.link-value.fr',
+  },
 }

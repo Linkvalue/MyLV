@@ -1,13 +1,12 @@
 const path = require('path')
 const Email = require('email-templates')
-const { front, host } = require('config')
 
 exports.register = async (server, options, next) => {
   const emailEngine = new Email({
     views: {
       root: path.resolve(__dirname, 'templates/'),
       locals: {
-        cracraEndpoint: front.url || `https://${host.hostname}${host.port ? `:${host.port}` : ''}`,
+        cracraEndpoint: options.webAppUrl,
       },
     },
     juice: true,
@@ -65,7 +64,6 @@ exports.register = async (server, options, next) => {
         const html = await emailEngine.render(`${req.query.template}/html`, {
           user: {},
           holidayRequest: {},
-          cracraEndpoint: 'http://localhost:3000',
         })
         res(html)
       },
