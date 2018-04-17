@@ -23,6 +23,7 @@ const styles = theme => ({
 
     [theme.breakpoints.down('md')]: {
       width: 'auto',
+      paddingRight: theme.spacing.unit * 2,
     },
   },
   editHolidayButton: {
@@ -111,10 +112,10 @@ export class HolidayRow extends Component {
           {Array.from(holidayLabels.keys()).map(label => (
             <TableCell numeric key={label}>{getDaysForLabel(holiday.periods, label, false)}</TableCell>
           ))}
-          <TableCell>
-            <HolidayRequestStatusIcon status={holiday.status} />
-          </TableCell>
         </Hidden>
+        <TableCell>
+          <HolidayRequestStatusIcon status={holiday.status} />
+        </TableCell>
       </TableRow>
     )
   }

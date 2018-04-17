@@ -67,24 +67,38 @@ exports[`HolidaysPage should render properly 1`] = `
           <WithStyles(TableCell)>
             Date de la demande
           </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="paidHolidays"
-            numeric={true}
+          <Hidden
+            implementation="js"
+            lgDown={false}
+            lgUp={false}
+            mdDown={true}
+            mdUp={false}
+            smDown={false}
+            smUp={false}
+            xlDown={false}
+            xlUp={false}
+            xsDown={false}
+            xsUp={false}
           >
-            Congés payés
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="unpaidHolidays"
-            numeric={true}
-          >
-            Congés sans solde
-          </WithStyles(TableCell)>
-          <WithStyles(TableCell)
-            key="conventionalHolidays"
-            numeric={true}
-          >
-            Absences Syntec
-          </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              key="paidHolidays"
+              numeric={true}
+            >
+              Congés payés
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              key="unpaidHolidays"
+              numeric={true}
+            >
+              Congés sans solde
+            </WithStyles(TableCell)>
+            <WithStyles(TableCell)
+              key="conventionalHolidays"
+              numeric={true}
+            >
+              Absences Syntec
+            </WithStyles(TableCell)>
+          </Hidden>
           <WithStyles(TableCell)>
             Status
           </WithStyles(TableCell)>

@@ -33,7 +33,7 @@ exports.register = async (server, options, next) => {
   server.event('email-sent')
 
   const sendEmail = (emailOptions) => {
-    server.events.emit('email-sent', emailOptions.template)
+    server.emit('email-sent', emailOptions.template)
     emailEngine.send(emailOptions)
   }
 

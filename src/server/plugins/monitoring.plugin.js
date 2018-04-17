@@ -79,7 +79,7 @@ exports.register = (server, options, next) => {
     }
   })
 
-  server.events.on('email-sent', template => metrics.emailSentTotal.inc({ template }))
+  server.on('email-sent', template => metrics.emailSentTotal.inc({ template }))
 
   next()
 }

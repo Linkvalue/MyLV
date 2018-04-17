@@ -1,9 +1,15 @@
-const { DefinePlugin, IgnorePlugin, optimize: { CommonsChunkPlugin } } = require('webpack')
+const {
+  ContextReplacementPlugin,
+  DefinePlugin,
+  IgnorePlugin,
+  optimize: { CommonsChunkPlugin },
+} = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const SentryCliPlugin = require('@sentry/webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 const OfflinePlugin = require('offline-plugin')
 const path = require('path')
 const { util, front: { version } } = require('config')
@@ -25,8 +31,6 @@ module.exports = (env = {}) => ({
   },
   module: {
     rules: [
-      { test: /manifest\.json$/, use: { loader: 'file-loader', options: { name: 'manifest.json' } } },
-      { test: /push\.js$/, use: { loader: 'file-loader', options: { name: 'assets/scripts/push.js' } } },
       {
         test: /\.jsx?$/,
         use: {
@@ -34,6 +38,14 @@ module.exports = (env = {}) => ({
           options: { cacheDirectory: true },
         },
         exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(woff2?|otf|ttf)$/,
+        use: { loader: 'file-loader', options: { name: 'fonts/[name]-[hash].[ext]' } },
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,
@@ -61,6 +73,7 @@ module.exports = (env = {}) => ({
       }),
     ] : []),
     new CleanWebpackPlugin(['dist']),
+    new ContextReplacementPlugin(/moment[/\\]locale$/, /fr/),
     new IgnorePlugin(/node-fetch/),
     new CommonsChunkPlugin({
       name: 'vendor',
@@ -80,11 +93,24 @@ module.exports = (env = {}) => ({
       template: 'index.html',
       favicon: 'favicon.ico',
     }),
+    new WebpackPwaManifest({
+      name: 'CraCra',
+      short_name: 'CraCra',
+      description: 'Application de gestion des CRA/Congés.',
+      background_color: '#2196f3',
+      theme_color: '#2196f3',
+      icons: [
+        {
+          src: path.resolve('src/app/assets/images/logo-lv-no-baseline.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+        },
+      ],
+    }),
     new OfflinePlugin({
       autoUpdate: true,
       ServiceWorker: {
         events: true,
-        entry: './assets/scripts/offline.js',
+        entry: './modules/serviceWorker/sw.js',
       },
     }),
     new DefinePlugin({

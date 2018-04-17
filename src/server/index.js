@@ -31,18 +31,18 @@ const manifest = {
       },
     },
     {
-      plugin: {
-        register: './plugins/monitoring.plugin',
-        options: config.monitoring,
-      },
-    },
-    {
       plugin: 'inert',
     },
     {
       plugin: {
         register: './plugins/mail/mail.plugin',
         options: config.mailjet,
+      },
+    },
+    {
+      plugin: {
+        register: './plugins/monitoring.plugin',
+        options: config.monitoring,
       },
     },
   ],

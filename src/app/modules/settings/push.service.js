@@ -1,8 +1,6 @@
 import { featureFlipping, push } from '../../config'
 import { desktopNotificationsInstalled } from './settings.actions'
 
-import pushScriptUrl from '../../assets/scripts/push'
-
 let pushWorker
 
 function urlB64ToUint8Array(base64String) {
@@ -14,27 +12,25 @@ function urlB64ToUint8Array(base64String) {
   const rawData = window.atob(base64)
   const outputArray = new Uint8Array(rawData.length)
 
-  for (let i = 0; i < rawData.length; ++i) {
+  for (let i = 0; i < rawData.length; i += 1) {
     outputArray[i] = rawData.charCodeAt(i)
   }
   return outputArray
 }
 
-export const installPushNotifications = (store) => {
+export const installPushNotifications = async (store) => {
   if (!navigator.serviceWorker || !featureFlipping.pushNotifications) {
     return
   }
 
-  navigator.serviceWorker.register(pushScriptUrl)
-    .then((swReg) => {
-      pushWorker = swReg
-      return pushWorker.pushManager.getSubscription()
-    })
-    .then((subscription) => {
-      const isSubscribed = !(subscription === null)
-      store.dispatch(desktopNotificationsInstalled(isSubscribed))
-    })
-    .catch(e => console.error(e))
+  try {
+    pushWorker = await navigator.serviceWorker.getRegistration('/')
+    const subscription = await pushWorker.pushManager.getSubscription()
+    const isSubscribed = !(subscription === null)
+    store.dispatch(desktopNotificationsInstalled(isSubscribed))
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 export const enableDesktopNotifications = () => {

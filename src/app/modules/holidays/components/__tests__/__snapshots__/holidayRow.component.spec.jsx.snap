@@ -61,12 +61,12 @@ exports[`PeriodsList should render properly 1`] = `
       key="conventionalHolidays"
       numeric={true}
     />
-    <WithStyles(TableCell)>
-      <HolidayRequestStatusIcon
-        status="pending"
-      />
-    </WithStyles(TableCell)>
   </Hidden>
+  <WithStyles(TableCell)>
+    <HolidayRequestStatusIcon
+      status="pending"
+    />
+  </WithStyles(TableCell)>
 </WithStyles(TableRow)>
 `;
 
@@ -131,12 +131,12 @@ exports[`PeriodsList should render with menu when click menu button 1`] = `
       key="conventionalHolidays"
       numeric={true}
     />
-    <WithStyles(TableCell)>
-      <HolidayRequestStatusIcon
-        status="pending"
-      />
-    </WithStyles(TableCell)>
   </Hidden>
+  <WithStyles(TableCell)>
+    <HolidayRequestStatusIcon
+      status="pending"
+    />
+  </WithStyles(TableCell)>
 </WithStyles(TableRow)>
 `;
 
@@ -210,12 +210,12 @@ ShallowWrapper {
           <WithStyles(TableCell)
             numeric={true}
           />
-          <WithStyles(TableCell)>
-            <HolidayRequestStatusIcon
-              status="validated"
-            />
-          </WithStyles(TableCell)>
         </Hidden>,
+        <WithStyles(TableCell)>
+          <HolidayRequestStatusIcon
+            status="validated"
+          />
+        </WithStyles(TableCell)>,
       ],
       "className": undefined,
       "hover": true,
@@ -259,22 +259,15 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "children": Array [
-            Array [
-              <WithStyles(TableCell)
-                numeric={true}
-              />,
-              <WithStyles(TableCell)
-                numeric={true}
-              />,
-              <WithStyles(TableCell)
-                numeric={true}
-              />,
-            ],
-            <WithStyles(TableCell)>
-              <HolidayRequestStatusIcon
-                status="validated"
-              />
-            </WithStyles(TableCell)>,
+            <WithStyles(TableCell)
+              numeric={true}
+            />,
+            <WithStyles(TableCell)
+              numeric={true}
+            />,
+            <WithStyles(TableCell)
+              numeric={true}
+            />,
           ],
           "implementation": "js",
           "lgDown": false,
@@ -326,30 +319,30 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": <HolidayRequestStatusIcon
-                status="validated"
-              />,
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "status": "validated",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [MockFunction],
-            },
-            "type": [Function],
-          },
         ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <HolidayRequestStatusIcon
+            status="validated"
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "status": "validated",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [MockFunction],
+        },
         "type": [Function],
       },
     ],
@@ -394,12 +387,12 @@ ShallowWrapper {
             <WithStyles(TableCell)
               numeric={true}
             />
-            <WithStyles(TableCell)>
-              <HolidayRequestStatusIcon
-                status="validated"
-              />
-            </WithStyles(TableCell)>
           </Hidden>,
+          <WithStyles(TableCell)>
+            <HolidayRequestStatusIcon
+              status="validated"
+            />
+          </WithStyles(TableCell)>,
         ],
         "className": undefined,
         "hover": true,
@@ -443,22 +436,15 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "children": Array [
-              Array [
-                <WithStyles(TableCell)
-                  numeric={true}
-                />,
-                <WithStyles(TableCell)
-                  numeric={true}
-                />,
-                <WithStyles(TableCell)
-                  numeric={true}
-                />,
-              ],
-              <WithStyles(TableCell)>
-                <HolidayRequestStatusIcon
-                  status="validated"
-                />
-              </WithStyles(TableCell)>,
+              <WithStyles(TableCell)
+                numeric={true}
+              />,
+              <WithStyles(TableCell)
+                numeric={true}
+              />,
+              <WithStyles(TableCell)
+                numeric={true}
+              />,
             ],
             "implementation": "js",
             "lgDown": false,
@@ -510,30 +496,30 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": <HolidayRequestStatusIcon
-                  status="validated"
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "status": "validated",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [MockFunction],
-              },
-              "type": [Function],
-            },
           ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <HolidayRequestStatusIcon
+              status="validated"
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "status": "validated",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [MockFunction],
+          },
           "type": [Function],
         },
       ],

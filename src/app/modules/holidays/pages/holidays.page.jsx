@@ -13,6 +13,7 @@ import {
   TableRow,
   Toolbar,
   Typography,
+  Hidden,
   withStyles,
 } from 'material-ui'
 import qs from 'qs'
@@ -93,9 +94,11 @@ export class HolidaysPage extends React.Component {
             <TableRow>
               <TableCell>Partner</TableCell>
               <TableCell>Date de la demande</TableCell>
-              {Array.from(holidayLabels.entries()).map(([key, value]) => (
-                <TableCell numeric key={key}>{value}</TableCell>
-              ))}
+              <Hidden mdDown>
+                {Array.from(holidayLabels.entries()).map(([key, value]) => (
+                  <TableCell numeric key={key}>{value}</TableCell>
+                ))}
+              </Hidden>
               <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
