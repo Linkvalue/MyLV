@@ -32,6 +32,7 @@ module.exports = {
   },
   front: {
     featureFlipping: {
+      holidays: true,
       offlineMode: true,
       pushNotifications: true,
     },
