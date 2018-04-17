@@ -24,6 +24,8 @@ build_staging:
     - master
   except:
     - tags
+  tags:
+    - node
 
 build_production:
   stage: build
@@ -38,6 +40,8 @@ build_production:
       - dist/
   only:
     - tags
+  tags:
+    - node
 
 unit_tests:
   stage: test
