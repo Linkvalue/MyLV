@@ -7,6 +7,7 @@ import { Button, Card, CardActions, CardContent, Grid, Typography, withStyles } 
 
 import SelectField from '../../../components/inputs/selectField.component'
 import * as worklogActions from '../worklog-actions'
+import { labels } from '../../../../shared/calendar.constants'
 
 const validate = ({ label }) => ({
   label: !label ? 'Obligatoire' : null,
@@ -48,7 +49,6 @@ const styles = theme => ({
 })
 
 const EntriesForm = ({
-  labels,
   fillMorning,
   fillAfternoon,
   fillDay,
@@ -115,7 +115,7 @@ const HookedEntriesForm = reduxForm({
   form: 'entriesForm',
   validate,
   initialValues: {
-    label: 'Production',
+    label: 'production',
   },
 })(EntriesForm)
 

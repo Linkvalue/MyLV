@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const moment = require('moment')
-const { holidayLabels } = require('../../../shared/calendar-constants')
+const { holidayLabels } = require('../../../shared/calendar.constants')
 
 module.exports = {
   method: 'POST',

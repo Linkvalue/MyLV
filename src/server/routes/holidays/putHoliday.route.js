@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const { holidayLabels } = require('../../../shared/calendar-constants')
+const { holidayLabels } = require('../../../shared/calendar.constants')
 
 module.exports = {
   method: 'PUT',

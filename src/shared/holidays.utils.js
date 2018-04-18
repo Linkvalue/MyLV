@@ -1,21 +1,21 @@
-import moment from 'moment'
+const moment = require('moment')
 
-import { publicHolidays } from '../../../shared/calendar-constants'
+const { publicHolidays } = require('./calendar.constants')
 
-export const formatPeriod = ({
+const formatPeriod = ({
   _id,
   startOnPM,
   endOnPM,
   ...period
 }) => ({
   ...period,
-  startDate: startOnPM ? moment(period.startDate).hour(11).toISOString() : moment(period.startDate).toISOString(),
-  endDate: endOnPM ? moment(period.endDate).hour(23).toISOString() : moment(period.endDate).hour(11).toISOString(),
+  startDate: startOnPM ? moment(period.startDate).hour(12).toISOString() : moment(period.startDate).toISOString(),
+  endDate: endOnPM ? moment(period.endDate).hour(23).toISOString() : moment(period.endDate).hour(12).toISOString(),
 })
 
 const millisecondsInDay = 1000 * 60 * 60 * 24
 
-export const getPeriodDayCount = (period) => {
+const getPeriodDayCount = (period) => {
   const startDate = moment(period.startDate)
   const endDate = moment(period.endDate)
   let days = Math.round((endDate.diff(startDate) / millisecondsInDay) * 2) / 2
@@ -33,7 +33,11 @@ export const getPeriodDayCount = (period) => {
   return days
 }
 
-export const getDaysForLabel = (periods, key, shouldFormat = true) => periods
+const getDaysForLabel = (periods, key, shouldFormat = true) => periods
   .filter(period => period.label === key)
   .map(shouldFormat ? formatPeriod : period => period)
   .reduce((sum, period) => sum + getPeriodDayCount(period), 0)
+
+exports.formatPeriod = formatPeriod
+exports.getPeriodDayCount = getPeriodDayCount
+exports.getDaysForLabel = getDaysForLabel

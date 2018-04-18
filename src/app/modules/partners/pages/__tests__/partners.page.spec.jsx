@@ -21,7 +21,7 @@ describe('PartnersPage', () => {
         firstName: 'hello',
         lastName: 'world',
         entryCounts: {
-          foo: 9,
+          production: 9,
         },
         lunchesCount: 10,
         mealVouchers: 21,
@@ -30,17 +30,14 @@ describe('PartnersPage', () => {
         firstName: 'foo',
         lastName: 'bar',
         entryCounts: {
-          foo: 10,
+          paidHolidays: 10,
+          unpaidHolidays: 42,
         },
         isWorklogComplete: true,
         lunchesCount: 42,
         mealVouchers: 19,
       }],
       isLoading: false,
-      labels: {
-        foo: 'bar',
-        baz: 'qux',
-      },
       classes: {
         incompleteWorklog: 'incompleteWorklog',
       },

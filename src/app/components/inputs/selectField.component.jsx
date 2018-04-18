@@ -8,7 +8,7 @@ const WrappedSelectField = field => (
       inputProps={field.input}
       error={!!field.meta.error}
     >
-      {Object.keys(field.options).map(value => <MenuItem key={value} value={value}>{value}</MenuItem>)}
+      {Array.from(field.options.entries()).map(([key, value]) => <MenuItem key={key} value={key}>{value}</MenuItem>)}
     </Select>
   </FormControl>
 )

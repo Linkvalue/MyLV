@@ -25,3 +25,12 @@ exports.labels = new Map(Object.entries({
   conferences: 'Conférences',
   sickness: 'Arrêt Maladie',
 }))
+
+exports.labelColors = new Map(Object.entries({
+  production: '#ff9999',
+  contribution: '#99ff99',
+  conferences: '#ffcc99',
+  paidHolidays: '#9999ff',
+  unpaidHolidays: '#ff99ff',
+  conventionalHolidays: '#99ffff',
+}))

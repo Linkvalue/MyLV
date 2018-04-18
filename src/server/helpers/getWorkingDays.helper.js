@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-const { publicHolidays } = require('../../shared/calendar-constants')
+const { publicHolidays } = require('../../shared/calendar.constants')
 
 module.exports = function getWorkingDays(date) {
   let days = 0

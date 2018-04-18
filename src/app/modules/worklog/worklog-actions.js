@@ -7,7 +7,6 @@ export const WORKLOG_FILL_WEEK = 'WORKLOG_FILL_WEEK'
 export const WORKLOG_FILL_MONTH = 'WORKLOG_FILL_MONTH'
 export const WORKLOG_FILL_RANGE = 'WORKLOG_FILL_RANGE'
 export const WORKLOG_EMPTY_DAY = 'WORKLOG_EMPTY_DAY'
-export const WORKLOG_ADD_LABEL = 'WORKLOG_ADD_LABEL'
 export const WORKLOG_SAVE_SUCCESS = 'WORKLOG_SAVE_SUCCESS'
 export const WORKLOG_GET_START = 'WORKLOG_GET_START'
 export const WORKLOG_GET_SUCCESS = 'WORKLOG_GET_SUCCESS'
@@ -64,11 +63,6 @@ export const fillRange = (start, end, label) => saveWorklog({
 export const emptyDay = day => saveWorklog({
   type: WORKLOG_EMPTY_DAY,
   payload: { day },
-})
-
-export const addLabel = (label, color) => ({
-  type: WORKLOG_ADD_LABEL,
-  payload: { label, color },
 })
 
 export const getWorklog = (year, month) => (dispatch) => {

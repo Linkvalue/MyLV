@@ -21,7 +21,7 @@ import qs from 'qs'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchHolidays } from '../holidays.actions'
 import StyledHolidayRow from '../components/holidayRow.component'
-import { holidayLabels } from '../../../../shared/calendar-constants'
+import { holidayLabels } from '../../../../shared/calendar.constants'
 import { getPartnersHolidays } from '../holidays.selectors'
 
 const mapStateToProps = state => ({

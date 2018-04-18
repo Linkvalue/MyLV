@@ -12,6 +12,7 @@ import qs from 'qs'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchPartners, notifyAllPartners } from '../partners.actions'
 import { getPartnersList } from '../partners.selectors'
+import { labels } from '../../../../shared/calendar.constants'
 
 const mapStateToProps = state => ({
   partners: getPartnersList(state),
@@ -82,7 +83,6 @@ export class PartnersPage extends Component {
     const {
       partners,
       isLoading,
-      labels,
       classes,
       pageCount,
       limit,
@@ -106,7 +106,7 @@ export class PartnersPage extends Component {
             <TableHead>
               <TableRow>
                 <TableCell className={classes.fullNameCell}>Nom</TableCell>
-                {Object.keys(labels).map(label => (
+                {Array.from(labels.values()).map(label => (
                   <TableCell numeric key={label} className={classes.entryCountCell}>{label}</TableCell>
                 ))}
                 <TableCell numeric>Déjeuners</TableCell>
@@ -123,9 +123,9 @@ export class PartnersPage extends Component {
                   <TableCell>
                     {partner.firstName} {partner.lastName}
                   </TableCell>
-                  {Object.keys(labels).map(label => (
-                    <TableCell numeric key={label} className={classes.entryCountCell}>
-                      {(partner.entryCounts && partner.entryCounts[label]) || 0}
+                  {Array.from(labels.keys()).map(key => (
+                    <TableCell numeric key={key} className={classes.entryCountCell}>
+                      {(partner.entryCounts && partner.entryCounts[key]) || 0}
                     </TableCell>
                   ))}
                   <TableCell numeric>{partner.lunchesCount}</TableCell>
@@ -165,13 +165,12 @@ PartnersPage.propTypes = {
   partners: PropTypes.arrayOf(PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    lunchesCount: PropTypes.number.isRequired,
-    mealVouchers: PropTypes.number.isRequired,
-    entryCounts: PropTypes.object.isRequired,
+    lunchesCount: PropTypes.number,
+    mealVouchers: PropTypes.number,
+    entryCounts: PropTypes.object,
     isWorklogComplete: PropTypes.bool,
   })).isRequired,
   isLoading: PropTypes.bool.isRequired,
-  labels: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   pageCount: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,

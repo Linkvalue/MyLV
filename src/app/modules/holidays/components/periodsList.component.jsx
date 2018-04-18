@@ -9,7 +9,7 @@ import { Delete } from 'material-ui-icons'
 import moment from 'moment'
 
 import DateField from '../../../components/inputs/dateField.component'
-import { holidayLabels } from '../../../../shared/calendar-constants'
+import { holidayLabels } from '../../../../shared/calendar.constants'
 
 const styles = theme => ({
   periodsList: {
