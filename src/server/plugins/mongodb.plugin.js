@@ -41,21 +41,22 @@ function mongodbReply(value, omit = []) {
   return this.response(mongodbSerializer(value, omit))
 }
 
-exports.register = (server, {
+exports.register = async (server, {
   uri, username, password, host, port, database, config,
 }, next) => {
   server.decorate('reply', 'mongodb', mongodbReply)
 
   const userPart = username ? `${username}:${password}@` : ''
-  mongoose.connect(uri || `mongodb://${userPart}${host}:${port}/${database}`, config)
-    .then(() => {
-      server.on('stop', () => mongoose.disconnect())
-      server.expose('mongoose', mongoose)
-      const gridfs = Grid(mongoose.connection.db, mongoose.mongo)
-      server.expose('gridfs', gridfs)
-      next()
-    })
-    .catch(next)
+  try {
+    await mongoose.connect(uri || `mongodb://${userPart}${host}:${port}/${database}`, config)
+    server.on('stop', () => mongoose.disconnect())
+    server.expose('mongoose', mongoose)
+    const gridfs = Grid(mongoose.connection.db, mongoose.mongo)
+    server.expose('gridfs', gridfs)
+    next()
+  } catch (e) {
+    next(e)
+  }
 }
 
 exports.register.attributes = {

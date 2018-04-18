@@ -21,16 +21,46 @@ exports[`PartnersPage should render partners list 1`] = `
             Nom
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="foo"
+            key="Production"
             numeric={true}
           >
-            foo
+            Production
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="baz"
+            key="Congés payés"
             numeric={true}
           >
-            baz
+            Congés payés
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Congés sans solde"
+            numeric={true}
+          >
+            Congés sans solde
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Absences Syntec"
+            numeric={true}
+          >
+            Absences Syntec
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Contributions"
+            numeric={true}
+          >
+            Contributions
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Conférences"
+            numeric={true}
+          >
+            Conférences
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Arrêt Maladie"
+            numeric={true}
+          >
+            Arrêt Maladie
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
             numeric={true}
@@ -60,13 +90,43 @@ exports[`PartnersPage should render partners list 1`] = `
             world
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="foo"
+            key="production"
             numeric={true}
           >
             9
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="baz"
+            key="paidHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="contributions"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conferences"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="sickness"
             numeric={true}
           >
             0
@@ -92,13 +152,43 @@ exports[`PartnersPage should render partners list 1`] = `
             bar
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="foo"
+            key="production"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="paidHolidays"
             numeric={true}
           >
             10
           </WithStyles(TableCell)>
           <WithStyles(TableCell)
-            key="baz"
+            key="unpaidHolidays"
+            numeric={true}
+          >
+            42
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="contributions"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conferences"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="sickness"
             numeric={true}
           >
             0

@@ -20,8 +20,9 @@ export const fetchHolidays = (params = { page: 1 }) => async (dispatch) => {
         results: data.results.map(({ user, ...holiday }) => ({ ...holiday, user: user.id })),
       },
     })
-    const partners = Array.from(new Set(data.results.map(holiday => holiday.user)).values())
-    dispatch(fetchPartnersSuccess({ results: partners }))
+    const partners = new Map()
+    data.results.forEach(({ user }) => partners.set(user.id, user))
+    dispatch(fetchPartnersSuccess({ results: Array.from(partners.values()), pageCount: 1 }))
   } catch (e) {
     dispatch({ type: HOLIDAYS_FETCH_ERROR, payload: e })
   }

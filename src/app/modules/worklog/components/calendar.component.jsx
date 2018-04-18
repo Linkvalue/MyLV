@@ -13,7 +13,7 @@ import CalendarDay from './calendarDay.component'
 import * as calendarActions from '../calendar-actions'
 import * as worklogActions from '../worklog-actions'
 import { calendarDaysSelector, calendarLabelsSelector } from '../calendar-selectors'
-import { publicHolidays } from '../../../../shared/calendar-constants'
+import { publicHolidays, labels, labelColors } from '../../../../shared/calendar.constants'
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
@@ -102,7 +102,6 @@ class Calendar extends Component {
 
   render() {
     const {
-      labels,
       entries,
       pending,
       year,
@@ -177,8 +176,8 @@ class Calendar extends Component {
           <CardContent classes={{ root: classes.calendarFooter }}>
             {labelsInLegend.map(label => (
               <span key={label}>
-                <i className={classes.legendColor} style={{ backgroundColor: labels[label] }} />
-                {label}
+                <i className={classes.legendColor} style={{ backgroundColor: labelColors.get(label) }} />
+                {labels.get(label)}
               </span>
             ))}
           </CardContent>
@@ -195,7 +194,6 @@ Calendar.defaultProps = {
 
 Calendar.propTypes = {
   getWorklog: PropTypes.func.isRequired,
-  labels: PropTypes.object.isRequired,
   entries: PropTypes.object,
   pending: PropTypes.object.isRequired,
   year: PropTypes.string.isRequired,

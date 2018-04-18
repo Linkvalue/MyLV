@@ -8,8 +8,8 @@ import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from 'materia
 
 import TextField from '../../../components/inputs/textField.component'
 import ConnectedPeriodsList from '../components/periodsList.component'
-import { holidayLabels } from '../../../../shared/calendar-constants'
-import { formatPeriod, getDaysForLabel } from '../holidays.utils'
+import { holidayLabels } from '../../../../shared/calendar.constants'
+import { formatPeriod, getDaysForLabel } from '../../../../shared/holidays.utils'
 
 const selector = formValueSelector('holidaysForm')
 const mapStateToProps = state => ({

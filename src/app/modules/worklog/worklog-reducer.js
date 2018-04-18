@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { REHYDRATE } from 'redux-persist/constants'
 
-import { publicHolidays } from '../../../shared/calendar-constants'
+import { publicHolidays } from '../../../shared/calendar.constants'
 import {
   WORKLOG_FILL_MORNING,
   WORKLOG_FILL_AFTERNOON,
@@ -9,7 +9,6 @@ import {
   WORKLOG_FILL_WEEK,
   WORKLOG_FILL_MONTH,
   WORKLOG_EMPTY_DAY,
-  WORKLOG_ADD_LABEL,
   WORKLOG_SAVE_SUCCESS,
   WORKLOG_GET_START,
   WORKLOG_GET_SUCCESS,
@@ -21,15 +20,6 @@ const initialState = {
   error: false,
   entries: {},
   pending: {},
-  labels: {
-    Production: '#ff9999',
-    Contribution: '#99ff99',
-    Conferences: '#ffcc99',
-    'Conges payes': '#9999ff',
-    'Conges sans solde': '#ff99ff',
-    Maladie: '#ffff99',
-    'Absences Syntec': '#99ffff',
-  },
 }
 
 const setEntry = (state, date, label) => ({
@@ -78,14 +68,6 @@ export default function (state = initialState, { type, payload }) {
         .reduce((s, v) => setDay(s, `${payload.month}-${`0${v}`.slice(-2)}`, payload.label), state)
     case WORKLOG_EMPTY_DAY:
       return setDay(state, payload.day)
-    case WORKLOG_ADD_LABEL:
-      return {
-        ...state,
-        labels: {
-          ...state.labels,
-          [payload.label]: payload.color,
-        },
-      }
     case WORKLOG_GET_START:
       return {
         ...state,

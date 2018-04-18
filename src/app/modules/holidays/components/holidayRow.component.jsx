@@ -5,8 +5,8 @@ import { MoreVert } from 'material-ui-icons'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-import { holidayLabels } from '../../../../shared/calendar-constants'
-import { getDaysForLabel } from '../holidays.utils'
+import { holidayLabels } from '../../../../shared/calendar.constants'
+import { getDaysForLabel } from '../../../../shared/holidays.utils'
 import HolidayRequestStatusIcon from './holidayRequestStatusIcon.component'
 
 const styles = theme => ({

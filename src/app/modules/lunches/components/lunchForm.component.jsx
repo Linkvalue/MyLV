@@ -78,7 +78,7 @@ const HookedLunchForm = reduxForm({
   validate,
   onSubmit: (formData, dispatch, { onFormSubmit }) =>
     onFormSubmit({ ...formData, date: moment(formData.date, 'YYYY-MM-DD').toISOString() })
-      .then(() => dispatch(push('/lunches'))),
+      .then(() => dispatch(push('/lunches/me'))),
 })(LunchForm)
 
 export default withStyles(styles)(HookedLunchForm)

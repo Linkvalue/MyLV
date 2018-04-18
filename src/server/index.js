@@ -45,12 +45,24 @@ const manifest = {
         options: config.monitoring,
       },
     },
+    {
+      plugin: './plugins/worklog.plugin',
+    },
   ],
   connections: [{
     host: config.host.hostname,
     port: config.host.port,
   }],
 }
+
+const shittyLabels = new Map(Object.entries({
+  Production: 'production',
+  Contribution: 'contribution',
+  Conferences: 'conferences',
+  'Conges payes': 'paidHolidays',
+  'Conges sans solde': 'unpaidHolidays',
+  'Absences Syntec': 'conventionalHolidays',
+}))
 
 function createServer() {
   return Glue.compose(manifest, {
@@ -128,6 +140,10 @@ if (require.main === module) {
         Profile,
         Holiday,
       }
+
+      // TODO: Remove this after next production push
+      Array.from(shittyLabels.entries()).forEach(([shitty, clean]) =>
+        Entry.updateMany({ label: shitty }, { $set: { label: clean } }).exec())
 
       // Handle uncaught promise rejections
       process.on('unhandledRejection', (reason) => {

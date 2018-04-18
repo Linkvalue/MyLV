@@ -24,7 +24,7 @@ export const HolidayRequestEditPage = ({ putHoliday, holidayRequest }) => (
       periods: holidayRequest.periods.map(period => ({
         ...period,
         startDate: moment(period.startDate).format('YYYY-MM-DD'),
-        startOnPM: moment(period.startDate).hours() === 11,
+        startOnPM: moment(period.startDate).hours() >= 12,
         endDate: moment(period.endDate).format('YYYY-MM-DD'),
         endOnPM: moment(period.endDate).hours() === 23,
       })),

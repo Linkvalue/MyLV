@@ -2,23 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon, Tooltip } from 'material-ui'
 import { Check, Clear, HourglassEmpty } from 'material-ui-icons'
+import {
+  HOLIDAY_REQUEST_REJECTED,
+  HOLIDAY_REQUEST_APPROVED,
+  HOLIDAY_REQUEST_PENDING,
+} from '../../../../shared/holiday.constants'
 
 const statusIcons = {
-  pending: <HourglassEmpty />,
-  approved: <Check />,
-  rejected: <Clear />,
+  [HOLIDAY_REQUEST_PENDING]: <HourglassEmpty />,
+  [HOLIDAY_REQUEST_APPROVED]: <Check />,
+  [HOLIDAY_REQUEST_REJECTED]: <Clear />,
 }
 
 const tooltipTexts = {
-  pending: 'En attente de validation',
-  approved: 'Demande acceptée',
-  rejected: 'Demande refusée',
+  [HOLIDAY_REQUEST_PENDING]: 'En attente de validation',
+  [HOLIDAY_REQUEST_APPROVED]: 'Demande acceptée',
+  [HOLIDAY_REQUEST_REJECTED]: 'Demande refusée',
 }
 
 const iconColors = {
-  pending: 'inherit',
-  approved: 'primary',
-  rejected: 'error',
+  [HOLIDAY_REQUEST_PENDING]: 'inherit',
+  [HOLIDAY_REQUEST_APPROVED]: 'primary',
+  [HOLIDAY_REQUEST_REJECTED]: 'error',
 }
 
 const HolidayRequestStatusIcon = ({ status }) => (
@@ -30,7 +35,7 @@ const HolidayRequestStatusIcon = ({ status }) => (
 )
 
 HolidayRequestStatusIcon.defaultProps = {
-  status: 'pending',
+  status: HOLIDAY_REQUEST_PENDING,
 }
 
 HolidayRequestStatusIcon.propTypes = {

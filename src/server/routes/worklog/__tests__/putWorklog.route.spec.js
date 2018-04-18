@@ -14,12 +14,9 @@ describe('PUT /api/worklog', () => {
   let reply
   beforeEach(() => {
     const server = {
-      app: {
-        models: {
-          Entry: {
-            create: jest.fn(() => Promise.resolve()),
-            deleteMany: jest.fn(() => Promise.resolve()),
-          },
+      plugins: {
+        worklog: {
+          saveEntries: jest.fn(() => Promise.resolve()),
         },
       },
     }
@@ -84,7 +81,7 @@ describe('PUT /api/worklog', () => {
     await putWorklog.handler(request, reply)
 
     // Then
-    expect(request.server.app.models.Entry.create).toHaveBeenCalledWith([{ ...request.payload[0], userId: 'hello' }])
+    expect(request.server.plugins.worklog.saveEntries).toHaveBeenCalledWith([{ ...request.payload[0] }], 'hello')
     expect(reply).toHaveBeenCalledWith({ success: true })
   })
 })

@@ -37,19 +37,7 @@ module.exports = {
       return res(Boom.badRequest('One or more entries have specified a client without a manager'))
     }
 
-    const entriesToAdd = req.payload
-      .map(entry => Object.assign(entry, { userId: req.auth.credentials.id }))
-      .filter(entry => !!entry.label)
-
-    return req.server.app.models.Entry.deleteMany({
-      userId: req.auth.credentials.id,
-      date: { $in: req.payload.map(entry => entry.date) },
-    })
-      .then(() => {
-        if (entriesToAdd.length > 0) {
-          return req.server.app.models.Entry.create(entriesToAdd)
-        }
-      })
+    return req.server.plugins.worklog.saveEntries(req.payload, req.auth.credentials.id)
       .then(() => res({ success: true }))
       .catch(err => res(Boom.wrap(err)))
   },

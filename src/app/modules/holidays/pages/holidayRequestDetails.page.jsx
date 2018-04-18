@@ -13,9 +13,10 @@ import NotFound from '../../../components/notFound.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import Restricted from '../../../components/restricted.component'
 import { changeHolidayRequestStatus, fetchHolidayRequestDetails } from '../holidays.actions'
-import { getPeriodDayCount } from '../holidays.utils'
-import { holidayLabels } from '../../../../shared/calendar-constants'
+import { getPeriodDayCount } from '../../../../shared/holidays.utils'
+import { holidayLabels } from '../../../../shared/calendar.constants'
 import HolidayRequestStatusIcon from '../components/holidayRequestStatusIcon.component'
+import { HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED } from '../../../../shared/holiday.constants'
 
 const mapStateToProps = (state, { match }) => {
   const holidayRequest = state.holidays.holidaysById[match.params.id]
@@ -57,9 +58,11 @@ export class HolidayRequestDetails extends React.Component {
     this.props.fetchHolidayRequestDetails(this.props.match.params.id)
   }
 
-  handleRequestApprove = () => this.props.changeHolidayRequestStatus(this.props.match.params.id, 'approved')
+  handleRequestApprove = () =>
+    this.props.changeHolidayRequestStatus(this.props.match.params.id, HOLIDAY_REQUEST_APPROVED)
 
-  handleRequestReject = () => this.props.changeHolidayRequestStatus(this.props.match.params.id, 'rejected')
+  handleRequestReject = () =>
+    this.props.changeHolidayRequestStatus(this.props.match.params.id, HOLIDAY_REQUEST_REJECTED)
 
   render() {
     const {

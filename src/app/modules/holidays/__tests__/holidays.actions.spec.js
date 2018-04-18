@@ -102,7 +102,7 @@ describe('holidays.actions', () => {
       expect(store.getActions()).toEqual([
         { type: HOLIDAYS_FETCH_START, payload: { page: 2, limit: 30 } },
         { type: HOLIDAYS_FETCH_SUCCESS, payload: { results: [{ user: 'yolo' }] } },
-        { type: PARTNERS_FETCH_SUCCESS, payload: { results: [{ id: 'yolo' }] } },
+        { type: PARTNERS_FETCH_SUCCESS, payload: { results: [{ id: 'yolo' }], pageCount: 1 } },
       ])
     })
 
