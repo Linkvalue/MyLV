@@ -41,6 +41,12 @@ const manifest = {
     },
     {
       plugin: {
+        register: './plugins/cron.plugin',
+        options: config.cron,
+      },
+    },
+    {
+      plugin: {
         register: './plugins/monitoring.plugin',
         options: config.monitoring,
       },

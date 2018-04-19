@@ -61,4 +61,7 @@ module.exports = {
     apiToken: process.env.MAILJET_API_TOKEN,
     webAppUrl: 'http://localhost:3000',
   },
+  cron: {
+    notifyIncompleteWorklog: '00 00 10 20-30 * 1-5',
+  },
 }
