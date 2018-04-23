@@ -1,14 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Card, CardActions, CardContent, Grid, Typography, withStyles } from 'material-ui'
 import { Field, reduxForm } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import { Info } from 'material-ui-icons'
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
+  withStyles,
+  Paper,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from 'material-ui'
 
 import DateField from '../../../components/inputs/dateField.component'
 import { postTransportProof, setExpirationDateToCurrentMonth } from '../transport.actions'
 import FileField from '../../../components/inputs/fileField.component'
+
+const mapStateToProps = state => ({
+  proofExpirationDate: state.transport.expirationDate,
+})
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   setExpirationDateToCurrentMonth,
@@ -21,7 +39,7 @@ const validate = ({ file, expirationDate, startingDate }) => ({
   file: !file ? 'Obligatoire' : null,
 })
 
-const styles = () => ({
+const styles = theme => ({
   uploadButtonWrapper: {
     display: 'flex',
     justifyContent: 'center',
@@ -31,12 +49,36 @@ const styles = () => ({
   uploadInput: {
     display: 'none',
   },
+  infoCard: {
+    marginBottom: theme.spacing.unit * 3,
+  },
 })
 
 export const TransportProofPage = ({
-  classes, valid, handleSubmit, ...actions
+  classes,
+  valid,
+  handleSubmit,
+  proofExpirationDate,
+  ...actions
 }) => (
   <form onSubmit={handleSubmit}>
+    {proofExpirationDate ? (
+      <Paper className={classes.infoCard}>
+        <List>
+          <ListItem>
+            <ListItemIcon><Info /></ListItemIcon>
+            <ListItemText
+              primary={(
+                <span>
+                  Vous possédez déjà un titre de transport valide jusqu'au&nbsp;
+                  <b>{moment(proofExpirationDate).format('DD/MM/YYYY')}</b>
+                </span>
+              )}
+            />
+          </ListItem>
+        </List>
+      </Paper>
+    ) : null}
     <Card>
       <CardContent>
         <Grid container>
@@ -91,11 +133,16 @@ export const TransportProofPage = ({
   </form>
 )
 
+TransportProofPage.defaultProps = {
+  proofExpirationDate: 0,
+}
+
 TransportProofPage.propTypes = {
   classes: PropTypes.object.isRequired,
   valid: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   setExpirationDateToCurrentMonth: PropTypes.func.isRequired,
+  proofExpirationDate: PropTypes.number,
 }
 
 const HookedTransportProofPage = reduxForm({
@@ -109,11 +156,11 @@ const HookedTransportProofPage = reduxForm({
     const multipartFormData = new window.FormData()
 
     multipartFormData.append('file', file[0])
-    multipartFormData.append('startingDate', moment(startingDate, 'DD/MM/YYYY').toISOString())
-    multipartFormData.append('expirationDate', moment(expirationDate, 'DD/MM/YYYY').toISOString())
+    multipartFormData.append('startingDate', moment(startingDate).toISOString())
+    multipartFormData.append('expirationDate', moment(expirationDate).toISOString())
 
     postTransportProof(multipartFormData)
   },
 })(withStyles(styles)(TransportProofPage))
 
-export default connect(undefined, mapDispatchToProps)(HookedTransportProofPage)
+export default connect(mapStateToProps, mapDispatchToProps)(HookedTransportProofPage)
