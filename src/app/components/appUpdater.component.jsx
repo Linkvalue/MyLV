@@ -32,7 +32,7 @@ class AppUpdater extends React.Component {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         open={this.state.isDisplayed}
-        message="Mise à jour disponnible"
+        message="Mise à jour disponible"
         action={<Button color="primary" size="small" onClick={this.handleReloadClick}>Recharger</Button>}
       />
     )

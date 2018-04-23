@@ -27,7 +27,7 @@ export const PushSnack = ({
   <Snackbar
     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
     open={shouldDisplayPushNotificationSnack && isConnected}
-    message="Les notifications push sont maintenant disponnibles ! Elles permettent de te rappeller
+    message="Les notifications push sont maintenant disponibles ! Elles permettent de te rappeller
               automatiquement quand tu dois remplir ton CRA. Tu peux les activer/désactiver depuis les paramètres de ton
               compte en haut à droite"
     action={[

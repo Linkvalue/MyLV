@@ -4,6 +4,7 @@ import { shallowToJson } from 'enzyme-to-json'
 
 import { App } from '../app.container'
 
+jest.mock('offline-plugin/runtime', () => ({}))
 jest.unmock('../app.container')
 
 describe('App', () => {
