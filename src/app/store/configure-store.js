@@ -20,7 +20,7 @@ export function configureStore() {
   const composeEnhancers = (isProd && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
   const store = composeEnhancers(...storeEnhancers)(createStore)(rootReducer)
   persistStore(store, {
-    blacklist: ['calendar', 'routing', 'form', 'display'],
+    blacklist: ['calendar', 'routing', 'form', 'display', 'transport'],
   }, () => {
     const state = store.getState()
     store.dispatch(initialize('clientForm', state.client))

@@ -111,6 +111,7 @@ if (require.main === module) {
       })
 
       server.auth.strategy('bearer', 'bearer-access-token', {
+        allowQueryToken: true,
         validateFunc(token, callback) {
           lvConnect
             .setAccessToken(token)

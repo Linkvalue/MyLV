@@ -1,21 +1,24 @@
+const moment = require('moment')
 const Joi = require('joi')
 const Archiver = require('archiver')
 const { promisify } = require('util')
+const config = require('config')
 
-const formatDate = require('../../helpers/formatDate.helper')
+const hasRole = require('../../helpers/hasRole.pre')
 
 module.exports = {
   method: 'GET',
-  path: '/api/proofOfTransportsZip',
+  path: '/api/proofOfTransport/download',
   config: {
     validate: {
       query: {
-        date: Joi.date().required(),
+        date: Joi.date(),
       },
     },
+    pre: [hasRole(config.cracra.partnersRoles)],
   },
   async handler(req, res) {
-    const { date } = req.query
+    const { date = moment().format('YYYY-MM-DD') } = req.query
     const { gridfs } = req.server.plugins.mongodb
     const gridFindOne = promisify(gridfs.findOne.bind(gridfs))
     const { ProofOfTransport } = req.server.app.models
@@ -27,7 +30,7 @@ module.exports = {
       expirationDate: { $gt: date },
     })
 
-    const filename = `Export proofs of transportation ${formatDate(date)}.zip`
+    const filename = `${date}-Justificatifs-de-transport.zip`
 
     res(zip)
       .type('application/zip')

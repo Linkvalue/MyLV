@@ -17,8 +17,10 @@ const deleteLunch = require('./lunches/deleteLunch.route')
 
 const getPartners = require('./partners/getPartners.route')
 
+const getProofOfTransport = require('./proofOfTransports/getProofOfTransport.route')
+const getProofOfTransportDownload = require('./proofOfTransports/getProofOfTransportDownload.route')
 const postProofOfTransport = require('./proofOfTransports/postProofOfTransport.route')
-const getProofOfTransportsZip = require('./proofOfTransports/getProofOfTransportsZip.route')
+const getProofOfTransportZip = require('./proofOfTransports/getProofOfTransportZip.route')
 
 const postSubscription = require('./subscriptions/postSubscription.route')
 const deleteSubscription = require('./subscriptions/deleteSubscription.route')
@@ -48,8 +50,10 @@ module.exports = [
   putLunch,
   deleteLunch,
   getPartners,
+  getProofOfTransport,
+  getProofOfTransportDownload,
   postProofOfTransport,
-  getProofOfTransportsZip,
+  getProofOfTransportZip,
   postSubscription,
   deleteSubscription,
   postHoliday,

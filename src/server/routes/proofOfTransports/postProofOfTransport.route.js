@@ -25,7 +25,7 @@ module.exports = {
     const { file, expirationDate, startingDate } = req.payload
     const { gridfs } = req.server.plugins.mongodb
     const { ProofOfTransport } = req.server.app.models
-    const userId = req.auth.credentials.id
+    const user = req.auth.credentials.id
     const { firstName, lastName } = req.auth.credentials
 
     const fileExt = file.hapi.filename.split('.').slice(1).join('.')
@@ -40,7 +40,7 @@ module.exports = {
 
     try {
       const proof = await ProofOfTransport.create({
-        userId,
+        user,
         expirationDate,
         startingDate,
         fileId: gridFile.id,

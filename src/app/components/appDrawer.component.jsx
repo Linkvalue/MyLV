@@ -8,7 +8,7 @@ import {
 } from 'material-ui'
 import {
   BeachAccess, Person, Event, Restaurant, SupervisorAccount, FileUpload, Settings,
-  PowerSettingsNew,
+  PowerSettingsNew, DirectionsTransit,
 } from 'material-ui-icons'
 
 import AppDrawerItem from './appDrawerItem.component'
@@ -108,7 +108,7 @@ const AppDrawer = ({
           <AppDrawerItem to="/holidays/me" icon={<BeachAccess />} text="Mes demandes de congés" key="my-holidays" />
         </FeatureFlipping>
         <FeatureFlipping feature="transport">
-          <AppDrawerItem to="/proof-upload" icon={<FileUpload />} text="Justificatif de transport" />
+          <AppDrawerItem to="/transport/upload" icon={<FileUpload />} text="Justificatif de transport" />
         </FeatureFlipping>
         <Restricted roles={['business', 'hr', 'board']} user={user}>
           <AppDrawerItem to="/lunches/me" icon={<Restaurant />} text="Mes déjeuners" />
@@ -119,6 +119,9 @@ const AppDrawer = ({
           <AppDrawerItem to="/partners" icon={<SupervisorAccount />} text="Partners" />
           <FeatureFlipping feature="holidays">
             <AppDrawerItem to="/holidays" icon={<BeachAccess />} text="Demandes de congés" />
+          </FeatureFlipping>
+          <FeatureFlipping feature="transport">
+            <AppDrawerItem to="/transport" icon={<DirectionsTransit />} text="Justificatifs de transport" />
           </FeatureFlipping>
         </Restricted>
       </List>
