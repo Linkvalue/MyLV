@@ -21,7 +21,8 @@ import ConnectedPersonalLunchesPage from '../modules/lunches/pages/personalLunch
 import ConnectedEditLunchPage from '../modules/lunches/pages/editLunch.page'
 import ConnectedNewLunchPage from '../modules/lunches/pages/newLunch.page'
 import ConnectedPartnersPage from '../modules/partners/pages/partners.page'
-import ConnectedTransportProofPage from '../modules/transport/pages/transportProofUpload.page'
+import UploadTransportProofPage from '../modules/transport/pages/transportProofUpload.page'
+import TransportProofsPage from '../modules/transport/pages/transportProofs.page'
 import ConnectedSettingsPage from '../modules/settings/pages/settings.page'
 import NotFound from '../components/notFound.component'
 import theme from '../modules/display/theme'
@@ -43,7 +44,8 @@ const Root = ({ store, history }) => (
                 <Route exact path="/holidays/:id/edit" component={ConnectedHolidayRequestEditPage} />
                 <Route exact path="/holidays/:id" component={ConnectedHolidayRequestDetailsPage} />
                 <Route exact path="/holidays" component={ConnectedHolidaysPage} />
-                <Route exact path="/proof-upload" component={ConnectedTransportProofPage} />
+                <Route exact path="/transport/upload" component={UploadTransportProofPage} />
+                <Route exact path="/transport" component={TransportProofsPage} />
                 <Route exact path="/lunches/me" component={ConnectedPersonalLunchesPage} />
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />
                 <Route exact path="/lunches/:id" component={ConnectedEditLunchPage} />

@@ -1,7 +1,9 @@
 import { change } from 'redux-form'
 import moment from 'moment'
+import qs from 'qs'
 
 import { fetchWithAuth } from '../auth/auth.actions'
+import { fetchPartnersSuccess } from '../partners/partners.actions'
 
 export const setExpirationDateToCurrentMonth = () => (dispatch) => {
   const startingDate = moment().set('date', 1).format('YYYY-MM-DD')
@@ -19,3 +21,28 @@ export const postTransportProof = formData => dispatch =>
     body: formData,
   }))
     .then(data => dispatch(postTransportProofSuccess(data)))
+
+export const TRANSPORT_PROOFS_FETCH_START = 'TRANSPORT_PROOFS_FETCH_START'
+export const TRANSPORT_PROOFS_FETCH_SUCCESS = 'TRANSPORT_PROOFS_FETCH_SUCCESS'
+export const TRANSPORT_PROOFS_FETCH_ERROR = 'TRANSPORT_PROOFS_FETCH_ERROR'
+export const fetchTransportProofs = (params = { page: 1 }) => async (dispatch) => {
+  dispatch({ type: TRANSPORT_PROOFS_FETCH_START, payload: params })
+
+  const query = qs.stringify(params)
+
+  try {
+    const data = await dispatch(fetchWithAuth(`/api/proofOfTransport?${query}`))
+    dispatch({
+      type: TRANSPORT_PROOFS_FETCH_SUCCESS,
+      payload: {
+        ...data,
+        results: data.results.map(({ user, ...holiday }) => ({ ...holiday, user: user.id })),
+      },
+    })
+    const partners = new Map()
+    data.results.forEach(({ user }) => partners.set(user.id, user))
+    dispatch(fetchPartnersSuccess({ results: Array.from(partners.values()), pageCount: 1 }))
+  } catch (e) {
+    dispatch({ type: TRANSPORT_PROOFS_FETCH_ERROR, payload: e })
+  }
+}
