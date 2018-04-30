@@ -1,3 +1,26 @@
+<a name="2.3.0"></a>
+# [2.3.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.2.1...v2.3.0) (2018-04-30)
+
+
+### Bug Fixes
+
+* **auth:** Bump SDK version to prevent errors ([ee5e33a](http://gitlab.com/LinkValue/Lab/CraCra/commit/ee5e33a))
+* **cache:** Fix app updater ([ddd7fb5](http://gitlab.com/LinkValue/Lab/CraCra/commit/ddd7fb5))
+* **emails:** Fix web app url in emails ([e6feed8](http://gitlab.com/LinkValue/Lab/CraCra/commit/e6feed8))
+* **pwa:** Fix multiple bugs related to PWA ([3e593c1](http://gitlab.com/LinkValue/Lab/CraCra/commit/3e593c1))
+* **transport:** Fix proof of transport upload ([4da9bae](http://gitlab.com/LinkValue/Lab/CraCra/commit/4da9bae))
+
+
+### Features
+
+* **cron:** Add incomplete worklog notify cron ([2397990](http://gitlab.com/LinkValue/Lab/CraCra/commit/2397990))
+* **holidays:** Add holidays to worklog when approved ([b5fa63e](http://gitlab.com/LinkValue/Lab/CraCra/commit/b5fa63e))
+* **holidays:** Enable holidays features on production ([3e43a8f](http://gitlab.com/LinkValue/Lab/CraCra/commit/3e43a8f))
+* **monitoring:** Add monitoring for emails ([2773243](http://gitlab.com/LinkValue/Lab/CraCra/commit/2773243))
+* **transport:** Add proof of transport admin page ([c7ddc99](http://gitlab.com/LinkValue/Lab/CraCra/commit/c7ddc99))
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.2.0...v2.2.1) (2018-04-11)
 
@@ -286,17 +309,7 @@
 
 
 <a name="1.0.1"></a>
-## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v1.0.0...v1.0.1) (2016-11-23)
-
-
-### Bug Fixes
-
-* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
-
-
-
-<a name="1.0.0"></a>
-# [1.0.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.0) (2016-11-23)
+## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.1) (2016-11-23)
 
 
 ### Bug Fixes
@@ -305,6 +318,7 @@
 * **client:** Refactored full user experience ([7a8b1e4](http://gitlab.com/LinkValue/Lab/CraCra/commit/7a8b1e4))
 * **logo:** Fixed paths to logo images ([f2e80db](http://gitlab.com/LinkValue/Lab/CraCra/commit/f2e80db))
 * **printer:** Fixed incorrect number of total expected days ([3acffd4](http://gitlab.com/LinkValue/Lab/CraCra/commit/3acffd4)), closes [#24](http://gitlab.com/LinkValue/Lab/CraCra/issues/24)
+* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
 
 
 ### Features
