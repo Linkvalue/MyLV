@@ -104,7 +104,7 @@ export class HolidayRow extends Component {
     return (
       <TableRow className={classes.holidayRow} hover onClick={onClick}>
         <TableCell className={classes.holidayLabelCell}>
-          {displayPartnerName ? `${partner.firstName} ${partner.lastName}` : holiday.title}
+          {displayPartnerName && partner ? `${partner.firstName} ${partner.lastName}` : holiday.title}
           {menu}
         </TableCell>
         <TableCell className={classes.dateCell}>{moment(holiday.date).format('DD-MM-YYYY')}</TableCell>

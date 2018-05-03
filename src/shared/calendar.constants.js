@@ -28,7 +28,7 @@ exports.labels = new Map(Object.entries({
 
 exports.labelColors = new Map(Object.entries({
   production: '#ff9999',
-  contribution: '#99ff99',
+  contributions: '#99ff99',
   conferences: '#ffcc99',
   paidHolidays: '#9999ff',
   unpaidHolidays: '#ff99ff',
