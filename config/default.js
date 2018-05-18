@@ -14,6 +14,9 @@ module.exports = {
       }, 'stdout'],
     },
   },
+  docs: {
+    endpoint: '/api/docs',
+  },
   mongodb: {
     host: 'localhost',
     port: 27017,

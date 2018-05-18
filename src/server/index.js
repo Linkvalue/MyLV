@@ -54,6 +54,17 @@ const manifest = {
     {
       plugin: './plugins/worklog.plugin',
     },
+    ...(process.env.NODE_ENV === 'production' ? [] : [
+      {
+        plugin: 'vision',
+      },
+      {
+        plugin: {
+          register: 'lout',
+          options: config.docs,
+        },
+      },
+    ]),
   ],
   connections: [{
     host: config.host.hostname,
