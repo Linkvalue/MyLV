@@ -12,7 +12,7 @@ import {
 jest.unmock('../worklog-reducer')
 jest.unmock('../worklog-actions')
 
-jest.mock('../../../../shared/calendar.constants')
+jest.mock('../../../../shared/calendar.constants', () => ({ publicHolidays: new Set() }))
 jest.mock('moment', () => jest.fn((stringDate) => {
   let counter = 0
   const momentMock = {
