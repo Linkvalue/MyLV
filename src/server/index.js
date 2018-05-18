@@ -60,7 +60,7 @@ const manifest = {
       },
       {
         plugin: {
-          register: 'lout',
+          register: 'hapi-swagger',
           options: config.docs,
         },
       },

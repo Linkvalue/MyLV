@@ -64,4 +64,4 @@ module.exports = [
   getHolidayDetails,
   postChangeStatus,
   getHealth,
-]
+].map(route => ({ ...route, config: { ...route.config, tags: ['api'] } }))

@@ -15,7 +15,7 @@ module.exports = {
     },
   },
   docs: {
-    endpoint: '/api/docs',
+    documentationPath: '/api/docs',
   },
   mongodb: {
     host: 'localhost',
