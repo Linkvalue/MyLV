@@ -16,7 +16,7 @@ import { changeHolidayRequestStatus, fetchHolidayRequestDetails } from '../holid
 import { getPeriodDayCount } from '../../../../shared/holidays.utils'
 import { holidayLabels } from '../../../../shared/calendar.constants'
 import HolidayRequestStatusIcon from '../components/holidayRequestStatusIcon.component'
-import { HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED } from '../../../../shared/holiday.constants'
+import { HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED } from '../../../../shared/holidays.constants'
 
 const mapStateToProps = (state, { match }) => {
   const holidayRequest = state.holidays.holidaysById[match.params.id]
