@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { Typography, withStyles } from 'material-ui'
+import classnames from 'classnames'
 
 import { calendarLabelsSelector, calendarExpectedDaysSelector } from '../calendar-selectors'
+import { isDayOff } from '../../../../shared/calendar.utils'
 
 const mapStateToProps = state => ({
   user: state.auth.user,
@@ -58,6 +60,9 @@ const styles = theme => ({
       display: 'block',
     },
   },
+  dayoff: {
+    backgroundColor: theme.palette.grey[300],
+  },
 })
 
 const Printer = ({
@@ -92,21 +97,27 @@ const Printer = ({
                 <tr key={`separator-${activity}`} className={classes.printerSeparator} />,
                 <tr key={`${activity}-am`}>
                   <td className={classes.printerCell} rowSpan="2">{activity}</td>
-                  {listDays.map(day => (
-                    <td key={day} className={classes.printerCell}>
-                      {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
-                    </td>
-                  ))}
+                  {listDays.map((day) => {
+                    const date = `${calendar.year}-${calendar.month}-${day}`
+                    return (
+                      <td key={day} className={classnames(classes.printerCell, { [classes.dayoff]: isDayOff(date) })}>
+                        {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
+                      </td>
+                    )
+                  })}
                   <td className={classes.printerCell} rowSpan="2">
                     {Object.keys(entries).filter(i => entries[i] === activity && dateRegExp.test(i)).length / 2}
                   </td>
                 </tr>,
                 <tr key={`${activity}-pm`}>
-                  {listDays.map(day => (
-                    <td key={day} className={classes.printerCell}>
-                      {entries[`${calendar.year}-${calendar.month}-${day}-pm`] === activity ? 1 : 0}
-                    </td>
-                  ))}
+                  {listDays.map((day) => {
+                    const date = `${calendar.year}-${calendar.month}-${day}`
+                    return (
+                      <td key={day} className={classnames(classes.printerCell, { [classes.dayoff]: isDayOff(date) })}>
+                        {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
+                      </td>
+                    )
+                  })}
                 </tr>,
               ], [])}
               <tr className={classes.printerSeparator} />

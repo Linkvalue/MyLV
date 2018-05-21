@@ -13,7 +13,8 @@ import CalendarDay from './calendarDay.component'
 import * as calendarActions from '../calendar-actions'
 import * as worklogActions from '../worklog-actions'
 import { calendarDaysSelector, calendarLabelsSelector } from '../calendar-selectors'
-import { publicHolidays, labels, labelColors } from '../../../../shared/calendar.constants'
+import { labels, labelColors } from '../../../../shared/calendar.constants'
+import { isDayOff } from '../../../../shared/calendar.utils'
 
 const weekDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
@@ -151,24 +152,27 @@ class Calendar extends Component {
             <tbody>
               {weeks.map(w => (
                 <tr key={w}>
-                  {w.map((d, i) => (
-                    <td
-                      key={`${d}-${i}`}
-                      onContextMenu={e => removeDayEntry(e, d)}
-                      onClick={() => (d ? setDate(`${year}-${month}-${`0${d}`.slice(-2)}`) : null)}
-                      className={classNames(classes.calendarCell, {
-                        [classes.calendarCellEmpty]: !d,
-                        [classes.calendarCellWeekend]: i >= 5 || publicHolidays.has(`${month}-${d}`),
-                      })}
-                    >
-                      <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
-                      {d && <CalendarDay
-                        labelMorning={!isLoading && calendarEntries[`${year}-${month}-${d}-am`]}
-                        labelAfternoon={!isLoading && calendarEntries[`${year}-${month}-${d}-pm`]}
-                        selected={d === day}
-                      />}
-                    </td>
-                  ))}
+                  {w.map((d, i) => {
+                    const date = `${year}-${month}-${`0${d}`.slice(-2)}`
+                    return (
+                      <td
+                        key={`${d}-${i}`}
+                        onContextMenu={e => removeDayEntry(e, d)}
+                        onClick={() => (d ? setDate(date) : null)}
+                        className={classNames(classes.calendarCell, {
+                          [classes.calendarCellEmpty]: !d,
+                          [classes.calendarCellWeekend]: d && isDayOff(date),
+                        })}
+                      >
+                        <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
+                        {d && <CalendarDay
+                          labelMorning={!isLoading && calendarEntries[`${year}-${month}-${d}-am`]}
+                          labelAfternoon={!isLoading && calendarEntries[`${year}-${month}-${d}-pm`]}
+                          selected={d === day}
+                        />}
+                      </td>
+                    )
+                  })}
                 </tr>
               ))}
             </tbody>

@@ -6,7 +6,7 @@ import {
   HOLIDAY_REQUEST_REJECTED,
   HOLIDAY_REQUEST_APPROVED,
   HOLIDAY_REQUEST_PENDING,
-} from '../../../../shared/holiday.constants'
+} from '../../../../shared/holidays.constants'
 
 const statusIcons = {
   [HOLIDAY_REQUEST_PENDING]: <HourglassEmpty />,
