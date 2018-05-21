@@ -1,3 +1,19 @@
+<a name="2.3.1"></a>
+## [2.3.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.3.0...v2.3.1) (2018-05-21)
+
+
+### Bug Fixes
+
+* **worklog:** Fix white color for contribution label ([872fd67](http://gitlab.com/LinkValue/Lab/CraCra/commit/872fd67))
+
+
+### Features
+
+* **holidays:** Improve holidays with Easter calculation ([46ac617](http://gitlab.com/LinkValue/Lab/CraCra/commit/46ac617))
+* **monitoring:** Add monitoring for cron jobs ([5ba2fb8](http://gitlab.com/LinkValue/Lab/CraCra/commit/5ba2fb8))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.2.1...v2.3.0) (2018-04-30)
 
@@ -309,7 +325,17 @@
 
 
 <a name="1.0.1"></a>
-## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.1) (2016-11-23)
+## [1.0.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v1.0.0...v1.0.1) (2016-11-23)
+
+
+### Bug Fixes
+
+* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/2faf92c...v1.0.0) (2016-11-23)
 
 
 ### Bug Fixes
@@ -318,7 +344,6 @@
 * **client:** Refactored full user experience ([7a8b1e4](http://gitlab.com/LinkValue/Lab/CraCra/commit/7a8b1e4))
 * **logo:** Fixed paths to logo images ([f2e80db](http://gitlab.com/LinkValue/Lab/CraCra/commit/f2e80db))
 * **printer:** Fixed incorrect number of total expected days ([3acffd4](http://gitlab.com/LinkValue/Lab/CraCra/commit/3acffd4)), closes [#24](http://gitlab.com/LinkValue/Lab/CraCra/issues/24)
-* **select:** Fixed z-index of material select ([06a3c6b](http://gitlab.com/LinkValue/Lab/CraCra/commit/06a3c6b))
 
 
 ### Features
