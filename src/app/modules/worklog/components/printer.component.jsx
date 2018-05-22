@@ -5,13 +5,14 @@ import moment from 'moment'
 import { Typography, withStyles } from 'material-ui'
 
 import { calendarLabelsSelector, calendarExpectedDaysSelector } from '../calendar-selectors'
+import { labels } from '../../../../shared/calendar.constants'
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   client: state.client,
   calendar: state.calendar,
   entries: state.worklog.entries,
-  labels: calendarLabelsSelector(state),
+  calendarLabels: calendarLabelsSelector(state),
   totalExpectedDays: calendarExpectedDaysSelector(state),
 })
 
@@ -61,7 +62,13 @@ const styles = theme => ({
 })
 
 const Printer = ({
-  classes, user, client, calendar, entries, labels, totalExpectedDays,
+  classes,
+  user,
+  client,
+  calendar,
+  entries,
+  calendarLabels,
+  totalExpectedDays,
 }) => {
   const days = moment(`${calendar.year}-${calendar.month}`).startOf('month').daysInMonth()
   const listDays = Array.from({ length: days }, (_, i) => (i >= 9 ? String(i + 1) : `0${i + 1}`))
@@ -87,11 +94,11 @@ const Printer = ({
               </tr>
             </thead>
             <tbody>
-              {labels.reduce((acc, activity) => [
+              {calendarLabels.reduce((acc, activity) => [
                 ...acc,
                 <tr key={`separator-${activity}`} className={classes.printerSeparator} />,
                 <tr key={`${activity}-am`}>
-                  <td className={classes.printerCell} rowSpan="2">{activity}</td>
+                  <td className={classes.printerCell} rowSpan="2">{labels.get(activity)}</td>
                   {listDays.map(day => (
                     <td key={day} className={classes.printerCell}>
                       {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
