@@ -1,3 +1,13 @@
+<a name="2.3.2"></a>
+## [2.3.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.3.1...v2.3.2) (2018-05-22)
+
+
+### Bug Fixes
+
+* **printer:** Fix activity labels while printing ([b05f96a](http://gitlab.com/LinkValue/Lab/CraCra/commit/b05f96a))
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.3.0...v2.3.1) (2018-05-21)
 
