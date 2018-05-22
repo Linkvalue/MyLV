@@ -66,5 +66,6 @@ module.exports = {
   },
   cron: {
     notifyIncompleteWorklog: '00 00 10 20-30 * 1-5',
+    notifyMissingProofOfTransports: '00 00 10 20-30 * 1-5',
   },
 }

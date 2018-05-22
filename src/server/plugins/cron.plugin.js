@@ -10,7 +10,14 @@ exports.register = (server, options, next) => {
         await lvConnect.fetchTokensFromClientCredentials()
         await server.plugins.worklog.notifityIncompleteWorklog()
         lvConnect.logout()
-        throw new Error('Foo')
+      },
+    },
+    notifyMissingProofOfTransports: {
+      cronTime: options.notifyMissingProofOfTransports,
+      onTick: async () => {
+        await lvConnect.fetchTokensFromClientCredentials()
+        await server.plugins.proofOfTransports.notifyMissingProofOfTransports()
+        lvConnect.logout()
       },
     },
   }
