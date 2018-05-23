@@ -1,3 +1,13 @@
+<a name="2.4.0"></a>
+# [2.4.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.3.2...v2.4.0) (2018-05-23)
+
+
+### Features
+
+* **transport:** Enable transport on prod and cra for all ([b5ce605](http://gitlab.com/LinkValue/Lab/CraCra/commit/b5ce605))
+
+
+
 <a name="2.3.2"></a>
 ## [2.3.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.3.1...v2.3.2) (2018-05-22)
 
