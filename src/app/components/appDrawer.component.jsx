@@ -100,10 +100,8 @@ const AppDrawer = ({
         <Restricted roles={['business', 'hr', 'board']} user={user}>
           <ListSubheader>Personnel</ListSubheader>
         </Restricted>
-        <Restricted roles={['tech']} user={user}>
-          <AppDrawerItem to="/client" icon={<Person />} text="Client" />
-          <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" />
-        </Restricted>
+        <AppDrawerItem to="/client" icon={<Person />} text="Client" />
+        <AppDrawerItem to="/" icon={<Event />} text="Remplir son CRA" />
         <FeatureFlipping feature="holidays">
           <AppDrawerItem to="/holidays/me" icon={<BeachAccess />} text="Mes demandes de congés" key="my-holidays" />
         </FeatureFlipping>

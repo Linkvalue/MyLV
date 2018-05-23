@@ -58,7 +58,7 @@ module.exports = {
             [entry.label]: (acc[entry.label] || 0) + 0.5,
           }), {}),
           lunchesCount,
-          isWorklogComplete: partnerEntries.length / 2 >= expectedDays || !partner.roles.includes('tech'),
+          isWorklogComplete: partnerEntries.length / 2 >= expectedDays,
         })
       }),
     }))

@@ -34,8 +34,7 @@ exports.register = (server, options, next) => {
 
     const badBoys = await server.app.models.Profile.find({ userId: { $nin: filled } })
     const badBoysQuery = badBoys.map(profile => `ids=${profile.userId.toString()}`)
-    const { results } = await lvConnect.api(`/users?${badBoysQuery.join('&')}`).then(res => res.json())
-    const reelBadBoys = results.filter(partner => partner.roles.includes('tech'))
+    const { results: reelBadBoys } = await lvConnect.api(`/users?${badBoysQuery.join('&')}`).then(res => res.json())
 
     await server.methods.sendPushNotification(reelBadBoys.map(partner => partner.id), JSON.stringify({
       message: 'CRA CRA CRA CRA !',

@@ -26,8 +26,7 @@ module.exports = {
 
     const badBoys = await req.server.app.models.Profile.find({ userId: { $nin: filled } })
     const badBoysQuery = badBoys.map(profile => `ids=${profile.userId.toString()}`)
-    const { results } = await lvConnect.api(`/users?${badBoysQuery.join('&')}`).then(res => res.json())
-    const reelBadBoys = results.filter(partner => partner.roles.includes('tech'))
+    const { results: reelBadBoys } = await lvConnect.api(`/users?${badBoysQuery.join('&')}`).then(res => res.json())
 
     await req.server.methods.sendPushNotification(reelBadBoys.map(partner => partner.id), JSON.stringify({
       message: 'CRA CRA CRA CRA !',

@@ -35,6 +35,7 @@ module.exports = {
       holidays: true,
       offlineMode: true,
       pushNotifications: true,
+      transport: true,
     },
     sentry: {
       dsn: '12183e96fee94f34bf55a85d0fe1c802',
