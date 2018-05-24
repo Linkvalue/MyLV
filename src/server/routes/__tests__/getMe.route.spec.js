@@ -7,13 +7,9 @@ describe('GET /api/me', () => {
   let reply
   beforeEach(() => {
     const server = {
-      app: {
-        models: {
-          ProofOfTransport: {
-            findOne: jest.fn(() => ({
-              sort: jest.fn(async () => null),
-            })),
-          },
+      plugins: {
+        proofOfTransports: {
+          getLatestProofOfTransport: jest.fn(() => null),
         },
       },
     }
@@ -30,8 +26,8 @@ describe('GET /api/me', () => {
     await getMe.handler(request, reply)
 
     // Then
-    expect(request.server.app.models.ProofOfTransport.findOne)
-      .toHaveBeenCalledWith({ userId: request.auth.credentials.id })
+    expect(request.server.plugins.proofOfTransports.getLatestProofOfTransport)
+      .toHaveBeenCalledWith(request.auth.credentials.id)
     expect(reply.mongodb).toHaveBeenCalledWith(Object.assign({}, request.auth.credentials, {
       proofOfTransport: null,
     }))

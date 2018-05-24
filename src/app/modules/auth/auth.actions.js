@@ -81,10 +81,10 @@ export const receiveUserDataFailed = shouldClearUser => ({
 export const fetchUserData = () => dispatch =>
   dispatch(fetchWithAuth('/api/me'))
     .then((userData) => {
-      dispatch(receiveUserData(userData))
       if (userData.proofOfTransport) {
         dispatch(postTransportProofSuccess(userData.proofOfTransport))
       }
+      dispatch(receiveUserData(userData))
       return userData
     })
     .catch((e) => {

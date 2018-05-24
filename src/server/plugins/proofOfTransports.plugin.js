@@ -18,6 +18,10 @@ exports.register = (server, options, next) => {
     }))
   })
 
+  server.expose('getLatestProofOfTransport', user => server.app.models.ProofOfTransport
+    .findOne({ user })
+    .sort({ expirationDate: -1 }))
+
   next()
 }
 

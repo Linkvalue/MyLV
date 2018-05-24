@@ -54,6 +54,9 @@ const manifest = {
     {
       plugin: './plugins/worklog.plugin',
     },
+    {
+      plugin: './plugins/proofOfTransports.plugin',
+    },
     ...(process.env.NODE_ENV === 'production' ? [] : [
       {
         plugin: 'vision',

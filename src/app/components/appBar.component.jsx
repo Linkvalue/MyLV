@@ -125,7 +125,7 @@ class AppBar extends React.Component {
         <Toolbar>
           {menuButton}
           <Typography variant="title" color="inherit" className={classes.flex}>
-            CraCra
+            MyLV
           </Typography>
           {avatar}
         </Toolbar>

@@ -70,7 +70,7 @@ export const TransportProofPage = ({
             <ListItemText
               primary={(
                 <span>
-                  Vous possédez déjà un titre de transport valide jusqu'au&nbsp;
+                  Tu as déjà un justificatif de titre de transport valide jusqu'au&nbsp;
                   <b>{moment(proofExpirationDate).format('DD/MM/YYYY')}</b>
                 </span>
               )}
