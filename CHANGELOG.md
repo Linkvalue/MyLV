@@ -1,3 +1,18 @@
+<a name="2.5.1"></a>
+## [2.5.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.5.0...v2.5.1) (2018-05-29)
+
+
+### Bug Fixes
+
+* **transport:** Fix transport dialog flash ([e588217](http://gitlab.com/LinkValue/Lab/CraCra/commit/e588217))
+
+
+### Features
+
+* **global:** Second round for CraCra renaming to MyLV ([74fcbd9](http://gitlab.com/LinkValue/Lab/CraCra/commit/74fcbd9))
+
+
+
 <a name="2.5.0"></a>
 # [2.5.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.4.1...v2.5.0) (2018-05-29)
 
