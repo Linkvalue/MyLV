@@ -50,5 +50,5 @@ window.addEventListener('offline', () => store.dispatch(switchOfflineMode(true))
 
 ReactDOM.render(
   <Root store={store} history={browserHistory} />,
-  document.getElementById('cracra'),
+  document.getElementById('mylv'),
 )

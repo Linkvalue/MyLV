@@ -58,7 +58,7 @@ module.exports = {
   },
   mailjet: {
     fromEmail: 'no-reply@link-value.fr',
-    fromName: 'CraCra',
+    fromName: 'MyLV',
     toEmail: 'admin@link-value.fr',
     apiKey: process.env.MAILJET_API_KEY,
     apiToken: process.env.MAILJET_API_TOKEN,

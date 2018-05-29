@@ -58,7 +58,7 @@ class LoginPage extends Component {
         <Card>
           <CardContent>
             <Typography variant="headline" component="h2" gutterBottom>
-              Bienvenue sur CraCra
+              Bienvenue sur MyLV
             </Typography>
             <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />
             {error ? <Typography color="error">An error occurred during login</Typography> : null}

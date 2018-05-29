@@ -43,6 +43,6 @@ module.exports = {
     },
   },
   mailjet: {
-    webAppUrl: 'https://cracra.link-value.fr',
+    webAppUrl: 'https://mylv.link-value.fr',
   },
 }

@@ -5,7 +5,6 @@ const {
   optimize: { CommonsChunkPlugin },
 } = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const SentryCliPlugin = require('@sentry/webpack-plugin')
@@ -85,17 +84,13 @@ module.exports = (env = {}) => ({
       name: 'manifest',
       minChunks: Infinity,
     }),
-    new CopyWebpackPlugin([{
-      from: 'assets/images/logo',
-      to: path.join(__dirname, 'dist/assets/images/logo'),
-    }]),
     new HtmlWebpackPlugin({
       template: 'index.html',
       favicon: 'favicon.ico',
     }),
     new WebpackPwaManifest({
-      name: 'CraCra',
-      short_name: 'CraCra',
+      name: 'MyLV',
+      short_name: 'MyLV',
       description: 'Application de gestion des CRA/Congés.',
       background_color: '#2196f3',
       theme_color: '#2196f3',
