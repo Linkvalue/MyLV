@@ -20,6 +20,7 @@ const mapStateToProps = ({
   auth,
 }) => ({
   isConnected: !!auth.user,
+  awaitingLogin: auth.awaitingLogin,
   shouldDisplayPushNotificationSnack:
     settings.shouldDisplayPushNotificationSnack && !settings.desktopNotificationsInstalled &&
     !settings.desktopNotificationsEnabled && settings.rehydrated,
@@ -109,9 +110,10 @@ export class App extends React.Component {
       shouldDisplayProofOfTransportDialog,
       hasInvalidTransportProof,
       isConnected,
+      awaitingLogin,
     } = this.props
 
-    const openTransportProofDialog = isConnected && shouldDisplayProofOfTransportDialog
+    const openTransportProofDialog = !awaitingLogin && isConnected && shouldDisplayProofOfTransportDialog
       && hasInvalidTransportProof && openProofOfTransportDialog
     return (
       <div className={classes.appRoot}>
@@ -147,6 +149,7 @@ App.propTypes = {
   shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
   hasInvalidTransportProof: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,
+  awaitingLogin: PropTypes.bool.isRequired,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App)))

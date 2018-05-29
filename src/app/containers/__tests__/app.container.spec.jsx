@@ -16,6 +16,7 @@ describe('App', () => {
       shouldDisplayProofOfTransportDialog: true,
       hasInvalidTransportProof: false,
       isConnected: false,
+      awaitingLogin: false,
       toggleProofOfTransportDialog: jest.fn(),
     }
   })
@@ -23,6 +24,17 @@ describe('App', () => {
   const getWrapper = () => shallow(<App {...props}>Foo</App>)
 
   it('should render properly', () => {
+    // When
+    const wrapper = getWrapper()
+
+    // Then
+    expect(shallowToJson(wrapper)).toMatchSnapshot()
+  })
+
+  it('should render transport dialog open', () => {
+    // Given
+    props.isConnected = true
+
     // When
     const wrapper = getWrapper()
 

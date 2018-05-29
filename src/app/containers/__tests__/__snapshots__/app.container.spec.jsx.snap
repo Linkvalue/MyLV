@@ -67,3 +67,37 @@ exports[`App should render properly 1`] = `
   </div>
 </div>
 `;
+
+exports[`App should render transport dialog open 1`] = `
+<div>
+  <WithStyles(CssBaseline) />
+  <div>
+    <Connect(WithStyles(AppBar))
+      onDrawerOpen={[Function]}
+    />
+    <Connect(WithStyles(AppDrawer))
+      onDrawerClose={[Function]}
+      open={false}
+    />
+    <div>
+      Foo
+    </div>
+    <FeatureFlipping
+      feature="pushNotifications"
+    >
+      <Connect(PushSnack) />
+    </FeatureFlipping>
+    <FeatureFlipping
+      feature="transport"
+    >
+      <ProofOfTransportDialog
+        onClose={[Function]}
+        onDecline={[Function]}
+        open={false}
+      />
+    </FeatureFlipping>
+    <AppUpdater />
+    <Connect(WithStyles(OfflineSnack)) />
+  </div>
+</div>
+`;
