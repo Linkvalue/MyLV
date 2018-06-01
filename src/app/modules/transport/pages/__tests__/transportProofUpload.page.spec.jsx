@@ -17,7 +17,7 @@ describe('TransportProofPage', () => {
       valid: false,
       handleSubmit: jest.fn(),
       setExpirationDateToCurrentMonth: jest.fn(),
-      hasInvalidTransportProof: false,
+      proofExpirationDate: 0,
     }
   })
 
@@ -27,5 +27,18 @@ describe('TransportProofPage', () => {
 
     // Then
     expect(shallowToJson(wrapper)).toMatchSnapshot()
+  })
+
+  it('should notify user when a valid proof is already uploaded', () => {
+    // Given
+    jest.spyOn(Date, 'now').mockImplementation(() => 42)
+    props.proofExpirationDate = Date.now() + 69
+
+    // When
+    const wrapper = getWrapper()
+
+    // Then
+    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    Date.now.mockRestore()
   })
 })

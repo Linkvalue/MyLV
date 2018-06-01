@@ -62,7 +62,7 @@ export const TransportProofPage = ({
   ...actions
 }) => (
   <form onSubmit={handleSubmit}>
-    {proofExpirationDate ? (
+    {proofExpirationDate >= Date.now() ? (
       <Paper className={classes.infoCard}>
         <List>
           <ListItem>
