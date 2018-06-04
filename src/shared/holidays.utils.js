@@ -19,13 +19,13 @@ const getPeriodDayCount = (period) => {
   const startDate = moment(period.startDate)
   const endDate = moment(period.endDate)
   let days = Math.round((endDate.diff(startDate) / millisecondsInDay) * 2) / 2
-  if (days < 0) {
+  if (days <= 0 || !startDate.isValid() || !endDate.isValid()) {
     return 0
   }
   while (startDate.format('YYYY-MM-DD') !== endDate.format('YYYY-MM-DD')) {
     const month = `0${startDate.month() + 1}`.slice(-2)
     const day = `0${startDate.date()}`.slice(-2)
-    if (startDate.day() >= 5 || publicHolidays.has(`${month}-${day}`)) {
+    if (startDate.day() === 0 || startDate.day() === 6 || publicHolidays.has(`${month}-${day}`)) {
       days -= 1
     }
     startDate.add(1, 'd')
