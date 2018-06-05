@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { initialize } from 'redux-form'
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware, LOCATION_CHANGE } from 'react-router-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import { createBrowserHistory } from 'history'
 
@@ -10,10 +10,17 @@ import { fetchUserData } from '../modules/auth/auth.actions'
 
 export const browserHistory = createBrowserHistory()
 
+const gaMiddleware = () => next => (action) => {
+  if (action.type === LOCATION_CHANGE) {
+    window.gtag('config', 'UA-120362624-1', { page_path: action.payload.pathname })
+  }
+  return next(action)
+}
+
 export function configureStore() {
   const storeEnhancers = [
     autoRehydrate(),
-    applyMiddleware(thunk, routerMiddleware(browserHistory)),
+    applyMiddleware(thunk, routerMiddleware(browserHistory), gaMiddleware),
   ]
 
   const isProd = process.env.NODE_ENV !== 'production'

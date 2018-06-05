@@ -81,6 +81,7 @@ export const receiveUserDataFailed = shouldClearUser => ({
 export const fetchUserData = () => dispatch =>
   dispatch(fetchWithAuth('/api/me'))
     .then((userData) => {
+      window.gtag('set', { user_id: userData.id })
       if (userData.proofOfTransport) {
         dispatch(postTransportProofSuccess(userData.proofOfTransport))
       }
