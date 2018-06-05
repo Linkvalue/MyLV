@@ -8,7 +8,9 @@ import {
 } from 'material-ui'
 import { BeachAccess, FlightTakeoff, PregnantWoman } from 'material-ui-icons'
 import moment from 'moment'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import NotFound from '../../../components/notFound.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import Restricted from '../../../components/restricted.component'
@@ -81,14 +83,19 @@ export class HolidayRequestDetails extends React.Component {
       return <LoadingPage />
     }
 
+    const title = holidayRequest.user === user.id ?
+      holidayRequest.title :
+      `Demande de congé de ${partner.firstName} ${partner.lastName}`
+
     return (
       <Card>
+        <Helmet>
+          <title>{title} | {appName}</title>
+        </Helmet>
         <CardContent>
           <div className={classes.toolbar}>
             <Typography variant="headline" component="h2" gutterBottom>
-              {holidayRequest.user === user.id ?
-                holidayRequest.title :
-                `Demande de congé de ${partner.firstName} ${partner.lastName}`}
+              {title}
             </Typography>
             <HolidayRequestStatusIcon status={holidayRequest.status} />
           </div>

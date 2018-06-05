@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { Card, CardContent, Typography, withStyles } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import { lvConnect } from '../lvconnect'
 import bgUrl from '../../../assets/images/login-bg.svg'
 import logoUrl from '../../../assets/images/logo-lv.svg'
@@ -54,6 +56,9 @@ class LoginPage extends Component {
 
     return (
       <div className={classes.loginPage}>
+        <Helmet>
+          <title>Connexion | {appName}</title>
+        </Helmet>
         <img src={logoUrl} alt="Logo LinkValue" className={classes.logoLV} />
         <Card>
           <CardContent>

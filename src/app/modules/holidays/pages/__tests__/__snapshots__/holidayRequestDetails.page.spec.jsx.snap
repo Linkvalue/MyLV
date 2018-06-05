@@ -8,6 +8,16 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
 <Card
   raised={false}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Demande de congé de james bond
+       | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <div>
       <WithStyles(Typography)
@@ -82,6 +92,16 @@ exports[`HolidayRequestPage should render properly 1`] = `
 <Card
   raised={false}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      hello
+       | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <div>
       <WithStyles(Typography)

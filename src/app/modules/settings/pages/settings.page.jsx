@@ -12,7 +12,9 @@ import {
   Switch,
   Typography,
 } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import * as settingsActions from '../settings.actions'
 
 const mapStateToProps = state => ({
@@ -32,6 +34,9 @@ export const SettingsPage = ({
   toggleTutorials,
 }) => (
   <Card>
+    <Helmet>
+      <title>Paramètres | {appName}</title>
+    </Helmet>
     <CardContent>
       <Typography variant="headline" component="h2" gutterBottom>
         Paramètres

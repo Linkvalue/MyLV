@@ -4,6 +4,15 @@ exports[`EditLunchPage should pass render function to edit form 1`] = `
 <WithStyles(Paper)
   elevation={2}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Éditer un déjeuner | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <WithStyles(Typography)
       component="h2"

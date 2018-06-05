@@ -4,7 +4,9 @@ import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { Card, CardContent, CardActions, Button, Typography } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import TextField from '../../../components/inputs/textField.component'
 import { userEntry } from '../client-actions'
 
@@ -19,6 +21,9 @@ const validate = ({ clientName, clientAddress }) => ({
 
 const ClientPage = ({ handleSubmit, pristine, invalid }) => (
   <form onSubmit={handleSubmit}>
+    <Helmet>
+      <title>Client | {appName}</title>
+    </Helmet>
     <Card>
       <CardContent>
         <Typography variant="headline" component="h2" gutterBottom>

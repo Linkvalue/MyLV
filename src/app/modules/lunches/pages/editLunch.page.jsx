@@ -4,7 +4,9 @@ import { Button, Card, CardActions, CardContent, Typography } from 'material-ui'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { bindActionCreators } from 'redux'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import ConnectedLunchForm from '../components/lunchForm.component'
 import { fetchLunchDetails, putLunch } from '../lunches.actions'
 import LoadingPage from '../../../components/loadingPage.component'
@@ -37,6 +39,9 @@ export class EditLunchPage extends Component {
         onFormSubmit={this.props.putLunch}
         render={({ children, valid, pristine }) => (
           <Card>
+            <Helmet>
+              <title>Éditer un déjeuner | {appName}</title>
+            </Helmet>
             <CardContent>
               <Typography variant="headline" component="h2" gutterBottom>
                 Modification de : {lunch.label}

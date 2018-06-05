@@ -25,7 +25,9 @@ import {
   Hidden,
 } from 'material-ui'
 import qs from 'qs'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchTransportProofs } from '../transport.actions'
 import { getPartnersTransportProofs } from '../transport.selectors'
@@ -140,6 +142,9 @@ class TransportProofsPage extends React.Component {
 
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Justificatifs de transport | {appName}</title>
+        </Helmet>
         <Paper>
           <Toolbar>
             <Typography variant="headline" component="h2" gutterBottom>

@@ -4,6 +4,15 @@ exports[`SettingsPage should render with all switches off 1`] = `
 <Card
   raised={false}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Paramètres | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <WithStyles(Typography)
       component="h2"
@@ -56,6 +65,15 @@ exports[`SettingsPage should render with all switches on 1`] = `
 <Card
   raised={false}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Paramètres | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <WithStyles(Typography)
       component="h2"

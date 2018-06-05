@@ -1,6 +1,9 @@
 const { version } = require('../package')
 
+const appName = 'MyLV'
+
 module.exports = {
+  appName,
   server: {},
   host: {
     hostname: null,
@@ -43,6 +46,7 @@ module.exports = {
     metricsPath: '/api/metrics',
   },
   front: {
+    appName,
     version,
     autoReconnectTimeout: 1000 * 60,
     autoReconnectRetries: 3,

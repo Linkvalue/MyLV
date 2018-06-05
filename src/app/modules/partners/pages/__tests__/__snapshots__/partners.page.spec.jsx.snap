@@ -4,6 +4,15 @@ exports[`PartnersPage should render loader when fetching 1`] = `<WithStyles(Load
 
 exports[`PartnersPage should render partners list 1`] = `
 <WithStyles(Paper)>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Partners | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(Toolbar)>
     <WithStyles(Typography)
       component="h2"

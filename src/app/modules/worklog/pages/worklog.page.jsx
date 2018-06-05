@@ -5,7 +5,9 @@ import { Button, Grid, withStyles } from 'material-ui'
 import { Print } from 'material-ui-icons'
 import classNames from 'classnames'
 import { Redirect } from 'react-router'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import { canPrintSelector } from '../../client/client-selectors'
 import Calendar from '../components/calendar.component'
 import EntriesForm from '../components/entriesForm.component'
@@ -46,6 +48,9 @@ export const WorklogPage = ({
   canPrint,
 }) => (!canPrint ? <Redirect to="/client" /> : (
   <div>
+    <Helmet>
+      <title>Mon CRA | {appName}</title>
+    </Helmet>
     <Grid container className={classes.worklogPage}>
       {shouldRemindProcess ? <Process /> : null}
       <EntriesForm />

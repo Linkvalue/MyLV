@@ -19,7 +19,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import DateField from '../../../components/inputs/dateField.component'
 import { postTransportProof, setExpirationDateToCurrentMonth } from '../transport.actions'
 import FileField from '../../../components/inputs/fileField.component'
@@ -62,6 +64,9 @@ export const TransportProofPage = ({
   ...actions
 }) => (
   <form onSubmit={handleSubmit}>
+    <Helmet>
+      <title>Mon justificatif de transport | {appName}</title>
+    </Helmet>
     {proofExpirationDate >= Date.now() ? (
       <Paper className={classes.infoCard}>
         <List>

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { Button, Card, CardActions, CardContent, Typography } from 'material-ui'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import HookedHolidayRequestForm from '../components/holidayRequestForm.component'
 import { postHoliday } from '../holidays.actions'
 
@@ -16,6 +18,9 @@ export const HolidayRequestPage = ({ postHoliday }) => (
     onFormSubmit={postHoliday}
     render={({ children, valid }) => (
       <Card>
+        <Helmet>
+          <title>Nouvelle demande de congés | {appName}</title>
+        </Helmet>
         <CardContent>
           <Typography variant="headline" component="h2" gutterBottom>
             Nouvelle demande de congé

@@ -4,7 +4,9 @@ import { Button, Card, CardActions, CardContent, Typography } from 'material-ui'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import moment from 'moment'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import HookedHolidayRequestForm from '../components/holidayRequestForm.component'
 import { putHoliday } from '../holidays.actions'
 
@@ -32,6 +34,9 @@ export const HolidayRequestEditPage = ({ putHoliday, holidayRequest }) => (
     onFormSubmit={putHoliday}
     render={({ children, valid }) => (
       <Card>
+        <Helmet>
+          <title>Editer une demande de congé | {appName}</title>
+        </Helmet>
         <CardContent>
           <Typography variant="headline" component="h2" gutterBottom>
             Editer une demande de congé

@@ -2,6 +2,15 @@
 
 exports[`HolidaysPage should render empty holidays list 1`] = `
 <WithStyles(Paper)>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Demandes de congés | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(Toolbar)>
     <WithStyles(Typography)
       component="h2"
@@ -48,6 +57,15 @@ exports[`HolidaysPage should render in loading state 1`] = `<WithStyles(LoadingP
 
 exports[`HolidaysPage should render properly 1`] = `
 <WithStyles(Paper)>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Demandes de congés | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(Toolbar)>
     <WithStyles(Typography)
       component="h2"

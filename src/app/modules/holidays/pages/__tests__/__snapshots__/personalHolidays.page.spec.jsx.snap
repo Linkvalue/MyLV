@@ -4,6 +4,15 @@ exports[`PersonalHolidaysPage should render in loading state 1`] = `<WithStyles(
 
 exports[`PersonalHolidaysPage should render properly 1`] = `
 <div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mes demandes de congés | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <HolidaysDisclaimer
     className=""
     onClose={[Function]}

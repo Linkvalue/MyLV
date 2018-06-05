@@ -10,7 +10,9 @@ import {
   Typography, withStyles,
 } from 'material-ui'
 import { Help } from 'material-ui-icons'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteHoliday, fetchPersonalHolidays } from '../holidays.actions'
 import StyledHolidayRow from '../components/holidayRow.component'
@@ -105,6 +107,9 @@ export class PersonalHolidaysPage extends React.Component {
 
     return (
       <div>
+        <Helmet>
+          <title>Mes demandes de congés | {appName}</title>
+        </Helmet>
         {shouldDisplayHolidaysDisclaimer && (
           <HolidaysDisclaimer className={classes.disclaimer} onClose={this.handleDisclaimerClose} />
         )}

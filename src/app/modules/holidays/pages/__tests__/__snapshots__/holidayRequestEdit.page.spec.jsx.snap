@@ -4,6 +4,15 @@ exports[`HolidayRequestEditPage should render properly 1`] = `
 <WithStyles(Paper)
   elevation={2}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Editer une demande de congé | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <WithStyles(Typography)
       component="h2"

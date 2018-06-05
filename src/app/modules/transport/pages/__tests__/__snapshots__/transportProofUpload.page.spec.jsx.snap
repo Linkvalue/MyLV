@@ -4,6 +4,15 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
 <form
   onSubmit={[MockFunction]}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mon justificatif de transport | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(Paper)>
     <WithStyles(List)>
       <WithStyles(ListItem)>
@@ -119,6 +128,15 @@ exports[`TransportProofPage should render properly 1`] = `
 <form
   onSubmit={[MockFunction]}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mon justificatif de transport | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <Card
     raised={false}
   >

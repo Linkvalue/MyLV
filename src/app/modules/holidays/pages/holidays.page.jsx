@@ -17,7 +17,9 @@ import {
   withStyles,
 } from 'material-ui'
 import qs from 'qs'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchHolidays } from '../holidays.actions'
 import StyledHolidayRow from '../components/holidayRow.component'
@@ -126,6 +128,9 @@ export class HolidaysPage extends React.Component {
 
     return (
       <Paper>
+        <Helmet>
+          <title>Demandes de congés | {appName}</title>
+        </Helmet>
         <Toolbar>
           <Typography variant="headline" component="h2" gutterBottom>
             Demandes de congés

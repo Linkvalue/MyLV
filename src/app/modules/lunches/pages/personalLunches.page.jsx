@@ -15,7 +15,9 @@ import {
   TableRow,
   Typography,
 } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import StyledLunchRow from '../components/lunchRow.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteLunch, fetchUserLunches } from '../lunches.actions'
@@ -42,6 +44,9 @@ export class PersonalLunchesPage extends Component {
 
     return (
       <Card>
+        <Helmet>
+          <title>Mes déjeuners | {appName}</title>
+        </Helmet>
         <CardContent>
           <Typography variant="headline" component="h2" gutterBottom>
             Mes déjeuners

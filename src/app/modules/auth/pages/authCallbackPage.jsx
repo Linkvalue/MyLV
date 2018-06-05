@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withStyles } from 'material-ui'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import { loginDone, fetchUserData } from '../auth.actions'
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -67,6 +69,9 @@ class AuthCallbackPage extends React.Component {
     if (this.state.error) {
       return (
         <div className={`mdl-layout__content ${classes.errorContainer}`}>
+          <Helmet>
+            <title>Erreur | {appName}</title>
+          </Helmet>
           <svg className={classes.errorIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 510">
             <path
               d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm25.5

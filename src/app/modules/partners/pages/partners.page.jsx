@@ -8,7 +8,9 @@ import {
   TableFooter, TablePagination, Paper, Toolbar, CardActions, Button,
 } from 'material-ui'
 import qs from 'qs'
+import { Helmet } from 'react-helmet'
 
+import { appName } from '../../../config'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchPartners, notifyAllPartners } from '../partners.actions'
 import { getPartnersList } from '../partners.selectors'
@@ -96,6 +98,9 @@ export class PartnersPage extends Component {
 
     return (
       <Paper>
+        <Helmet>
+          <title>Partners | {appName}</title>
+        </Helmet>
         <Toolbar>
           <Typography variant="headline" component="h2" gutterBottom>
             Partners

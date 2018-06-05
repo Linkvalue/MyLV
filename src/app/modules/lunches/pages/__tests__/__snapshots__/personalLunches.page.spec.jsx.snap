@@ -6,6 +6,15 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
 <Card
   raised={false}
 >
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mes déjeuners | 
+      FooApp
+    </title>
+  </HelmetWrapper>
   <WithStyles(CardContent)>
     <WithStyles(Typography)
       component="h2"
