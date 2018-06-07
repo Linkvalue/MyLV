@@ -22,7 +22,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
         <WithStyles(ListItemText)
           primary={
             <span>
-              Tu as déjà un justificatif de titre de transport valide jusqu'au 
+              Tu as un justificatif de titre de transport valide jusqu'au 
               <b>
                 01/01/1970
               </b>

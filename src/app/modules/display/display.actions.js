@@ -15,3 +15,22 @@ export const switchOfflineMode = value => ({
   type: SWITCH_OFFLINE_MODE,
   payload: { value },
 })
+
+export const PUSH_ALERT = 'PUSH_ALERT'
+export const pushAlert = alert => ({
+  type: PUSH_ALERT,
+  payload: {
+    ...alert,
+    id: btoa(Date.now()),
+  },
+})
+
+export const DISSMISS_ALERT = 'DISSMISS_ALERT'
+export const dissmissAlert = () => ({
+  type: DISSMISS_ALERT,
+})
+
+export const DISPLAY_NEXT_ALERT = 'DISPLAY_NEXT_ALERT'
+export const displayNextAlert = () => ({
+  type: DISPLAY_NEXT_ALERT,
+})

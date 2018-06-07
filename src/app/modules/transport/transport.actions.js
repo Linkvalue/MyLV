@@ -4,6 +4,8 @@ import qs from 'qs'
 
 import { fetchWithAuth } from '../auth/auth.actions'
 import { fetchPartnersSuccess } from '../partners/partners.actions'
+import { pushAlert } from '../display/display.actions'
+import { ALERT_INFO } from '../display/display.constants'
 
 export const setExpirationDateToCurrentMonth = () => (dispatch) => {
   const startingDate = moment().set('date', 1).format('YYYY-MM-DD')
@@ -20,7 +22,13 @@ export const postTransportProof = formData => dispatch =>
     method: 'POST',
     body: formData,
   }))
-    .then(data => dispatch(postTransportProofSuccess(data)))
+    .then((data) => {
+      dispatch(postTransportProofSuccess(data))
+      dispatch(pushAlert({
+        type: ALERT_INFO,
+        message: 'Titre de trasnport uploadé avec succès',
+      }))
+    })
 
 export const TRANSPORT_PROOFS_FETCH_START = 'TRANSPORT_PROOFS_FETCH_START'
 export const TRANSPORT_PROOFS_FETCH_SUCCESS = 'TRANSPORT_PROOFS_FETCH_SUCCESS'

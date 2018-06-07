@@ -30,6 +30,7 @@ exports[`App should handle app drawer opening 1`] = `
     </FeatureFlipping>
     <AppUpdater />
     <Connect(WithStyles(OfflineSnack)) />
+    <Connect(AlertSnack) />
   </div>
 </div>
 `;
@@ -64,6 +65,7 @@ exports[`App should render properly 1`] = `
     </FeatureFlipping>
     <AppUpdater />
     <Connect(WithStyles(OfflineSnack)) />
+    <Connect(AlertSnack) />
   </div>
 </div>
 `;
@@ -98,6 +100,7 @@ exports[`App should render transport dialog open 1`] = `
     </FeatureFlipping>
     <AppUpdater />
     <Connect(WithStyles(OfflineSnack)) />
+    <Connect(AlertSnack) />
   </div>
 </div>
 `;

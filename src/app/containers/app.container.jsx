@@ -13,6 +13,7 @@ import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.
 import AppUpdater from '../components/appUpdater.component'
 import OfflineSnack from '../components/offlineSnack.component'
 import ConnectedPushSnack from '../components/pushSnack.component'
+import AlertSnack from '../modules/display/components/alertSnack.connector'
 
 const mapStateToProps = ({
   settings,
@@ -136,6 +137,7 @@ export class App extends React.Component {
           </FeatureFlipping>
           <AppUpdater />
           <OfflineSnack />
+          <AlertSnack />
         </div>
       </div>
     )
