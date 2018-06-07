@@ -8,7 +8,6 @@ import {
   AppBar as MuiAppBar,
   Toolbar,
   IconButton,
-  Typography,
   Avatar,
   Menu,
   MenuItem,
@@ -18,6 +17,7 @@ import { Menu as MenuIcon } from 'material-ui-icons'
 
 import { logout } from '../modules/auth/auth.actions'
 import { drawerWidth } from './appDrawer.component'
+import logoMyLVUrl from '../assets/images/logo-my-lv-white.svg'
 
 const styles = theme => ({
   appBar: {
@@ -31,6 +31,9 @@ const styles = theme => ({
   },
   flex: {
     flex: 1,
+  },
+  logo: {
+    height: theme.spacing.unit * 5,
   },
   userDetails: {
     display: 'flex',
@@ -124,9 +127,8 @@ class AppBar extends React.Component {
       <MuiAppBar className={classnames(classes.appBar, collapsed && classes.appBarDesktop)}>
         <Toolbar>
           {menuButton}
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            MyLV
-          </Typography>
+          <img src={logoMyLVUrl} alt="Logo MyLV" className={classes.logo} />
+          <div className={classes.flex} />
           {avatar}
         </Toolbar>
       </MuiAppBar>

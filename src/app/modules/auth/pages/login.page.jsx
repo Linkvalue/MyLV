@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
-import { Card, CardContent, Typography, withStyles } from 'material-ui'
+import { withStyles } from 'material-ui'
 import { Helmet } from 'react-helmet'
 
 import { appName } from '../../../config'
 import { lvConnect } from '../lvconnect'
 import bgUrl from '../../../assets/images/login-bg.svg'
-import logoUrl from '../../../assets/images/logo-lv.svg'
+import logoUrl from '../../../assets/images/logo-my-lv.svg'
+import logoLVUrl from '../../../assets/images/logo-lv.svg'
 
 const mapStateToProps = state => ({
   isConnected: !!state.auth.user,
-  error: state.auth.error,
 })
 
 const styles = theme => ({
@@ -31,8 +31,19 @@ const styles = theme => ({
   loginButtonWrapper: {
     marginTop: theme.spacing.unit * 2,
   },
-  logoLV: {
+  logoMyLV: {
+    maxWidth: theme.spacing.unit * 40,
     marginBottom: theme.spacing.unit * 10,
+  },
+  logoLV: {
+    position: 'absolute',
+    bottom: theme.spacing.unit * 5,
+    marginTop: theme.spacing.unit * 10,
+    height: theme.spacing.unit * 5,
+    [theme.breakpoints.up('md')]: {
+      right: theme.spacing.unit * 5,
+      height: theme.spacing.unit * 10,
+    },
   },
 })
 
@@ -52,23 +63,16 @@ class LoginPage extends Component {
   }
 
   render() {
-    const { classes, error } = this.props
+    const { classes } = this.props
 
     return (
       <div className={classes.loginPage}>
         <Helmet>
           <title>Connexion | {appName}</title>
         </Helmet>
-        <img src={logoUrl} alt="Logo LinkValue" className={classes.logoLV} />
-        <Card>
-          <CardContent>
-            <Typography variant="headline" component="h2" gutterBottom>
-              Bienvenue sur MyLV
-            </Typography>
-            <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />
-            {error ? <Typography color="error">An error occurred during login</Typography> : null}
-          </CardContent>
-        </Card>
+        <img src={logoUrl} alt="Logo MyLV" className={classes.logoMyLV} />
+        <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />
+        <img src={logoLVUrl} alt="Logo LinkValue" className={classes.logoLV} />
       </div>
     )
   }
@@ -77,7 +81,6 @@ class LoginPage extends Component {
 LoginPage.propTypes = {
   classes: PropTypes.object.isRequired,
   isConnected: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
   push: PropTypes.func.isRequired,
 }
 

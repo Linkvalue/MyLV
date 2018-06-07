@@ -4,13 +4,15 @@ import { push } from 'react-router-redux'
 
 import { cracraEndpoint, lvConnect } from './lvconnect'
 import { postTransportProofSuccess } from '../transport/transport.actions'
-import { switchOfflineMode } from '../display/display.actions'
+import { switchOfflineMode, pushAlert } from '../display/display.actions'
 import { HEADER_CACHE_FIRST } from './auth.constants'
+import { ALERT_ERROR } from '../display/display.constants'
 
 export const LOGIN_ERROR = 'LOGIN_ERROR'
-export const loginError = () => ({
-  type: LOGIN_ERROR,
-})
+export const loginError = () => (dispatch) => {
+  dispatch({ type: LOGIN_ERROR })
+  dispatch(pushAlert({ type: ALERT_ERROR, message: 'Erreur lors de la connexion' }))
+}
 
 export const loginDone = () => () => LVConnectSDK.handleLoginDone()
 

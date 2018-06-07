@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const SentryCliPlugin = require('@sentry/webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 const path = require('path')
 const { util, front: { version } } = require('config')
@@ -84,9 +85,9 @@ module.exports = (env = {}) => ({
       name: 'manifest',
       minChunks: Infinity,
     }),
+    new FaviconsWebpackPlugin('./assets/images/logo-my-lv-icon.png'),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      favicon: 'favicon.ico',
     }),
     new WebpackPwaManifest({
       name: 'MyLV',
@@ -96,7 +97,7 @@ module.exports = (env = {}) => ({
       theme_color: '#2196f3',
       icons: [
         {
-          src: path.resolve('src/app/assets/images/logo-lv-no-baseline.png'),
+          src: path.resolve('src/app/assets/images/logo-my-lv-icon.png'),
           sizes: [96, 128, 192, 256, 384, 512],
         },
       ],

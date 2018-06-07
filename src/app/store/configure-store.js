@@ -4,6 +4,7 @@ import { initialize } from 'redux-form'
 import { routerMiddleware, LOCATION_CHANGE } from 'react-router-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import { createBrowserHistory } from 'history'
+import qs from 'qs'
 
 import { rootReducer } from './root-reducer'
 import { fetchUserData } from '../modules/auth/auth.actions'
@@ -23,8 +24,9 @@ export function configureStore() {
     applyMiddleware(thunk, routerMiddleware(browserHistory), gaMiddleware),
   ]
 
-  const isProd = process.env.NODE_ENV !== 'production'
-  const composeEnhancers = (isProd && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+  const isProd = process.env.NODE_ENV === 'production'
+  const debugEnabled = qs.parse(window.location.search).debug
+  const composeEnhancers = ((!isProd || debugEnabled) && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
   const store = composeEnhancers(...storeEnhancers)(createStore)(rootReducer)
   persistStore(store, {
     blacklist: ['calendar', 'routing', 'form', 'display', 'transport'],
