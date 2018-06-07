@@ -30,7 +30,8 @@ module.exports = {
     const [holidays, resultsCount] = await Promise.all([holidaysQueryPromise, Holiday.count()])
 
     const partnerIds = Array.from(new Set(holidays.map(holiday => holiday.user.toString())).values())
-    const response = await lvConnect.api(`/users?${partnerIds.map(id => `ids=${id}`).join('&')}`)
+    const response = await lvConnect
+      .api(`/users?limit=${partnerIds.length}&${partnerIds.map(id => `ids=${id}`).join('&')}`)
     const { results } = await response.json()
 
     res.mongodb({
