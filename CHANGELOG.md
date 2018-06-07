@@ -1,3 +1,23 @@
+<a name="2.6.0"></a>
+# [2.6.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.5.1...v2.6.0) (2018-06-07)
+
+
+### Bug Fixes
+
+* **holidays:** Fix bug of missing user info on getHolidays route ([8f25d3b](http://gitlab.com/LinkValue/Lab/CraCra/commit/8f25d3b))
+* **holidays:** Fix bug whil typing date in holidays form ([70edcb6](http://gitlab.com/LinkValue/Lab/CraCra/commit/70edcb6))
+* **transport:** Fix valid proof banner display in upload page ([e6f7803](http://gitlab.com/LinkValue/Lab/CraCra/commit/e6f7803))
+
+
+### Features
+
+* **display:** Add alert system for better user feedback ([6058594](http://gitlab.com/LinkValue/Lab/CraCra/commit/6058594))
+* **global:** Add pages titles ([d3621de](http://gitlab.com/LinkValue/Lab/CraCra/commit/d3621de))
+* **logo:** Change logo to new MyLV logo ([25d50df](http://gitlab.com/LinkValue/Lab/CraCra/commit/25d50df))
+* **tracking:** Add Google Analytics to track frontend events ([856244a](http://gitlab.com/LinkValue/Lab/CraCra/commit/856244a))
+
+
+
 <a name="2.5.1"></a>
 ## [2.5.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.5.0...v2.5.1) (2018-05-29)
 
