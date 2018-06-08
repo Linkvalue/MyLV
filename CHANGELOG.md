@@ -1,3 +1,14 @@
+<a name="2.6.1"></a>
+## [2.6.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.0...v2.6.1) (2018-06-08)
+
+
+### Bug Fixes
+
+* **monitoring:** Use route path instead of request path for monitoring ([8c67ae1](http://gitlab.com/LinkValue/Lab/CraCra/commit/8c67ae1))
+* **server:** Fixed LVConnect request token sharing issue ([f4cf7c9](http://gitlab.com/LinkValue/Lab/CraCra/commit/f4cf7c9))
+
+
+
 <a name="2.6.0"></a>
 # [2.6.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.5.1...v2.6.0) (2018-06-07)
 
