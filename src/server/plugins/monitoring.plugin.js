@@ -70,20 +70,21 @@ exports.register = (server, options, next) => {
   })
 
   server.on({ name: 'request-internal', filter: 'received' }, (req) => {
-    if (req.path !== options.metricsPath && req.path.startsWith('/api')) {
-      metrics.httpRequestsTotal.inc({ path: req.path, method: req.method })
+    if (req.route.path !== options.metricsPath && req.route.path.startsWith('/api')) {
+      metrics.httpRequestsTotal.inc({ path: req.route.path, method: req.method })
     }
   })
 
   server.on('response', (req) => {
-    if (req.path !== options.metricsPath && req.path.startsWith('/api')) {
+    const { path } = req.route
+    if (path !== options.metricsPath && path.startsWith('/api')) {
       const time = req.info.responded - req.info.received
-      metrics.httpRequestDurationMilliseconds.labels(req.method, req.path, req.response.statusCode).observe(time)
-      metrics.httpRequestBucketMilliseconds.labels(req.method, req.path, req.response.statusCode).observe(time)
+      metrics.httpRequestDurationMilliseconds.labels(req.method, path, req.response.statusCode).observe(time)
+      metrics.httpRequestBucketMilliseconds.labels(req.method, path, req.response.statusCode).observe(time)
 
       if (req.response.statusCode >= 400) {
-        metrics.httpRequestsErrorTotal.inc({ path: req.path, method: req.method })
-        metrics.httpRequestsErrorTotalByType.inc({ path: req.path, method: req.method, code: req.response.statusCode })
+        metrics.httpRequestsErrorTotal.inc({ path, method: req.method })
+        metrics.httpRequestsErrorTotalByType.inc({ path, method: req.method, code: req.response.statusCode })
       }
     }
   })
