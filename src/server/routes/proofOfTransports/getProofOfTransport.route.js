@@ -1,7 +1,6 @@
 const config = require('config')
 const Joi = require('joi')
 
-const lvConnect = require('../../helpers/lvconnect.helper')
 const hasRole = require('../../helpers/hasRole.pre')
 
 module.exports = {
@@ -29,7 +28,7 @@ module.exports = {
     const [proofs, resultsCount] = await Promise.all([proofsQueryPromise, ProofOfTransport.count()])
 
     const partnerIds = Array.from(new Set(proofs.map(proof => proof.user.toString())).values())
-    const response = await lvConnect.api(`/users?${partnerIds.map(id => `ids=${id}`).join('&')}`)
+    const response = await req.app.lvConnect.api(`/users?${partnerIds.map(id => `ids=${id}`).join('&')}`)
     const { results } = await response.json()
 
     res.mongodb({

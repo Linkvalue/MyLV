@@ -3,7 +3,6 @@ const moment = require('moment')
 const qs = require('qs')
 const config = require('config')
 
-const lvConnect = require('../../helpers/lvconnect.helper')
 const hasRole = require('../../helpers/hasRole.pre')
 const getWorkingDays = require('../../helpers/getWorkingDays.helper')
 
@@ -32,7 +31,7 @@ module.exports = {
     const query = qs.stringify(request.query)
     const date = request.query.date || moment().format('YYYY-MM')
 
-    const res = await lvConnect.api(`/users?${query}`)
+    const res = await request.app.lvConnect.api(`/users?${query}`)
     const data = await res.json()
     const [entries, lunches] = await Promise.all([
       request.server.app.models.Entry.find({

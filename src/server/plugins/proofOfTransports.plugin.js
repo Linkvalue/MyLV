@@ -1,7 +1,5 @@
-const lvConnect = require('../helpers/lvconnect.helper')
-
 exports.register = (server, options, next) => {
-  server.expose('notifyMissingProofOfTransports', async () => {
+  server.expose('notifyMissingProofOfTransports', async (lvConnect) => {
     const proofOfTransports = await server.app.models.ProofOfTransport.find({
       startingDate: { $lte: new Date() },
       expirationDate: { $gte: new Date() },

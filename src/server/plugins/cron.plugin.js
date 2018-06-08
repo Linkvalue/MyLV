@@ -1,23 +1,23 @@
 const { CronJob } = require('cron')
 
-const lvConnect = require('../helpers/lvconnect.helper')
+const buildLvConnectClient = require('../helpers/lvconnect.helper')
 
 exports.register = (server, options, next) => {
   const jobs = {
     notifyIncompleteWorklog: {
       cronTime: options.notifyIncompleteWorklog,
       onTick: async () => {
+        const lvConnect = buildLvConnectClient()
         await lvConnect.fetchTokensFromClientCredentials()
-        await server.plugins.worklog.notifityIncompleteWorklog()
-        lvConnect.logout()
+        await server.plugins.worklog.notifityIncompleteWorklog(lvConnect)
       },
     },
     notifyMissingProofOfTransports: {
       cronTime: options.notifyMissingProofOfTransports,
       onTick: async () => {
+        const lvConnect = buildLvConnectClient()
         await lvConnect.fetchTokensFromClientCredentials()
-        await server.plugins.proofOfTransports.notifyMissingProofOfTransports()
-        lvConnect.logout()
+        await server.plugins.proofOfTransports.notifyMissingProofOfTransports(lvConnect)
       },
     },
   }

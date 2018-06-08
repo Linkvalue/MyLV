@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const Boom = require('boom')
 
-const lvConnect = require('../helpers/lvconnect.helper')
+const buildLvConnectClient = require('../helpers/lvconnect.helper')
 
 module.exports = {
   method: 'POST',
@@ -21,6 +21,8 @@ module.exports = {
     },
   },
   async handler(req, res) {
+    const lvConnect = buildLvConnectClient()
+
     let response
     try {
       response = await lvConnect.proxy(req.payload)

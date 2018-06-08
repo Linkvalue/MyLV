@@ -1,7 +1,6 @@
 const moment = require('moment')
 
 const getWorkingDays = require('../helpers/getWorkingDays.helper')
-const lvConnect = require('../helpers/lvconnect.helper')
 
 exports.register = (server, options, next) => {
   server.expose('saveEntries', async (entries, userId) => {
@@ -19,7 +18,7 @@ exports.register = (server, options, next) => {
     }
   })
 
-  server.expose('notifityIncompleteWorklog', async () => {
+  server.expose('notifityIncompleteWorklog', async (lvConnect) => {
     const date = moment().format('YYYY-MM')
     const entries = await server.app.models.Entry.find({
       date: { $regex: date },

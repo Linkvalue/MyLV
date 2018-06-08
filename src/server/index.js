@@ -3,7 +3,7 @@ const config = require('config')
 const webPush = require('web-push')
 
 const routes = require('./routes/routes')
-const lvConnect = require('./helpers/lvconnect.helper')
+const buildLVConnectClient = require('./helpers/lvconnect.helper')
 const Client = require('./models/client.model')
 const Entry = require('./models/entry.model')
 const Holiday = require('./models/holiday.model')
@@ -127,7 +127,9 @@ if (require.main === module) {
       server.auth.strategy('bearer', 'bearer-access-token', {
         allowQueryToken: true,
         validateFunc(token, callback) {
-          lvConnect
+          this.app.lvConnect = buildLVConnectClient()
+
+          this.app.lvConnect
             .setAccessToken(token)
             .getUserProfile()
             .then(user => callback(null, true, user, { token }))
@@ -148,8 +150,6 @@ if (require.main === module) {
           return res.continue()
         },
       })
-
-      server.on('tail', () => lvConnect.logout())
 
       server.app.models = {
         Client,

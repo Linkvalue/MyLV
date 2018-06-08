@@ -40,6 +40,9 @@ export const fetchTransportProofs = (params = { page: 1 }) => async (dispatch) =
 
   try {
     const data = await dispatch(fetchWithAuth(`/api/proofOfTransport?${query}`))
+    const partners = new Map()
+    data.results.forEach(({ user }) => partners.set(user.id, user))
+    dispatch(fetchPartnersSuccess({ results: Array.from(partners.values()), pageCount: 1 }))
     dispatch({
       type: TRANSPORT_PROOFS_FETCH_SUCCESS,
       payload: {
@@ -47,9 +50,6 @@ export const fetchTransportProofs = (params = { page: 1 }) => async (dispatch) =
         results: data.results.map(({ user, ...holiday }) => ({ ...holiday, user: user.id })),
       },
     })
-    const partners = new Map()
-    data.results.forEach(({ user }) => partners.set(user.id, user))
-    dispatch(fetchPartnersSuccess({ results: Array.from(partners.values()), pageCount: 1 }))
   } catch (e) {
     dispatch({ type: TRANSPORT_PROOFS_FETCH_ERROR, payload: e })
   }

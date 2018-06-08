@@ -1,5 +1,4 @@
 import getHolidays from '../getHolidays.route'
-import lvConnect from '../../../helpers/lvconnect.helper'
 
 jest.unmock('../getHolidays.route')
 
@@ -29,13 +28,18 @@ describe('GET /api/holidays', () => {
     }
     const auth = { credentials: { id: 'hello' } }
 
-    request = { server, auth, query: { page: 1, limit: 25 } }
+    request = {
+      server,
+      auth,
+      query: { page: 1, limit: 25 },
+      app: { lvConnect: { api: jest.fn() } },
+    }
     reply = { mongodb: jest.fn() }
   })
 
   it('should return holidays for authenticated user', async () => {
     // Given
-    lvConnect.api.mockImplementation(() => Promise.resolve({
+    request.app.lvConnect.api.mockImplementation(() => Promise.resolve({
       json: jest.fn(() => Promise.resolve({ results: [{ id: 'foo' }] })),
     }))
 

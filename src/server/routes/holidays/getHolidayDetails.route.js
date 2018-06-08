@@ -1,8 +1,6 @@
 const Boom = require('boom')
 const { cracra } = require('config')
 
-const lvConnect = require('../../helpers/lvconnect.helper')
-
 module.exports = {
   method: 'GET',
   path: '/api/holidays/{id}',
@@ -14,7 +12,7 @@ module.exports = {
       return res(Boom.forbidden('Insufficient rights.'))
     }
 
-    const response = await lvConnect.api(`/users/${holidayRequest.user}`)
+    const response = await req.app.lvConnect.api(`/users/${holidayRequest.user}`)
     const partner = await response.json()
 
     if (!holidayRequest) {

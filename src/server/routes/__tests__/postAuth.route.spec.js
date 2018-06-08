@@ -2,22 +2,22 @@ jest.unmock('joi')
 jest.unmock('../postAuth.route')
 
 jest.mock('boom', () => ({ wrap: jest.fn(err => ({ wrapped: err })) }))
-jest.mock('../../helpers/lvconnect.helper', () => {
-  const lvConnectMock = {
-    proxy: jest.fn(() => Promise.resolve({ token: 'yolo' })),
-    setAccessToken: jest.fn(() => lvConnectMock),
-    getUserProfile: jest.fn(() => Promise.resolve({ id: 'foo' })),
-  }
-  return lvConnectMock
-})
 
 const getAssets = require('../postAuth.route')
-const lvConnect = require('../../helpers/lvconnect.helper')
+const buildLvConnectClient = require('../../helpers/lvconnect.helper')
 
 describe('POST /api/auth', () => {
   let request
   let reply
+  let lvConnect
   beforeEach(() => {
+    lvConnect = {
+      proxy: jest.fn(() => Promise.resolve({ token: 'yolo' })),
+      setAccessToken: jest.fn(() => lvConnect),
+      getUserProfile: jest.fn(() => Promise.resolve({ id: 'foo' })),
+    }
+    buildLvConnectClient.mockImplementation(() => lvConnect)
+
     const server = {
       app: {
         models: {
