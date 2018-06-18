@@ -99,8 +99,8 @@ const EntriesForm = ({
           Changement de client ?
         </Typography>
         <Typography>
-          Les informations client sur votre CRA ne corespondent plus ?
-          Pas de panique vous pouvez encore les editer depuis l'écran "Partner / Client" dans le menu de gauche,
+          Les informations client sur votre CRA ne correspondent plus ?
+          Pas de panique vous pouvez encore les éditer depuis l'écran "Partner / Client" dans le menu de gauche,
           ou avec le lien ci-dessous.
         </Typography>
       </CardContent>
