@@ -1,3 +1,14 @@
+<a name="2.6.2"></a>
+## [2.6.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.1...v2.6.2) (2018-06-20)
+
+
+### Bug Fixes
+
+* **printer:** Fix error when printing CRA ([28cb01b](http://gitlab.com/LinkValue/Lab/CraCra/commit/28cb01b))
+* **worklog:** typo in worklog page ([0a38ebd](http://gitlab.com/LinkValue/Lab/CraCra/commit/0a38ebd))
+
+
+
 <a name="2.6.1"></a>
 ## [2.6.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.0...v2.6.1) (2018-06-08)
 
