@@ -121,7 +121,7 @@ const Printer = ({
                     const date = `${calendar.year}-${calendar.month}-${day}`
                     return (
                       <td key={day} className={classnames(classes.printerCell, { [classes.dayoff]: isDayOff(date) })}>
-                        {entries[`${calendar.year}-${calendar.month}-${day}-am`] === activity ? 1 : 0}
+                        {entries[`${calendar.year}-${calendar.month}-${day}-pm`] === activity ? 1 : 0}
                       </td>
                     )
                   })}
