@@ -17,11 +17,11 @@ export const fetchHolidays = (params = { page: 1 }) => async (dispatch) => {
       type: HOLIDAYS_FETCH_SUCCESS,
       payload: {
         ...data,
-        results: data.results.map(({ user, ...holiday }) => ({ ...holiday, user: user.id })),
+        results: data.results.map(({ user, ...holiday }) => ({ ...holiday, user: user && user.id })),
       },
     })
     const partners = new Set()
-    data.results.forEach(({ user }) => partners.add(user))
+    data.results.forEach(({ user }) => user && partners.add(user))
     dispatch(fetchPartnersSuccess({ results: Array.from(partners.values()), pageCount: 1 }))
   } catch (e) {
     dispatch({ type: HOLIDAYS_FETCH_ERROR, payload: e })

@@ -5,6 +5,7 @@ import {
   TRANSPORT_PROOFS_FETCH_START,
   TRANSPORT_PROOFS_FETCH_SUCCESS,
   TRANSPORT_PROOFS_FETCH_ERROR,
+  TRANSPORT_PROOF_DELETE_SUCCESS,
 } from './transport.actions'
 
 const initialState = {
@@ -46,6 +47,14 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         isPartnersProofsLoading: false,
       }
+    case TRANSPORT_PROOF_DELETE_SUCCESS: {
+      const { [payload.id]: deletedProof, ...remainingProofsById } = state.proofsById
+      return {
+        ...state,
+        partnersProofs: state.partnersProofs.filter(proofId => proofId !== payload.id),
+        proofsById: remainingProofsById,
+      }
+    }
     default:
       return state
   }

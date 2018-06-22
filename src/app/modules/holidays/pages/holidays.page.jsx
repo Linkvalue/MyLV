@@ -109,7 +109,7 @@ export class HolidaysPage extends React.Component {
               <StyledHolidayRow
                 key={holiday.id}
                 holiday={holiday}
-                partner={partnersById[holiday.user]}
+                partner={holiday.user && partnersById[holiday.user]}
                 displayPartnerName
                 disableMenu
                 onClick={() => push(`/holidays/${holiday.id}`)}

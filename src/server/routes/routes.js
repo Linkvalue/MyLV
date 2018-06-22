@@ -21,6 +21,7 @@ const getProofOfTransport = require('./proofOfTransports/getProofOfTransport.rou
 const getProofOfTransportDownload = require('./proofOfTransports/getProofOfTransportDownload.route')
 const postProofOfTransport = require('./proofOfTransports/postProofOfTransport.route')
 const getProofOfTransportZip = require('./proofOfTransports/getProofOfTransportZip.route')
+const deleteProofOfTransport = require('./proofOfTransports/deleteProofOfTransport.route')
 
 const postSubscription = require('./subscriptions/postSubscription.route')
 const deleteSubscription = require('./subscriptions/deleteSubscription.route')
@@ -54,6 +55,7 @@ module.exports = [
   getProofOfTransportDownload,
   postProofOfTransport,
   getProofOfTransportZip,
+  deleteProofOfTransport,
   postSubscription,
   deleteSubscription,
   postHoliday,

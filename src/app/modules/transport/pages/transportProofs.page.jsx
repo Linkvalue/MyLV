@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import moment from 'moment'
-import { FileDownload } from 'material-ui-icons'
+import { Delete, FileDownload } from 'material-ui-icons'
 import {
   CardContent,
   Paper,
@@ -29,7 +29,7 @@ import { Helmet } from 'react-helmet'
 
 import { appName } from '../../../config'
 import LoadingPage from '../../../components/loadingPage.component'
-import { fetchTransportProofs } from '../transport.actions'
+import { deleteTransportProof, fetchTransportProofs } from '../transport.actions'
 import { getPartnersTransportProofs } from '../transport.selectors'
 import { cracraEndpoint, lvConnect } from '../../auth/lvconnect'
 
@@ -41,7 +41,11 @@ const mapStateToProps = state => ({
   partnersById: state.partners.partnersById,
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchTransportProofs, push }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchTransportProofs,
+  deleteTransportProof,
+  push,
+}, dispatch)
 
 const proofEndpoint = `${cracraEndpoint}/api/proofOfTransport`
 const getProofDownloadLink = proof => `${proofEndpoint}/${proof.id}/download?access_token=${lvConnect.getAccessToken()}`
@@ -94,6 +98,8 @@ class TransportProofsPage extends React.Component {
     limit: event.target.value,
   })
 
+  handleProofDelete = proof => () => this.props.deleteTransportProof(proof)
+
   render() {
     const {
       isLoading,
@@ -122,9 +128,14 @@ class TransportProofsPage extends React.Component {
           <TableBody>
             {proofs.map(proof => (
               <TableRow key={proof.id}>
-                <TableCell>{partnersById[proof.user].firstName} {partnersById[proof.user].lastName}</TableCell>
+                {proof.user ? (
+                  <TableCell>{partnersById[proof.user].firstName} {partnersById[proof.user].lastName}</TableCell>
+                ) : (
+                  <TableCell><i>Partner supprimé</i></TableCell>
+                )}
                 <TableCell>{moment(proof.expirationDate).format('DD/MM/YYYY')}</TableCell>
                 <TableCell numeric>
+                  <IconButton onClick={this.handleProofDelete(proof)}><Delete /></IconButton>
                   <IconButton component="a" href={getProofDownloadLink(proof)} download><FileDownload /></IconButton>
                 </TableCell>
               </TableRow>
@@ -197,12 +208,13 @@ class TransportProofsPage extends React.Component {
 
 TransportProofsPage.propTypes = {
   fetchTransportProofs: PropTypes.func.isRequired,
+  deleteTransportProof: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
   proofs: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    user: PropTypes.string.isRequired,
+    user: PropTypes.string,
     expirationDate: PropTypes.string.isRequired,
   })).isRequired,
   partnersById: PropTypes.object.isRequired,

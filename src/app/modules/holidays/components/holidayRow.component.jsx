@@ -101,10 +101,12 @@ export class HolidayRow extends Component {
       ]
     }
 
+    const partnerName = partner ? `${partner.firstName} ${partner.lastName}` : 'Partner supprimé'
+
     return (
       <TableRow className={classes.holidayRow} hover onClick={onClick}>
         <TableCell className={classes.holidayLabelCell}>
-          {displayPartnerName && partner ? `${partner.firstName} ${partner.lastName}` : holiday.title}
+          {displayPartnerName ? partnerName : holiday.title}
           {menu}
         </TableCell>
         <TableCell className={classes.dateCell}>{moment(holiday.date).format('DD-MM-YYYY')}</TableCell>
