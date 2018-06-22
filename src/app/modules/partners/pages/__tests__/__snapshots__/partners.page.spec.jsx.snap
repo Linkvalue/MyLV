@@ -92,6 +92,7 @@ exports[`PartnersPage should render partners list 1`] = `
           }
           hover={true}
           key="my_anaconda_dont"
+          onClick={[Function]}
         >
           <WithStyles(TableCell)>
             hello
@@ -154,6 +155,7 @@ exports[`PartnersPage should render partners list 1`] = `
         <WithStyles(TableRow)
           hover={true}
           key="booyah"
+          onClick={[Function]}
         >
           <WithStyles(TableCell)>
             foo

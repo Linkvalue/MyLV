@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Grid, withStyles } from 'material-ui'
@@ -40,14 +40,14 @@ const styles = theme => ({
   },
 })
 
-export const WorklogPage = ({
+export const EditWorklogPage = ({
   shouldRemindProcess,
   classes,
   isOffline,
   isTabletOrMobile,
   canPrint,
 }) => (!canPrint ? <Redirect to="/client" /> : (
-  <div>
+  <Fragment>
     <Helmet>
       <title>Mon CRA | {appName}</title>
     </Helmet>
@@ -65,10 +65,10 @@ export const WorklogPage = ({
       </Button>
     </Grid>
     <Printer />
-  </div>
+  </Fragment>
 ))
 
-WorklogPage.propTypes = {
+EditWorklogPage.propTypes = {
   classes: PropTypes.object.isRequired,
   shouldRemindProcess: PropTypes.bool.isRequired,
   canPrint: PropTypes.bool.isRequired,
@@ -76,4 +76,4 @@ WorklogPage.propTypes = {
   isOffline: PropTypes.bool.isRequired,
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(WorklogPage))
+export default connect(mapStateToProps)(withStyles(styles)(EditWorklogPage))

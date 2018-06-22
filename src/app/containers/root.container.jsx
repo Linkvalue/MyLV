@@ -8,7 +8,8 @@ import { MuiThemeProvider } from 'material-ui'
 
 import ConnectedApp from './app.container'
 import ClientPage from '../modules/client/pages/client.page'
-import ConnectedWorklogPage from '../modules/worklog/pages/worklog.page'
+import ConnectedEditWorklogPage from '../modules/worklog/pages/editWorklog.page'
+import ConnectedViewWorklogPage from '../modules/worklog/pages/viewWorklog.page'
 import AuthCallbackPage from '../modules/auth/pages/authCallbackPage'
 import LoginPage from '../modules/auth/pages/login.page'
 import LoginRequired from '../modules/auth/components/loginRequired.hoc'
@@ -50,7 +51,8 @@ const Root = ({ store, history }) => (
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />
                 <Route exact path="/lunches/:id" component={ConnectedEditLunchPage} />
                 <Route exact path="/partners" component={ConnectedPartnersPage} />
-                <Route exact path="/" component={ConnectedWorklogPage} />
+                <Route exact path="/worklog/:id" component={ConnectedViewWorklogPage} />
+                <Route exact path="/" component={ConnectedEditWorklogPage} />
                 <Route component={NotFound} />
               </Switch>
             </LoginRequired>

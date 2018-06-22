@@ -1,9 +1,10 @@
 const Joi = require('joi')
 const Boom = require('boom')
+const { cracra } = require('config')
 
 module.exports = {
   method: 'GET',
-  path: '/api/worklog',
+  path: '/api/worklog/{id?}',
   config: {
     validate: {
       query: {
@@ -12,14 +13,27 @@ module.exports = {
       },
     },
   },
-  handler(req, res) {
+  async handler(req, res) {
     const { Entry } = req.server.app.models
 
-    return Entry.find({
-      userId: req.auth.credentials.id,
+    const canViewOthersWorklogs = cracra.partnersRoles.some(role => req.auth.credentials.roles.indexOf(role) >= 0)
+    if (req.params.id && !canViewOthersWorklogs) {
+      return res(Boom.forbidden('Insufficient rights.'))
+    }
+
+    let partner
+    if (req.params.id) {
+      const response = await req.app.lvConnect.api(`/users/${req.params.id}`)
+      partner = await response.json()
+    } else {
+      partner = req.auth.credentials
+    }
+
+    const results = await Entry.find({
+      userId: req.params.id || req.auth.credentials.id,
       date: { $regex: `${req.query.year}-${req.query.month}-` },
     })
-      .then(entries => res.mongodb(entries, ['client', 'manager', 'id', 'userId']))
-      .catch(err => res(Boom.wrap(err)))
+
+    res.mongodb({ results, partner }, ['client', 'manager', 'id', 'userId'])
   },
 }

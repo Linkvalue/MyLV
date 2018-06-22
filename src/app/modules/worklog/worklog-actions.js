@@ -1,4 +1,7 @@
+import qs from 'qs'
+
 import { fetchWithAuth } from '../auth/auth.actions'
+import { fetchPartnersSuccess } from '../partners/partners.actions'
 
 export const WORKLOG_FILL_MORNING = 'WORKLOG_FILL_MORNING'
 export const WORKLOG_FILL_AFTERNOON = 'WORKLOG_FILL_AFTERNOON'
@@ -65,10 +68,16 @@ export const emptyDay = day => saveWorklog({
   payload: { day },
 })
 
-export const getWorklog = (year, month) => (dispatch) => {
+export const getWorklog = (year, month, partnerId) => async (dispatch) => {
   dispatch({ type: WORKLOG_GET_START })
 
-  return dispatch(fetchWithAuth(`/api/worklog?year=${year}&month=${month}`))
-    .then(entries => dispatch({ type: WORKLOG_GET_SUCCESS, payload: entries }))
-    .catch(() => dispatch({ type: WORKLOG_GET_ERROR }))
+  try {
+    const query = qs.stringify({ year, month })
+    const url = `/api/worklog${partnerId ? `/${partnerId}` : ''}?${query}`
+    const { results: entries, partner } = await dispatch(fetchWithAuth(url))
+    dispatch(fetchPartnersSuccess({ results: [partner] }))
+    dispatch({ type: WORKLOG_GET_SUCCESS, payload: entries })
+  } catch (e) {
+    dispatch({ type: WORKLOG_GET_ERROR })
+  }
 }

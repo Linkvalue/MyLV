@@ -76,6 +76,8 @@ export class PartnersPage extends Component {
 
   handleChangePage = (event, page) => this.props.push(`/partners?page=${page + 1}`)
 
+  handleGoToPartnerWorklog = partnerId => () => this.props.push(`/worklog/${partnerId}`)
+
   handleChangeRowsPerPage = event => this.props.fetchPartners({
     page: this.getPageNumber(),
     limit: event.target.value,
@@ -124,6 +126,7 @@ export class PartnersPage extends Component {
                   hover
                   key={partner.id}
                   classes={partner.isWorklogComplete ? undefined : inValidWorklogClasses}
+                  onClick={this.handleGoToPartnerWorklog(partner.id)}
                 >
                   <TableCell>
                     {partner.firstName} {partner.lastName}

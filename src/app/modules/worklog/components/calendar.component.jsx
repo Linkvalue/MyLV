@@ -91,13 +91,13 @@ const styles = theme => ({
 
 class Calendar extends Component {
   componentWillMount() {
-    this.props.getWorklog(this.props.year, this.props.month)
+    this.props.getWorklog(this.props.year, this.props.month, this.props.partnerId)
   }
 
   componentWillReceiveProps(nextProps) {
     const { year, month } = this.props
     if (year !== nextProps.year || month !== nextProps.month) {
-      this.props.getWorklog(nextProps.year, nextProps.month)
+      this.props.getWorklog(nextProps.year, nextProps.month, this.props.partnerId)
     }
   }
 
@@ -194,6 +194,7 @@ class Calendar extends Component {
 
 Calendar.defaultProps = {
   entries: {},
+  partnerId: null,
 }
 
 Calendar.propTypes = {
@@ -208,6 +209,7 @@ Calendar.propTypes = {
   labelsInLegend: PropTypes.arrayOf(PropTypes.string).isRequired,
   weeks: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   classes: PropTypes.object.isRequired,
+  partnerId: PropTypes.string,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Calendar))

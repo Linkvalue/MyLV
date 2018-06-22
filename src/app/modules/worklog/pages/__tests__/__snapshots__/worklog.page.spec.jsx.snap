@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WorklogPage should display process reminder 1`] = `
-<div>
+<React.Fragment>
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
@@ -26,7 +26,7 @@ exports[`WorklogPage should display process reminder 1`] = `
     </WithStyles(Button)>
   </WithStyles(GridWrapper)>
   <Connect(WithStyles(Printer)) />
-</div>
+</React.Fragment>
 `;
 
 exports[`WorklogPage should redirect if missing client info 1`] = `
@@ -37,7 +37,7 @@ exports[`WorklogPage should redirect if missing client info 1`] = `
 `;
 
 exports[`WorklogPage should render properly 1`] = `
-<div>
+<React.Fragment>
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
@@ -61,5 +61,5 @@ exports[`WorklogPage should render properly 1`] = `
     </WithStyles(Button)>
   </WithStyles(GridWrapper)>
   <Connect(WithStyles(Printer)) />
-</div>
+</React.Fragment>
 `;

@@ -2,16 +2,16 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 
-import { WorklogPage } from '../worklog.page'
+import { EditWorklogPage } from '../editWorklog.page'
 import config from '../../../../config'
 
 jest.mock('../../../../config', () => ({}))
-jest.unmock('../worklog.page')
+jest.unmock('../editWorklog.page')
 
 describe('WorklogPage', () => {
   let props
 
-  const getWrapper = () => shallow(<WorklogPage {...props} />)
+  const getWrapper = () => shallow(<EditWorklogPage {...props} />)
 
   beforeEach(() => {
     props = {
