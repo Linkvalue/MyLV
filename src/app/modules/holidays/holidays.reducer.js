@@ -9,6 +9,8 @@ import {
   HOLIDAYS_FETCH_SUCCESS,
   PERSONAL_HOLIDAYS_FETCH_ERROR, PERSONAL_HOLIDAYS_FETCH_START,
   PERSONAL_HOLIDAYS_FETCH_SUCCESS,
+  PARTNER_HOLIDAYS_FETCH_SUCCESS,
+  PARTNER_HOLIDAYS_FETCH_START,
 } from './holidays.actions'
 
 const initialState = {
@@ -20,6 +22,8 @@ const initialState = {
   isUniqueLoading: false,
   limit: 25,
   pageCount: 0,
+  partnerHolidays: [],
+  isPartnerHolidaysLoading: false,
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -69,6 +73,22 @@ export default (state = initialState, { type, payload }) => {
         partnersHolidays: payload.results.map(holiday => holiday.id),
         isPartnersHolidaysLoading: false,
         pageCount: payload.pageCount,
+      }
+    case PARTNER_HOLIDAYS_FETCH_START:
+      return {
+        ...state,
+        partnerHolidays: [],
+        isPartnerHolidaysLoading: true,
+      }
+    case PARTNER_HOLIDAYS_FETCH_SUCCESS:
+      return {
+        ...state,
+        holidaysById: {
+          ...state.holidaysById,
+          ...payload.results.reduce((acc, holiday) => ({ ...acc, [holiday.id]: holiday }), {}),
+        },
+        partnerHolidays: payload.results.map(holiday => holiday.id),
+        isPartnerHolidaysLoading: false,
       }
     case HOLIDAYS_FETCH_ERROR:
       return {

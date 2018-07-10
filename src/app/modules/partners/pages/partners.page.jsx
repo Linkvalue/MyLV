@@ -76,7 +76,7 @@ export class PartnersPage extends Component {
 
   handleChangePage = (event, page) => this.props.push(`/partners?page=${page + 1}`)
 
-  handleGoToPartnerWorklog = partnerId => () => this.props.push(`/worklog/${partnerId}`)
+  handleGoToPartnerWorklog = partnerId => () => this.props.push(`/partners/${partnerId}`)
 
   handleChangeRowsPerPage = event => this.props.fetchPartners({
     page: this.getPageNumber(),

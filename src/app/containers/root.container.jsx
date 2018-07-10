@@ -9,7 +9,6 @@ import { MuiThemeProvider } from 'material-ui'
 import ConnectedApp from './app.container'
 import ClientPage from '../modules/client/pages/client.page'
 import ConnectedEditWorklogPage from '../modules/worklog/pages/editWorklog.page'
-import ConnectedViewWorklogPage from '../modules/worklog/pages/viewWorklog.page'
 import AuthCallbackPage from '../modules/auth/pages/authCallbackPage'
 import LoginPage from '../modules/auth/pages/login.page'
 import LoginRequired from '../modules/auth/components/loginRequired.hoc'
@@ -22,6 +21,7 @@ import ConnectedPersonalLunchesPage from '../modules/lunches/pages/personalLunch
 import ConnectedEditLunchPage from '../modules/lunches/pages/editLunch.page'
 import ConnectedNewLunchPage from '../modules/lunches/pages/newLunch.page'
 import ConnectedPartnersPage from '../modules/partners/pages/partners.page'
+import ConnectedPartnerDetaailsPage from '../modules/partners/pages/partnerDetails.page'
 import UploadTransportProofPage from '../modules/transport/pages/transportProofUpload.page'
 import TransportProofsPage from '../modules/transport/pages/transportProofs.page'
 import ConnectedSettingsPage from '../modules/settings/pages/settings.page'
@@ -51,7 +51,7 @@ const Root = ({ store, history }) => (
                 <Route exact path="/lunches/new" component={ConnectedNewLunchPage} />
                 <Route exact path="/lunches/:id" component={ConnectedEditLunchPage} />
                 <Route exact path="/partners" component={ConnectedPartnersPage} />
-                <Route exact path="/worklog/:id" component={ConnectedViewWorklogPage} />
+                <Route exact path="/partners/:id" component={ConnectedPartnerDetaailsPage} />
                 <Route exact path="/" component={ConnectedEditWorklogPage} />
                 <Route component={NotFound} />
               </Switch>

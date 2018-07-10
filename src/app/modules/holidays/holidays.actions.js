@@ -39,6 +39,17 @@ export const fetchPersonalHolidays = () => (dispatch) => {
     .catch(e => dispatch({ type: PERSONAL_HOLIDAYS_FETCH_ERROR, payload: e }))
 }
 
+export const PARTNER_HOLIDAYS_FETCH_START = 'PARTNER_HOLIDAYS_FETCH_START'
+export const PARTNER_HOLIDAYS_FETCH_SUCCESS = 'PARTNER_HOLIDAYS_FETCH_SUCCESS'
+export const PARTNER_HOLIDAYS_FETCH_ERROR = 'PARTNER_HOLIDAYS_FETCH_ERROR'
+export const fetchPartnerHolidays = partnerId => (dispatch) => {
+  dispatch({ type: PARTNER_HOLIDAYS_FETCH_START })
+
+  return dispatch(fetchWithAuth(`/api/partner/${partnerId}/holidays`))
+    .then(holidays => dispatch({ type: PARTNER_HOLIDAYS_FETCH_SUCCESS, payload: holidays }))
+    .catch(e => dispatch({ type: PARTNER_HOLIDAYS_FETCH_ERROR, payload: e }))
+}
+
 export const postHoliday = holiday => dispatch => dispatch(fetchWithAuth('/api/holidays', {
   method: 'POST',
   body: holiday,

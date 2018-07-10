@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import classNames from 'classnames'
-import { Card, CardContent, CircularProgress, Grid, IconButton, Typography, withStyles } from 'material-ui'
+import { Card, CardContent, CircularProgress, IconButton, Typography, withStyles } from 'material-ui'
 import { ChevronLeft, ChevronRight } from 'material-ui-icons'
 
 import CalendarDay from './calendarDay.component'
@@ -124,70 +124,68 @@ class Calendar extends Component {
     }
 
     return (
-      <Grid item md={8} xs={12}>
-        <Card className={classes.calendar}>
-          <CardContent className={classes.calendarContent}>
-            <IconButton
-              className={`${classes.calendarArrow} ${classes.calendarArrowLeft}`}
-              onClick={() => setDate(m.clone().subtract(1, 'month').format('YYYY-MM-DD'))}
-            >
-              <ChevronLeft />
-            </IconButton>
-            <Typography className={classes.calendarTitle} type="headline" component="h2" gutterBottom>
-              {m.format('MMMM YYYY')}
-            </Typography>
-            <IconButton
-              className={`${classes.calendarArrow} ${classes.calendarArrowRight}`}
-              onClick={() => setDate(m.clone().add(1, 'month').format('YYYY-MM-DD'))}
-            >
-              <ChevronRight />
-            </IconButton>
-          </CardContent>
-          <table className={classes.calendarBody}>
-            <thead>
-              <tr>
-                {weekDays.map((l, i) => <th key={i}>{l}</th>)}
+      <Card className={classes.calendar}>
+        <CardContent className={classes.calendarContent}>
+          <IconButton
+            className={`${classes.calendarArrow} ${classes.calendarArrowLeft}`}
+            onClick={() => setDate(m.clone().subtract(1, 'month').format('YYYY-MM-DD'))}
+          >
+            <ChevronLeft />
+          </IconButton>
+          <Typography className={classes.calendarTitle} type="headline" component="h2" gutterBottom>
+            {m.format('MMMM YYYY')}
+          </Typography>
+          <IconButton
+            className={`${classes.calendarArrow} ${classes.calendarArrowRight}`}
+            onClick={() => setDate(m.clone().add(1, 'month').format('YYYY-MM-DD'))}
+          >
+            <ChevronRight />
+          </IconButton>
+        </CardContent>
+        <table className={classes.calendarBody}>
+          <thead>
+            <tr>
+              {weekDays.map((l, i) => <th key={i}>{l}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {weeks.map(w => (
+              <tr key={w}>
+                {w.map((d, i) => {
+                  const date = `${year}-${month}-${`0${d}`.slice(-2)}`
+                  return (
+                    <td
+                      key={`${d}-${i}`}
+                      onContextMenu={e => removeDayEntry(e, d)}
+                      onClick={() => (d ? setDate(date) : null)}
+                      className={classNames(classes.calendarCell, {
+                        [classes.calendarCellEmpty]: !d,
+                        [classes.calendarCellWeekend]: d && isDayOff(date),
+                      })}
+                    >
+                      <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
+                      {d && <CalendarDay
+                        labelMorning={!isLoading && calendarEntries[`${year}-${month}-${d}-am`]}
+                        labelAfternoon={!isLoading && calendarEntries[`${year}-${month}-${d}-pm`]}
+                        selected={d === day}
+                      />}
+                    </td>
+                  )
+                })}
               </tr>
-            </thead>
-            <tbody>
-              {weeks.map(w => (
-                <tr key={w}>
-                  {w.map((d, i) => {
-                    const date = `${year}-${month}-${`0${d}`.slice(-2)}`
-                    return (
-                      <td
-                        key={`${d}-${i}`}
-                        onContextMenu={e => removeDayEntry(e, d)}
-                        onClick={() => (d ? setDate(date) : null)}
-                        className={classNames(classes.calendarCell, {
-                          [classes.calendarCellEmpty]: !d,
-                          [classes.calendarCellWeekend]: d && isDayOff(date),
-                        })}
-                      >
-                        <span className={classes.calendarDayNumber}>{d && parseInt(d, 10)}</span>
-                        {d && <CalendarDay
-                          labelMorning={!isLoading && calendarEntries[`${year}-${month}-${d}-am`]}
-                          labelAfternoon={!isLoading && calendarEntries[`${year}-${month}-${d}-pm`]}
-                          selected={d === day}
-                        />}
-                      </td>
-                    )
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <CardContent classes={{ root: classes.calendarFooter }}>
-            {labelsInLegend.map(label => (
-              <span key={label}>
-                <i className={classes.legendColor} style={{ backgroundColor: labelColors.get(label) }} />
-                {labels.get(label)}
-              </span>
             ))}
-          </CardContent>
-          {isLoading && <div className={classes.calendarLoaderWrapper}><CircularProgress /></div>}
-        </Card>
-      </Grid>
+          </tbody>
+        </table>
+        <CardContent classes={{ root: classes.calendarFooter }}>
+          {labelsInLegend.map(label => (
+            <span key={label}>
+              <i className={classes.legendColor} style={{ backgroundColor: labelColors.get(label) }} />
+              {labels.get(label)}
+            </span>
+          ))}
+        </CardContent>
+        {isLoading && <div className={classes.calendarLoaderWrapper}><CircularProgress /></div>}
+      </Card>
     )
   }
 }

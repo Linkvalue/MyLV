@@ -44,7 +44,7 @@ export default (state = initialState, { type, payload }) => {
         },
         partnersList: payload.results.map(partner => partner.id),
         isLoading: false,
-        pageCount: payload.pageCount,
+        pageCount: payload.pageCount || state.pageCount,
       }
     case PARTNERS_FETCH_ERROR:
       return {

@@ -54,7 +54,9 @@ export const EditWorklogPage = ({
     <Grid container className={classes.worklogPage}>
       {shouldRemindProcess ? <Process /> : null}
       <EntriesForm />
-      <Calendar />
+      <Grid item md={8} xs={12}>
+        <Calendar />
+      </Grid>
       <Button
         variant="fab"
         color="primary"
