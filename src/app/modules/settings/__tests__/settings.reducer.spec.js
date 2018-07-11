@@ -3,7 +3,7 @@ import { REHYDRATE } from 'redux-persist/constants'
 import settingsReducer from '../settings.reducer'
 import {
   DESKTOP_NOTIFICATIONS_INSTALLED, TOGGLE_HOLIDAYS_DISCLAIMER, TOGGLE_PROCESS_REMINDER,
-  TOGGLE_PROOF_OF_TRANSPORT_DIALOG, TOGGLE_PUSH_NOTIFICATION_SNACK, TOGGLE_PUSH_NOTIFICATIONS,
+  SAVE_PREFERENCES_SUCCESS, TOGGLE_PUSH_NOTIFICATION_SNACK, TOGGLE_PUSH_NOTIFICATIONS,
 } from '../settings.actions'
 
 jest.unmock('redux-persist/constants')
@@ -24,9 +24,9 @@ describe('settings.reducer', () => {
     })
   })
 
-  it('should handle TOGGLE_PROOF_OF_TRANSPORT_DIALOG', () => {
+  it('should handle SAVE_PREFERENCES_SUCCESS', () => {
     // Given
-    const action = { type: TOGGLE_PROOF_OF_TRANSPORT_DIALOG, payload: true }
+    const action = { type: SAVE_PREFERENCES_SUCCESS, payload: { hasProofOfTransport: true } }
 
     // When
     const state = settingsReducer({}, action)

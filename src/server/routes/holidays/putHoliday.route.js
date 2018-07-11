@@ -18,7 +18,11 @@ module.exports = {
     },
   },
   async handler(req, res) {
-    const holiday = await req.server.app.models.Holiday.findOneAndUpdate({ _id: req.params.id }, { $set: req.payload })
+    const holiday = await req.server.app.models.Holiday.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.payload },
+      { new: true },
+    )
 
     res.mongodb(holiday)
   },

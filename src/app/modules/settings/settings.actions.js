@@ -1,5 +1,5 @@
 import { disableDesktopNotifications, enableDesktopNotifications } from './push.service'
-import { fetchWithAuth } from '../auth/auth.actions'
+import { fetchWithAuth, fetchUserData } from '../auth/auth.actions'
 
 export const TOGGLE_PROCESS_REMINDER = 'TOGGLE_PROCESS_REMINDER'
 export const toggleProcessReminder = (toggle = false) => ({ type: TOGGLE_PROCESS_REMINDER, payload: toggle })
@@ -55,3 +55,23 @@ export const toggleTutorials = (value = false) => ({
   type: TOGGLE_TUTORIALS,
   payload: value,
 })
+
+export const SAVE_PREFERENCES_START = 'SAVE_PREFERENCES_START'
+export const SAVE_PREFERENCES_SUCCESS = 'SAVE_PREFERENCES_SUCCESS'
+export const SAVE_PREFERENCES_ERROR = 'SAVE_PREFERENCES_ERROR'
+export const savePreferences = changes => async (dispatch) => {
+  dispatch({ type: SAVE_PREFERENCES_START })
+
+  try {
+    const profile = await dispatch(fetchWithAuth('/api/profile/me', { method: 'PUT', body: changes }))
+
+    // Reload user data with latest proof of transport
+    if (changes.hasProofOfTransport) {
+      await dispatch(fetchUserData())
+    }
+
+    dispatch({ type: SAVE_PREFERENCES_SUCCESS, payload: profile })
+  } catch (e) {
+    dispatch({ type: SAVE_PREFERENCES_ERROR, payload: e })
+  }
+}

@@ -7,7 +7,7 @@ exports.register = (server, options, next) => {
 
     const partners = proofOfTransports.map(proofOfTransport => proofOfTransport.user)
 
-    const badBoys = await server.app.models.Profile.find({ userId: { $nin: partners } })
+    const badBoys = await server.app.models.Profile.find({ userId: { $nin: partners }, hasProofOfTransport: true })
     const badBoysQuery = badBoys.map(profile => `ids=${profile.userId.toString()}`)
     const { results: realBadBoys } = await lvConnect.api(`/users?${badBoysQuery.join('&')}`).then(res => res.json())
 

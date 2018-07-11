@@ -35,6 +35,8 @@ const getPartnerHolidays = require('./holidays/getPartnerHolidays.route')
 const getHolidayDetails = require('./holidays/getHolidayDetails.route')
 const postChangeStatus = require('./holidays/postChangeStatus.route')
 
+const putProfile = require('./profile/putProfile.route')
+
 const getHealth = require('./getHealth.route')
 
 module.exports = [
@@ -67,5 +69,6 @@ module.exports = [
   getPartnerHolidays,
   getHolidayDetails,
   postChangeStatus,
+  putProfile,
   getHealth,
 ].map(route => ({ ...route, config: { ...route.config, tags: ['api'] } }))

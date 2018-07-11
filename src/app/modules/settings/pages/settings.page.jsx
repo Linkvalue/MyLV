@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  toggleProofOfTransportDialog: (_, val) => settingsActions.toggleProofOfTransportDialog(val),
+  toggleProofOfTransportDialog: (_, val) => settingsActions.savePreferences({ hasProofOfTransport: val }),
   toggleTutorials: (_, val) => settingsActions.toggleTutorials(val),
   togglePushNotifications: (_, val) => settingsActions.togglePushNotifications(val),
 }, dispatch)
