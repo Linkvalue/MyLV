@@ -17,6 +17,7 @@ describe('HolidayRequestPage', () => {
         user: 'foo',
         title: 'hello',
         comment: 'world',
+        status: 'pending',
         periods: [{
           _id: 'qux',
           label: 'paidHolidays',
@@ -76,6 +77,17 @@ describe('HolidayRequestPage', () => {
   it('should render other\'s holiday request', () => {
     // Given
     props.holidayRequest.user = 'bar'
+
+    // When
+    const wrapper = getWrapper()
+
+    // Then
+    expect(shallowToJson(wrapper)).toMatchSnapshot()
+  })
+
+  it('should render with reopen button if not pending', () => {
+    // Given
+    props.holidayRequest.status = 'approved'
 
     // When
     const wrapper = getWrapper()

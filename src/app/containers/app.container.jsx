@@ -7,7 +7,7 @@ import { CssBaseline, withStyles } from 'material-ui'
 
 import AppBar from '../components/appBar.component'
 import AppDrawer from '../components/appDrawer.component'
-import { toggleProofOfTransportDialog } from '../modules/settings/settings.actions'
+import { savePreferences } from '../modules/settings/settings.actions'
 import FeatureFlipping from '../components/featureFlipping'
 import ProofOfTransportDialog from '../components/dialogs/proofOfTansportDialog.component'
 import AppUpdater from '../components/appUpdater.component'
@@ -29,7 +29,7 @@ const mapStateToProps = ({
   hasInvalidTransportProof: transport.expirationDate < Date.now(),
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ toggleProofOfTransportDialog }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ savePreferences }, dispatch)
 
 const styles = theme => ({
   appRoot: {
@@ -100,7 +100,7 @@ export class App extends React.Component {
 
   handleDecline = () => {
     this.setState({ openProofOfTransportDialog: false })
-    this.props.toggleProofOfTransportDialog()
+    this.props.savePreferences({ hasProofOfTransport: false })
   }
 
   render() {
@@ -147,7 +147,7 @@ export class App extends React.Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-  toggleProofOfTransportDialog: PropTypes.func.isRequired,
+  savePreferences: PropTypes.func.isRequired,
   shouldDisplayProofOfTransportDialog: PropTypes.bool.isRequired,
   hasInvalidTransportProof: PropTypes.bool.isRequired,
   isConnected: PropTypes.bool.isRequired,

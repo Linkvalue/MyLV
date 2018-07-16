@@ -73,11 +73,11 @@ export const fetchHolidayRequestDetails = id => async (dispatch) => {
 
   try {
     const { user: partner, ...holidayRequest } = await dispatch(fetchWithAuth(`/api/holidays/${id}`))
+    dispatch(fetchPartnersSuccess({ results: [partner] }))
     dispatch({
       type: HOLIDAY_DETAILS_FETCH_SUCCESS,
       payload: { ...holidayRequest, user: partner.id },
     })
-    dispatch(fetchPartnersSuccess({ results: [partner] }))
   } catch (e) {
     dispatch({ type: HOLIDAY_DETAILS_FETCH_ERROR, payload: e })
   }

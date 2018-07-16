@@ -17,7 +17,7 @@ describe('App', () => {
       hasInvalidTransportProof: false,
       isConnected: false,
       awaitingLogin: false,
-      toggleProofOfTransportDialog: jest.fn(),
+      savePreferences: jest.fn(),
     }
   })
 

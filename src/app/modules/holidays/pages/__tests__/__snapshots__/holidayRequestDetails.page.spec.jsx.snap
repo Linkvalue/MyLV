@@ -59,7 +59,6 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
     roles={
       Array [
         "hr",
-        "board",
       ]
     }
     user={
@@ -71,6 +70,7 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
     <WithStyles(CardActions)>
       <WithStyles(Button)
         color="primary"
+        key="approved"
         onClick={[Function]}
         size="small"
       >
@@ -78,6 +78,7 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
       </WithStyles(Button)>
       <WithStyles(Button)
         color="default"
+        key="rejected"
         onClick={[Function]}
         size="small"
       >
@@ -143,7 +144,6 @@ exports[`HolidayRequestPage should render properly 1`] = `
     roles={
       Array [
         "hr",
-        "board",
       ]
     }
     user={
@@ -155,6 +155,7 @@ exports[`HolidayRequestPage should render properly 1`] = `
     <WithStyles(CardActions)>
       <WithStyles(Button)
         color="primary"
+        key="approved"
         onClick={[Function]}
         size="small"
       >
@@ -162,10 +163,87 @@ exports[`HolidayRequestPage should render properly 1`] = `
       </WithStyles(Button)>
       <WithStyles(Button)
         color="default"
+        key="rejected"
         onClick={[Function]}
         size="small"
       >
         Refuser
+      </WithStyles(Button)>
+    </WithStyles(CardActions)>
+  </Restricted>
+</Card>
+`;
+
+exports[`HolidayRequestPage should render with reopen button if not pending 1`] = `
+<Card
+  raised={false}
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      hello
+       | 
+      FooApp
+    </title>
+  </HelmetWrapper>
+  <WithStyles(CardContent)>
+    <div>
+      <WithStyles(Typography)
+        component="h2"
+        gutterBottom={true}
+        variant="headline"
+      >
+        hello
+      </WithStyles(Typography)>
+      <HolidayRequestStatusIcon
+        status="approved"
+      />
+    </div>
+    <WithStyles(Typography)
+      component="p"
+      gutterBottom={true}
+      variant="body1"
+    >
+      world
+    </WithStyles(Typography)>
+    <WithStyles(List)>
+      <WithStyles(ListSubheader)>
+        Période(s) demandée(s)
+      </WithStyles(ListSubheader)>
+      <WithStyles(ListItem)
+        key="qux"
+      >
+        <WithStyles(Avatar)>
+          <pure(BeachAccess) />
+        </WithStyles(Avatar)>
+        <WithStyles(ListItemText)
+          primary="Du 01/01/2012 au 02/01/2012 (42 jours)"
+          secondary="Congés payés"
+        />
+      </WithStyles(ListItem)>
+    </WithStyles(List)>
+  </WithStyles(CardContent)>
+  <Restricted
+    roles={
+      Array [
+        "hr",
+      ]
+    }
+    user={
+      Object {
+        "id": "foo",
+      }
+    }
+  >
+    <WithStyles(CardActions)>
+      <WithStyles(Button)
+        color="default"
+        onClick={[Function]}
+        size="small"
+      >
+        Réouvrir pour édition
       </WithStyles(Button)>
     </WithStyles(CardActions)>
   </Restricted>

@@ -101,8 +101,7 @@ export class HolidayRow extends Component {
       ]
     }
 
-    const partnerName = partner ? `${partner.firstName} ${partner.lastName}` : 'Partner supprimé'
-
+    const partnerName = partner ? `${partner.firstName} ${partner.lastName}` : <i>Partner supprimé</i>
     return (
       <TableRow className={classes.holidayRow} hover onClick={onClick}>
         <TableCell className={classes.holidayLabelCell}>

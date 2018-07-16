@@ -18,7 +18,11 @@ import { changeHolidayRequestStatus, fetchHolidayRequestDetails } from '../holid
 import { getPeriodDayCount } from '../../../../shared/holidays.utils'
 import { holidayLabels } from '../../../../shared/calendar.constants'
 import HolidayRequestStatusIcon from '../components/holidayRequestStatusIcon.component'
-import { HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED } from '../../../../shared/holidays.constants'
+import {
+  HOLIDAY_REQUEST_APPROVED,
+  HOLIDAY_REQUEST_REJECTED,
+  HOLIDAY_REQUEST_PENDING,
+} from '../../../../shared/holidays.constants'
 
 const mapStateToProps = (state, { match }) => {
   const holidayRequest = state.holidays.holidaysById[match.params.id]
@@ -65,6 +69,9 @@ export class HolidayRequestDetails extends React.Component {
 
   handleRequestReject = () =>
     this.props.changeHolidayRequestStatus(this.props.match.params.id, HOLIDAY_REQUEST_REJECTED)
+
+  handleRequestReopen = () =>
+    this.props.changeHolidayRequestStatus(this.props.match.params.id, HOLIDAY_REQUEST_PENDING)
 
   render() {
     const {
@@ -117,10 +124,21 @@ export class HolidayRequestDetails extends React.Component {
             ))}
           </List>
         </CardContent>
-        <Restricted roles={['hr', 'board']} user={user}>
+        <Restricted roles={['hr']} user={user}>
           <CardActions>
-            <Button size="small" color="primary" onClick={this.handleRequestApprove}>Approuver</Button>
-            <Button size="small" color="default" onClick={this.handleRequestReject}>Refuser</Button>
+            {holidayRequest.status === HOLIDAY_REQUEST_PENDING ? [
+              <Button
+                key="approved"
+                size="small"
+                color="primary"
+                onClick={this.handleRequestApprove}
+              >
+                Approuver
+              </Button>,
+              <Button key="rejected" size="small" color="default" onClick={this.handleRequestReject}>Refuser</Button>,
+            ] : (
+              <Button size="small" color="default" onClick={this.handleRequestReopen}>Réouvrir pour édition</Button>
+            )}
           </CardActions>
         </Restricted>
       </Card>
@@ -140,6 +158,7 @@ HolidayRequestDetails.propTypes = {
     user: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     comment: PropTypes.string,
+    status: PropTypes.string.isRequired,
     periods: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,

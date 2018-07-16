@@ -97,7 +97,7 @@ const AppDrawer = ({
       </Hidden>
       <Divider />
       <List className={classes.linkList}>
-        <Restricted roles={['business', 'hr', 'board']} user={user}>
+        <Restricted roles={['hr', 'board']} user={user}>
           <ListSubheader>Personnel</ListSubheader>
         </Restricted>
         <AppDrawerItem to="/client" icon={<Person />} text="Client" />

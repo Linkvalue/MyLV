@@ -3,7 +3,11 @@ const config = require('config')
 const moment = require('moment')
 
 const hasRole = require('../../helpers/hasRole.pre')
-const { HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED } = require('../../../shared/holidays.constants')
+const {
+  HOLIDAY_REQUEST_APPROVED,
+  HOLIDAY_REQUEST_REJECTED,
+  HOLIDAY_REQUEST_PENDING,
+} = require('../../../shared/holidays.constants')
 const { getPeriodDayCount } = require('../../../shared/holidays.utils')
 
 const statusMapping = {
@@ -30,7 +34,11 @@ module.exports = {
   config: {
     validate: {
       payload: {
-        status: Joi.string().valid([HOLIDAY_REQUEST_APPROVED, HOLIDAY_REQUEST_REJECTED]).required(),
+        status: Joi.string().valid([
+          HOLIDAY_REQUEST_APPROVED,
+          HOLIDAY_REQUEST_REJECTED,
+          HOLIDAY_REQUEST_PENDING,
+        ]).required(),
       },
     },
     pre: [hasRole(config.cracra.partnersRoles)],

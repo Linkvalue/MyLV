@@ -17,6 +17,10 @@ describe('PeriodsList', () => {
         periods: [],
         status: 'pending',
       },
+      partner: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+      },
       onHolidayDelete: jest.fn(),
       onClick: jest.fn(),
     }
@@ -65,10 +69,9 @@ describe('PeriodsList', () => {
     expect(wrapper.find('WithStyles(IconButton)')).toHaveLength(0)
   })
 
-  it('should render with partner name if displayPartnerName is true', () => {
+  it('should render deleted partner text if no partner prop', () => {
     // Given
     props.holiday.status = 'validated'
-    props.partner = { firstName: 'hello', lastName: 'world' }
     props.displayPartnerName = true
 
     // When

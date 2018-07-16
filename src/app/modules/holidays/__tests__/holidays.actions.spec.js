@@ -136,8 +136,8 @@ describe('holidays.actions', () => {
       expect(fetchWithAuth).toHaveBeenCalledWith('/api/holidays/foo')
       expect(store.getActions()).toEqual([
         { type: HOLIDAY_DETAILS_FETCH_START },
-        { type: HOLIDAY_DETAILS_FETCH_SUCCESS, payload: { user: 'yolo', foo: 'bar' } },
         { type: PARTNERS_FETCH_SUCCESS, payload: { results: [{ id: 'yolo' }] } },
+        { type: HOLIDAY_DETAILS_FETCH_SUCCESS, payload: { user: 'yolo', foo: 'bar' } },
       ])
     })
 
