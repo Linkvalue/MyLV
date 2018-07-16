@@ -1,3 +1,13 @@
+<a name="2.7.1"></a>
+## [2.7.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.7.0...v2.7.1) (2018-07-16)
+
+
+### Features
+
+* **holidays:** Add reopen button for holidays requests ([1a706ce](http://gitlab.com/LinkValue/Lab/CraCra/commit/1a706ce))
+
+
+
 <a name="2.7.0"></a>
 # [2.7.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.2...v2.7.0) (2018-07-16)
 
