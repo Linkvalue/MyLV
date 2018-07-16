@@ -1,3 +1,16 @@
+<a name="2.7.0"></a>
+# [2.7.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.2...v2.7.0) (2018-07-16)
+
+
+### Features
+
+* **partners:** Make a partner details page ([4a73e39](http://gitlab.com/LinkValue/Lab/CraCra/commit/4a73e39))
+* **transport:** Add remove proof of transport feature ([9a347c5](http://gitlab.com/LinkValue/Lab/CraCra/commit/9a347c5))
+* **transport:** Save transport settings on backend to solve cron spam ([bed07d0](http://gitlab.com/LinkValue/Lab/CraCra/commit/bed07d0))
+* **worklog:** Add possibility to see other partner's worklog ([62404b4](http://gitlab.com/LinkValue/Lab/CraCra/commit/62404b4))
+
+
+
 <a name="2.6.2"></a>
 ## [2.6.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.6.1...v2.6.2) (2018-06-20)
 
