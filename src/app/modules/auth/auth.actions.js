@@ -26,6 +26,7 @@ class HttpError extends Error {
 export const LOGOUT = 'LOGOUT'
 export const logout = () => (dispatch) => {
   lvConnect.logout()
+  window.Raven.setUserContext()
 
   dispatch(push('/login'))
 

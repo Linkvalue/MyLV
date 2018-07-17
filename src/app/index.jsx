@@ -22,9 +22,13 @@ if (sentry) {
 
 const store = configureStore()
 
-lvConnect.on('loginSuccess', () => {
-  store.dispatch(fetchUserData())
-    .then(() => store.dispatch(push('/')))
+lvConnect.on('loginSuccess', async () => {
+  const userData = await store.dispatch(fetchUserData())
+  window.Raven.setUserContext({
+    email: userData.email,
+    id: userData.id,
+  })
+  store.dispatch(push('/'))
 })
 
 lvConnect.on('loginError', () => {
