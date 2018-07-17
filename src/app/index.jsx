@@ -24,10 +24,17 @@ const store = configureStore()
 
 lvConnect.on('loginSuccess', async () => {
   const userData = await store.dispatch(fetchUserData())
-  window.Raven.setUserContext({
-    email: userData.email,
-    id: userData.id,
-  })
+
+  if (window.Raven) {
+    window.Raven.setUserContext({
+      email: userData.email,
+      id: userData.id,
+    })
+  }
+  if (window.gtag) {
+    window.gtag('set', { user_id: userData.id })
+  }
+
   store.dispatch(push('/'))
 })
 
