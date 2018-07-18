@@ -20,6 +20,7 @@ import {
 
 import { appName } from '../../../config'
 import Calendar from '../../worklog/components/calendar.component'
+import EntriesForm from '../../worklog/components/entriesForm.component'
 import NotFound from '../../../components/notFound.component'
 import { fetchPartnerHolidays } from '../../holidays/holidays.actions'
 import HolidayRequestStatusIcon from '../../holidays/components/holidayRequestStatusIcon.component'
@@ -80,6 +81,7 @@ export class PartnerDetailsPage extends React.Component {
         <Grid container>
           <Grid item lg={8} xs={12}>
             <Calendar partnerId={id} />
+            <EntriesForm hideClientChange />
           </Grid>
           <Grid item lg={4} xs={12}>
             <Card>

@@ -31,6 +31,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({ ...calendarActions, 
 const styles = theme => ({
   calendar: {
     position: 'relative',
+    marginBottom: theme.spacing.unit * 2,
   },
   calendarContent: { position: 'relative' },
   calendarTitle: {

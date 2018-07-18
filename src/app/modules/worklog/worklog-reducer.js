@@ -20,6 +20,7 @@ const initialState = {
   error: false,
   entries: {},
   pending: {},
+  worklogId: null,
 }
 
 const setEntry = (state, date, label) => ({
@@ -77,7 +78,8 @@ export default function (state = initialState, { type, payload }) {
     case WORKLOG_GET_SUCCESS:
       return {
         ...state,
-        entries: payload.reduce((entries, entry) => ({ ...entries, [entry.date]: entry.label }), {}),
+        entries: payload.entries.reduce((entries, entry) => ({ ...entries, [entry.date]: entry.label }), {}),
+        worklogId: payload.id,
         isLoading: false,
       }
     case WORKLOG_GET_ERROR:

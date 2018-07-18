@@ -1,10 +1,11 @@
 const Joi = require('joi')
 const Boom = require('boom')
 const moment = require('moment')
+const { cracra } = require('config')
 
 module.exports = {
   method: 'PUT',
-  path: '/api/worklog',
+  path: '/api/worklog/{id}',
   config: {
     validate: {
       payload: Joi.array().items(Joi.object().keys({
@@ -16,6 +17,11 @@ module.exports = {
     },
   },
   handler(req, res) {
+    const canEditOthersWorklogs = cracra.partnersRoles.some(role => req.auth.credentials.roles.indexOf(role) >= 0)
+    if (req.params.id !== req.auth.credentials.id && !canEditOthersWorklogs) {
+      return res(Boom.forbidden('Insuffiscient rights'))
+    }
+
     let isOutOfBounds
     let missingClientOrManager
     req.payload.forEach(({ date, client, manager }) => {
@@ -37,7 +43,7 @@ module.exports = {
       return res(Boom.badRequest('One or more entries have specified a client without a manager'))
     }
 
-    return req.server.plugins.worklog.saveEntries(req.payload, req.auth.credentials.id)
+    return req.server.plugins.worklog.saveEntries(req.payload, req.params.id)
       .then(() => res({ success: true }))
       .catch(err => res(Boom.wrap(err)))
   },

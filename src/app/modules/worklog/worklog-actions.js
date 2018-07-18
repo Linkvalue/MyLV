@@ -20,13 +20,13 @@ export const saveWorklog = preSaveAction => (dispatch, getState) => {
     dispatch(preSaveAction)
   }
 
-  const { worklog: { pending } } = getState()
+  const { worklog: { pending, worklogId } } = getState()
 
   if (Object.keys(pending).length === 0) {
     return Promise.resolve()
   }
 
-  return dispatch(fetchWithAuth('/api/worklog', {
+  return dispatch(fetchWithAuth(`/api/worklog/${worklogId}`, {
     method: 'PUT',
     body: Object.entries(pending).map(([date, label]) => ({ date, label })),
   }))
@@ -68,15 +68,16 @@ export const emptyDay = day => saveWorklog({
   payload: { day },
 })
 
-export const getWorklog = (year, month, partnerId) => async (dispatch) => {
+export const getWorklog = (year, month, partnerId) => async (dispatch, getState) => {
   dispatch({ type: WORKLOG_GET_START })
 
   try {
+    const id = partnerId || getState().auth.user.id
     const query = qs.stringify({ year, month })
-    const url = `/api/worklog${partnerId ? `/${partnerId}` : ''}?${query}`
+    const url = `/api/worklog/${id}?${query}`
     const { results: entries, partner } = await dispatch(fetchWithAuth(url))
     dispatch(fetchPartnersSuccess({ results: [partner] }))
-    dispatch({ type: WORKLOG_GET_SUCCESS, payload: entries })
+    dispatch({ type: WORKLOG_GET_SUCCESS, payload: { entries, id } })
   } catch (e) {
     dispatch({ type: WORKLOG_GET_ERROR })
   }

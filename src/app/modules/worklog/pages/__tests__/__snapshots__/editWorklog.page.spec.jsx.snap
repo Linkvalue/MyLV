@@ -14,7 +14,13 @@ exports[`WorklogPage should display process reminder 1`] = `
     container={true}
   >
     <Connect(Process) />
-    <Connect(WithStyles(ReduxForm)) />
+    <WithStyles(GridWrapper)
+      item={true}
+      md={4}
+      xs={12}
+    >
+      <Connect(WithStyles(ReduxForm)) />
+    </WithStyles(GridWrapper)>
     <WithStyles(GridWrapper)
       item={true}
       md={8}
@@ -55,7 +61,13 @@ exports[`WorklogPage should render properly 1`] = `
   <WithStyles(GridWrapper)
     container={true}
   >
-    <Connect(WithStyles(ReduxForm)) />
+    <WithStyles(GridWrapper)
+      item={true}
+      md={4}
+      xs={12}
+    >
+      <Connect(WithStyles(ReduxForm)) />
+    </WithStyles(GridWrapper)>
     <WithStyles(GridWrapper)
       item={true}
       md={8}

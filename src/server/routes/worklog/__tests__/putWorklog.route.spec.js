@@ -4,7 +4,10 @@ jest.unmock('../putWorklog.route')
 
 jest.mock('boom', () => ({
   badRequest: jest.fn(message => message),
+  forbidden: jest.fn(message => message),
 }))
+
+jest.mock('config', () => ({ cracra: { partnersRoles: ['hr'] } }))
 
 const moment = require('moment')
 const putWorklog = require('../putWorklog.route')
@@ -20,9 +23,9 @@ describe('PUT /api/worklog', () => {
         },
       },
     }
-    const auth = { credentials: { id: 'hello' } }
+    const auth = { credentials: { id: 'hello', roles: ['hr'] } }
 
-    request = { server, auth }
+    request = { server, auth, params: { id: 'yolo' } }
     reply = jest.fn()
   })
 
@@ -81,7 +84,18 @@ describe('PUT /api/worklog', () => {
     await putWorklog.handler(request, reply)
 
     // Then
-    expect(request.server.plugins.worklog.saveEntries).toHaveBeenCalledWith([{ ...request.payload[0] }], 'hello')
+    expect(request.server.plugins.worklog.saveEntries).toHaveBeenCalledWith([{ ...request.payload[0] }], 'yolo')
     expect(reply).toHaveBeenCalledWith({ success: true })
+  })
+
+  it('should not permit edition of others worklog with insucient permissions', async () => {
+    // Given
+    request.auth.credentials.roles = []
+
+    // When
+    putWorklog.handler(request, reply)
+
+    // Then
+    expect(reply).toHaveBeenCalledWith('Insuffiscient rights')
   })
 })

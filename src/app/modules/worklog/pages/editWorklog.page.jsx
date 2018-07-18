@@ -53,7 +53,9 @@ export const EditWorklogPage = ({
     </Helmet>
     <Grid container className={classes.worklogPage}>
       {shouldRemindProcess ? <Process /> : null}
-      <EntriesForm />
+      <Grid item md={4} xs={12}>
+        <EntriesForm />
+      </Grid>
       <Grid item md={8} xs={12}>
         <Calendar />
       </Grid>

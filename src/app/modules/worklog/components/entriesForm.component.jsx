@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Button, Card, CardActions, CardContent, Grid, Typography, withStyles } from 'material-ui'
+import { Button, Card, CardActions, CardContent, Typography, withStyles } from 'material-ui'
 
 import SelectField from '../../../components/inputs/selectField.component'
 import * as worklogActions from '../worklog-actions'
@@ -59,8 +59,9 @@ const EntriesForm = ({
   day,
   handleSubmit,
   classes,
+  hideClientChange,
 }) => (
-  <Grid className={classes.cardsHolder} item md={4} xs={12}>
+  <React.Fragment>
     <Card className={classes.firstCard}>
       <CardContent>
         <Typography variant="headline" component="h2" gutterBottom>
@@ -93,22 +94,24 @@ const EntriesForm = ({
         </Button>
       </CardActions>
     </Card>
-    <Card className={classes.secondCard}>
-      <CardContent>
-        <Typography variant="headline" component="h2" gutterBottom>
-          Changement de client ?
-        </Typography>
-        <Typography>
-          Les informations client sur votre CRA ne correspondent plus ?
-          Pas de panique vous pouvez encore les éditer depuis l'écran "Partner / Client" dans le menu de gauche,
-          ou avec le lien ci-dessous.
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" color="primary" component={Link} to="/client">Editer</Button>
-      </CardActions>
-    </Card>
-  </Grid>
+    {!hideClientChange && (
+      <Card className={classes.secondCard}>
+        <CardContent>
+          <Typography variant="headline" component="h2" gutterBottom>
+            Changement de client ?
+          </Typography>
+          <Typography>
+            Les informations client sur votre CRA ne correspondent plus ?
+            Pas de panique vous pouvez encore les éditer depuis l'écran "Partner / Client" dans le menu de gauche,
+            ou avec le lien ci-dessous.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary" component={Link} to="/client">Editer</Button>
+        </CardActions>
+      </Card>
+    )}
+  </React.Fragment>
 )
 
 const HookedEntriesForm = reduxForm({

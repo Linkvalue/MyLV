@@ -4,7 +4,7 @@ const { cracra } = require('config')
 
 module.exports = {
   method: 'GET',
-  path: '/api/worklog/{id?}',
+  path: '/api/worklog/{id}',
   config: {
     validate: {
       query: {
@@ -17,7 +17,7 @@ module.exports = {
     const { Entry } = req.server.app.models
 
     const canViewOthersWorklogs = cracra.partnersRoles.some(role => req.auth.credentials.roles.indexOf(role) >= 0)
-    if (req.params.id && !canViewOthersWorklogs) {
+    if (req.params.id !== req.auth.credentials.id && !canViewOthersWorklogs) {
       return res(Boom.forbidden('Insufficient rights.'))
     }
 

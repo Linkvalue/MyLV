@@ -10,14 +10,14 @@ describe('worklog/actions', () => {
       // Given
       expect.assertions(2)
       const dispatch = jest.fn(() => Promise.resolve())
-      const getState = jest.fn(() => ({ worklog: { pending: { foo: 'bar' } } }))
+      const getState = jest.fn(() => ({ worklog: { pending: { foo: 'bar' }, worklogId: 'baz' } }))
 
       // When
       await saveWorklog()(dispatch, getState)
 
       // Then
       expect(dispatch).toHaveBeenCalledWith({
-        url: '/api/worklog',
+        url: '/api/worklog/baz',
         options: {
           method: 'PUT',
           body: [{ date: 'foo', label: 'bar' }],
@@ -25,18 +25,18 @@ describe('worklog/actions', () => {
       })
       expect(dispatch).toHaveBeenCalledWith({ type: WORKLOG_SAVE_SUCCESS })
     })
-  })
 
-  it('should dispatch presave action if present', async () => {
-    // Given
-    expect.assertions(1)
-    const dispatch = jest.fn(() => Promise.resolve())
-    const getState = jest.fn(() => ({ worklog: { pending: {} } }))
+    it('should dispatch presave action if present', async () => {
+      // Given
+      expect.assertions(1)
+      const dispatch = jest.fn(() => Promise.resolve())
+      const getState = jest.fn(() => ({ worklog: { pending: {} } }))
 
-    // When
-    await saveWorklog({ type: 'yolo' })(dispatch, getState)
+      // When
+      await saveWorklog({ type: 'yolo' })(dispatch, getState)
 
-    // Then
-    expect(dispatch).toHaveBeenCalledWith({ type: 'yolo' })
+      // Then
+      expect(dispatch).toHaveBeenCalledWith({ type: 'yolo' })
+    })
   })
 })
