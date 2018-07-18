@@ -8,6 +8,7 @@ const {
   HOLIDAY_REQUEST_REJECTED,
   HOLIDAY_REQUEST_PENDING,
 } = require('../../../shared/holidays.constants')
+const { publicHolidays } = require('../../../shared/calendar.constants')
 const { getPeriodDayCount } = require('../../../shared/holidays.utils')
 
 const statusMapping = {
@@ -17,15 +18,20 @@ const statusMapping = {
 
 const getPeriodEntries = (period) => {
   const currentDate = moment(period.startDate)
-  const entries = Array.from({ length: getPeriodDayCount(period) * 2 }).map(() => {
-    const entry = {
-      label: period.label,
-      date: `${currentDate.format('YYYY-MM-DD')}-${currentDate.hour() >= 12 ? 'pm' : 'am'}`,
+  return Array.from({ length: getPeriodDayCount(period) * 2 }).reduce((acc) => {
+    const day = currentDate.day()
+
+    if (day !== 0 && day !== 6 && !publicHolidays.has(`${currentDate.month()}-${day}`)) {
+      acc.push({
+        label: period.label,
+        date: `${currentDate.format('YYYY-MM-DD')}-${currentDate.hour() >= 12 ? 'pm' : 'am'}`,
+      })
     }
+
     currentDate.add(12, 'h')
-    return entry
-  })
-  return entries
+
+    return acc
+  }, [])
 }
 
 module.exports = {
@@ -48,9 +54,10 @@ module.exports = {
     const holidayRequest = await req.server.app.models.Holiday.findOneAndUpdate(
       { _id: req.params.id },
       { $set: { status } },
+      { new: true },
     )
 
-    if (req.payload.status === HOLIDAY_REQUEST_APPROVED) {
+    if (holidayRequest.status === HOLIDAY_REQUEST_APPROVED) {
       const entries = [].concat(...holidayRequest.periods.map(period => getPeriodEntries(period, holidayRequest.user)))
       await req.server.plugins.worklog.saveEntries(entries, holidayRequest.user)
     }
@@ -60,6 +67,6 @@ module.exports = {
       url: `/holidays/${holidayRequest._id}`,
     }))
 
-    res.mongodb({ ...holidayRequest.toJSON(), status })
+    res.mongodb(holidayRequest)
   },
 }
