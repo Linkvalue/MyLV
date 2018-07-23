@@ -1,3 +1,20 @@
+<a name="2.8.0"></a>
+# [2.8.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.7.1...v2.8.0) (2018-07-23)
+
+
+### Bug Fixes
+
+* **holidays:** Fixed a bug while generating entries on holidays accept ([fb04af8](http://gitlab.com/LinkValue/Lab/CraCra/commit/fb04af8))
+
+
+### Features
+
+* **analytics:** Setup user identification for GA ([390bb2b](http://gitlab.com/LinkValue/Lab/CraCra/commit/390bb2b))
+* **sentry:** Add user context for sentry monitoring ([70b5a17](http://gitlab.com/LinkValue/Lab/CraCra/commit/70b5a17))
+* **worklog:** Allow edit of other partner worklog ([e4ac190](http://gitlab.com/LinkValue/Lab/CraCra/commit/e4ac190))
+
+
+
 <a name="2.7.1"></a>
 ## [2.7.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.7.0...v2.7.1) (2018-07-16)
 
