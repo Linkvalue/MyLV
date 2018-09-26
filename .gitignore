@@ -3,6 +3,7 @@ node_modules/
 npm-debug.log
 dist/
 logs/
-config/local.js
+config/local.*
 .idea/
 data
+.eslintcache

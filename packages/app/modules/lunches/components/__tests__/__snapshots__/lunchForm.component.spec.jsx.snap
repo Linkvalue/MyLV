@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LunchForm should render properly 1`] = `
+<form
+  onSubmit={[MockFunction]}
+>
+  <WithStyles(Grid)
+    container={true}
+  >
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+      xs={12}
+    >
+      <Field
+        component={[MockFunction]}
+        fullWidth={true}
+        label="Intitulé"
+        name="label"
+        type="text"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      md={6}
+      xs={12}
+    >
+      <Field
+        component={[MockFunction]}
+        fullWidth={true}
+        label="Date"
+        name="date"
+        type="text"
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      xs={12}
+    >
+      <FieldArray
+        component={[MockFunction]}
+        name="attendees"
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</form>
+`;

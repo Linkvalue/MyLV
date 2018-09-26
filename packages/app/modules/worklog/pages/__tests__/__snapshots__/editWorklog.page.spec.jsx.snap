@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorklogPage should display process reminder 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mon CRA | 
+    </title>
+  </HelmetWrapper>
+  <WithStyles(Grid)
+    container={true}
+    spacing={16}
+  >
+    <Connect(Process) />
+    <WithStyles(Grid)
+      item={true}
+      md={4}
+      xs={12}
+    >
+      <Connect(WithStyles(ReduxForm)) />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      md={8}
+      xs={12}
+    >
+      <Connect(WithStyles(Calendar)) />
+    </WithStyles(Grid)>
+    <WithStyles(Button)
+      className=""
+      color="primary"
+      onClick={[Function]}
+      variant="fab"
+    >
+      <pure(PrintIcon) />
+    </WithStyles(Button)>
+  </WithStyles(Grid)>
+  <Connect(WithStyles(Printer)) />
+</Fragment>
+`;
+
+exports[`WorklogPage should redirect if missing client info 1`] = `
+<Redirect
+  push={false}
+  to="/client"
+/>
+`;
+
+exports[`WorklogPage should render properly 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Mon CRA | 
+    </title>
+  </HelmetWrapper>
+  <WithStyles(Grid)
+    container={true}
+    spacing={16}
+  >
+    <WithStyles(Grid)
+      item={true}
+      md={4}
+      xs={12}
+    >
+      <Connect(WithStyles(ReduxForm)) />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      md={8}
+      xs={12}
+    >
+      <Connect(WithStyles(Calendar)) />
+    </WithStyles(Grid)>
+    <WithStyles(Button)
+      className=""
+      color="primary"
+      onClick={[Function]}
+      variant="fab"
+    >
+      <pure(PrintIcon) />
+    </WithStyles(Button)>
+  </WithStyles(Grid)>
+  <Connect(WithStyles(Printer)) />
+</Fragment>
+`;

@@ -1,0 +1,9 @@
+{
+  "name": "@cracra/shared",
+  "description": "Shared package for CraCra",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+  }
+}

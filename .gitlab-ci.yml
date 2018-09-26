@@ -14,8 +14,8 @@ build_staging:
   variables:
     NODE_ENV: staging
   script:
-    - npm install
-    - npm run dist
+    - yarn
+    - yarn dist
   artifacts:
     name: "build-$CI_COMMIT_REF_NAME"
     paths:
@@ -32,8 +32,8 @@ build_production:
   variables:
     NODE_ENV: production
   script:
-    - npm install
-    - npm run dist
+    - yarn
+    - yarn dist
   artifacts:
     name: "build-$CI_COMMIT_REF_NAME"
     paths:
@@ -46,9 +46,9 @@ build_production:
 unit_tests:
   stage: test
   script:
-    - npm install
-    - npm run lint
-    - npm run test:unit
+    - yarn
+    - yarn lint
+    - yarn test:unit
   tags:
     - node
 

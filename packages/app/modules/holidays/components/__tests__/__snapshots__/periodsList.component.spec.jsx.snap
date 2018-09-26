@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeriodsList should render properly 1`] = `
+<WithStyles(Paper)
+  className="periods-list"
+>
+  <div>
+    <WithStyles(Table)>
+      <WithStyles(TableHead)>
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)
+            key="paidHolidays"
+            padding="checkbox"
+          >
+            Congés payés
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            padding="checkbox"
+          >
+            Congés sans solde
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            padding="checkbox"
+          >
+            Absences Syntec
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          >
+            Date du premier jour d'absence
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            A partir du
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          >
+            Date du dernier jour d'absence
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            Jusqu'au
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          />
+        </WithStyles(TableRow)>
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
+        <WithStyles(TableRow)
+          key="0"
+        >
+          <WithStyles(TableCell)
+            key="paidHolidays"
+            padding="checkbox"
+          >
+            <Field
+              component={[Function]}
+              name="[object Object].label"
+              type="radio"
+              value="paidHolidays"
+            />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            padding="checkbox"
+          >
+            <Field
+              component={[Function]}
+              name="[object Object].label"
+              type="radio"
+              value="unpaidHolidays"
+            />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            padding="checkbox"
+          >
+            <Field
+              component={[Function]}
+              name="[object Object].label"
+              type="radio"
+              value="conventionalHolidays"
+            />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          >
+            <Field
+              component={[MockFunction]}
+              name="[object Object].startDate"
+              type="date"
+            />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            <div>
+              <span>
+                Matin
+              </span>
+              <Field
+                component={[Function]}
+                name="[object Object].startOnPM"
+                type="checkbox"
+                value="startOnPM"
+              />
+              <span>
+                Midi
+              </span>
+            </div>
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          >
+            <Field
+              component={[MockFunction]}
+              name="[object Object].endDate"
+              type="date"
+            />
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)>
+            <div>
+              <span>
+                Midi
+              </span>
+              <Field
+                component={[Function]}
+                name="[object Object].endOnPM"
+                type="checkbox"
+                value="endOnPM"
+              />
+              <span>
+                Soir
+              </span>
+            </div>
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            padding="checkbox"
+          />
+        </WithStyles(TableRow)>
+      </WithStyles(TableBody)>
+    </WithStyles(Table)>
+  </div>
+  <table>
+    <WithStyles(TableFooter)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          <WithStyles(Button)
+            color="primary"
+            onClick={[Function]}
+          >
+            Ajouter une ligne
+          </WithStyles(Button)>
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableFooter)>
+  </table>
+</WithStyles(Paper)>
+`;
