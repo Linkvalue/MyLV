@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertSnack should render properly 1`] = `
+<WithStyles(Snackbar)
+  action={
+    <WithStyles(IconButton)
+      color="inherit"
+      onClick={[MockFunction]}
+    >
+      <pure(InfoIcon) />
+    </WithStyles(IconButton)>
+  }
+  autoHideDuration={2000}
+  key="foo"
+  message="bar"
+  onClose={[MockFunction]}
+  onExited={[MockFunction]}
+  open={true}
+/>
+`;

@@ -2,7 +2,7 @@ const {
   ContextReplacementPlugin,
   DefinePlugin,
   IgnorePlugin,
-  optimize: { CommonsChunkPlugin },
+  NamedModulesPlugin,
 } = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -17,10 +17,8 @@ const { util, front: { version } } = require('config')
 const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
 
 module.exports = (env = {}) => ({
-  entry: {
-    index: './index.jsx',
-  },
-  context: path.resolve(__dirname, 'src/app'),
+  entry: './index.jsx',
+  context: path.resolve(__dirname, './packages/app'),
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -28,6 +26,11 @@ module.exports = (env = {}) => ({
     filename: '[name]-[hash].js',
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
@@ -53,6 +56,7 @@ module.exports = (env = {}) => ({
       },
     ],
   },
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devtool: env.production ? 'source-map' : 'cheap-module-eval-source-map',
   devServer: {
     contentBase: './dist',
@@ -71,20 +75,12 @@ module.exports = (env = {}) => ({
         release: version,
         configFile: path.resolve(__dirname, './.sentryclirc'),
       }),
-    ] : []),
+    ] : [
+      new NamedModulesPlugin(),
+    ]),
     new CleanWebpackPlugin(['dist']),
     new ContextReplacementPlugin(/moment[/\\]locale$/, /fr/),
     new IgnorePlugin(/node-fetch/),
-    new CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks(module) {
-        return module.context && module.context.includes('node_modules')
-      },
-    }),
-    new CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity,
-    }),
     new FaviconsWebpackPlugin('./assets/images/logo-my-lv-icon.png'),
     new HtmlWebpackPlugin({
       template: 'index.html',
@@ -97,7 +93,7 @@ module.exports = (env = {}) => ({
       theme_color: '#2196f3',
       icons: [
         {
-          src: path.resolve('src/app/assets/images/logo-my-lv-icon.png'),
+          src: path.resolve('packages/app/assets/images/logo-my-lv-icon.png'),
           sizes: [96, 128, 192, 256, 384, 512],
         },
       ],

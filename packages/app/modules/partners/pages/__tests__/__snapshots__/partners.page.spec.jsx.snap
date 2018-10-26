@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PartnersPage should render loader when fetching 1`] = `<WithStyles(LoadingPage) />`;
+
+exports[`PartnersPage should render partners list 1`] = `
+<WithStyles(Paper)>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Partners | 
+      FooApp
+    </title>
+  </HelmetWrapper>
+  <WithStyles(Toolbar)>
+    <WithStyles(Typography)
+      component="h2"
+      gutterBottom={true}
+      variant="headline"
+    >
+      Partners
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+  <div>
+    <WithStyles(Table)>
+      <WithStyles(TableHead)>
+        <WithStyles(TableRow)>
+          <WithStyles(TableCell)>
+            Nom
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Production"
+            numeric={true}
+          >
+            Production
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Congés payés"
+            numeric={true}
+          >
+            Congés payés
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Congés sans solde"
+            numeric={true}
+          >
+            Congés sans solde
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Absences Syntec"
+            numeric={true}
+          >
+            Absences Syntec
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Contributions"
+            numeric={true}
+          >
+            Contributions
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Conférences"
+            numeric={true}
+          >
+            Conférences
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="Arrêt Maladie"
+            numeric={true}
+          >
+            Arrêt Maladie
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            Déjeuners
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            Ticket restaurants
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </WithStyles(TableHead)>
+      <WithStyles(TableBody)>
+        <WithStyles(TableRow)
+          classes={
+            Object {
+              "root": "incompleteWorklog",
+            }
+          }
+          hover={true}
+          key="my_anaconda_dont"
+          onClick={[Function]}
+        >
+          <WithStyles(TableCell)>
+            hello
+             
+            world
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="production"
+            numeric={true}
+          >
+            9
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="paidHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="contributions"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conferences"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="sickness"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            10
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            21
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+        <WithStyles(TableRow)
+          hover={true}
+          key="booyah"
+          onClick={[Function]}
+        >
+          <WithStyles(TableCell)>
+            foo
+             
+            bar
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="production"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="paidHolidays"
+            numeric={true}
+          >
+            10
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="unpaidHolidays"
+            numeric={true}
+          >
+            42
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conventionalHolidays"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="contributions"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="conferences"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            key="sickness"
+            numeric={true}
+          >
+            0
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            42
+          </WithStyles(TableCell)>
+          <WithStyles(TableCell)
+            numeric={true}
+          >
+            19
+          </WithStyles(TableCell)>
+        </WithStyles(TableRow)>
+      </WithStyles(TableBody)>
+    </WithStyles(Table)>
+  </div>
+  <table>
+    <WithStyles(TableFooter)>
+      <WithStyles(TableRow)>
+        <WithStyles(TablePagination)
+          count={250}
+          labelDisplayedRows={[Function]}
+          onChangePage={[Function]}
+          onChangeRowsPerPage={[Function]}
+          page={0}
+          rowsPerPage={25}
+          rowsPerPageOptions={
+            Array [
+              25,
+              50,
+              100,
+            ]
+          }
+        />
+      </WithStyles(TableRow)>
+    </WithStyles(TableFooter)>
+  </table>
+  <WithStyles(CardActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      Envoyer un rappel
+    </WithStyles(Button)>
+  </WithStyles(CardActions)>
+</WithStyles(Paper)>
+`;
