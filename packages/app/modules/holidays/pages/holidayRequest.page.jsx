@@ -22,7 +22,7 @@ export const HolidayRequestPage = ({ postHoliday }) => (
           <title>Nouvelle demande de congés | {appName}</title>
         </Helmet>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Nouvelle demande de congé
           </Typography>
           {children}

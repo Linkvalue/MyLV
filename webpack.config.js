@@ -6,7 +6,7 @@ const {
 } = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const SentryCliPlugin = require('@sentry/webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
@@ -28,12 +28,19 @@ module.exports = (env = {}) => ({
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {
+    minimizer: [new TerserPlugin({
+      cache: true,
+      parallel: true,
+    })],
     splitChunks: {
       chunks: 'all',
     },
+    runtimeChunk: true,
   },
   module: {
+    strictExportPresence: true,
     rules: [
+      { parser: { requireEnsure: false } },
       {
         test: /\.jsx?$/,
         use: {
@@ -57,7 +64,7 @@ module.exports = (env = {}) => ({
     ],
   },
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  devtool: env.production ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: env.production ? 'source-map' : 'cheap-module-source-map',
   devServer: {
     contentBase: './dist',
     hot: true,
@@ -69,7 +76,6 @@ module.exports = (env = {}) => ({
   },
   plugins: [
     ...(env.production ? [
-      new UglifyJSPlugin({ sourceMap: true }),
       new SentryCliPlugin({
         include: path.resolve(__dirname, './dist'),
         release: version,

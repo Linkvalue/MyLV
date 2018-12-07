@@ -101,12 +101,12 @@ export class HolidayRequestDetails extends React.Component {
         </Helmet>
         <CardContent>
           <div className={classes.toolbar}>
-            <Typography variant="headline" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" gutterBottom>
               {title}
             </Typography>
             <HolidayRequestStatusIcon status={holidayRequest.status} />
           </div>
-          <Typography variant="body1" component="p" gutterBottom>
+          <Typography component="p" gutterBottom>
             {holidayRequest.comment}
           </Typography>
           <List>

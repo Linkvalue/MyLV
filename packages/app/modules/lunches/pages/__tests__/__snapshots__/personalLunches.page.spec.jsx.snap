@@ -17,7 +17,7 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Mes déjeuners
     </WithStyles(Typography)>

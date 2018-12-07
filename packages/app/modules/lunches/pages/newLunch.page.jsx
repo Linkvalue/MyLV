@@ -22,7 +22,7 @@ export const NewLunchPage = props => (
           <title>Nouveau déjeuner | {appName}</title>
         </Helmet>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Nouveau déjeuner
           </Typography>
           {children}

@@ -88,7 +88,7 @@ export const TransportProofPage = ({
       <CardContent>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="headline" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" gutterBottom>
               Uploader un justificatif de titre de transport
             </Typography>
             <Typography gutterBottom>

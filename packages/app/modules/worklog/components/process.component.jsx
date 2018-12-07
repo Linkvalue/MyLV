@@ -14,7 +14,7 @@ const Process = ({ toggleProcessReminder }) => (
   <Grid item xs={12}>
     <Card>
       <CardContent>
-        <Typography variant="headline" component="h2" gutterBottom>
+        <Typography variant="h5" component="h2" gutterBottom>
           Informations
         </Typography>
         <Typography gutterBottom>

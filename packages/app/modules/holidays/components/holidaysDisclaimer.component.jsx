@@ -5,8 +5,8 @@ import { Button, Card, CardActions, CardContent, Typography } from '@material-ui
 const HolidaysDisclaimer = ({ className, onClose }) => (
   <Card className={className}>
     <CardContent>
-      <Typography variant="title" gutterBottom>Congés</Typography>
-      <Typography variant="subheading" color="primary" gutterBottom>Cas général</Typography>
+      <Typography variant="h6" gutterBottom>Congés</Typography>
+      <Typography variant="subtitle1" color="primary" gutterBottom>Cas général</Typography>
       <Typography gutterBottom>
         La demande de congés permet de répondre à une obligation légale consistant à
         informer l’entreprise en cas de prise de congés (congés payés, congés pour
@@ -26,7 +26,7 @@ const HolidaysDisclaimer = ({ className, onClose }) => (
         La demande sera validée si les délais indiqués ont été respectés et si la personne
         concernée a bien acquis les jours de congés sollicités.
       </Typography>
-      <Typography variant="subheading" color="primary" gutterBottom>Cas exceptionnel</Typography>
+      <Typography variant="subtitle1" color="primary" gutterBottom>Cas exceptionnel</Typography>
       <Typography gutterBottom>
         En cas d’événement impromptu nécessitant la pose d’un à deux jours de congés, la
         demande doit être remplie le jour même afin que l’entreprise soit prévenue de cette
@@ -36,7 +36,7 @@ const HolidaysDisclaimer = ({ className, onClose }) => (
         Dans ce cas, la demande sera validée si la personne concernée a bien acquis les
         jours de congés sollicités.
       </Typography>
-      <Typography variant="title" gutterBottom>Absences Maladie</Typography>
+      <Typography variant="h6" gutterBottom>Absences Maladie</Typography>
       <Typography gutterBottom>
         En cas d’absence maladie, il est recommandé d’avertir l’entreprise de son absence
         au plus vite en envoyant un mail à l’adresse <a href="mailto:admin@link-value.fr">admin@link-value.fr</a> et,

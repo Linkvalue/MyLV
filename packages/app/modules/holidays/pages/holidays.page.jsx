@@ -132,7 +132,7 @@ export class HolidaysPage extends React.Component {
           <title>Demandes de congés | {appName}</title>
         </Helmet>
         <Toolbar>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Demandes de congés
           </Typography>
         </Toolbar>

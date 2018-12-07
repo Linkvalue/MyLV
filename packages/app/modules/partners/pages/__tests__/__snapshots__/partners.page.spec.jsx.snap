@@ -17,7 +17,7 @@ exports[`PartnersPage should render partners list 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Partners
     </WithStyles(Typography)>

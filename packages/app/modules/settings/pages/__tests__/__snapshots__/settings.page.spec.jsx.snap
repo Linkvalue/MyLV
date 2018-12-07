@@ -15,7 +15,7 @@ exports[`SettingsPage should render with all switches off 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Paramètres
     </WithStyles(Typography)>
@@ -74,7 +74,7 @@ exports[`SettingsPage should render with all switches on 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Paramètres
     </WithStyles(Typography)>

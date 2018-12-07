@@ -158,7 +158,7 @@ class TransportProofsPage extends React.Component {
         </Helmet>
         <Paper>
           <Toolbar>
-            <Typography variant="headline" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" gutterBottom>
               Justificatifs de transport
             </Typography>
           </Toolbar>

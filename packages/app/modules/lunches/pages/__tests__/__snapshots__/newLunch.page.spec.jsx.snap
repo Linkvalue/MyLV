@@ -22,7 +22,7 @@ exports[`NewLunchPage should pass render function to edit form 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Nouveau déjeuner
     </WithStyles(Typography)>

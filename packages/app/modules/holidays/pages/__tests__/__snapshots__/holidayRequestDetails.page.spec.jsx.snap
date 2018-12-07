@@ -21,7 +21,7 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
       <WithStyles(Typography)
         component="h2"
         gutterBottom={true}
-        variant="headline"
+        variant="h5"
       >
         Demande de congé de james bond
       </WithStyles(Typography)>
@@ -32,7 +32,6 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
     <WithStyles(Typography)
       component="p"
       gutterBottom={true}
-      variant="body1"
     >
       world
     </WithStyles(Typography)>
@@ -104,7 +103,7 @@ exports[`HolidayRequestPage should render properly 1`] = `
       <WithStyles(Typography)
         component="h2"
         gutterBottom={true}
-        variant="headline"
+        variant="h5"
       >
         hello
       </WithStyles(Typography)>
@@ -115,7 +114,6 @@ exports[`HolidayRequestPage should render properly 1`] = `
     <WithStyles(Typography)
       component="p"
       gutterBottom={true}
-      variant="body1"
     >
       world
     </WithStyles(Typography)>
@@ -187,7 +185,7 @@ exports[`HolidayRequestPage should render with reopen button if not pending 1`] 
       <WithStyles(Typography)
         component="h2"
         gutterBottom={true}
-        variant="headline"
+        variant="h5"
       >
         hello
       </WithStyles(Typography)>
@@ -198,7 +196,6 @@ exports[`HolidayRequestPage should render with reopen button if not pending 1`] 
     <WithStyles(Typography)
       component="p"
       gutterBottom={true}
-      variant="body1"
     >
       world
     </WithStyles(Typography)>

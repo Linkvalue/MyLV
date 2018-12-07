@@ -44,7 +44,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
           <WithStyles(Typography)
             component="h2"
             gutterBottom={true}
-            variant="headline"
+            variant="h5"
           >
             Uploader un justificatif de titre de transport
           </WithStyles(Typography)>
@@ -147,7 +147,7 @@ exports[`TransportProofPage should render properly 1`] = `
           <WithStyles(Typography)
             component="h2"
             gutterBottom={true}
-            variant="headline"
+            variant="h5"
           >
             Uploader un justificatif de titre de transport
           </WithStyles(Typography)>

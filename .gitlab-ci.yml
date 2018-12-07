@@ -48,7 +48,7 @@ unit_tests:
   script:
     - yarn
     - yarn lint
-    - yarn test:unit
+    - yarn test
   tags:
     - node
 

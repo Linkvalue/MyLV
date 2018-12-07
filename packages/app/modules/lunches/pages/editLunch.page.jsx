@@ -43,7 +43,7 @@ export class EditLunchPage extends Component {
               <title>Éditer un déjeuner | {appName}</title>
             </Helmet>
             <CardContent>
-              <Typography variant="headline" component="h2" gutterBottom>
+              <Typography variant="h5" component="h2" gutterBottom>
                 Modification de : {lunch.label}
               </Typography>
               {children}

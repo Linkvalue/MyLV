@@ -115,7 +115,7 @@ export class PersonalHolidaysPage extends React.Component {
         )}
         <Paper>
           <Toolbar className={classes.toolbar}>
-            <Typography variant="headline" component="h2" gutterBottom>
+            <Typography variant="h5" component="h2" gutterBottom>
               Mes demandes de congés
             </Typography>
             {!shouldDisplayHolidaysDisclaimer && (

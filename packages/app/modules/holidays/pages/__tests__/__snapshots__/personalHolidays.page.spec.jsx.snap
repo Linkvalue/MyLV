@@ -22,7 +22,7 @@ exports[`PersonalHolidaysPage should render properly 1`] = `
       <WithStyles(Typography)
         component="h2"
         gutterBottom={true}
-        variant="headline"
+        variant="h5"
       >
         Mes demandes de congés
       </WithStyles(Typography)>

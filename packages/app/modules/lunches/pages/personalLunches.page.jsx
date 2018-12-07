@@ -48,7 +48,7 @@ export class PersonalLunchesPage extends Component {
           <title>Mes déjeuners | {appName}</title>
         </Helmet>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Mes déjeuners
           </Typography>
           <Typography gutterBottom>

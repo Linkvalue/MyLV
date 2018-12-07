@@ -26,7 +26,7 @@ const ClientPage = ({ handleSubmit, pristine, invalid }) => (
     </Helmet>
     <Card>
       <CardContent>
-        <Typography variant="headline" component="h2" gutterBottom>
+        <Typography variant="h5" component="h2" gutterBottom>
           Informations client
         </Typography>
         <Field

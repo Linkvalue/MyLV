@@ -80,7 +80,7 @@ export class PartnerDetailsPage extends React.Component {
         <div className={classes.printerHidden}>
           <Card classes={{ root: classes.headCard }}>
             <CardContent>
-              <Typography variant="headline" component="h2" gutterBottom>
+              <Typography variant="h5" component="h2" gutterBottom>
                 {partner ? `${partner.firstName} ${partner.lastName}` : ''}
               </Typography>
             </CardContent>

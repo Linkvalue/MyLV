@@ -38,7 +38,7 @@ export const SettingsPage = ({
       <title>Paramètres | {appName}</title>
     </Helmet>
     <CardContent>
-      <Typography variant="headline" component="h2" gutterBottom>
+      <Typography variant="h5" component="h2" gutterBottom>
         Paramètres
       </Typography>
       <List>

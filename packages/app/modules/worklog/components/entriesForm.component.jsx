@@ -64,7 +64,7 @@ const EntriesForm = ({
   <React.Fragment>
     <Card className={classes.firstCard}>
       <CardContent>
-        <Typography variant="headline" component="h2" gutterBottom>
+        <Typography variant="h5" component="h2" gutterBottom>
           Imputation
         </Typography>
         <Field
@@ -97,7 +97,7 @@ const EntriesForm = ({
     {!hideClientChange && (
       <Card className={classes.secondCard}>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Changement de client ?
           </Typography>
           <Typography>

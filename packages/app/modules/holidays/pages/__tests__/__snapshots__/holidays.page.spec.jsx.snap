@@ -15,7 +15,7 @@ exports[`HolidaysPage should render empty holidays list 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Demandes de congés
     </WithStyles(Typography)>
@@ -68,7 +68,7 @@ exports[`HolidaysPage should render properly 1`] = `
     <WithStyles(Typography)
       component="h2"
       gutterBottom={true}
-      variant="headline"
+      variant="h5"
     >
       Demandes de congés
     </WithStyles(Typography)>

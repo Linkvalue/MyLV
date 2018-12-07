@@ -38,7 +38,7 @@ export const HolidayRequestEditPage = ({ putHoliday, holidayRequest }) => (
           <title>Editer une demande de congé | {appName}</title>
         </Helmet>
         <CardContent>
-          <Typography variant="headline" component="h2" gutterBottom>
+          <Typography variant="h5" component="h2" gutterBottom>
             Editer une demande de congé
           </Typography>
           {children}
