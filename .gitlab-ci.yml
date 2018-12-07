@@ -29,11 +29,9 @@ build_staging:
 
 build_production:
   stage: build
-  variables:
-    NODE_ENV: production
   script:
     - yarn
-    - yarn dist
+    - NODE_ENV=production yarn dist
   artifacts:
     name: "build-$CI_COMMIT_REF_NAME"
     paths:
