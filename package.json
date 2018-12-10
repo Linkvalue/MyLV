@@ -13,7 +13,7 @@
     "url": "https://gitlab.com/LinkValue/Lab/CraCra/issues"
   },
   "author": "LinkValue",
-  "license": "ISC",
+  "license": "MIT",
   "main": "packages/api/index.js",
   "workspaces": [
     "./packages/*"
