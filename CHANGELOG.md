@@ -1,3 +1,8 @@
+<a name="2.9.1"></a>
+## [2.9.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.0...v2.9.1) (2018-12-10)
+
+
+
 <a name="2.9.0"></a>
 # [2.9.0](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.8.2...v2.9.0) (2018-12-10)
 
