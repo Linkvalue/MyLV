@@ -29,8 +29,8 @@ module.exports = {
     },
   },
   lvconnect: {
-    appId: null,
-    appSecret: null,
+    appId: process.env.LVCONNECT_APP_ID,
+    appSecret: process.env.LVCONNECT_APP_SECRET,
     endpoint: 'https://lvconnect.link-value.fr',
   },
   cracra: {
@@ -39,10 +39,10 @@ module.exports = {
   },
   pushNotifications: {
     email: 'mailto:no-reply@link-value.fr',
-    privateKey: 'k1LSA-U-MFcGpo6lj-7WGjG5nHrSUencWBk4q4Z1z7k',
+    privateKey: process.env.WEB_PUSH_PRIVATE_KEY,
   },
   monitoring: {
-    token: 'miajoUfOuto0yia1rl4tl2tLefOewriu',
+    token: process.env.MONITORING_TOKEN,
     metricsPath: '/api/metrics',
   },
   front: {
@@ -57,7 +57,7 @@ module.exports = {
       pushNotifications: false,
     },
     push: {
-      publicKey: 'BP60hTFwFmaPMsbx_lQ7loJLWsnyXBIe218Qa46RXtZMhCgicLl6MoTo7idYG35W0jKTF5U7MB6GfI-i_H7-Mjk',
+      publicKey: process.env.WEB_PUSH_PUBLIC_KEY,
     },
   },
   mailjet: {

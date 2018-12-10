@@ -26,10 +26,6 @@ module.exports = {
   mongodb: {
     uri: process.env.MONGODB_URI,
   },
-  lvconnect: {
-    appId: process.env.LVCONNECT_APP_ID,
-    appSecret: process.env.LVCONNECT_APP_SECRET,
-  },
   front: {
     featureFlipping: {
       holidays: true,
