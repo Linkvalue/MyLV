@@ -46,9 +46,9 @@ const styles = theme => ({
     width: '100%',
   },
   incompleteWorklog: {
-    background: theme.palette.error.light,
+    backgroundColor: theme.palette.error.light,
     '&:hover': {
-      background: theme.palette.error.main,
+      backgroundColor: `${theme.palette.error.main} !important`,
     },
   },
 })

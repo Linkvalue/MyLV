@@ -29,14 +29,13 @@ exports[`WorklogPage should display process reminder 1`] = `
     >
       <Connect(WithStyles(Calendar)) />
     </WithStyles(Grid)>
-    <WithStyles(Button)
+    <WithStyles(Fab)
       className=""
       color="primary"
       onClick={[Function]}
-      variant="fab"
     >
       <pure(PrintIcon) />
-    </WithStyles(Button)>
+    </WithStyles(Fab)>
   </WithStyles(Grid)>
   <Connect(WithStyles(Printer)) />
 </Fragment>
@@ -77,14 +76,13 @@ exports[`WorklogPage should render properly 1`] = `
     >
       <Connect(WithStyles(Calendar)) />
     </WithStyles(Grid)>
-    <WithStyles(Button)
+    <WithStyles(Fab)
       className=""
       color="primary"
       onClick={[Function]}
-      variant="fab"
     >
       <pure(PrintIcon) />
-    </WithStyles(Button)>
+    </WithStyles(Fab)>
   </WithStyles(Grid)>
   <Connect(WithStyles(Printer)) />
 </Fragment>

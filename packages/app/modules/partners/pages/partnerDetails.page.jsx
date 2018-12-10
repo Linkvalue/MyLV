@@ -16,7 +16,9 @@ import {
   ListItemText,
   ListItemIcon,
   withStyles,
+  Fab,
 } from '@material-ui/core'
+import { Print } from '@material-ui/icons'
 import { getPeriodDayCount } from '@cracra/shared/holidays.utils'
 
 import { appName } from '../../../config'
@@ -44,6 +46,12 @@ const styles = theme => ({
   headCard: {
     marginBottom: theme.spacing.unit * 2,
   },
+  printButton: {
+    position: 'fixed',
+    right: theme.spacing.unit * 2,
+    bottom: theme.spacing.unit * 2,
+    zIndex: 10,
+  },
   '@media print': {
     printerHidden: {
       display: 'none',
@@ -57,6 +65,8 @@ export class PartnerDetailsPage extends React.Component {
   }
 
   handleHolidayClick = requestId => () => this.props.goToHolidayRequestDetails(requestId)
+
+  handleWorklogPrint = () => window.print();
 
   render() {
     const {
@@ -111,6 +121,13 @@ export class PartnerDetailsPage extends React.Component {
             </Grid>
           </Grid>
         </div>
+        <Fab
+          color="primary"
+          className={classes.printButton}
+          onClick={this.handleWorklogPrint}
+        >
+          <Print />
+        </Fab>
         <Printer user={partner} />
       </Fragment>
     )

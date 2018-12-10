@@ -63,7 +63,7 @@ module.exports = (env = {}) => ({
       },
     ],
   },
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: env.production ? 'production' : 'development',
   devtool: env.production ? 'source-map' : 'cheap-module-source-map',
   devServer: {
     contentBase: './dist',
@@ -112,7 +112,7 @@ module.exports = (env = {}) => ({
       },
     }),
     new DefinePlugin({
-      'process.env.NODE_ENV': `"${process.env.NODE_ENV !== 'dev' ? 'production' : 'dev'}"`,
+      'process.env.NODE_ENV': `"${env.production ? 'production' : 'dev'}"`,
       'process.env.APP_ID': `"${appId}"`,
       'process.env.LVCONNECT_ENDPOINT': `"${endpoint}"`,
       'process.env.CONFIG': JSON.stringify(front),

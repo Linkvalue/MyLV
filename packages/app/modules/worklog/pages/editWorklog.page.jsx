@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button, Grid, withStyles } from '@material-ui/core'
+import { Fab, Grid, withStyles } from '@material-ui/core'
 import { Print } from '@material-ui/icons'
 import classNames from 'classnames'
 import { Redirect } from 'react-router'
@@ -59,14 +59,13 @@ export const EditWorklogPage = ({
       <Grid item md={8} xs={12}>
         <Calendar />
       </Grid>
-      <Button
-        variant="fab"
+      <Fab
         color="primary"
         className={classNames(classes.printButton, { [classes.offsetPrintButton]: isOffline && isTabletOrMobile })}
         onClick={printCra}
       >
         <Print />
-      </Button>
+      </Fab>
     </Grid>
     <Printer />
   </Fragment>
