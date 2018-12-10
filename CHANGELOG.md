@@ -1,3 +1,13 @@
+<a name="2.9.2"></a>
+## [2.9.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.1...v2.9.2) (2018-12-10)
+
+
+### Bug Fixes
+
+* **api:** Fix push credentials in configuration ([05d7c56](http://gitlab.com/LinkValue/Lab/CraCra/commit/05d7c56))
+
+
+
 <a name="2.9.1"></a>
 ## [2.9.1](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.0...v2.9.1) (2018-12-10)
 
