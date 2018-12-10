@@ -110,12 +110,12 @@ jobs:
   deploy_staging:
     <<: *deploy_common
     environment:
-      HEROKU_APP: mylv-staging
+      HEROKU_APP: cracra-staging
 
   deploy_production:
     <<: *deploy_common
     environment:
-      HEROKU_APP: mylv
+      HEROKU_APP: cracra
 
 workflows:
   version: 2
