@@ -11,10 +11,6 @@ build_common: &build_common
   - run: yarn build
   - store_artifacts:
       path: ~/mylv/dist
-  - store_artifacts:
-      path: ~/mylv/packages/emails/dist
-  - store_artifacts:
-      path: ~/mylv/packages/documents/dist
   - persist_to_workspace:
       root: ~/
       paths:
@@ -28,7 +24,7 @@ deploy_common: &deploy_common
   - attach_workspace:
       at: ~/
   - run: git checkout -b release
-  - run: git add -f dist/ packages/emails/dist/ packages/documents/dist/
+  - run: git add -f dist/
   - run: git config user.email "deploy@circleci.com"
   - run: git config user.name "CircleCI Deployer"
   - run: git commit -m "CircleCI deploy"
