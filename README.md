@@ -1,15 +1,20 @@
-# CraCra
+# MyLV
 
-[![Travis](https://img.shields.io/travis/LinkValue/CraCra.svg?style=flat-square)](https://travis-ci.org/LinkValue/CraCra)
+[![CircleCI](https://circleci.com/gh/LinkValue/MyLV/tree/master.svg?style=svg&circle-token=e8c0d456e0c4d531addc26f22acdfddfc9713ec8)](https://circleci.com/gh/LinkValue/MyLV)
+[![Staging shield](https://img.shields.io/website/https/mylv-staging.herokuapp.com.svg?label=staging&logo=heroku)](https://arborescence-staging.herokuapp.com)
+[![Production shield](https://img.shields.io/website/https/mylv.herokuapp.com.svg?label=production&logo=heroku)](https://arborescence.herokuapp.com)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-CRA editor for LinkValue built with React, Redux and [SaguiJS](https://github.com/saguijs/sagui) (Webpack, Babel, Eslint, SCSS).
-The objective of this project is to be able to fill out your CRA within 10 seconds without effort.
+Timesheets editor, vacations manager and transport receipts upload for LinkValue built with React, Redux and HapiJS.
+The objective of this project is to be able to fill out your timesheets/vacations within 10 seconds without effort.
 
 ## Installation
 
-Before anything, be sure to have Node 7.9.x at least installed.
-Before anything you'll have to create a local configuration file under `config/local.{js,json}` containing the
-following fields:
+Before anything, be sure to have Node 10.14.x at least installed.
+Also MongoDB >3.6.x is required if you don't use Docker.
+
+If you don't want to use production authentication service ([LinkValue](https://lvconnect.link-value.fr))
+create a local configuration file under `config/local.{js,json}` containing the following fields:
 
 ```json
 {
@@ -26,13 +31,13 @@ This file can override any fields contained in other configuration files. More i
 Next, you'll have to install the dependencies by running:
 
 ```
-npm
+yarn
 ```
 
 To build the frontend application for production use, you'll have to run:
 
 ```
-npm run dist
+yarn dist
 ```
 
 Finally, to start the application in production environment:
@@ -76,20 +81,20 @@ module.exports = {
 
 ## Contributing
 
-This project uses ESLint to check code style and uses the default configuration from SaguiJS which is semicolon free.
+This project uses ESLint to check code style and uses the AirBnB configuration without semicolons.
 We recommend the usage of a plugin for your IDE to enable lint inside it. At this moment the project is lacking unit
 testing and feature testing which opens a window for regressions so be careful.
 
 To start the frontend watch mode build, run:
 
 ```
-npm run start
+yarn dev:front
 ```
 
 And for the backend watch mode, run:
 
 ```
-npm run start:server
+yarn dev:back
 ```
 
 ## Licence
