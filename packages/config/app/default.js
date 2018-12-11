@@ -8,7 +8,4 @@ module.exports = {
     offlineMode: true,
     pushNotifications: true,
   },
-  pushNotifications: {
-    publicKey: process.env.WEB_PUSH_PUBLIC_KEY,
-  },
 }
