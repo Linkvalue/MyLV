@@ -3,6 +3,7 @@ const {
   DefinePlugin,
   IgnorePlugin,
   NamedModulesPlugin,
+  EnvironmentPlugin,
 } = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -113,6 +114,7 @@ module.exports = (env = {}) => ({
         entry: './modules/serviceWorker/sw.js',
       },
     }),
+    new EnvironmentPlugin(['LVCONNECT_APP_ID', 'WEB_PUSH_PUBLIC_KEY']),
     new DefinePlugin({
       'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV || process.env.NODE_ENV),
       'process.env.APP_VERSION': `"${version}"`,
