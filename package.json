@@ -19,17 +19,17 @@
     "./packages/*"
   ],
   "scripts": {
-    "build": "webpack",
     "changelog": "conventional-changelog -c .conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "dist": "webpack --env.production",
-    "dev:front": "webpack-dev-server --hot",
-    "dev:back": "nodemon ./packages/api -e js,pug,css",
+    "build": "webpack --env.production",
+    "dev:front": "APP_ENV=dev webpack-dev-server --hot",
+    "dev:front-optimized": "webpack -p  --env.production --watch",
+    "dev:back": "APP_ENV=dev nodemon ./packages/api -e js,pug,css",
     "dev:emails": "browser-sync start --proxy localhost:8001 --startPath /api/emails/render?template=holidaysRequest --files packages/api/plugins/mail/**/*.{css,pug}",
     "lint": "eslint \"**/*.{js,jsx}\"",
-    "test": "BABEL_ENV=test jest",
+    "test": "BABEL_ENV=test APP_ENV=test jest",
     "test:watch": "jest --watch",
     "version": "yarn changelog && git add CHANGELOG.md",
-    "lint:fix": "eslint --fix \"**/*.{js,jsx}\""
+    "lint:fix": "eslint --fix \"**/*.{js,jsx,mjs}\""
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
@@ -47,7 +47,6 @@
     "browser-sync": "^2.23.6",
     "browsersync": "0.0.1-security",
     "clean-webpack-plugin": "^0.1.19",
-    "config": "^1.30.0",
     "conventional-changelog-cli": "^1.3.17",
     "core-js": "^2.5.3",
     "css-loader": "^1.0.0",
@@ -78,6 +77,11 @@
   "dependencies": {},
   "jest": {
     "testURL": "http://localhost",
+    "testPathIgnorePatterns": [
+      "packages/config/*",
+      "cache/*",
+      ".yarn/*"
+    ],
     "automock": true,
     "setupTestFrameworkScriptFile": "<rootDir>/test/jestSetup.js",
     "unmockedModulePathPatterns": [

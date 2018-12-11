@@ -1,20 +1,9 @@
-function reportingFactory(path, options) {
-  return [{
-    module: 'good-squeeze',
-    name: 'Squeeze',
-    args: [options],
-  }, {
-    module: 'good-squeeze',
-    name: 'SafeJson',
-  }, {
-    module: 'good-file',
-    args: [path],
-  }]
-}
+const reportingFactory = require('./helpers/reporting')
 
 module.exports = {
   host: {
     port: process.env.PORT || 8001,
+    forceHttps: true,
   },
   logs: {
     reporters: {
@@ -26,15 +15,7 @@ module.exports = {
   mongodb: {
     uri: process.env.MONGODB_URI,
   },
-  front: {
-    featureFlipping: {
-      holidays: true,
-      transport: true,
-      offlineMode: true,
-      pushNotifications: true,
-    },
-  },
   mailjet: {
-    webAppUrl: 'https://cracra-staging.herokuapp.com',
+    webAppUrl: 'https://mylv.link-value.fr',
   },
 }

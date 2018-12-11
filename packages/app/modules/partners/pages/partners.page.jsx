@@ -11,7 +11,7 @@ import qs from 'qs'
 import { Helmet } from 'react-helmet'
 import { labels } from '@cracra/shared/calendar.constants'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import LoadingPage from '../../../components/loadingPage.component'
 import { fetchPartners, notifyAllPartners } from '../partners.actions'
 import { getPartnersList } from '../partners.selectors'

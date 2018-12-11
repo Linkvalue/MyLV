@@ -1,6 +1,6 @@
 const Joi = require('joi')
 const Boom = require('boom')
-const { cracra } = require('config')
+const { cracra } = require('@cracra/config/server')
 
 module.exports = {
   method: 'GET',

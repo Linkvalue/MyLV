@@ -6,7 +6,7 @@ import { reduxForm, Field } from 'redux-form'
 import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import TextField from '../../../components/inputs/textField.component'
 import { userEntry } from '../client-actions'
 

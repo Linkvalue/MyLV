@@ -37,13 +37,13 @@ yarn
 To build the frontend application for production use, you'll have to run:
 
 ```
-yarn dist
+yarn build
 ```
 
 Finally, to start the application in production environment:
 
 ```
-NODE_ENV=production node .
+APP_ENV=production node .
 ```
 
 ## Development

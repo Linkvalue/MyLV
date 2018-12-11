@@ -1,5 +1,5 @@
 const LVConnectSDK = require('sdk-lvconnect')
-const { lvconnect: { appId, appSecret, endpoint } } = require('config')
+const { lvconnect: { appId, appSecret, endpoint } } = require('@cracra/config/server')
 
 if (endpoint) {
   LVConnectSDK.overrideLVConnectEndpoint(endpoint)

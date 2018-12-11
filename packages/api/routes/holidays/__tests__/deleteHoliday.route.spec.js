@@ -1,6 +1,6 @@
 import deleteHoliday from '../deleteHoliday.route'
 
-jest.mock('config', () => ({ cracra: { partnersRoles: ['board'] } }))
+jest.mock('@cracra/config/server', () => ({ cracra: { partnersRoles: ['board'] } }))
 jest.unmock('../deleteHoliday.route')
 
 describe('DELETE /api/holiday/{id}', () => {

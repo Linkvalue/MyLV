@@ -1,4 +1,4 @@
-import { featureFlipping, push } from '../../config'
+import { featureFlipping, pushNotifications } from '@cracra/config/app'
 import { desktopNotificationsInstalled } from './settings.actions'
 
 let pushWorker
@@ -40,7 +40,7 @@ export const enableDesktopNotifications = () => {
 
   return pushWorker.pushManager.subscribe({
     userVisibleOnly: true,
-    applicationServerKey: urlB64ToUint8Array(push.publicKey),
+    applicationServerKey: urlB64ToUint8Array(pushNotifications.publicKey),
   })
 }
 

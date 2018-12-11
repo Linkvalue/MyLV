@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 
-import { featureFlipping } from '../../config'
+import { featureFlipping } from '@cracra/config/app'
 
 if (featureFlipping.offlineMode) {
   require('./offline')

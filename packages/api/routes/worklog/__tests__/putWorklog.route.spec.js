@@ -7,7 +7,7 @@ jest.mock('boom', () => ({
   forbidden: jest.fn(message => message),
 }))
 
-jest.mock('config', () => ({ cracra: { partnersRoles: ['hr'] } }))
+jest.mock('@cracra/config/server', () => ({ cracra: { partnersRoles: ['hr'] } }))
 
 const moment = require('moment')
 const putWorklog = require('../putWorklog.route')

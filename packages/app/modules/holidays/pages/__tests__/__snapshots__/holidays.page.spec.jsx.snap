@@ -8,7 +8,7 @@ exports[`HolidaysPage should render empty holidays list 1`] = `
   >
     <title>
       Demandes de congés | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(Toolbar)>
@@ -61,7 +61,7 @@ exports[`HolidaysPage should render properly 1`] = `
   >
     <title>
       Demandes de congés | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(Toolbar)>

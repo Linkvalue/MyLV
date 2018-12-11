@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import ConnectedLunchForm from '../components/lunchForm.component'
 import { postLunch } from '../lunches.actions'
 

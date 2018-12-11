@@ -18,8 +18,8 @@ exports.register = async (server, options, next) => {
     message: {
       from: `"${options.fromName}" ${options.fromEmail}`,
     },
-    send: true,
-    preview: process.env.NODE_ENV === 'dev',
+    send: options.send,
+    preview: options.preview,
     transport: {
       service: 'Mailjet',
       auth: {
@@ -47,7 +47,7 @@ exports.register = async (server, options, next) => {
     },
   }))
 
-  if (process.env.NODE_ENV === 'dev') {
+  if (options.testRoute) {
     server.route([{
       method: 'POST',
       path: '/api/emails/send',

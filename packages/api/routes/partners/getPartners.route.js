@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const moment = require('moment')
 const qs = require('qs')
-const config = require('config')
+const config = require('@cracra/config/server')
 
 const hasRole = require('../../helpers/hasRole.pre')
 const getWorkingDays = require('../../helpers/getWorkingDays.helper')

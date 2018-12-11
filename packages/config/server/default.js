@@ -1,9 +1,4 @@
-const { version } = require('../package')
-
-const appName = 'MyLV'
-
 module.exports = {
-  appName,
   server: {},
   host: {
     hostname: null,
@@ -29,9 +24,7 @@ module.exports = {
     },
   },
   lvconnect: {
-    appId: process.env.LVCONNECT_APP_ID,
     appSecret: process.env.LVCONNECT_APP_SECRET,
-    endpoint: 'https://lvconnect.link-value.fr',
   },
   cracra: {
     lunchesRoles: ['hr', 'board', 'business'],
@@ -45,21 +38,6 @@ module.exports = {
     token: process.env.MONITORING_TOKEN,
     metricsPath: '/api/metrics',
   },
-  front: {
-    appName,
-    version,
-    autoReconnectTimeout: 1000 * 60,
-    autoReconnectRetries: 3,
-    featureFlipping: {
-      holidays: false,
-      transport: false,
-      offlineMode: false,
-      pushNotifications: false,
-    },
-    push: {
-      publicKey: process.env.WEB_PUSH_PUBLIC_KEY,
-    },
-  },
   mailjet: {
     fromEmail: 'no-reply@link-value.fr',
     fromName: 'MyLV',
@@ -67,6 +45,8 @@ module.exports = {
     apiKey: process.env.MAILJET_API_KEY,
     apiToken: process.env.MAILJET_API_TOKEN,
     webAppUrl: 'http://localhost:3000',
+    send: true,
+    preview: false,
   },
   cron: {
     notifyIncompleteWorklog: '00 00 10 20-30 * 1-5',

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import moment from 'moment'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import HookedHolidayRequestForm from '../components/holidayRequestForm.component'
 import { putHoliday } from '../holidays.actions'
 

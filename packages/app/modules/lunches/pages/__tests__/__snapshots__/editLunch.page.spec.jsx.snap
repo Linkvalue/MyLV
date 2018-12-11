@@ -15,7 +15,7 @@ exports[`EditLunchPage should pass render function to edit form 1`] = `
   >
     <title>
       Éditer un déjeuner | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

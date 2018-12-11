@@ -2,7 +2,7 @@ const moment = require('moment')
 const Joi = require('joi')
 const Archiver = require('archiver')
 const { promisify } = require('util')
-const config = require('config')
+const config = require('@cracra/config/server')
 
 const hasRole = require('../../helpers/hasRole.pre')
 

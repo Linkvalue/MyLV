@@ -1,5 +1,5 @@
 const { promisify } = require('util')
-const config = require('config')
+const config = require('@cracra/config/server')
 
 const hasRole = require('../../helpers/hasRole.pre')
 

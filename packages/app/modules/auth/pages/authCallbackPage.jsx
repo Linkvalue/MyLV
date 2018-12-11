@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withStyles } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
+import { appName } from '@cracra/config/app'
 
-import { appName } from '../../../config'
 import { loginDone, fetchUserData } from '../auth.actions'
 
 const mapDispatchToProps = dispatch => bindActionCreators({

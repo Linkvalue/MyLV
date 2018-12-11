@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import * as settingsActions from '../settings.actions'
 
 const mapStateToProps = state => ({

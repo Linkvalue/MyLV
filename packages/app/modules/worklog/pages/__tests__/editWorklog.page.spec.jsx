@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
+import config from '@cracra/config/app'
 
 import { EditWorklogPage } from '../editWorklog.page'
-import config from '../../../../config'
 
-jest.mock('../../../../config', () => ({}))
+jest.mock('@cracra/config/app', () => ({ lvconnect: {} }))
 jest.unmock('../editWorklog.page')
 
 describe('WorklogPage', () => {

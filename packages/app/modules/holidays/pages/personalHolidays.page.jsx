@@ -13,7 +13,7 @@ import { Help } from '@material-ui/icons'
 import { Helmet } from 'react-helmet'
 import { holidayLabels } from '@cracra/shared/calendar.constants'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteHoliday, fetchPersonalHolidays } from '../holidays.actions'
 import StyledHolidayRow from '../components/holidayRow.component'

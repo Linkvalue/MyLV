@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { featureFlipping } from '../config'
+import { featureFlipping } from '@cracra/config/app'
 
 const FeatureFlipping = ({ feature, children }) =>
   (featureFlipping[feature] ? <React.Fragment>{children}</React.Fragment> : null)

@@ -6,7 +6,7 @@ import moment from 'moment'
 import { bindActionCreators } from 'redux'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import ConnectedLunchForm from '../components/lunchForm.component'
 import { fetchLunchDetails, putLunch } from '../lunches.actions'
 import LoadingPage from '../../../components/loadingPage.component'

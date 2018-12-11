@@ -1,14 +1,17 @@
 import LVConnectSDK from 'sdk-lvconnect'
+import config from '@cracra/config/app'
+
+console.log(config)
 
 export const cracraEndpoint = `${window.location.protocol}//${window.location.host}`
 
-if (typeof process.env.LVCONNECT_ENDPOINT !== 'undefined' && process.env.LVCONNECT_ENDPOINT) {
-  LVConnectSDK.overrideLVConnectEndpoint(process.env.LVCONNECT_ENDPOINT)
+if (typeof config.lvconnect.endpoint !== 'undefined' && config.lvconnect.endpoint) {
+  LVConnectSDK.overrideLVConnectEndpoint(config.lvconnect.endpoint)
 }
 
 export const lvConnect = new LVConnectSDK({
   mode: 'proxy',
-  appId: process.env.APP_ID,
+  appId: config.lvconnect.appId,
   redirectUri: `${cracraEndpoint}/auth`,
   tokenEndpoint: '/api/auth',
 })

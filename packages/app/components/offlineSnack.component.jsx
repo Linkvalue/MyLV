@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { Button, CircularProgress, Snackbar, withStyles } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import config from '@cracra/config/app'
 
-import config from '../config'
 import { tryReconnect } from '../modules/auth/auth.actions'
 
 const mapStateToProps = state => ({

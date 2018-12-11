@@ -10,7 +10,7 @@ exports[`PersonalHolidaysPage should render properly 1`] = `
   >
     <title>
       Mes demandes de congés | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <HolidaysDisclaimer

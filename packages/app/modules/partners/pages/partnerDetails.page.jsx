@@ -21,7 +21,7 @@ import {
 import { Print } from '@material-ui/icons'
 import { getPeriodDayCount } from '@cracra/shared/holidays.utils'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import Calendar from '../../worklog/components/calendar.component'
 import EntriesForm from '../../worklog/components/entriesForm.component'
 import NotFound from '../../../components/notFound.component'

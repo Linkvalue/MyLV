@@ -10,7 +10,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
   >
     <title>
       Mon justificatif de transport | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(Paper)>
@@ -132,7 +132,7 @@ exports[`TransportProofPage should render properly 1`] = `
   >
     <title>
       Mon justificatif de transport | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(Card)>

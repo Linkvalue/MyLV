@@ -10,7 +10,7 @@ exports[`PartnersPage should render partners list 1`] = `
   >
     <title>
       Partners | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(Toolbar)>

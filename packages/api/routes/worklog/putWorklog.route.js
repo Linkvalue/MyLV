@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const Boom = require('boom')
 const moment = require('moment')
-const { cracra } = require('config')
+const { cracra } = require('@cracra/config/server')
 
 module.exports = {
   method: 'PUT',

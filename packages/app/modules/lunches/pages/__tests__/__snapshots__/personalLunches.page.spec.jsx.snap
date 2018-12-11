@@ -10,7 +10,7 @@ exports[`PersonalLunchesPage should render lunch list if not loading 1`] = `
   >
     <title>
       Mes déjeuners | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

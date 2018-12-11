@@ -8,7 +8,7 @@ exports[`SettingsPage should render with all switches off 1`] = `
   >
     <title>
       Paramètres | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>
@@ -67,7 +67,7 @@ exports[`SettingsPage should render with all switches on 1`] = `
   >
     <title>
       Paramètres | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

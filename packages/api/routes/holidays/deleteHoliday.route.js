@@ -1,5 +1,5 @@
 const Boom = require('boom')
-const config = require('config')
+const config = require('@cracra/config/server')
 
 module.exports = {
   method: 'DELETE',

@@ -13,7 +13,7 @@ exports[`HolidayRequestPage should render other's holiday request 1`] = `
     <title>
       Demande de congé de james bond
        | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>
@@ -95,7 +95,7 @@ exports[`HolidayRequestPage should render properly 1`] = `
     <title>
       hello
        | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>
@@ -177,7 +177,7 @@ exports[`HolidayRequestPage should render with reopen button if not pending 1`] 
     <title>
       hello
        | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

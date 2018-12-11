@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import HookedHolidayRequestForm from '../components/holidayRequestForm.component'
 import { postHoliday } from '../holidays.actions'
 

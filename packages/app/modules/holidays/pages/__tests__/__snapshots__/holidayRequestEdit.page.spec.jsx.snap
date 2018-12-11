@@ -15,7 +15,7 @@ exports[`HolidayRequestEditPage should render properly 1`] = `
   >
     <title>
       Editer une demande de congé | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

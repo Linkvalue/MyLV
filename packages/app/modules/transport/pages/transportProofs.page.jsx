@@ -27,7 +27,7 @@ import {
 import qs from 'qs'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteTransportProof, fetchTransportProofs } from '../transport.actions'
 import { getPartnersTransportProofs } from '../transport.selectors'

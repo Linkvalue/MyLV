@@ -1,6 +1,6 @@
 const Glue = require('glue')
-const config = require('config')
 const webPush = require('web-push')
+const config = require('@cracra/config/server')
 
 const routes = require('./routes/routes')
 const buildLVConnectClient = require('./helpers/lvconnect.helper')
@@ -34,6 +34,9 @@ const manifest = {
       plugin: 'inert',
     },
     {
+      plugin: 'vision',
+    },
+    {
       plugin: {
         register: './plugins/mail/mail.plugin',
         options: config.mailjet,
@@ -57,10 +60,7 @@ const manifest = {
     {
       plugin: './plugins/proofOfTransports.plugin',
     },
-    ...(process.env.NODE_ENV === 'production' ? [] : [
-      {
-        plugin: 'vision',
-      },
+    ...(config.generateDocumentation ? [] : [
       {
         plugin: {
           register: 'hapi-swagger',
@@ -100,7 +100,7 @@ if (require.main === module) {
 
       webPush.setVapidDetails(
         config.pushNotifications.email,
-        config.front.push.publicKey,
+        config.pushNotifications.publicKey,
         config.pushNotifications.privateKey,
       )
 
@@ -144,7 +144,7 @@ if (require.main === module) {
       server.ext({
         type: 'onRequest',
         method(req, res) {
-          if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV !== 'dev') {
+          if (config.host.forceHttps && req.headers['x-forwarded-proto'] !== 'https') {
             return res.redirect(`https://${req.info.host}${req.path}`)
           }
           return res.continue()

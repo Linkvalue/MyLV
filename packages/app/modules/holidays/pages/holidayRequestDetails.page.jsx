@@ -17,7 +17,7 @@ import {
 import { getPeriodDayCount } from '@cracra/shared/holidays.utils'
 import { holidayLabels } from '@cracra/shared/calendar.constants'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import NotFound from '../../../components/notFound.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import Restricted from '../../../components/restricted.component'

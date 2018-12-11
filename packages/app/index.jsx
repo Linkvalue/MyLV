@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import moment from 'moment'
 import { push } from 'react-router-redux'
 import debouce from 'lodash.debounce'
+import { sentry, version } from '@cracra/config/app'
 
 import 'typeface-roboto' // eslint-disable-line import/extensions
 
@@ -11,7 +12,6 @@ import Root from './containers/root.container'
 import { fetchUserData, loginError } from './modules/auth/auth.actions'
 import { lvConnect } from './modules/auth/lvconnect'
 import { detectDevice, switchOfflineMode } from './modules/display/display.actions'
-import { sentry, version } from './config'
 import { installPushNotifications } from './modules/settings/push.service'
 
 if (sentry) {

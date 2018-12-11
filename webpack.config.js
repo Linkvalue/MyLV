@@ -12,15 +12,14 @@ const WebpackPwaManifest = require('webpack-pwa-manifest')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 const path = require('path')
-const { util, front: { version } } = require('config')
 
-const { lvconnect: { appId, endpoint }, front } = util.loadFileConfigs(path.join(__dirname, 'config'))
+const { version } = require('./package')
 
 module.exports = (env = {}) => ({
   entry: './index.jsx',
   context: path.resolve(__dirname, './packages/app'),
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json', '.mjs'],
   },
   output: {
     filename: '[name]-[hash].js',
@@ -45,7 +44,10 @@ module.exports = (env = {}) => ({
         test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
-          options: { cacheDirectory: true },
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false,
+          },
         },
         exclude: /node_modules/,
       },
@@ -112,10 +114,8 @@ module.exports = (env = {}) => ({
       },
     }),
     new DefinePlugin({
-      'process.env.NODE_ENV': `"${env.production ? 'production' : 'dev'}"`,
-      'process.env.APP_ID': `"${appId}"`,
-      'process.env.LVCONNECT_ENDPOINT': `"${endpoint}"`,
-      'process.env.CONFIG': JSON.stringify(front),
+      'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV || process.env.NODE_ENV),
+      'process.env.APP_VERSION': `"${version}"`,
     }),
   ],
 })

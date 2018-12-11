@@ -15,7 +15,7 @@ exports[`NewLunchPage should pass render function to edit form 1`] = `
   >
     <title>
       Nouveau déjeuner | 
-      FooApp
+      MyLV
     </title>
   </HelmetWrapper>
   <WithStyles(CardContent)>

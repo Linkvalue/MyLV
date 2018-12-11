@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import StyledLunchRow from '../components/lunchRow.component'
 import LoadingPage from '../../../components/loadingPage.component'
 import { deleteLunch, fetchUserLunches } from '../lunches.actions'

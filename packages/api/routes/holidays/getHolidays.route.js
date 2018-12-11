@@ -1,4 +1,4 @@
-const config = require('config')
+const config = require('@cracra/config/server')
 const Joi = require('joi')
 
 const hasRole = require('../../helpers/hasRole.pre')

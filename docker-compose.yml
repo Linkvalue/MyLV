@@ -6,7 +6,7 @@ services:
     working_dir: /usr/src/app
     command: sh -c 'npm install && npm run start:server'
     environment:
-      - NODE_ENV=dev
+      - APP_ENV=dev
     volumes:
       - .:/usr/src/app:rw
       - node_modules:/usr/src/app/node_modules

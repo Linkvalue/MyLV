@@ -61,17 +61,20 @@ jobs:
   build_dev:
     <<: *build_common
     environment:
-      BABEL_ENV: dev
+      APP_ENV: dev
+      NODE_ENV: production
 
   build_staging:
     <<: *build_common
     environment:
-      BABEL_ENV: staging
+      APP_ENV: staging
+      NODE_ENV: production
 
   build_production:
     <<: *build_common
     environment:
-      BABEL_ENV: production
+      APP_ENV: production
+      NODE_ENV: production
 
   test:
     executor:

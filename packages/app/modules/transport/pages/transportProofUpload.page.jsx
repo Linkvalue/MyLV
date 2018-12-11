@@ -21,7 +21,7 @@ import {
 } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 
-import { appName } from '../../../config'
+import { appName } from '@cracra/config/app'
 import DateField from '../../../components/inputs/dateField.component'
 import { postTransportProof, setExpirationDateToCurrentMonth } from '../transport.actions'
 import FileField from '../../../components/inputs/fileField.component'
