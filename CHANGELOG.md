@@ -1,3 +1,19 @@
+<a name="2.9.3"></a>
+## [2.9.3](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.2...v2.9.3) (2018-12-11)
+
+
+### Bug Fixes
+
+* **config:** Fix missing env variables in build ([8f05450](http://gitlab.com/LinkValue/Lab/CraCra/commit/8f05450))
+* **config:** Fix missing web push public key ([a500223](http://gitlab.com/LinkValue/Lab/CraCra/commit/a500223))
+
+
+### Features
+
+* **config:** Remove old auto-magic config by separated config files ([0aaa506](http://gitlab.com/LinkValue/Lab/CraCra/commit/0aaa506))
+
+
+
 <a name="2.9.2"></a>
 ## [2.9.2](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.1...v2.9.2) (2018-12-10)
 
