@@ -25,7 +25,9 @@ import {
   Settings,
   PowerSettingsNew,
   DirectionsTransit,
+  Link as LinkIcon,
 } from '@material-ui/icons'
+import config from '@cracra/config/app'
 
 import AppDrawerItem from './appDrawerItem.component'
 import Restricted from './restricted.component'
@@ -143,6 +145,14 @@ const AppDrawer = ({
         <List disablePadding>
           <Divider />
           <AppDrawerItem to="/settings" icon={<Settings />} text="Paramètres" />
+          <FeatureFlipping feature="redirect">
+            <ListItem button component="a" href={config.redirectUrl}>
+              <ListItemIcon>
+                <LinkIcon />
+              </ListItemIcon>
+              <ListItemText primary="Aller sur Arborescence" />
+            </ListItem>
+          </FeatureFlipping>
           <ListItem button onClick={logout}>
             <ListItemIcon>
               <PowerSettingsNew />

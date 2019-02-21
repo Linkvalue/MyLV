@@ -14,10 +14,12 @@ import {
   withStyles, Hidden,
 } from '@material-ui/core'
 import { Menu as MenuIcon } from '@material-ui/icons'
+import config from '@cracra/config/app'
 
 import { logout } from '../modules/auth/auth.actions'
 import { drawerWidth } from './appDrawer.component'
 import logoMyLVUrl from '../assets/images/logo-my-lv-white.svg'
+import FeatureFlipping from './featureFlipping'
 
 const styles = theme => ({
   appBar: {
@@ -107,6 +109,9 @@ class AppBar extends React.Component {
               onClose={this.handleMenuClose}
             >
               <MenuItem component={Link} to="/settings" onClick={this.handleMenuClose}>Paramètres</MenuItem>
+              <FeatureFlipping feature="redirect">
+                <MenuItem component="a" href={config.redirectUrl}>Aller sur Arborescence</MenuItem>
+              </FeatureFlipping>
               <MenuItem onClick={this.handleLogout}>Se déconnecter</MenuItem>
             </Menu>
           </Hidden>

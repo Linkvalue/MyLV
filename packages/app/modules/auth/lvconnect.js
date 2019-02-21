@@ -1,8 +1,6 @@
 import LVConnectSDK from 'sdk-lvconnect'
 import config from '@cracra/config/app'
 
-console.log(config)
-
 export const cracraEndpoint = `${window.location.protocol}//${window.location.host}`
 
 if (typeof config.lvconnect.endpoint !== 'undefined' && config.lvconnect.endpoint) {

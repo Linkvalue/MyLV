@@ -14,6 +14,7 @@ import AppUpdater from '../components/appUpdater.component'
 import OfflineSnack from '../components/offlineSnack.component'
 import ConnectedPushSnack from '../components/pushSnack.component'
 import AlertSnack from '../modules/display/components/alertSnack.connector'
+import RedirectDialog from '../modules/display/components/redirectDialog.component'
 
 const mapStateToProps = ({
   settings,
@@ -80,6 +81,7 @@ export class App extends React.Component {
     this.state = {
       drawerOpen: false,
       openProofOfTransportDialog: true,
+      redirectDialogOpen: true,
     }
   }
 
@@ -104,8 +106,10 @@ export class App extends React.Component {
     this.props.savePreferences({ hasProofOfTransport: false })
   }
 
+  handleRedirectDialogClose = () => this.setState({ redirectDialogOpen: false });
+
   render() {
-    const { openProofOfTransportDialog } = this.state
+    const { openProofOfTransportDialog, redirectDialogOpen } = this.state
     const {
       classes,
       children,
@@ -139,6 +143,9 @@ export class App extends React.Component {
           <AppUpdater />
           <OfflineSnack />
           <AlertSnack />
+          <FeatureFlipping feature="redirect">
+            <RedirectDialog open={redirectDialogOpen} onClose={this.handleRedirectDialogClose} />
+          </FeatureFlipping>
         </div>
       </div>
     )

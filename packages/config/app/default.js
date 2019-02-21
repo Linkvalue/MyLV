@@ -7,5 +7,7 @@ module.exports = {
     transport: true,
     offlineMode: true,
     pushNotifications: true,
+    redirect: true,
   },
+  redirectUrl: 'https://arborescence.link-value.fr',
 }
