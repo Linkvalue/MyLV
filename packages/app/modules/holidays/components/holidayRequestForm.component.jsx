@@ -55,8 +55,9 @@ export const HolidayRequestForm = ({
             type="text"
             label="Commentaire"
             fullWidth
+            multiline
+            rowsMax={3}
             component={TextField}
-            inputProps={{ multiline: true, rows: 3 }}
             helperText="Utilisé pour spécifier une information particulière à la personne qui va valider votre demande"
           />
           <FieldArray name="periods" component={ConnectedPeriodsList} />

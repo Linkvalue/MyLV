@@ -90,6 +90,7 @@ exports[`PeriodsList should render properly 1`] = `
             <Field
               component={[MockFunction]}
               name="[object Object].startDate"
+              outlined={false}
               type="date"
             />
           </WithStyles(TableCell)>
@@ -115,6 +116,7 @@ exports[`PeriodsList should render properly 1`] = `
             <Field
               component={[MockFunction]}
               name="[object Object].endDate"
+              outlined={false}
               type="date"
             />
           </WithStyles(TableCell)>

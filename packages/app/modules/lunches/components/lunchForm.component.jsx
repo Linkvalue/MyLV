@@ -6,7 +6,6 @@ import { Grid, withStyles } from '@material-ui/core'
 import moment from 'moment'
 
 import TextField from '../../../components/inputs/textField.component'
-import DateField from '../../../components/inputs/dateField.component'
 import PartnerList from '../../../components/partnerList.component'
 
 const validate = ({ label, date, attendees }) => ({
@@ -37,7 +36,7 @@ export const LunchForm = ({
       valid,
       pristine,
       children: (
-        <Grid container>
+        <Grid container spacing={8}>
           <Grid item md={6} xs={12}>
             <Field
               name="label"
@@ -50,10 +49,10 @@ export const LunchForm = ({
           <Grid item md={6} xs={12}>
             <Field
               name="date"
-              type="text"
+              type="date"
               label="Date"
               fullWidth
-              component={DateField}
+              component={TextField}
             />
           </Grid>
           <Grid item xs={12}>

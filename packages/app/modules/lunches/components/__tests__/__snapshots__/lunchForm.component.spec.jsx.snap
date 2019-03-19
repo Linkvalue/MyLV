@@ -6,6 +6,7 @@ exports[`LunchForm should render properly 1`] = `
 >
   <WithStyles(Grid)
     container={true}
+    spacing={8}
   >
     <WithStyles(Grid)
       item={true}
@@ -30,7 +31,7 @@ exports[`LunchForm should render properly 1`] = `
         fullWidth={true}
         label="Date"
         name="date"
-        type="text"
+        type="date"
       />
     </WithStyles(Grid)>
     <WithStyles(Grid)

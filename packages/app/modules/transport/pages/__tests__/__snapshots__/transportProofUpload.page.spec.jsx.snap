@@ -36,6 +36,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
     <WithStyles(CardContent)>
       <WithStyles(Grid)
         container={true}
+        spacing={8}
       >
         <WithStyles(Grid)
           item={true}
@@ -65,7 +66,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
             fullWidth={true}
             label="Date de début de validité"
             name="startingDate"
-            type="text"
+            type="date"
           />
         </WithStyles(Grid)>
         <WithStyles(Grid)
@@ -78,7 +79,7 @@ exports[`TransportProofPage should notify user when a valid proof is already upl
             fullWidth={true}
             label="Date d'expiration"
             name="expirationDate"
-            type="text"
+            type="date"
           />
         </WithStyles(Grid)>
         <WithStyles(Grid)
@@ -139,6 +140,7 @@ exports[`TransportProofPage should render properly 1`] = `
     <WithStyles(CardContent)>
       <WithStyles(Grid)
         container={true}
+        spacing={8}
       >
         <WithStyles(Grid)
           item={true}
@@ -168,7 +170,7 @@ exports[`TransportProofPage should render properly 1`] = `
             fullWidth={true}
             label="Date de début de validité"
             name="startingDate"
-            type="text"
+            type="date"
           />
         </WithStyles(Grid)>
         <WithStyles(Grid)
@@ -181,7 +183,7 @@ exports[`TransportProofPage should render properly 1`] = `
             fullWidth={true}
             label="Date d'expiration"
             name="expirationDate"
-            type="text"
+            type="date"
           />
         </WithStyles(Grid)>
         <WithStyles(Grid)
