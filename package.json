@@ -29,7 +29,8 @@
     "test": "BABEL_ENV=test APP_ENV=test jest",
     "test:watch": "jest --watch",
     "version": "yarn changelog && git add CHANGELOG.md",
-    "lint:fix": "eslint --fix \"**/*.{js,jsx,mjs}\""
+    "lint:fix": "eslint --fix \"**/*.{js,jsx,mjs}\"",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
