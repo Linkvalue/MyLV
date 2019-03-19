@@ -2,7 +2,6 @@
 /* eslint-disable no-restricted-globals */
 
 self.addEventListener('push', (event) => {
-  console.log('test')
   const { message: body, url } = event.data.json()
   const options = {
     body,

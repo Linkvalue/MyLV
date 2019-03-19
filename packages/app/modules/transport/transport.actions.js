@@ -17,18 +17,24 @@ export const setExpirationDateToCurrentMonth = () => (dispatch) => {
 export const TRANSPORT_UPLOAD_PROOF_SUCCESS = 'TRANSPORT_UPLOAD_PROOF_SUCCESS'
 export const postTransportProofSuccess = data => ({ type: TRANSPORT_UPLOAD_PROOF_SUCCESS, payload: data })
 
-export const postTransportProof = formData => dispatch =>
-  dispatch(fetchWithAuth('/api/proofOfTransport', {
-    method: 'POST',
-    body: formData,
-  }))
-    .then((data) => {
-      dispatch(postTransportProofSuccess(data))
-      dispatch(pushAlert({
-        type: ALERT_INFO,
-        message: 'Titre de transport uploadé avec succès',
-      }))
-    })
+export const postTransportProof = formData => async (dispatch) => {
+  try {
+    const data = await dispatch(fetchWithAuth('/api/proofOfTransport', {
+      method: 'POST',
+      body: formData,
+    }))
+    dispatch(postTransportProofSuccess(data))
+    dispatch(pushAlert({
+      type: ALERT_INFO,
+      message: 'Titre de transport uploadé avec succès',
+    }))
+  } catch (e) {
+    dispatch(pushAlert({
+      type: ALERT_ERROR,
+      message: 'Une erreur est survenue lors de l\'upload.',
+    }))
+  }
+}
 
 export const TRANSPORT_PROOFS_FETCH_START = 'TRANSPORT_PROOFS_FETCH_START'
 export const TRANSPORT_PROOFS_FETCH_SUCCESS = 'TRANSPORT_PROOFS_FETCH_SUCCESS'

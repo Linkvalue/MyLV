@@ -9,7 +9,7 @@ import { Delete } from '@material-ui/icons'
 import moment from 'moment'
 import { holidayLabels } from '@cracra/shared/calendar.constants'
 
-import DateField from '../../../components/inputs/dateField.component'
+import TextField from '../../../components/inputs/textField.component'
 
 const styles = theme => ({
   periodsList: {
@@ -68,7 +68,7 @@ export class PeriodsList extends React.Component {
                     </TableCell>
                   ))}
                   <TableCell padding="checkbox">
-                    <Field name={`${period}.startDate`} type="date" component={DateField} />
+                    <Field name={`${period}.startDate`} type="date" component={TextField} outlined={false} />
                   </TableCell>
                   <TableCell>
                     <div className={classes.oneLineCell}>
@@ -78,7 +78,7 @@ export class PeriodsList extends React.Component {
                     </div>
                   </TableCell>
                   <TableCell padding="checkbox">
-                    <Field name={`${period}.endDate`} type="date" component={DateField} />
+                    <Field name={`${period}.endDate`} type="date" component={TextField} outlined={false} />
                   </TableCell>
                   <TableCell>
                     <div className={classes.oneLineCell}>

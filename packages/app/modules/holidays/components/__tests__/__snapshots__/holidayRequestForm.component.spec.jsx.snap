@@ -22,14 +22,10 @@ exports[`HolidayRequestForm should render properly 1`] = `
       component={[MockFunction]}
       fullWidth={true}
       helperText="Utilisé pour spécifier une information particulière à la personne qui va valider votre demande"
-      inputProps={
-        Object {
-          "multiline": true,
-          "rows": 3,
-        }
-      }
       label="Commentaire"
+      multiline={true}
       name="comment"
+      rowsMax={3}
       type="text"
     />
     <FieldArray

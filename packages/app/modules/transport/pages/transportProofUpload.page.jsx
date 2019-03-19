@@ -22,7 +22,7 @@ import {
 import { Helmet } from 'react-helmet'
 
 import { appName } from '@cracra/config/app'
-import DateField from '../../../components/inputs/dateField.component'
+import TextField from '../../../components/inputs/textField.component'
 import { postTransportProof, setExpirationDateToCurrentMonth } from '../transport.actions'
 import FileField from '../../../components/inputs/fileField.component'
 
@@ -86,7 +86,7 @@ export const TransportProofPage = ({
     ) : null}
     <Card>
       <CardContent>
-        <Grid container>
+        <Grid container spacing={8}>
           <Grid item xs={12}>
             <Typography variant="h5" component="h2" gutterBottom>
               Uploader un justificatif de titre de transport
@@ -100,20 +100,20 @@ export const TransportProofPage = ({
           <Grid item md={4} xs={12}>
             <Field
               name="startingDate"
-              type="text"
+              type="date"
               label="Date de début de validité"
               fullWidth
               autoFocus
-              component={DateField}
+              component={TextField}
             />
           </Grid>
           <Grid item md={4} xs={12}>
             <Field
               name="expirationDate"
-              type="text"
+              type="date"
               label="Date d'expiration"
               fullWidth
-              component={DateField}
+              component={TextField}
             />
           </Grid>
           <Grid item md={4} xs={12}>

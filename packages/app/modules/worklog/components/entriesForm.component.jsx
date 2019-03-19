@@ -37,6 +37,7 @@ const styles = theme => ({
     },
   },
   secondCard: {
+    marginTop: theme.spacing.unit * 2,
     [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing.unit * 2,
     },

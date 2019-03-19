@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
-import { withStyles } from '@material-ui/core'
+import { withStyles, Button } from '@material-ui/core'
 import { Helmet } from 'react-helmet'
 import { appName } from '@cracra/config/app'
 
@@ -52,10 +52,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 class LoginPage extends Component {
-  componentDidMount() {
-    lvConnect.mountLoginButton(this.loginButtonContainer)
-  }
-
   componentWillReceiveProps(props) {
     if (props.isConnected) {
       this.props.push('/')
@@ -71,7 +67,7 @@ class LoginPage extends Component {
           <title>Connexion | {appName}</title>
         </Helmet>
         <img src={logoUrl} alt="Logo MyLV" className={classes.logoMyLV} />
-        <div className={classes.loginButtonWrapper} ref={(el) => { this.loginButtonContainer = el }} />
+        <Button color="primary" variant="raised" onClick={() => lvConnect.login()}>Login with LVConnect</Button>
         <img src={logoLVUrl} alt="Logo LinkValue" className={classes.logoLV} />
       </div>
     )
