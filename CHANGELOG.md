@@ -1,15 +1,18 @@
-<a name="2.9.3"></a>
-## [2.9.3](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.2...v2.9.3) (2018-12-11)
+<a name="2.9.4"></a>
+## [2.9.4](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.2...v2.9.4) (2019-03-19)
 
 
 ### Bug Fixes
 
 * **config:** Fix missing env variables in build ([8f05450](http://gitlab.com/LinkValue/Lab/CraCra/commit/8f05450))
 * **config:** Fix missing web push public key ([a500223](http://gitlab.com/LinkValue/Lab/CraCra/commit/a500223))
+* **doc:** Fix wrong env urls of shields in README ([51845b6](http://gitlab.com/LinkValue/Lab/CraCra/commit/51845b6))
 
 
 ### Features
 
+* **app:** Add redirect to Arborescence ([5c48785](http://gitlab.com/LinkValue/Lab/CraCra/commit/5c48785))
+* **app:** Bump MUI version and use outlined design for inputs ([360fc15](http://gitlab.com/LinkValue/Lab/CraCra/commit/360fc15))
 * **config:** Remove old auto-magic config by separated config files ([0aaa506](http://gitlab.com/LinkValue/Lab/CraCra/commit/0aaa506))
 
 
