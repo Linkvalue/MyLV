@@ -4,6 +4,6 @@ module.exports = {
     projectId: '418084',
   },
   featureFlipping: {
-    redirect: false,
+    redirect: true,
   },
 }
