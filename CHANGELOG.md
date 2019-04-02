@@ -1,3 +1,13 @@
+<a name="2.9.5"></a>
+## [2.9.5](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.4...v2.9.5) (2019-04-02)
+
+
+### Features
+
+* **config:** Deprecate MyLV ([fc502df](http://gitlab.com/LinkValue/Lab/CraCra/commit/fc502df))
+
+
+
 <a name="2.9.4"></a>
 ## [2.9.4](http://gitlab.com/LinkValue/Lab/CraCra/compare/v2.9.2...v2.9.4) (2019-03-19)
 
